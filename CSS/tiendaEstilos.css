@@ -1,0 +1,254 @@
+*{
+
+    padding: 0px;
+    margin: 0px;
+}
+
+.padre{
+
+    
+    display: flex;
+}
+
+.board{
+
+    background: #5a5a5a;
+    flex: 1 1 auto;
+    height: auto;
+    
+}
+    .titulo{
+        background: #8d8d8d;
+        padding: 10px;
+    }
+
+        .titulo h1{
+
+            font-family: 'Open Sans', sans-serif;
+            font-size: 20px;
+            padding: 6px;
+            color:rgb(255, 255, 255);
+        }
+    .usuario{
+        /* background: #5f746400; */
+        padding: 10px;
+        
+        margin-top: 15px;
+    }
+        .usuario h4{
+
+            color: rgb(255, 255, 255);
+            font-family: 'Open Sans', sans-serif;
+            padding: 10px;
+        }
+        .usuario h5{
+
+            color: rgb(255, 255, 255);
+            font-family: 'Open Sans', sans-serif;
+            padding: 10px;
+
+        }
+
+    .secciones{
+        /* background: #5f746400; */
+        padding: 10px;
+    }
+        .secciones a{
+
+            display: block;
+            padding: 10px;
+            color: rgb(243, 243, 243);
+            text-decoration: none;
+            margin-top: 10px;
+            font-family: 'Bitter', serif;
+            /* background: #665d4e; */
+            transition: 0.3s ease-in-out;
+        }
+            .secciones a:hover{
+
+                background: #7483c5;
+                transition: 0.3s ease-in-out;
+            }
+
+.content{
+
+    /* background: #FF8080; */
+    flex: 100 1 auto;
+}
+
+.header{
+    background: #f0f0f0;
+
+}
+    .header h1{
+
+            font-family: 'Bitter', serif;
+            font-size: 30px;
+            padding: 10px;
+            color: rgb(95, 95, 95);
+    }
+
+.section{
+    
+    background: #e2e2e2;
+    padding: 20px;
+    min-height: 720px;
+    
+}
+    .container{
+
+        
+        padding: 20px;
+        border-radius: 5px;
+        background: #ffffff;
+        
+    }
+    table{
+
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid rgba(95, 95, 95, 0.384);
+        border-collapse: collapse;
+        width: 90%;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 13px;
+    }
+    th{
+
+        border: 1px solid rgba(95, 95, 95, 0.384);
+        text-align: center;
+        padding: 10px;
+    }
+    td{
+
+        border: 0.5px solid rgba(95, 95, 95, 0.336);
+        padding: 10px;
+        text-align: center;
+    }
+    .detail{
+
+        color: #1d92ff;
+        font-size: 18px;
+        padding: 10px;
+    }
+    .cancel{
+
+        color: rgb(255, 0, 0);
+        font-size: 18px;
+        padding: 10px;
+    }
+    .edit{
+
+        color: rgb(18, 151, 0);
+        font-size: 18px;
+        padding: 10px;
+    }
+    .exportar{
+
+        padding: 15px 0px;
+        
+    }
+    .exportar a{
+
+        padding: 8px;
+        text-decoration: none;
+        border-radius: 4px ;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 15px;
+    }
+    .excel{
+
+        background:rgba(18, 151, 0, 0.849);
+        color: #fff;
+    }
+        .excel:hover{
+
+            background: rgba(118, 214, 105, 0.849);
+            transition: 0.2s ease-in-out;
+        }
+    .pdf{
+
+        background: rgba(228, 0, 0, 0.815);
+        color: #fff;
+        transition: 0.3s ease-in-out;
+    }
+        .pdf:hover{
+
+            background: rgba(255, 113, 113, 0.815);
+            transition: 0.2s ease-in-out;
+        }
+    .registros{
+
+        font-family: 'Open Sans', sans-serif;
+        font-size: 15px;
+    }
+
+    select{
+
+        width: 50px;
+        margin: 0px 10px;
+        padding: 4px;
+    }
+
+    .filtros{
+
+        margin: 30px 0px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 15px;
+        color: #444444;
+    }
+    .filtros select{
+
+        width: 150px;
+        overflow: hidden;
+    }
+    .idpedido{
+
+        width: 80px;
+        padding: 4px;
+        margin-right: 10px;
+        overflow: hidden;
+    }
+    .searchButton{
+
+        padding: 5px;
+        font-family: 'Open Sans', sans-serif;
+        background: #1d92ff;
+        color: #fff;
+        border: 0.5px solid #1d92ff;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .searchButton:hover{
+
+        background: #66b5ff;;
+    }
+    .paginacion{
+
+        margin: 20px 0px 20px 60px;
+    }
+    .paginacion a{
+
+        text-decoration: none;
+        color: #444444;
+        margin: 0px 10px;
+        padding: 5px;
+    }
+    .prev-next{
+        
+        background: #dbdbdb;
+        border-radius: 4px;
+        border: 1px solid #dbdbdb;
+    }
+        .prev-next:hover{
+
+            background: #999999;
+            color: #ebebeb;
+        }
+.footer{
+
+    background: #f0f0f0;
+    padding: 15px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+}
