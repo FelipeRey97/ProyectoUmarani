@@ -24,7 +24,7 @@ session_start();
     <title>Document</title>
 </head>
 <body>
-<link rel="stylesheet" href="../CSS/tiendaEstilos.css">
+<link rel="stylesheet" href="../CSS/productosEstilos.css">
 <script src="https://kit.fontawesome.com/f243ce0afc.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
@@ -93,6 +93,7 @@ session_start();
                 <table>
                     <tr>
                         <th>ID</th>
+                        <th>Imagen</th>
                         <th>Articulo</th>
                         <th>Precio</th>
                         <th>Cantidad</th>
@@ -113,14 +114,15 @@ session_start();
                     <tr class="información" >
 
 
-                    <td> <?php echo $producto['artId']   ?> </td>
+                        <td> <?php echo $producto['artId']   ?> </td>
+                        <td> <img src="<?php echo $producto['artVista']   ?>" alt=""> </td>
                         <td> <?php echo $producto['artNombre']   ?></td>
                         <td> <?php echo $producto['artPrecio']   ?></td>
                         <td> <?php echo $producto['artCantidad']   ?></td>
                         <td> <?php echo $producto['artEstado']   ?></td>
                         <td> <?php echo $producto['categoriaNombre']   ?></td>
                         <td>
-                            <a class="edit" href="#"><i class="far fa-edit"></i></i></a>
+                        <a class="edit" href="DetalleUsuario.php?aId=<?php echo "$producto['artId']" ?>"><i class="far fa-edit"></i></i></a>
                             <!-- <a class="detail" href="#"><i class="far fa-eye"></i></a> -->
                             <a class="cancel" href="#"><i class="fas fa-ban"></i></a>
                         </td>

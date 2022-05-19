@@ -12,11 +12,11 @@
             $this->con = new mysqli('localhost','root','','proyecto');
             
         }
-        public function insertarUsuario(){
+        public function insertarUsuario($unombre,$uapellido,$udocumento,$ucontraseña,$uestado,$urol){
 
 
             $this->con->query("INSERT INTO usuariotienda(usuarioNombre,usuarioApellido,usuarioDoc,usuarioContraseña,usuarioEstado,usuarioRolId)
-            VALUES ('$_REQUEST[unombre]','$_REQUEST[uapellido]','$_REQUEST[udocumento]','$_REQUEST[ucontraseña]','$_REQUEST[uestado]',$_REQUEST[urol])
+            VALUES ('$unombre','$uapellido','$udocumento','$ucontraseña','$uestado',$urol)
             ") or die ("problemas en el select " . mysqli_error($con));
 
             
@@ -39,11 +39,12 @@
             return $retorno;
         }
        
-          public function actualizarUsuario(){
+          public function actualizarUsuario($unombre,$uapellido,$ucontraseña,$uestado,$urol,$usuarioId){
 
 
-           $this->con->query("UPDATE usuariotienda SET  usuarioNombre = '$_REQUEST[unombre]' ,usuarioApellido = '$_REQUEST[uapellido]',usuarioContraseña = '$_REQUEST[ucontraseña]',usuarioEstado = '$_REQUEST[uestado]',usuarioRolId = '$_REQUEST[urol]' 
-           WHERE usuarioId = '$_REQUEST[tabla]' ") or die ("problemas en el select " . mysqli_error($con));
+           $this->con->query("UPDATE usuariotienda SET  usuarioNombre = '$unombre' ,usuarioApellido = '$uapellido',
+           usuarioContraseña = '$ucontraseña',usuarioEstado = '$uestado',usuarioRolId = $urol
+           WHERE usuarioId = $usuarioId ") or die ("problemas en el select " . mysqli_error($con));
 
            
           }

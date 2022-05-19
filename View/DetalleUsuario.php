@@ -1,7 +1,8 @@
 
 <?php
-require_once("../Controller/verUsuario.php")
+//  include("../Controller/verUsuario.php");
 ?>
+
 <?php
 session_start();
 

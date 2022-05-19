@@ -18,28 +18,27 @@ $con2 = new Conexion();
     //control para actualizacion de usuario, se añaden condiciones para controlar los formularios
 
     if($_REQUEST['unombre'] != "" && $_REQUEST['uapellido'] != "" && $_REQUEST['ucontraseña'] != ""
-    && $_REQUEST['uestado'] != "" && $_REQUEST['urol'] != ""){
+   && $_REQUEST['uestado'] != "" && $_REQUEST['urol'] != ""){
 
-   if(!is_numeric($_REQUEST['unombre']) && !is_numeric(['uapellido']) && strlen($_REQUEST['ucontraseña'] > 6) && !is_numeric($_REQUEST['uestado']) && is_numeric($_REQUEST['urol'])){
-
-    $con2->actualizarUsuario();
+   $unombre =  $_REQUEST['unombre'];
+   $uapellido =  $_REQUEST['uapellido'];
+   $ucontraseña =  $_REQUEST['ucontraseña'];
+   $uestado =  $_REQUEST['uestado'];
+   $urol = $_REQUEST['urol'];
+   $usuarioId= $_REQUEST['tabla'];
+   
+   $con2->actualizarUsuario($unombre,$uapellido,$ucontraseña,$uestado,$urol,$usuarioId);
       ?>
       <script>
          swal("Operación Realizada", "Se ha guardado el Usuario Satisfactoriamente!", "success");
+         
       </script>
+
       <?php
 
-   }
-   else{
-   
-      ?>
-      <script>
-      swal("Atención", "Por favor Verifique los campos", "warning");
-      </script>
-      <?php
+      header("refresh:1;url=http://localhost/UmaraniWeb/View/Usuarios.php");
+
       
-   }
-   
 }
 else{
    

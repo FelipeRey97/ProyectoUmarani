@@ -13,11 +13,11 @@
             $this->prod = new mysqli('localhost','root','','proyecto');
             
         }
-        public function insertarProducto($ruta){
+        public function insertarProducto($ruta,$aNombre,$aPrecio,$aCantidad,$aestado,$aCategoria){
 
 
             $this->prod->query("INSERT INTO articulo (artNombre,artPrecio,artVista,artCantidad,artEstado,artCategoriaId)
-             values('$_REQUEST[aNombre]','$_REQUEST[aPrecio]','$ruta','$_REQUEST[aCantidad]','$_REQUEST[aestado]','$_REQUEST[aCategoria]')")
+             values('$aNombre','$aPrecio','$ruta',$aCantidad,'$aestado','$aCategoria')")
              or die ("problemas en el insert" .mysqli_error($prod));
 
             
@@ -40,15 +40,16 @@
             return $retorno;
         }
        
-          public function actualizarProducto(){
+          public function actualizarProducto($ruta,$aNombre,$aPrecio,$aCantidad,$aestado,$aCategoria){
 
 
-           $this->prod->query("UPDATE usuariotienda SET  usuarioNombre = '$_REQUEST[unombre]' ,usuarioApellido = '$_REQUEST[uapellido]',usuarioContraseña = '$_REQUEST[ucontraseña]',usuarioEstado = '$_REQUEST[uestado]',usuarioRolId = '$_REQUEST[urol]' 
-           WHERE usuarioId = '$_REQUEST[tabla]' ") or die ("problemas en el select " . mysqli_error($prod));
+           $this->prod->query("UPDATE articulo SET  artNombre = '$aNombre' ,artPrecio = $aPrecio,
+           artVista = '$ruta',artCantidad = '$aCantidad',artEstado = '$aestado',artCategoriaId = '$aCategoria'
+           WHERE artId = '$artId' ") or die ("problemas en el select " . mysqli_error($prod));
 
            
           }
-
+ 
         
        
         public function borrarProducto(){

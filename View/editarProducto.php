@@ -10,7 +10,6 @@ session_start();
     }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,12 +47,12 @@ session_start();
         </div>
         <div class="content">
         <header class="header">
-            <h1>Ingresar Producto</h1>
+            <h1>Edición de Artículo</h1>
         </header>
         <section class="section">
             <div class="container">
                 <div class="filtros" >
-                    <form action="../Controller/NuevoProducto2.php" method="post" enctype="multipart/form-data">
+                    <form action="../Controller/actualizarProducto2.php" method="post" enctype="multipart/form-data">
                         <label for="aNombre" >Nombre: </label>
                         <input type="text" name="aNombre"><br><br>
                         <label for="aPrecio">Precio:  </label>
@@ -74,6 +73,7 @@ session_start();
                         <label for="foto1">Imagen Principal:</label> 
                         <input type="file" name="foto1" id="foto1"><br><br>
                         <input class="searchButton" type="submit" value="Registrar">
+                        <input type="hidden" name="aId" value="<?php echo "$_REQUEST[aId]" ?>">
                     </form>
                     <a href="../View/Productos.php">Volver</a>
                 </div>

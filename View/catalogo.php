@@ -142,7 +142,7 @@ require dirname(__DIR__)."./Controller/mostrarCatalogo.php";
 
     </div>
 
-    <script src="../UmaraniWeb/JS/ShopingCart.js"></script>
-    <script src="../UmaraniWeb/JS/SearchEngine.js"></script>
+    <script src="../JS/ShopingCart.js"></script>
+    <script src="../JS/SearchEngine.js"></script>
 </body>
 </html>
