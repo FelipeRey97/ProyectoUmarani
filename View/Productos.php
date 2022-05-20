@@ -122,9 +122,9 @@ session_start();
                         <td> <?php echo $producto['artEstado']   ?></td>
                         <td> <?php echo $producto['categoriaNombre']   ?></td>
                         <td>
-                        <a class="edit" href="DetalleUsuario.php?aId=<?php echo "$producto['artId']" ?>"><i class="far fa-edit"></i></i></a>
-                            <!-- <a class="detail" href="#"><i class="far fa-eye"></i></a> -->
-                            <a class="cancel" href="#"><i class="fas fa-ban"></i></a>
+                        <a class="edit" href="editarProducto.php?aId=<?php echo "$producto[artId]" ?>"><i class="far fa-edit"></i></i></a>
+                        <a class="detail" href="#"><i class="far fa-eye"></i></a>
+                        <a on class="cancel" href="../Controller/borrarArticulo.php?aId=<?php echo "$producto[artId]" ?>"><i class="fas fa-ban"></i></a>
                         </td>
                 
                         <?php  

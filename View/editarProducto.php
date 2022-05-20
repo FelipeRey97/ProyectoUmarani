@@ -51,30 +51,81 @@ session_start();
         </header>
         <section class="section">
             <div class="container">
+            <?php
+
+                $conexion = mysqli_connect("localhost","root","","proyecto");
+
+                $registros = mysqli_query($conexion,"select * from articulo join categoria
+                on artCategoriaId = categoriaId where artId = '$_REQUEST[aId]' ");
+
+                if($registros){
+
+
+                while($reg = mysqli_fetch_array($registros)){
+
+
+                ?>
                 <div class="filtros" >
+                  
                     <form action="../Controller/actualizarProducto2.php" method="post" enctype="multipart/form-data">
                         <label for="aNombre" >Nombre: </label>
-                        <input type="text" name="aNombre"><br><br>
+                        <input type="text" name="aNombre" value="<?php echo "$reg[artNombre]"?>" ><br><br>
                         <label for="aPrecio">Precio:  </label>
-                        <input type="text" name="aPrecio"><br><br>
+                        <input type="text" name="aPrecio" value="<?php echo "$reg[artPrecio]"?>"  ><br><br>
                         <label for="aCantidad">Cantidad:  </label>
-                        <input name="aCantidad" type="text" class=""> <br><br>
+                        <input name="aCantidad" type="text" value="<?php echo "$reg[artCantidad]"?>"  class=""> <br><br>
                         <label for="aestado"> Estado: </label>
                         <select name="aestado" id="">Estado
-                            <option value="Disponible">Disponible</option>
-                            <option value="Agotado">Agotado</option>
+                        <?php if($reg['artEstado'] == "Disponible"){
+                            echo "<option value=\"$reg[artEstado]\" selected>$reg[artEstado]</option>";
+                            echo "<option value=\"Agotado\" >Agotado</option>";
+                            
+                        }   
+                        else if($reg['artEstado'] == "Agotado"){
+                            echo "<option value=\"$reg[artEstado]\" selected>$reg[artEstado]</option>";
+                            echo "<option value=\"Disponible\" >Disponible</option>";
+                        }   
+                        ?>
                         </select> <br><br>
                         <label for="aCategoria"> Categoria </label>
                         <select name="aCategoria">
-                            <option value="1">Collar</option>
+                        <?php if($reg['artCategoriaId'] == "1"){
+                            echo "<option value=\"$reg[artCategoriaId]\" selected>$reg[categoriaNombre]</option>";
+                            echo "<option value=\"2\" >PULSERAS</option>";
+                            echo "<option value=\"3\" >ANILLOS</option>";
+                            
+                        }   
+                        else if($reg['artCategoriaId'] == "2"){
+                            echo "<option value=\"$reg[artCategoriaId]\" selected>$reg[categoriaNombre]</option>";
+                            echo "<option value=\"1\" >COLLARES</option>";
+                            echo "<option value=\"3\" >ANILLOS</option>";
+                        }
+                        else if($reg['artCategoriaId'] == "3"){
+                            echo "<option value=\"$reg[artCategoriaId]\" selected>$reg[categoriaNombre]</option>";
+                            echo "<option value=\"2\" >PULSERAS</option>";
+                            echo "<option value=\"3\" >COLLARES</option>";
+                        }  
+                        ?>
+                            <!-- <option value="1">Collar</option>
                             <option value="2">Pulsera</option>
-                            <option value="3">Anillo</option>
+                            <option value="3">Anillo</option> -->
                         </select><br><br>
                         <label for="foto1">Imagen Principal:</label> 
-                        <input type="file" name="foto1" id="foto1"><br><br>
+                        <input type="file" name="foto1" id="foto1" value="<?php echo "$reg[artVista]"?>" ><br><br>
                         <input class="searchButton" type="submit" value="Registrar">
                         <input type="hidden" name="aId" value="<?php echo "$_REQUEST[aId]" ?>">
                     </form>
+                    <?php  
+                            
+                        }
+                    }
+                    else {
+
+                        echo 'El usuario no existe';
+                    }
+
+                     ?>
+
                     <a href="../View/Productos.php">Volver</a>
                 </div>
  

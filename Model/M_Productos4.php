@@ -40,7 +40,7 @@
             return $retorno;
         }
        
-          public function actualizarProducto($ruta,$aNombre,$aPrecio,$aCantidad,$aestado,$aCategoria){
+          public function actualizarProducto($artId,$ruta,$aNombre,$aPrecio,$aCantidad,$aestado,$aCategoria){
 
 
            $this->prod->query("UPDATE articulo SET  artNombre = '$aNombre' ,artPrecio = $aPrecio,
@@ -50,12 +50,11 @@
            
           }
  
-        
        
-        public function borrarProducto(){
+        public function borrarProducto($artId){
 
 
-         $this->prod->query("DELETE FROM  usuarioTienda WHERE usuarioId = '$_REQUEST[tabla]'") 
+         $this->prod->query("DELETE FROM articulo WHERE artId = '$artId'") 
          or die ("problemas en el select " . mysqli_error($prod));
 
          header("Location: http://localhost/UmaraniWeb/View/productos.php");

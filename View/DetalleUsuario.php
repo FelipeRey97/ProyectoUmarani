@@ -139,7 +139,6 @@ session_start();
                         else if($reg['rolNombre'] == "EMPLEADO"){
                             echo "<option value=\"$reg[usuarioRolId]\" selected>$reg[rolNombre]</option>";
                             echo "<option value=\"1\" >ADMINISTRADOR</option>";
-                            
                         }   
                         ?>
                         </select><br><br>

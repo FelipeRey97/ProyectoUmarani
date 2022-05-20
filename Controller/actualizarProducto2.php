@@ -28,8 +28,9 @@
 
                 $prod2 = new Producto();
                 // Se valida que los formularios del nuevo producto no se envien vacios
+                $artId = $_REQUEST['aId'];
 
-        if($_REQUEST['aNombre'] != "" && $_REQUEST['aPrecio'] != "" && $_REQUEST['aCantidad'] != "" && $_REQUEST['aestado'] != ""
+        if($_FILES['foto1']['name'] != "" && $_REQUEST['aNombre'] != "" && $_REQUEST['aPrecio'] != "" && $_REQUEST['aCantidad'] != "" && $_REQUEST['aestado'] != ""
         && $_REQUEST['aCategoria'] !=""){
 
 
@@ -38,7 +39,7 @@
             $aCantidad = $_REQUEST['aCantidad'];
             $aestado = $_REQUEST['aestado'];
             $aCategoria = $_REQUEST['aCategoria'];
-            $artId = $_REQUEST['aId'];
+           
                 
                 $prod2->actualizarProducto($artId,$ruta,$aNombre,$aPrecio,$aCantidad,$aestado,$aCategoria);
                 ?>
@@ -57,6 +58,7 @@
         swal("Atención", "Por favor complete todos los campos", "warning");
         </script>
         <?php
+        include('../View/editarProducto.php');
         
         }
 
