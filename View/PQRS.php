@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-<link rel="stylesheet" href="../WebUmarani/CSS/tiendaEstilos.css">
+<link rel="stylesheet" href="../CSS/tiendaEstilos.css">
 <script src="https://kit.fontawesome.com/f243ce0afc.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
@@ -26,9 +26,9 @@
             </div>
             <nav class="secciones">
                 <a href="#">Inicio</a>
-                <a href="#">Productos</a>
+                <a href="../View/Productos.php">Productos</a>
                 <a href="#">Pedidos</a>
-                <a href="#">Usuarios</a>
+                <a href="../View/Usuarios.php">Usuarios</a>
                 <a href="#">Dashboard</a>
                 <a href="#">PQRS</a>
             </nav>

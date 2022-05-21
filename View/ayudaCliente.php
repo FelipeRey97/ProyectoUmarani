@@ -19,7 +19,7 @@ session_start();
 </head>
 <body>
     <!-- Hola mundo -->
-    <link rel="stylesheet" href="../WebUmarani/CSS/ayudaCliente.css">
+    <link rel="stylesheet" href="../CSS/ayudaCliente.css">
     <script src="https://kit.fontawesome.com/f243ce0afc.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
@@ -103,7 +103,7 @@ session_start();
             </div>
            
                 <div class="logo">
-                    <a href="#"><img src="../WebUmarani/imagenes/logo.png" alt=""></a>
+                    <a href="#"><img src="../Uploads/logo.png" alt=""></a>
                     
                 </div>
                

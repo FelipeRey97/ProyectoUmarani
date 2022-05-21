@@ -8,7 +8,7 @@
 </head>
 <body>
     
-    <link rel="stylesheet" href="../WebUmarani/CSS/formGarantia.css">
+    <link rel="stylesheet" href="../CSS/formGarantia.css.">
     <script src="https://kit.fontawesome.com/f243ce0afc.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
@@ -29,7 +29,7 @@
             </div> -->
                 
                 <div class="logo">
-                    <a href="#"><img src="../WebUmarani/imagenes/logo.png" alt=""></a>
+                    <a href="#"><img src="../Uploads/logo.png" alt=""></a>
                     
                 </div>
                
@@ -45,48 +45,32 @@
             </div>
         </header>
         <section class="section">
-            <?php
+        <?php  
+        
+        $fecha=date("Y/m/d");
+        
+        ?>
 
-                $conexion = mysqli_connect("localhost","root","","proyecto") 
-                or die ("problemas con la conexion");
-
-                $registros = mysqli_query($conexion,"select * from cliente where clienteEmail = '$_REQUEST[pMail]'") 
-                or die ("problemas en el select" . mysqli_error($coneixon));
-
-                if(isset($registros)){
-
-
-                    while($reg = mysqli_fetch_array($registros)){
-
-                        $clienteId = $reg['clienteId'];
-
-                    }
-                }
-                else{
-
-                    $clienteId = null;
-
-                }
-
-                $nombre_imagen = $_FILES['pImagen']['name'];
-                $temporal = $_FILES['pImagen']['tmp_name'];
-                $carpeta = "../WebUmarani/Uploads/ReclamoImagen";
-                $ruta = $carpeta.'/'.$nombre_imagen;
-
-                move_uploaded_file($temporal,$carpeta.'/'.$nombre_imagen);
-
-
-                mysqli_query($conexion,"insert into pqrs (pqrsNombre,pqrsMail,pqrsTelefono,pqrsDescripcion,pqrsOrigenId,pqrsFecha,pqrsClienteId,pqrsPedidoId,pqrsImagen)
-                values('$_REQUEST[pNombre]','$_REQUEST[pMail]','$_REQUEST[ptelefono]','$_REQUEST[pComentario]',$_REQUEST[tipoId],'$_REQUEST[pFecha]',
-                $clienteId,$_REQUEST[pNumero],'$ruta')");
-     
-
-            ?>
-
-
-
-
-           
+            <div class="form-container">
+                <h1>Reportar una Garantía</h1><br>
+                <p class="info" >Llena el siguiente formulario y en un lapso aproximado de 3 días <br> hábiles nuestro departamento de servicio al cliente  se  estará  <br>comunicando contigo, o si lo prefieres también puedes escribirnos a: <br><br> umarani@umarani.com</p>
+            <form action="../Controller/formGarantia2.php" method="post" class="iniciar-sesion" enctype="multipart/form-data">
+                <label for="">Nombre completo de quien realizó la compra*:</label><br>
+                <input class="control" type="text" required name="pNombre">  <br>
+                <label for="">Email con el cual se realizó la compra*:</label><br>
+                <input class="control" type="text" required name="pMail" >  <br>
+                <label for="">Télefono de contacto*:</label><br>
+                <input class="control" type="text" required name="ptelefono">  <br>
+                <label for="">Número del pedido*:</label><br>
+                <input class="control" type="text" name="pNumero"><br>
+                <label for="">Imagen del producto donde se evidencie el problema de calidad:</label><br>
+                <input class="control" type="file"   name="pImagen"><br>
+                <label for="">Coméntanos lo sucedido*:</label><br>
+                <textarea class="control" name="pComentario"></textarea><br>
+                <input type="hidden" value="1" name=tipoId >
+                <input type="hidden" value="<?php echo "$fecha"; ?>" name=pFecha >
+                <input class="boton-iniciarSesion" type="submit" value="Enviar">
+            </form>
         </div>
         </section>
         <footer class="footer">
