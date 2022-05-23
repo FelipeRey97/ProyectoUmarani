@@ -13,11 +13,11 @@
             $this->pqrs = new mysqli('localhost','root','','proyecto');
             
         }
-        public function insertarPqrs(){
+        public function insertarPqrs($pNombre,$pMail,$ptelefono,$pComentario,$tipoId,$pFecha,$ruta,$clienteId){
 
 
-            $this->pqrs->query("INSERT INTO articulo (pqrsNombre,pqrsMail,pqrsTelefono,pqrsDescripcion,pqrsOrigenId,pqrsEstado,pqrsFecha,pqrsClienteId,pqrsImagen)
-             values(  )")
+            $this->pqrs->query("INSERT INTO pqrs (pqrsNombre,pqrsMail,pqrsTelefono,pqrsDescripcion,pqrsOrigenId,pqrsFecha,pqrsClienteId,pqrsImagen)
+             values('$pNombre','$pMail','$ptelefono','$pComentario','$tipoId','$pFecha','$clienteId','$ruta')")
              or die ("problemas en el insert" .mysqli_error($pqrs));
 
             

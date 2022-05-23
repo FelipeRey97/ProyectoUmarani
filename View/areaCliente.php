@@ -26,7 +26,7 @@ session_start();
 </head>
 <body>
     
-    <link rel="stylesheet" href="../WebUmarani/CSS/areaClienteEstilos.css">
+    <link rel="stylesheet" href="../CSS/areaClienteEstilos.css">
     <script src="https://kit.fontawesome.com/f243ce0afc.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">

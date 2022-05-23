@@ -8,7 +8,7 @@
 </head>
 <body>
     
-    <link rel="stylesheet" href="../WebUmarani/CSS/registrarse.css">
+    <link rel="stylesheet" href="../CSS/iniciarSesionEstilos.css">
     <script src="https://kit.fontawesome.com/f243ce0afc.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
@@ -29,7 +29,7 @@
             </div> -->
                 
                 <div class="logo">
-                    <a href="#"><img src="../WebUmarani/imagenes/logo.png" alt=""></a>
+                    <a href="#"><img src="../Uploads/logo.png" alt=""></a>
                     
                 </div>
                
@@ -44,24 +44,22 @@
 
             </div>
         </header>
+
         <section class="section">
             <div class="form-container">
-                <h1>Crea tu cuenta</h1>
-            <form action="registrarse2.php" method="post" class="iniciar-sesion">
-                <label for="">Nombre:</label><br>
-                <input class="control" type="text" required name="cNombre">  <br>
-                <label for="">Apellidos:</label><br>
-                <input class="control" type="text" required name="cApellido" >  <br>
-                <label for="">Correo electrónico:</label><br>
-                <input class="control" type="text" required name="cMail">  <br>
-                <label for="">Contraseña:</label><br>
-                <input class="control" type="password" required  name="cPassword"><br>
-                <p><input type="checkbox"> He leído y Acepto los  <a href="../WebUmarani/terminosycondiciones.html"> <b> Términos y Condiciones</b> </p><br><br>
-                
-                <input class="boton-iniciarSesion" type="submit" value="Registrarse">
-            </form>
+                <h1>Acceso a tu cuenta</h1>
+                <form action="iniciarSesion2.php" method="post" class="iniciar-sesion">
+                    <label for="">Correo electrónico:</label><br>
+                    <input class="control" type="text" name="cMail" required>  <br>
+                    <label for="">Contraseña:</label><br>
+                    <input class="control" type="password" name="cPassword" required><br>
+                    <p>¿Nuevo en Umarani? <a href="../WebUmarani/Registrarse.html"> <b>Regístrate aquí</b> </a></p><br><br>
+                    <a href="../WebUmarani/recuperarContraseña.html"><b>¿Olvidaste tu contraseña?</b></a><br><br>
+                    <input class="boton-iniciarSesion" type="submit" value="Iniciar Sesión">
+                </form>
         </div>
         </section>
+
         <footer class="footer">
             <div class="informacion">
                 <div class="servicio">
@@ -90,8 +88,10 @@
             </div>
         </footer>
 
-    </div>
 
+
+
+    </div>
     <script src="../WebUmarani/JS/carrito.js"></script>
 </body>
 </html>
