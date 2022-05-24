@@ -1,5 +1,5 @@
 <?php 
-
+    require_once('../Controller/iniciarSesion2.php');
 //primera clase creada, permite lo metodos para insert, select, update set y delete de usuarios con conexion a la BD
 
     class Clientes {
@@ -21,14 +21,12 @@
 
             
         }
-        public function verUsuario(){
+        public function verCliente(){
 
-            $query = $this->cl->query("SELECT * FROM usuariotienda
-            JOIN rol
-            ON rolId = usuarioRolId");
+            $query = $this->cl->query("SELECT * FROM cliente 
+            JOIN direccionesdeenvio
+            ON direccionClienteId = clienteId ");
             
-           
-
             $retorno = [];
             $i = 0;
             while($fila = $query->fetch_assoc()) {

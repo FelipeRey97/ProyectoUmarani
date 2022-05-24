@@ -72,7 +72,7 @@ session_start();
             </div>
            
                 <div class="logo">
-                    <a href="#"><img src="../WebUmarani/imagenes/logo.png" alt=""></a>
+                    <a href="#"><img src="../Uploads/logo.png" alt=""></a>
                     
                 </div>
                

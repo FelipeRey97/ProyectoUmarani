@@ -28,7 +28,7 @@
 
     if($filas){
 
-        header("Location: http://localhost/WebUmarani/index.php");
+        header("Location: http://localhost/UmaraniWeb/View/areaCliente.php");
         session_start();
         $_SESSION['nombre'] = $filas['clienteNombre'];
         $_SESSION['apellido'] = $filas['clienteApellido'];
@@ -36,7 +36,7 @@
     else{
         ?>
         <?php 
-        include("iniciarSesion.php");
+        include("../View/iniciarSesion.php");
         ?>
         <h1>ERROR EN LA AUTENTICACION</h1>
         <?php 
