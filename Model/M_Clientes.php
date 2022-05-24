@@ -1,6 +1,19 @@
+<?php
+session_start();
+?>
 <?php 
-    require_once('../Controller/iniciarSesion2.php');
+    if($_SESSION['cMail'] == false){
+
+        header("Location: iniciarSesion.php");
+    }
+
+?>
+
+<?php 
 //primera clase creada, permite lo metodos para insert, select, update set y delete de usuarios con conexion a la BD
+
+$conexion = mysqli_connect('localhost','root','','proyecto') or 
+die ("problemas en la conexion" . mysqli_error($conexion));
 
     class Clientes {
 
@@ -35,6 +48,7 @@
                 $i++;
             }
             return $retorno;
+
         }
        
           public function actualizarUsuario($unombre,$uapellido,$ucontraseña,$uestado,$urol,$usuarioId){

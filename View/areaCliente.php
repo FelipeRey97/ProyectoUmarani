@@ -1,20 +1,7 @@
 <?php
-session_start();
-?>
-<?php 
-    if($_SESSION['cMail'] == false){
-
-        header("Location: iniciarSesion.php");
-    }
+    require_once('../Controller/datosCliente.php');
 
 ?>
-
-<?php 
-    $conexion = mysqli_connect("localhost","root","","proyecto") 
-    or die ("problemas con la conexion");
-
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -93,21 +80,10 @@ session_start();
                <a href="#">Mi perfil</a><br><br>
                <a href="clienteDirecciones.php">Direcciones de Envío</a><br><br>
                <a href="#">Pedidos</a><br><br>
-               <a href="cerrarSesionCliente.php">Cerrar Sesión</a><br><br>
+               <a href="../Controller/cerrarSesionCliente.php">Cerrar Sesión</a><br><br>
            </nav>
 
            <?php 
-
-            $registroCliente = mysqli_query($conexion,"select * from cliente where clienteEmail ='$_SESSION[cMail]'") 
-            or die ("problemas en el select" . mysqli_error($conexion));
-
-            while ($reg = mysqli_fetch_array($registroCliente)){
-
-                $nombre = $reg['clienteNombre'];
-                $apellido = $reg['clienteApellido'];
-                $telefono = $reg['clienteTelefono'];
-                $mail = $reg['clienteEmail'];
-            }
 
            ?>
            <div class="arecClienteContent">

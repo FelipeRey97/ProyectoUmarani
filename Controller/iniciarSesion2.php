@@ -25,13 +25,13 @@
 
     $filas = mysqli_fetch_array($resultado);
 
-
     if($filas){
 
         header("Location: http://localhost/UmaraniWeb/View/areaCliente.php");
         session_start();
         $_SESSION['nombre'] = $filas['clienteNombre'];
         $_SESSION['apellido'] = $filas['clienteApellido'];
+        
     }
     else{
         ?>
