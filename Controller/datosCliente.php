@@ -3,8 +3,6 @@
     require('../Model/M_Clientes.php');
 
 
-    $registroCliente = mysqli_query($conexion,"select * from cliente where clienteEmail ='$_SESSION[cMail]'") 
-    or die ("problemas en el select" . mysqli_error($conexion));
 
     while ($reg = mysqli_fetch_array($registroCliente)){
 
@@ -12,6 +10,8 @@
         $apellido = $reg['clienteApellido'];
         $telefono = $reg['clienteTelefono'];
         $mail = $reg['clienteEmail'];
+        $clave = $reg['clienteContraseña'];
+        $tel = $reg['clienteTelefono'];
     }
 
    

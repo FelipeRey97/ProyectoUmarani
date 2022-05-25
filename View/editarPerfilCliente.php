@@ -75,13 +75,15 @@
             </div>
         </header>
         <section class="section">
+        
            <nav class="areaClienteNav">
+           <form action="../Controller/actualizarDatosCliente.php" method="post">
                <h1>Mi cuenta</h1>
                <a href="#">Mi perfil</a><br><br>
                <a href="clienteDirecciones.php">Direcciones de Envío</a><br><br>
                <a href="#">Pedidos</a><br><br><br><br>
                <a href="../Controller/cerrarSesionCliente.php">Cerrar Sesión</a><br><br>
-               <a href="../View/editarPerfilCliente.php">Editar Datos de perfil</a>
+                <input type="submit" value="Guardar Cambios"> 
            </nav>
 
            <?php 
@@ -93,7 +95,16 @@
                <div class="nombre">
                    <div class="contents">
                        <h3>Nombre</h3>
-                       <p><?php echo "$nombre"; ?> <?php echo "$apellido"; ?></p>
+                       <input type="text" value="<?php echo "$nombre"; ?>" name="cNombre"> 
+                   </div>
+                   <div class="edit">
+                       <!-- <a href="#">Editar</a> -->
+                   </div>
+               </div>
+               <div class="nombre">
+                   <div class="contents">
+                       <h3>Apellido</h3>
+                       <input type="text" value="<?php echo "$apellido"; ?>" name="cApellido" >
                    </div>
                    <div class="edit">
                        <!-- <a href="#">Editar</a> -->
@@ -103,7 +114,7 @@
                <div class="password">
                 <div class="contents">
                     <h3>Contraseña</h3>
-                    <p>*******</p>
+                    <input type="text" value="<?php echo "$clave"; ?>" name="cClave">
                 </div>
                 <div class="edit">
                     <!-- <a href="#">Editar</a> -->
@@ -113,10 +124,9 @@
                <div class="telefono">
                <div class="contents">
                     <h3>Telefono</h3>
-                    <p>3154272647</p>
+                    <input type="text" value="<?php echo "$tel"; ?>" name="cTelefono">
                 </div>
-                
-                
+             </form>  
             </div>
                <div class="email">
                 <div class="contents">

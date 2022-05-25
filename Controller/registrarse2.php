@@ -10,8 +10,9 @@
 <body>
 
     <?php
-
+  
         require_once('../Model/M_Clientes.php');
+        $_SESSION['cMail'] = $_REQUEST['cMail'];
 
         $cliente1 = new Clientes;
 
@@ -21,16 +22,16 @@
             $cApellido = $_REQUEST['cApellido'];
             $cMail = $_REQUEST['cMail'];
             $cPassword = $_REQUEST['cPassword'];
-
+            
             $cliente1->insertarCliente($cNombre,$cApellido,$cMail,$cPassword);
-
+            
             ?>
             <script>
                 swal("Operación Realizada","Te has registrado correctamente", "success");
             </script>
             
             <?php
-            // header('refresh:1;url=')
+            header("refresh:1;url=http://localhost/UmaraniWeb/View/iniciarSesion.php");
 
         }
         else{

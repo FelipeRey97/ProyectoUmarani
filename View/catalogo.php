@@ -95,7 +95,7 @@ require dirname(__DIR__)."./Controller/mostrarCatalogo.php";
                     <p href="#"><?php echo $producto['artPrecio']   ?></p>
                 </div>
                 <div class="verdetalle">
-                    <a href="../WebUmarani/DetalleProducto.html">Ver Detalle</a>
+                    <a href="../View/DetalleProducto.php">Ver Detalle</a>
                 </div>
                 <div class="comprar addToKart">
                     <a href="#">Comprar</a>

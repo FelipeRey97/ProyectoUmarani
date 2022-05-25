@@ -1,19 +1,22 @@
 <?php
 session_start();
-?>
-<?php 
-    if($_SESSION['cMail'] == false){
 
-        header("Location: iniciarSesion.php");
-    }
-
+       
 ?>
+
+<?php
+ if($_SESSION['cMail'] == false){
+    
+    header("refresh:1;url=http://localhost/UmaraniWeb/View/iniciarSesion.php");
+
+ }
+?>
+
 
 <?php 
 //primera clase creada, permite lo metodos para insert, select, update set y delete de usuarios con conexion a la BD
 
-$conexion = mysqli_connect('localhost','root','','proyecto') or 
-die ("problemas en la conexion" . mysqli_error($conexion));
+
 
     class Clientes {
 
@@ -34,6 +37,10 @@ die ("problemas en la conexion" . mysqli_error($conexion));
 
             
         }
+
+        
+
+
         public function verCliente(){
 
             $query = $this->cl->query("SELECT * FROM cliente 
@@ -51,12 +58,12 @@ die ("problemas en la conexion" . mysqli_error($conexion));
 
         }
        
-          public function actualizarUsuario($unombre,$uapellido,$ucontraseña,$uestado,$urol,$usuarioId){
+          public function actualizarCliente($cNombre,$cApellido,$cClave,$cTelefono){
 
 
-           $this->cl->query("UPDATE usuariotienda SET  usuarioNombre = '$unombre' ,usuarioApellido = '$uapellido',
-           usuarioContraseña = '$ucontraseña',usuarioEstado = '$uestado',usuarioRolId = $urol
-           WHERE usuarioId = $usuarioId ") or die ("problemas en el select " . mysqli_error($cl));
+           $this->cl->query("UPDATE cliente SET  clienteNombre = '$cNombre' ,clienteApellido = '$cApellido',
+           clienteContraseña = '$cClave',clienteTelefono = '$cTelefono'
+           WHERE clienteEmail = '$_SESSION[cMail]'") or die ("problemas en el select " . mysqli_error($cl));
 
            
           }
@@ -80,5 +87,10 @@ die ("problemas en la conexion" . mysqli_error($conexion));
 
     }
 
+    $conexion = mysqli_connect('localhost','root','','proyecto') or 
+        die ("problemas en la conexion" . mysqli_error($conexion));
+
+        $registroCliente = mysqli_query($conexion,"select * from cliente where clienteEmail ='$_SESSION[cMail]'") 
+        or die ("problemas en el select" . mysqli_error($conexion));
 
 ?>
