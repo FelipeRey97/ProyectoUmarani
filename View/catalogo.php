@@ -66,7 +66,7 @@ require dirname(__DIR__)."./Controller/mostrarCatalogo.php";
                     
                 </div>
                
-            
+                
             <div class="menu">
                 <b><a href="#">Inicio</a></b>
                 <b><a href="../WebUmarani/Collares.html">Collares</a></b>
@@ -95,7 +95,8 @@ require dirname(__DIR__)."./Controller/mostrarCatalogo.php";
                     <p href="#"><?php echo $producto['artPrecio']   ?></p>
                 </div>
                 <div class="verdetalle">
-                    <a href="../View/DetalleProducto.php">Ver Detalle</a>
+                    <a href="../Controller/DetalleArticulo.php?arId=<?php echo "$producto[artId]"?>">Ver Detalle</a>
+                    </form> 
                 </div>
                 <div class="comprar addToKart">
                     <a href="#">Comprar</a>
