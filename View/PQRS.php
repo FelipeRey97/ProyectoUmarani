@@ -1,3 +1,6 @@
+<?php  require_once('../Controller/mostrarPQRS.php'); ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,77 +78,32 @@
                 <table>
                     <tr>
                         <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Telefono</th>
+                        <th>Tipo</th>
                         <th>Fecha</th>
-                        <th>Cumplimentación</th>
-                        <th>Documento</th>
-                        <th>Valor</th>
                         <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
+
+                    <?php foreach($registros as $reg){
+
+                        ?>
                     <tr class="información" >
-                        <td>4</td>
-                        <td>10/03/2022</td>
-                        <td>11/03/2022</td>
-                        <td>1098813441</td>
-                        <td>40000</td>
-                        <td>Completado</td>
+
+                        <td><?php echo $reg['pqrsId'] ?></td>
+                        <td><?php echo $reg['pqrsNombre'] ?></td>
+                        <td><?php echo $reg['pqrsTelefono'] ?></td>
+                        <td><?php echo $reg['pqrsTiNombre'] ?></td>
+                        <td><?php echo $reg['pqrsFecha'] ?></td>
+                        <td><?php echo $reg['pqrsEstado'] ?></td>
                         <td>
                             <a class="edit" href="#"><i class="far fa-edit"></i></i></a>
                             <a class="detail" href="#"><i class="far fa-eye"></i></a>
                             <a class="cancel" href="#"><i class="fas fa-ban"></i></a>
                         </td>
                     </tr>
-                    <tr class="información" >
-                        <td>4</td>
-                        <td>10/03/2022</td>
-                        <td>11/03/2022</td>
-                        <td>1098813441</td>
-                        <td>40000</td>
-                        <td>Completado</td>
-                        <td>
-                            <a class="edit" href="#"><i class="far fa-edit"></i></i></a>
-                            <a class="detail" href="#"><i class="far fa-eye"></i></a>
-                            <a class="cancel" href="#"><i class="fas fa-ban"></i></a>
-                        </td>
-                    </tr><tr class="información" >
-                        <td>4</td>
-                        <td>10/03/2022</td>
-                        <td>11/03/2022</td>
-                        <td>1098813441</td>
-                        <td>40000</td>
-                        <td>Completado</td>
-                        <td>
-                            <a class="edit" href="#"><i class="far fa-edit"></i></i></a>
-                            <a class="detail" href="#"><i class="far fa-eye"></i></a>
-                            <a class="cancel" href="#"><i class="fas fa-ban"></i></a>
-                        </td>
-                    </tr><tr class="información" >
-                        <td>4</td>
-                        <td>10/03/2022</td>
-                        <td>11/03/2022</td>
-                        <td>1098813441</td>
-                        <td>40000</td>
-                        <td>Completado</td>
-                        <td>
-                            <a class="edit" href="#"><i class="far fa-edit"></i></i></a>
-                            <a class="detail" href="#"><i class="far fa-eye"></i></a>
-                            <a class="cancel" href="#"><i class="fas fa-ban"></i></a>
-                        </td>
-                    </tr>
-                    </tr><tr class="información" >
-                        <td>4</td>
-                        <td>10/03/2022</td>
-                        <td>11/03/2022</td>
-                        <td>1098813441</td>
-                        <td>40000</td>
-                        <td>Completado</td>
-                        <td>
-                            <a class="edit" href="#"><i class="far fa-edit"></i></i></a>
-                            <a class="detail" href="#"><i class="far fa-eye"></i></a>
-                            <a class="cancel" href="#"><i class="fas fa-ban"></i></a>
-                        </td>
-                    </tr>
-                    
+                    <?php  } ?>
                 </table>
                 <nav class="paginacion">
                 <a class="prev-next" href="#">Anterior </a>

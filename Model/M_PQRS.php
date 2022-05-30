@@ -25,9 +25,9 @@
 
         public function verPqrs(){
 
-            $query = $this->pqrs->query("SELECT * FROM articulo
-            JOIN categoria
-            ON artCategoriaId = categoriaId");
+            $query = $this->pqrs->query("SELECT * FROM pqrs
+            JOIN pqrsTipo
+            ON pqrsTipoId = pqrsId");
             
 
             $retorno = [];
