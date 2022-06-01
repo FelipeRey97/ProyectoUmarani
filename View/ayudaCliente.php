@@ -122,12 +122,10 @@ session_start();
 
              <h1>Hola, ¿Cómo te podemos ayudar?</h1><br><br>
              <div class="contentLinks">
-                <a href="">Necesito reportar una <br><br> <b>Garantia </b> </a>
-                <a href="">Necesito reportar un<br><br> <b>Error en mi Pedido</b></a>
-                <a href="">Quiero hacer una <br><br><b>Devolucion o Cambio</b></a>
-                <a href="">Quiero comprar<br><br> <b>Al por Mayor</b></a>
-                <a href="">Deseo encontrar un <br><br> <b>distribuidor</b></a>
-                <a href="">Quiero hacer una <br><br> <b>Pregunta General</b></a>
+                <a href="../View/formGarantia.php?pqTipo=1">Necesito reportar una <br><br> <b>Garantia </b> </a>
+                <a href="../view/formErrorPedido.php?pqTipo=2">Necesito reportar un<br><br> <b>Error en mi Pedido</b></a>
+                <!-- <a href="">Quiero comprar<br><br> <b>Al por Mayor</b></a> -->
+                <a href="../View/formConsulta.php?pqTipo=3">Quiero hacer una <br><br> <b>Pregunta General</b></a>
 
              </div>
              

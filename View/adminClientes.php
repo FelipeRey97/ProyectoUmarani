@@ -19,7 +19,7 @@ session_start();
     <title>Document</title>
 </head>
 <body>
-<link rel="stylesheet" href="../WebUmarani/CSS/tiendaEstilos.css">
+<link rel="stylesheet" href="../CSS/tiendaEstilos.css">
 <script src="https://kit.fontawesome.com/f243ce0afc.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
@@ -109,9 +109,9 @@ session_start();
                         <td> <?php echo $reg['clienteTelefono']   ?></td>
                         <td> <?php echo $reg['clienteEmail']   ?></td>
                         <td>
-                            <a class="edit" href="#"><i class="far fa-edit"></i></i></a>
+                            <!-- <a class="edit" href="#"><i class="far fa-edit"></i></i></a> -->
                             <a class="detail" href="#"><i class="far fa-eye"></i></a>
-                            <a class="cancel" href="#"><i class="fas fa-ban"></i></a>
+                            <!-- <a class="cancel" href="#"><i class="fas fa-ban"></i></a> -->
                         </td>
                 
                         <?php  

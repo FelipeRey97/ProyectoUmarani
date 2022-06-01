@@ -52,8 +52,8 @@
         ?>
 
             <div class="form-container">
-                <h1>Reportar una Garantía</h1><br>
-                <p class="info" >Llena el siguiente formulario y en un lapso aproximado de 3 días <br> hábiles nuestro departamento de servicio al cliente  se  estará  <br>comunicando contigo, o si lo prefieres también puedes escribirnos a: <br><br> umarani@umarani.com</p>
+                <h1>Reportar un error en tu Pedido</h1><br>
+                <p class="info" >Llena el siguiente formulario para repórtanos errores en tu pedido, <br> nuestra área de servicio al cliente te estará respondiendo en un <br> lapso máximo de 2 días hábiles</p>
             <form action="../Controller/formGarantia2.php" method="post" class="iniciar-sesion" enctype="multipart/form-data">
                 <label for="">Nombre completo de quien realizó la compra*:</label><br>
                 <input class="control" type="text" required name="pNombre">  <br>
@@ -61,10 +61,10 @@
                 <input class="control" type="text" required name="pMail" >  <br>
                 <label for="">Télefono de contacto*:</label><br>
                 <input class="control" type="text" required name="ptelefono">  <br>
-                <!-- <label for="">Número del pedido*:</label><br>
-                <input class="control" type="text" name="pNumero"><br> -->
-                <label for="">Imagen del producto donde se evidencie el problema de calidad:</label><br>
-                <input class="control" type="file"   name="pImagen"><br>
+                <label for="">Número del pedido*:</label><br>
+                <input class="control" type="text" name="pNumero"><br>
+                <!-- <label for="">Imagen del producto donde se evidencie el problema de calidad:</label><br>
+                <input class="control" type="file"   name="pImagen"><br> -->
                 <label for="">Coméntanos lo sucedido*:</label><br>
                 <textarea class="control" name="pComentario"></textarea><br>
                 <input type="hidden" value="<?php $_REQUEST['pqTipo'] ?>" name=tipoId >
