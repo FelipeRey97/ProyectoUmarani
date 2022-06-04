@@ -410,7 +410,7 @@
             margin-top: 0px;
             height: 400px;
             width: 350px;
-            
+            overflow: hidden;
         }
         
             .imagen img {
@@ -421,7 +421,6 @@
                 box-shadow: 1px 0px 5px rgb(119, 90, 70);
                 transition: 0.5s ease-in-out;
             }
-            
 
         .titulo{
 

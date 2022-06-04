@@ -1,7 +1,9 @@
 <?php
+session_start();
+$sesionId= session_id();
+require "../Controller/mostrarCatalogo.php";
+require_once('../Controller/vercarrito.php');
 
-require dirname(__DIR__)."./Controller/mostrarCatalogo.php";
-   
 ?>
 
 <!DOCTYPE html>
@@ -34,11 +36,37 @@ require dirname(__DIR__)."./Controller/mostrarCatalogo.php";
                     <div class="top">
                         <a href="#">Carrito de Compras</a> <a class="cerrar-carrito" href="#"> <i class="fas fa-times"></i> </a>
                     </div>
+
                     <div class="middle">
-    
+                    <?php 
+                    $total = 0;
+                    while($dat = mysqli_fetch_array($datos)) {  
+
+                        
+                    ?>
+                        <div class="contenedor kartItem">
+                       
+                                  <div class="miniatura">
+                                      <img src= " <?php echo "$dat[artVista]"  ?>" alt="">
+                                  </div>
+                                  <div class="info">
+                                      <h3 class="title"><?php echo "$dat[artNombre]"  ?></h3>
+                                      <br> <p class="price" ><?php $costo = $dat['artPrecio'] * $dat['artCarroCant']; echo "$costo";  ?></p>
+                                  </div>
+                                  <form action="" class="cantidad">
+                                       <label for="">Cantidad:</label>
+                                       <p class="quantity">   <?php echo "$dat[artCarroCant]" ?></p>
+                                       <a class= "delete" href="../Controller/borrarCarrito.php?artId=<?php echo "$dat[artId]"?>&sesionId=<?php echo "$sesionId" ?>"><i class="far fa-window-close"></i></a>
+                                  </form>
+
+                        </div> 
+                        <?php 
+                       $total = $total + $costo; }
+                     ?>
                     </div>
+
                     <div class="bottom">
-                        <div class="infoTotal"><P class="shopTotal">$0</P>
+                        <div class="infoTotal"><P class="shopTotal">$ <?php echo "$total" ?></P>
                              <a class="buy-button" href="#">Ver Carrito</a>
                         </div>
                     </div>
@@ -94,12 +122,17 @@ require dirname(__DIR__)."./Controller/mostrarCatalogo.php";
                 <div class="precio">
                     <p href="#"><?php echo $producto['artPrecio']   ?></p>
                 </div>
-                <div class="verdetalle">
+                <div class="verdetalle itemId">
+                     <p hidden><?php echo $producto['artId']   ?></p>
                     <a href="../Controller/DetalleArticulo.php?arId=<?php echo "$producto[artId]"?>">Ver Detalle</a>
-                    </form> 
                 </div>
                 <div class="comprar addToKart">
-                    <a href="#">Comprar</a>
+                    <form action="../Controller/carrito.php" method="post">
+                        <input type="hidden" name="sesionId" value="<?php echo "$sesionId" ?>">
+                        <input type="hidden" name="artId" value="<?php echo "$producto[artId]"?>">
+                        <input type="hidden" name="Cant" Value="1">
+                        <input type="submit" Value="Comprar">
+                    </form>
                 </div>
             </article>
             <?php  
@@ -143,7 +176,7 @@ require dirname(__DIR__)."./Controller/mostrarCatalogo.php";
 
     </div>
 
-    <script src="../JS/ShopingCart.js"></script>
+    <script src="../JS/CartShop.js"></script>
     <script src="../JS/SearchEngine.js"></script>
 </body>
 </html>
