@@ -442,13 +442,15 @@
 .totalPagar{
 
     border:1px solid #7575758f;
+    height: max-content;
     background: #e7e7e78f;
     padding: 20px;
     margin: 10px;
     flex: 1 1 25%;
     font-family: 'Open Sans', sans-serif;
     font-size: 15px;
-    color: #2e2e2e;;
+    color: #2e2e2e;
+    
 }
   .totalPagar h1{
     text-align: center;

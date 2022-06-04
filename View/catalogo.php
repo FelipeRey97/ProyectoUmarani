@@ -2,7 +2,7 @@
 session_start();
 $sesionId= session_id();
 require "../Controller/mostrarCatalogo.php";
-require_once('../Controller/vercarrito.php');
+require('../Controller/vercarrito.php');
 
 ?>
 
@@ -66,8 +66,8 @@ require_once('../Controller/vercarrito.php');
                     </div>
 
                     <div class="bottom">
-                        <div class="infoTotal"><P class="shopTotal">$ <?php echo "$total" ?></P>
-                             <a class="buy-button" href="#">Ver Carrito</a>
+                        <div class="infoTotal"><P class="shopTotal">TOTAL: $ <?php echo "$total" ?></P>
+                             <a class="buy-button" href="../View/checkout.php">Checkout</a>
                         </div>
                     </div>
                
@@ -131,6 +131,7 @@ require_once('../Controller/vercarrito.php');
                         <input type="hidden" name="sesionId" value="<?php echo "$sesionId" ?>">
                         <input type="hidden" name="artId" value="<?php echo "$producto[artId]"?>">
                         <input type="hidden" name="Cant" Value="1">
+                        
                         <input type="submit" Value="Comprar">
                     </form>
                 </div>

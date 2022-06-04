@@ -1,7 +1,7 @@
-<?php session_start(); 
-
-session_id();
-
+<?php 
+session_start(); 
+require_once('../Controller/vercarrito.php');
+require_once('../Controller/verCheckout.php');
 ?>
 
 <!DOCTYPE html>
@@ -23,28 +23,56 @@ session_id();
 
     <div class="padre">
         <header class="header">
-            <div class="contacto">
+        <div class="contacto">
                <a class="searchButton" href="#"> <i class="fas fa-search"></i></a>
                 <a href="../WebUmarani/iniciarSesion.html"><i class="fas fa-user"></i></a>
                 <a class="kartButton" href="#"><i class="fas fa-shopping-bag"></i></a>
             </div>
+            <!-- Carro de compras  -->
             <div class="kartOpacity ocultar">
                 <div class="carrito "  > 
                     <div class="top">
                         <a href="#">Carrito de Compras</a> <a class="cerrar-carrito" href="#"> <i class="fas fa-times"></i> </a>
                     </div>
+
                     <div class="middle">
-    
+                    <?php 
+                    $total = 0;
+                    while($dat = mysqli_fetch_array($datos)) {  
+
+                        
+                    ?>
+                        <div class="contenedor kartItem">
+                       
+                                  <div class="miniatura">
+                                      <img src= " <?php echo "$dat[artVista]"  ?>" alt="">
+                                  </div>
+                                  <div class="info">
+                                      <h3 class="title"><?php echo "$dat[artNombre]"  ?></h3>
+                                      <br> <p class="price" ><?php $costo = $dat['artPrecio'] * $dat['artCarroCant']; echo "$costo";  ?></p>
+                                  </div>
+                                  <form action="" class="cantidad">
+                                       <label for="">Cantidad:</label>
+                                       <p class="quantity">   <?php echo "$dat[artCarroCant]" ?></p>
+                                       <a class= "delete" href="../Controller/borrarCarrito.php?artId=<?php echo "$dat[artId]"?>&sesionId=<?php echo "$sesionId" ?>"><i class="far fa-window-close"></i></a>
+                                  </form>
+
+                        </div> 
+                        <?php 
+                       $total = $total + $costo; }
+                     ?>
                     </div>
+
                     <div class="bottom">
-                        <div class="infoTotal"><P class="shopTotal">$0</P>
+                        <div class="infoTotal"><P class="shopTotal">$ <?php echo "$total" ?></P>
                              <a class="buy-button" href="#">Ver Carrito</a>
                         </div>
                     </div>
                
                 </div>
             </div>
-            <div class="searchOpacity ocultar ">
+            <!-- Apertura para la busqueda -->
+            <div class="searchOpacity ocultar "> 
                 <div class="searchEngine "  > 
                     <div class="topSearchEngine">
                         <a href="#">BUSCAR EN EL SITIO</a> <a class="cerrar-buscador" href="#"> <i class="fas fa-times"></i></a>
@@ -58,13 +86,13 @@ session_id();
                
                 </div>
             </div>
-           
+                
                 <div class="logo">
                     <a href="#"><img src="../Uploads/logo.png" alt=""></a>
                     
                 </div>
                
-            
+                
             <div class="menu">
                 <b><a href="#">Inicio</a></b>
                 <b><a href="../WebUmarani/Collares.html">Collares</a></b>
@@ -77,54 +105,65 @@ session_id();
         </header>
         <section class="section">
            <div class="shopCartTitle">
-               <h1>Carrito de compras</h1>
+               <h1>Tu Selección de Productos</h1>
            </div>
+           
            <div class="productos">
+
+           <?php  
+                $totalpagar = 0;
+                 while($check = mysqli_fetch_array($checkout)) { 
+           
+           ?>
                <div class="articleContainer">
+                   
                    <div class="articleImg">
-                       <img src="../WebUmarani/imagenes/Collares/collar6.jpg" alt="">
+                       <img src="<?php echo "$check[artVista]" ?>" alt="">
                    </div>
                    <div class="articleInfo">
-                       <p>ID: 321548932</p>
-                       <h2>Violet Collar</h2>
+                       <p>ID: <?php echo "$check[artId]" ?> </p>
+                       <h2> <?php echo "$check[artNombre]" ?></h2>
                    </div>
                    <div class="articlePrice">
                        <h4 >precio Unidad:</h4>
-                       <p>$15000</p>
+                       <p>$ <?php echo "$check[artPrecio]" ?></p>
                    </div>
                    <div class="articleQuantity">
                        <div class="articleQuantityInput">
                            <label for="">Cantidad:</label>
-                           <input type="number" value="1">
+                           <input type="text" disabled value="<?php echo "$check[artCarroCant]" ?>">
                        </div>
                        <div class="articleDelete">
-                           <a href="#"><i class="far fa-window-close"></i></a>
+                           <p><?php $costo = $check['artPrecio'] * $check['artCarroCant']; echo "$costo"; ?></p>
                        </div>
                    </div>
                </div>
+               <?php 
+                       $totalpagar = $totalpagar + $costo; }
+                    ?>
            </div>
            <div class="totalPagar">
                <h1>Mi Carrito</h1>
                <div class="subtotal">
                    <div class="valorSubtotal">
                        <h4>Subtotal</h4>
-                       <p>$15000</p>
+                       <p><?php echo "$totalpagar" ?></p>
                    </div>
                    <div class="valorEnvio">
                        <h4>Costo Envío </h4>
                        <p>$0</p>
                    </div>
                </div>
-               <div class="descuentos">
+               <!-- <div class="descuentos">
                    <div class="totaldescuentos">
                        <h4>Total descuentos</h4>
                        <p>$0</p>
                    </div>
-               </div>
+               </div> -->
                <div class="costoFinal">
                    <div class="valorCostoFinal">
                        <h4>Total</h4>
-                       <p>$15000</p>
+                       <p><?php echo "$totalpagar" ?></p>
                    </div>
                </div>
                <div class="irPagos">
@@ -166,7 +205,7 @@ session_id();
 
     </div>
 
-    <script src="../WebUmarani/JS/ShopingCart.js"></script>
-    <script src="../WebUmarani/JS/SearchEngine.js"></script>
+    <script src="../JS/CartShop.js"></script>
+    <script src="../JS/SearchEngine.js"></script>
 </body>
 </html>

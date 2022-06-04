@@ -21,16 +21,18 @@ if(isset($datos)){
         $idArt = $dat['articuloId'];
         $idSesion = $dat ['sesionId'];
         $cantidad = $dat['artCarroCant'];
-
+        $carId = $dat['carId'];
     }
-
+  
 }
+
 if($idArt == $artId && $idSesion == $sesionId){
 
     $Cant = $cantidad + 1;
 
     mysqli_query($conexion1, "UPDATE carrito SET artCarroCant = $Cant   
-    WHERE articuloId = '$idArt' AND sesionId = '$sesionId' ");
+    WHERE articuloId = $idArt AND sesionId = '$sesionId' ");
+      mysqli_close($conexion1);
 
 }else{
 
