@@ -2,6 +2,14 @@
 session_start(); 
 require_once('../Controller/vercarrito.php');
 require_once('../Controller/verCheckout.php');
+require('../Controller/datosFactura.php');
+?>
+
+<?php
+ if($_SESSION['cMail'] == ""){
+    $value = $_REQUEST['valor'];
+    header("Location: http://localhost/UmaraniWeb/View/iniciarSesion.php?valor=$value");
+ }
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +22,7 @@ require_once('../Controller/verCheckout.php');
 </head>
 <body>
     
-    <link rel="stylesheet" href="../CSS/carroDeCompras.css">
+    <link rel="stylesheet" href="../CSS/datosFacturaEslitos.css">
     <script src="https://kit.fontawesome.com/f243ce0afc.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
@@ -104,45 +112,105 @@ require_once('../Controller/verCheckout.php');
             </div>
         </header>
         <section class="section">
+            
+         <div class="datosFactura">
            <div class="shopCartTitle">
-               <h1>Tu Selección de Productos</h1>
+               <h1>Datos de Contacto</h1><br>
            </div>
-           
-           <div class="productos">
+                <form action="../View/confirmarPedido.php" method="post">
+                    <label for="">Email:</label><br>
+                    <input class="ctrl" type="text" value="<?php echo"$mail"?>" name="cmail" ><br><br>
+                    <label for="">Nombre:</label><br>
+                    <input class="ctrl" type="text" value="<?php echo"$nombre"?>" name="cnombre" ><br><br>
+                    <label for="">Apellido:</label><br>
+                    <input class="ctrl" type="text" value="<?php echo"$apellido"?>" name="capellido"><br><br>
+                    <label for="">Documento:</label><br>
+                    <input class="ctrl" type="text" name="cdoc"><br><br>
+                    <label for="">Telefono:</label><br>
+                    <input class="ctrl" type="text" value="<?php echo"$tel"?>" name="ctelefono"><br><br>
+            <div class="shopCartTitle">
+                 <h1>Datos de Envío</h1>
+             </div>
+                    <label for="">Departamento:</label><br>
+                    <select class="ctrl" name="dpto" id="">
+                        <option value="">Seleccione</option>
+                        <option value="AMAZONAS">Amazonas</option>
+                        <option value="ANTIOQUIA">Antioquia</option>
+                        <option value="ARAUCA">Arauca</option>
+                        <option value="ATLANTICO">Atlántico</option>
+                        <option value="BOLIVAR">Bolívar</option>
+                        <option value="BOYACA">Boyacá</option>
+                        <option value="CALDAS">Caldas</option>
+                        <option value="CAQUETA">Caquetá</option>
+                        <option value="CASANARE">Casanare</option>
+                        <option value="CAUCA">Cauca</option>
+                        <option value="CESAR">Cesar</option>
+                        <option value="CHOCO">Chocó</option>
+                        <option value="CORDOBA">Córdoba</option>
+                        <option value="CUNDINAMARCA">Cundinamarca</option>
+                        <option value="GUAINIA">Guainía</option>
+                        <option value="GUAVIARE">Guaviare</option>
+                        <option value="HUILA">Huila</option>
+                        <option value="LA GUAJIRA">La Guajira</option>
+                        <option value="MAGDALENA">Magdalena</option>
+                        <option value="META">Meta</option>
+                        <option value="NARIÑO">Nariño</option>
+                        <option value="NORTE DE SANTANDER">Norte de Santander</option>
+                        <option value="PUTUMAYO">Putumayo</option>
+                        <option value="QUINDIO">Quindío</option>
+                        <option value="RISARALDA">Risaralda</option>
+                        <option value="SAN ANDRES Y PROVIDENCIA">San Andrés y Providencia</option>
+                        <option value="SANTANDER">Santander</option>
+                        <option value="SUCRE">Sucre</option>
+                        <option value="TOLIMA">Tolima</option>
+                        <option value="VALLE DEL CAUCA">Valle del Cauca</option>
+                        <option value="VAUPES">Vaupés</option>
+                        <option value="VICHADA">Vichada</option>
+                    </select><br><br>  
+                    <label for="">Ciudad:</label><br>
+                    <input class="ctrl" type="text" name="ciudad"><br><br>
+                    <label for="">Dirección:</label><br>
+                    <input class="ctrl" type="text" name="direccion"><br><br>
+                    <label for="">Detalle Direccion:</label><br>
+                    <input class="ctrl" placeholder="Conjuto, Torre, Apartamento" name="detdireccion" type="text"><br><br>
+                    <input class="ctrl" type="submit" value="Confirmar Datos">
+                </form>
+            </div>
+            <div class="productos">
 
-           <?php  
-                $totalpagar = 0;
-                 while($check = mysqli_fetch_array($checkout)) { 
-           
-           ?>
-               <div class="articleContainer">
-                   
-                   <div class="articleImg">
-                       <img src="<?php echo "$check[artVista]" ?>" alt="">
-                   </div>
-                   <div class="articleInfo">
-                       <p>ID: <?php echo "$check[artId]" ?> </p>
-                       <h2> <?php echo "$check[artNombre]" ?></h2>
-                   </div>
-                   <div class="articlePrice">
-                       <h4 >precio Unidad:</h4>
-                       <p>$ <?php echo "$check[artPrecio]" ?></p>
-                   </div>
-                   <div class="articleQuantity">
-                       <div class="articleQuantityInput">
-                           <label for="">Cantidad:</label>
-                           <input type="text" disabled value="<?php echo "$check[artCarroCant]" ?>">
-                       </div>
-                       <div class="articleDelete">
-                           <p><?php $costo = $check['artPrecio'] * $check['artCarroCant']; echo "$costo"; ?></p>
-                       </div>
-                   </div>
-               </div>
-               <?php 
-                       $totalpagar = $totalpagar + $costo; }
-                    ?>
-           </div>
-           <div class="totalPagar">
+<?php  
+     $totalpagar = 0;
+      while($check = mysqli_fetch_array($checkout)) { 
+
+?>
+    <div class="articleContainer">
+        
+        <div class="articleImg">
+            <img src="<?php echo "$check[artVista]" ?>" alt="">
+        </div>
+        <div class="articleInfo">
+            <p>ID: <?php echo "$check[artId]" ?> </p>
+            <h2> <?php echo "$check[artNombre]" ?></h2>
+        </div>
+        <div class="articlePrice">
+            <h4 >precio Unidad:</h4>
+            <p>$ <?php echo "$check[artPrecio]" ?></p>
+        </div>
+        <div class="articleQuantity">
+            <div class="articleQuantityInput">
+                <label for="">Cantidad:</label>
+                <input type="text" disabled value="<?php echo "$check[artCarroCant]" ?>">
+            </div>
+            <div class="articleDelete">
+                <p><?php $costo = $check['artPrecio'] * $check['artCarroCant']; echo "$costo"; ?></p>
+            </div>
+        </div>
+    </div>
+    <?php 
+            $totalpagar = $totalpagar + $costo; }
+         ?>
+          <div class="totalPagar">
+               
                <h1>Total</h1>
                <div class="subtotal">
                    <div class="valorSubtotal">
@@ -166,11 +234,12 @@ require_once('../Controller/verCheckout.php');
                        <p><?php echo "$totalpagar" ?></p>
                    </div>
                </div>
-               <div class="irPagos">
-                   <a href="../View/iniciarSesion.php?valor=1">Continuar</a>
-               </div>
+               <!-- <div class="irPagos">
+                   <a href="#">Continuar</a>
+               </div> -->
            </div>
-
+        </div>
+           
         </section>
         <footer class="footer">
             <div class="informacion">

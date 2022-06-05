@@ -27,7 +27,7 @@ require('../Controller/vercarrito.php');
         <header class="header">
         <div class="contacto">
                <a class="searchButton" href="#"> <i class="fas fa-search"></i></a>
-                <a href="../WebUmarani/iniciarSesion.html"><i class="fas fa-user"></i></a>
+                <a href=""><i class="fas fa-user"></i></a>
                 <a class="kartButton" href="#"><i class="fas fa-shopping-bag"></i></a>
             </div>
             <!-- Carro de compras  -->
@@ -83,6 +83,44 @@ require('../Controller/vercarrito.php');
                         <input type="text" placeholder="Buscar Productos" >
                     </div>
                     <div class="bottomSearchEngine">
+                        
+                    </div>
+               
+                </div>
+            </div>
+            <div class="accountOpacity ocultar">
+                <div class="accountMenu "  > 
+                    <div class="topAccountMenu">
+                        <a href="#"></a> <a class="cerrar-menuCuenta" href="#"> <i class="fas fa-times"></i></a>
+                    </div>
+                    <div class="middleAccountMenu">
+                    <?php
+                         if(isset($_SESSION['cMail'])){
+
+                            
+                         
+                    ?>
+                        <a href="areaCliente.php">Mi perfil </a><br><br>
+                        <a href="#">Mis compras </a><br><br>
+                        <a href="#">cerrar Sesion </a><br><br>
+                        
+
+                        <?php
+                            }
+                            else{
+
+                                ?>
+                                <a href="iniciarSesion.php">Iniciar Sesion </a><br><br>
+                                <a href="registarse.php">Registrarse </a><br><br>
+                                 <a href="#">Ayuda </a><br><br>
+                            
+                            <?php
+
+                                }   
+                                ?>
+                            
+                    </div>
+                    <div class="bottomAccountMenu">
                         
                     </div>
                
@@ -179,5 +217,6 @@ require('../Controller/vercarrito.php');
 
     <script src="../JS/CartShop.js"></script>
     <script src="../JS/SearchEngine.js"></script>
+    <script src="../JS/accountMenu.js"></script>
 </body>
 </html>

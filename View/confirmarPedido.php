@@ -4,6 +4,24 @@ require_once('../Controller/vercarrito.php');
 require_once('../Controller/verCheckout.php');
 ?>
 
+<?php
+ if($_SESSION['cMail'] == ""){
+    $value = $_REQUEST['valor'];
+    header("Location: http://localhost/UmaraniWeb/View/iniciarSesion.php?valor=$value");
+ }
+
+$mail= $_REQUEST['cmail'];
+$nombre= $_REQUEST['cnombre'];
+$apellido= $_REQUEST['capellido'];
+$documento= $_REQUEST['cdoc'];
+$telefono= $_REQUEST['ctelefono'];
+$dpto= $_REQUEST['dpto'];
+$ciudad= $_REQUEST['ciudad'];
+$direccion= $_REQUEST['direccion'] ." ". $_REQUEST['detdireccion'];
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +32,7 @@ require_once('../Controller/verCheckout.php');
 </head>
 <body>
     
-    <link rel="stylesheet" href="../CSS/carroDeCompras.css">
+    <link rel="stylesheet" href="../CSS/datosFacturaEslitos.css">
     <script src="https://kit.fontawesome.com/f243ce0afc.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
@@ -104,45 +122,61 @@ require_once('../Controller/verCheckout.php');
             </div>
         </header>
         <section class="section">
+            
+         <div class="datosFactura">
            <div class="shopCartTitle">
-               <h1>Tu Selección de Productos</h1>
+               <h1>Datos de Contacto</h1><br>
            </div>
-           
-           <div class="productos">
+                <form action="">
+                    <p class="ctrl"> <?php echo"$mail"?> </p> 
+                    <p class="ctrl"> <?php echo"$nombre"?> </p> 
+                    <p class="ctrl"> <?php echo"$apellido"?> </p> 
+                    <p class="ctrl"> <?php echo"$documento"?> </p> 
+                    <p class="ctrl"> <?php echo"$telefono"?> </p> 
+            <div class="shopCartTitle">
+                 <h1>Datos de Envío</h1>
+             </div>
+             <p class="ctrl"> <?php echo"$dpto"?> </p> 
+                    <p class="ctrl"> <?php echo"$ciudad"?> </p> 
+                    <p class="ctrl"> <?php echo"$direccion"?> </p> <br><br>
+                    <input class="ctrl" type="submit" value="Realizar Pedido">
+                </form>
+            </div>
+            <div class="productos">
 
-           <?php  
-                $totalpagar = 0;
-                 while($check = mysqli_fetch_array($checkout)) { 
-           
-           ?>
-               <div class="articleContainer">
-                   
-                   <div class="articleImg">
-                       <img src="<?php echo "$check[artVista]" ?>" alt="">
-                   </div>
-                   <div class="articleInfo">
-                       <p>ID: <?php echo "$check[artId]" ?> </p>
-                       <h2> <?php echo "$check[artNombre]" ?></h2>
-                   </div>
-                   <div class="articlePrice">
-                       <h4 >precio Unidad:</h4>
-                       <p>$ <?php echo "$check[artPrecio]" ?></p>
-                   </div>
-                   <div class="articleQuantity">
-                       <div class="articleQuantityInput">
-                           <label for="">Cantidad:</label>
-                           <input type="text" disabled value="<?php echo "$check[artCarroCant]" ?>">
-                       </div>
-                       <div class="articleDelete">
-                           <p><?php $costo = $check['artPrecio'] * $check['artCarroCant']; echo "$costo"; ?></p>
-                       </div>
-                   </div>
-               </div>
-               <?php 
-                       $totalpagar = $totalpagar + $costo; }
-                    ?>
-           </div>
-           <div class="totalPagar">
+<?php  
+     $totalpagar = 0;
+      while($check = mysqli_fetch_array($checkout)) { 
+
+?>
+    <div class="articleContainer">
+        
+        <div class="articleImg">
+            <img src="<?php echo "$check[artVista]" ?>" alt="">
+        </div>
+        <div class="articleInfo">
+            <p>ID: <?php echo "$check[artId]" ?> </p>
+            <h2> <?php echo "$check[artNombre]" ?></h2>
+        </div>
+        <div class="articlePrice">
+            <h4 >precio Unidad:</h4>
+            <p>$ <?php echo "$check[artPrecio]" ?></p>
+        </div>
+        <div class="articleQuantity">
+            <div class="articleQuantityInput">
+                <label for="">Cantidad:</label>
+                <input type="text" disabled value="<?php echo "$check[artCarroCant]" ?>">
+            </div>
+            <div class="articleDelete">
+                <p><?php $costo = $check['artPrecio'] * $check['artCarroCant']; echo "$costo"; ?></p>
+            </div>
+        </div>
+    </div>
+    <?php 
+            $totalpagar = $totalpagar + $costo; }
+         ?>
+          <div class="totalPagar">
+               
                <h1>Total</h1>
                <div class="subtotal">
                    <div class="valorSubtotal">
@@ -166,11 +200,12 @@ require_once('../Controller/verCheckout.php');
                        <p><?php echo "$totalpagar" ?></p>
                    </div>
                </div>
-               <div class="irPagos">
-                   <a href="../View/iniciarSesion.php?valor=1">Continuar</a>
-               </div>
+               <!-- <div class="irPagos">
+                   <a href="#">Continuar</a>
+               </div> -->
            </div>
-
+        </div>
+           
         </section>
         <footer class="footer">
             <div class="informacion">

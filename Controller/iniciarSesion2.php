@@ -26,12 +26,18 @@
     $filas = mysqli_fetch_array($resultado);
 
     if($filas){
-
-        header("Location: http://localhost/UmaraniWeb/View/areaCliente.php");
         
         $_SESSION['nombre'] = $filas['clienteNombre'];
         $_SESSION['apellido'] = $filas['clienteApellido'];
-        
+
+     if($_REQUEST['compra'] == 1){
+
+        header("Location: http://localhost/UmaraniWeb/View/DatosFacturacion.php");
+
+     }else{
+        header("Location: http://localhost/UmaraniWeb/View/areaCliente.php");
+     }
+         
     }
     else{
         ?>

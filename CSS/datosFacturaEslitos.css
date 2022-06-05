@@ -340,14 +340,38 @@
         color: #363636;
         font-size: 25px;
     }
+
+    .datosFactura{ 
+
+        flex: 2 1 50%;
+    }
+        .datosFactura label{
+
+            font-family: 'Open Sans', sans-serif;
+            color: #363636;
+            font-size: 15px;
+            
+        }
+        .ctrl{
+
+         padding: 7px;
+         width: 85%;
+         border: 1px solid #83838398;
+         font-family: 'Open Sans', sans-serif;
+         color: #363636;
+         font-size: 15px;
+         
+        }
 .productos{
 
     /* background-color: #db79a8;  */
-    padding: 20px;
-    margin: 10px;
-    flex: 1 1 60%;
+    padding: 10px;
+    margin: 0px;
+    flex: 1 1 15%;
     
 }
+
+    
     .articleContainer{
 
         /* background-color: #4b4b4b; */
@@ -444,9 +468,9 @@
     border:1px solid #7575758f;
     height: max-content;
     background: #e7e7e78f;
-    padding: 20px;
-    margin: 10px;
-    flex: 1 1 25%;
+    padding: 10px;
+    margin: 0px;
+    flex: 1 1 15%;
     font-family: 'Open Sans', sans-serif;
     font-size: 15px;
     color: #2e2e2e;
