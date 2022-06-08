@@ -173,7 +173,16 @@ require('../Controller/datosFactura.php');
                     <input class="ctrl" type="text" name="direccion"><br><br>
                     <label for="">Detalle Direccion:</label><br>
                     <input class="ctrl" placeholder="Conjuto, Torre, Apartamento" name="detdireccion" type="text"><br><br>
+                    <div class="shopCartTitle">
+                         <h1>Datos de Pago</h1>
+                    </div><br>
+                    <select class="ctrl" name="tipoPago" id="">
+                        <option value="1">DEBITO</option>
+                        <option value="2">CONTRA-ENTREGA</option>
+                    </select><br><br>
+                    <input type="hidden" name="clienteId" value="<?php echo "$clienteId" ?>">
                     <input class="ctrl" type="submit" value="Confirmar Datos">
+                    
                 </form>
             </div>
             <div class="productos">

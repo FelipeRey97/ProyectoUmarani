@@ -1,7 +1,9 @@
 <?php 
 session_start(); 
+$sesionId= session_id();
 require_once('../Controller/vercarrito.php');
 require_once('../Controller/verCheckout.php');
+
 ?>
 
 <?php
@@ -18,8 +20,9 @@ $telefono= $_REQUEST['ctelefono'];
 $dpto= $_REQUEST['dpto'];
 $ciudad= $_REQUEST['ciudad'];
 $direccion= $_REQUEST['direccion'] ." ". $_REQUEST['detdireccion'];
-
-
+$clienteId = $_REQUEST['clienteId'];
+$todaydate = date('Y/m/d');
+$tipoPago = $_REQUEST['tipoPago'];
 ?>
 
 <!DOCTYPE html>
@@ -127,7 +130,7 @@ $direccion= $_REQUEST['direccion'] ." ". $_REQUEST['detdireccion'];
            <div class="shopCartTitle">
                <h1>Datos de Contacto</h1><br>
            </div>
-                <form action="">
+                <form action="../Controller/FinalizarCompra.php" method="post">
                     <p class="ctrl"> <?php echo"$mail"?> </p> 
                     <p class="ctrl"> <?php echo"$nombre"?> </p> 
                     <p class="ctrl"> <?php echo"$apellido"?> </p> 
@@ -139,6 +142,14 @@ $direccion= $_REQUEST['direccion'] ." ". $_REQUEST['detdireccion'];
              <p class="ctrl"> <?php echo"$dpto"?> </p> 
                     <p class="ctrl"> <?php echo"$ciudad"?> </p> 
                     <p class="ctrl"> <?php echo"$direccion"?> </p> <br><br>
+                        
+                     <input type="hidden" name="clienteId" value="<?php echo "$clienteId" ?>"  >
+                     <input type="hidden" name="date" value="<?php echo "$todaydate" ?>">
+                     <input type="hidden" name="costoTotal" value="<?php echo "$total" ?>">
+                     <input type="hidden" name="clienteDoc" value="<?php echo "$documento" ?>">
+                     <input type="hidden" name="tipoPago" value="<?php echo "$tipoPago" ?>">
+                     <input type="hidden" name="sesionId" value="<?php echo "$sesionId" ?>">
+                     <input type="hidden" name="" value="">
                     <input class="ctrl" type="submit" value="Realizar Pedido">
                 </form>
             </div>

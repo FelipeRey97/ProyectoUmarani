@@ -15,6 +15,7 @@ $apellido = $reg['clienteApellido'];
 $mail = $reg['clienteEmail'];
 $clave = $reg['clienteContraseña'];
 $tel = $reg['clienteTelefono'];
+$clienteId = $reg['clienteId'];
 
 }
 
