@@ -24,12 +24,11 @@
         }
         public function verPedido(){
 
-            $query = $this->ped->query("SELECT * FROM usuariotienda
-            JOIN rol
-            ON rolId = usuarioRolId");
+            $query = $this->ped->query("SELECT * FROM pedido
+            JOIN factura
+            ON pedidoFacturaId = facturaId");
             
            
-
             $retorno = [];
             $i = 0;
             while($fila = $query->fetch_assoc()) {
@@ -40,7 +39,7 @@
             return $retorno;
         }
        
-          public function actualizarPedido($unombre,$uapellido,$ucontraseña,$uestado,$urol,$usuarioId){
+            public function actualizarPedido($unombre,$uapellido,$ucontraseña,$uestado,$urol,$usuarioId){
 
 
            $this->ped->query("UPDATE usuariotienda SET  usuarioNombre = '$unombre' ,usuarioApellido = '$uapellido',

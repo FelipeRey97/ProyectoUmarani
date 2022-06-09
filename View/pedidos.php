@@ -1,14 +1,9 @@
 <?php
-
-    require_once("../Controller/verUsuario.php");
+session_start();
+    require_once('../Controller/mostrarPedidos.php');
    
 ?>
 
-<?php
-// sesion del usuario iniciada desde el login (para usuarios de la tienda)
-session_start();
-
-?>
 <?php 
 // se valida la sesion del usuario, en caso de no tener sesion sera redirigido al login
     if($_SESSION['doc'] == false){
@@ -51,16 +46,16 @@ session_start();
             <nav class="secciones">
                 <a href="#">Inicio</a>
                 <a href="../View/Productos.php">Productos</a>
-                <a href="../View/pedidos.php">Pedidos</a>
+                <a href="#">Pedidos</a>
                 <a href="#">Usuarios</a>
                 <a href="adminClientes.php">Clientes</a>
-                <a href="../View/PQRS.php">PQRS</a> <br><br><br>
+                <a href="#">PQRS</a> <br><br><br>
                 <a href="../Controller/cerrarSesion.php">Cerrar Sesión</a>
             </nav>
         </div>
         <div class="content">
         <header class="header">
-            <h1>Gestión de Usuarios</h1>
+            <h1>Gestión de Pedidos</h1>
         </header>
         <section class="section">
 
@@ -89,37 +84,36 @@ session_start();
                         </select>
                         <input class="searchButton" type="button" value="Buscar">
                     </form>
-                    <a href="../View/nuevoUsuario.php">Nuevo Usuario</a>
+                    <!-- <a href="../View/nuevoUsuario.php">Nuevo Usuario</a> -->
                 </div>
                 <table>
                     <tr>
                         <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Documento</th>
-                        <th>Rol</th>
+                        <th>Fecha Inicio</th>
+                        <th>Fecha Fin</th>
                         <th>Estado</th>
+                        <th>Monto</th>
+                        
                         <th>Acciones</th>
                     </tr>
 
                      <?php
                         
                         // se muestran los datos de los usuarios almacenados en la variable $usuarios
-                        foreach($usuarios as $user){
+                        foreach($registros as $pedido){
                         
             
                      ?>
                     <tr class="información" >
-                        <td> <?php echo $user['usuarioId']   ?> </td>
-                        <td> <?php echo $user['usuarioNombre']   ?></td>
-                        <td> <?php echo $user['usuarioApellido']   ?></td>
-                        <td> <?php echo $user['usuarioDoc']   ?></td>
-                        <td> <?php echo $user['rolNombre']   ?></td>
-                        <td> <?php echo $user['usuarioEstado']   ?></td>
+                        <td> <?php echo $pedido['pedidoId']   ?> </td>
+                        <td> <?php echo $pedido['pedidoFechaInicio']   ?></td>
+                        <td> <?php echo $pedido['pedidoFechaFin']   ?></td>
+                        <td> <?php echo $pedido['pedidoEstado']   ?></td>
+                        <td> <?php echo "$ " . $pedido['pedidoCostoTotal']   ?></td>
                         <td>
                             <a class="edit" href="DetalleUsuario.php?tabla=<?php echo "$user[usuarioId]" ?>"><i class="far fa-edit"></i></i></a>
-                            <!-- <a class="detail" href="detalleUsuario.php"><i class="far fa-eye"></i></a> -->
-                            <a on class="cancel" href="../Controller/borrarUsuario.php?tabla=<?php echo "$user[usuarioId]" ?>"><i class="fas fa-ban"></i></a>
+                            <a class="detail" href="detalleUsuario.php"><i class="far fa-eye"></i></a>
+                            
                         </td>
                 
                         <?php  

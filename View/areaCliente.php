@@ -78,8 +78,8 @@
            <nav class="areaClienteNav">
                <h1>Mi cuenta</h1>
                <a href="#">Mi perfil</a><br><br>
-               <a href="clienteDirecciones.php">Direcciones de Envío</a><br><br>
-               <a href="#">Pedidos</a><br><br><br><br>
+               <!-- <a href="clienteDirecciones.php">Direcciones de Envío</a><br><br> -->
+               <a href="../View/clientePedidos.php">Pedidos</a><br><br><br><br>
                <a href="../Controller/cerrarSesionCliente.php">Cerrar Sesión</a><br><br>
                <a href="../View/editarPerfilCliente.php">Editar Datos de perfil</a>
            </nav>

@@ -1,3 +1,8 @@
+<?php
+    
+    require_once('../Controller/mostrarPedidosCliente.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +13,7 @@
 </head>
 <body>
     
-    <link rel="stylesheet" href="../WebUmarani/CSS/clientePedidos.css">
+    <link rel="stylesheet" href="../CSS/clientePedidos.css">
     <script src="https://kit.fontawesome.com/f243ce0afc.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
@@ -54,7 +59,7 @@
             </div>
            
                 <div class="logo">
-                    <a href="#"><img src="../WebUmarani/imagenes/logo.png" alt=""></a>
+                    <a href="#"><img src="../Uploads/logo.png" alt=""></a>
                     
                 </div>
                
@@ -72,48 +77,68 @@
         <section class="section">
            <nav class="areaClienteNav">
                <h1>Mi cuenta</h1>
-               <a href="#">Mi perfil</a><br><br>
-               <a href="#">Direcciones de Envío</a><br><br>
+               <a href="../View/areaCliente.php">Mi perfil</a><br><br>
+               <!-- <a href="">Direcciones de Envío</a><br><br> -->
                <a href="#">Pedidos</a><br><br>
-               <a href="#">Cerrar Sesión</a><br><br>
+               <a href="../Controller/cerrarSesionCliente.php">Cerrar Sesión</a><br><br>
            </nav>
+           
            <div class="arecClienteContent">
+
+           <?php while($order = mysqli_fetch_array($registroPedido)) {
+
+                ?>
+
             <div class="orders">
+                
                 <div class="orderInfo">
                     <div class="orderId" >
-                        <h4>Pedido ID: 32154985</h4>
-                        <h4>Productos: (1)</h4>
+                        <h4>Id Pedido: <?php echo "$order[pedidoId]";  ?></h4>
+                        
                     </div>
                     <div class="orderDate">
-                        <h4>Fecha pedido</h4>
-                        <p>03 diciembre 2021</p>
+                        <h4>Fecha: <?php echo "$order[pedidoFechaInicio]"; ?></h4>
                     </div>
                     <div class="orderValue">
-                        <h4>Valor total pedido</h4>
-                        <p>$ 15000</p>
+                        <h4>Valor total pedido: $ <?php echo "$order[pedidoCostoTotal]"; ?></h4>
+                        
                     </div>
                     <div class="orderCondition">
-                        <h4>Estado del Pedio</h4>
-                        <p>Completado</p>
+                        <h4> Estado :  <?php echo "$order[pedidoEstado]"; ?></h4>
                     </div>
+                    
                 </div>
+               
                 <div class="orderContainer">
-                    <div class="articleOrder">
+
+                    <?php   $artPedido = mysqli_query($conexion,"SELECT * FROM pedido
+                            JOIN productoporpedido
+                            ON pedidoId = prodPed_pedidoId
+                            JOIN articulo
+                            ON prodPed_artId = artId where pedidoId ='$order[pedidoId]'") 
+                            or die ("problemas en el select" . mysqli_error($conexion));
+                            ?>
+                
+                    <div class="articleOrder"> <?php
+                            while($ap = mysqli_fetch_array($artPedido)) {
+
+                        ?>
                         <div class="articleContainer">
                             <div class="articleImg">
-                                <img src="../WebUmarani/imagenes/Collares/collar6.jpg" alt="">
+                                <img src="<?php echo "$ap[artVista]"; ?>" alt="">
                             </div>
                             <div class="articleInfo">
-                                <p>ID: 321548932</p>
-                                <h2>Violet Collar</h2>
+                                <p>ID: <?php echo "$ap[artId]"; ?></p>
+                                <h2><?php echo "$ap[artNombre]"; ?></h2>
                                 <h4>Precio Unidad:</h4>
-                                <p>$15000</p>
+                                <p>$ <?php echo "$ap[artPrecio]"; ?></p>
                                 <h4>Cantidad:</h4>
-                                <p>1</p>
+                                <p><?php echo "$ap[prodPedCant]"; ?></p>
                             </div>
                         </div>
-                   
-                </div>   
+                        <?php } ?>
+                </div> 
+                     
                 <div class="OrderActions">
                     <a href="#">Detalle Pedido</a>
                     <a href="#">Sigue tu Pedido</a>
@@ -121,8 +146,11 @@
                  </div> 
                 </div>
             </div>
+
+            <?php }  ?>
                
            </div>
+          
         </section>
         <footer class="footer">
             <div class="informacion">

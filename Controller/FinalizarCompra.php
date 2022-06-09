@@ -52,7 +52,15 @@ while ($art = mysqli_fetch_array($articulos)){
 
 mysqli_close($conexionFactura);
 
+?>
 
 
+<script>
+         swal("Operación Realizada", "Se ha guardado el Usuario Satisfactoriamente!", "success");
+         
+      </script>
+<?php
+
+header("Location: http://localhost/UmaraniWeb/view/catalogo.php");
 
 ?>
