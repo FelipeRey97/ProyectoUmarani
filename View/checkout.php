@@ -25,7 +25,7 @@ require_once('../Controller/verCheckout.php');
         <header class="header">
         <div class="contacto">
                <a class="searchButton" href="#"> <i class="fas fa-search"></i></a>
-                <a href="../WebUmarani/iniciarSesion.html"><i class="fas fa-user"></i></a>
+                <a href="../View/iniciarSesion.php"><i class="fas fa-user"></i></a>
                 <a class="kartButton" href="#"><i class="fas fa-shopping-bag"></i></a>
             </div>
             <!-- Carro de compras  -->
@@ -176,9 +176,9 @@ require_once('../Controller/verCheckout.php');
             <div class="informacion">
                 <div class="servicio">
                     <h1>Servicio al cliente</h1>
-                    <a href="../WebUmarani/DespachosyEnvios.html">Despachos y Envíos<br><br></a>
-                    <a href="../WebUmarani/terminosycondiciones.html">Términos y Condiciones<br><br></a>
-                    <a href="../WebUmarani/terminosycondiciones.html">Tratamiento de datos<br></a>
+                    <a href="../View/DespachosyEnvios.php">Despachos y Envíos<br><br></a>
+                    <a href="../View/terminosycondiciones.php">Términos y Condiciones<br><br></a>
+                    <a href="../View/ayudaCliente.php">Sporte a Cliente<br></a>
                 </div>
                 <div class="nosotros">
                     <h1>Acerca de nosotros</h1>

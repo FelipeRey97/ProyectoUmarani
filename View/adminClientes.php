@@ -39,13 +39,13 @@ session_start();
                 <h5><?php echo $_SESSION['rol']; ?></h5>
             </div>
             <nav class="secciones">
-                <a href="#">Inicio</a>
-                <a href="#">Productos</a>
-                <a href="#">Pedidos</a>
-                <a href="Usuarios.php">Usuarios</a>
-                <a href="#">Clientes</a>
-                <a href="#">PQRS</a> <br><br><br>
-                <a href="cerrarSesion.php">Cerrar Sesión</a>
+                <a href="">Inicio</a>
+                <a href="../View/Productos.php">Productos</a>
+                <a href="../View/pedidos.php">Pedidos</a>
+                <a href="../View/Usuarios.php">Usuarios</a>
+                <a href="../View/adminClientes.php">Clientes</a>
+                <a href="../View/PQRS.php">PQRS</a>
+                <a href="../Controller/cerrarSesion.php">Cerrar Sesión</a>
             </nav>
         </div>
         <div class="content">

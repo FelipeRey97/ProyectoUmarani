@@ -45,12 +45,12 @@ session_start();
                 <h5><?php echo "$_SESSION[nombre] $_SESSION[apellido] "; ?></h5>
             </div>
             <nav class="secciones">
-                <a href="#">Inicio</a>
-                <a href="productos.php">Productos</a>
-                <a href="#">Pedidos</a>
-                <a href="#">Usuarios</a>
-                <a href="adminClientes.php">Clientes</a>
-                <a href="#">PQRS</a> <br><br><br>
+                <a href="">Inicio</a>
+                <a href="../View/Productos.php">Productos</a>
+                <a href="../View/pedidos.php">Pedidos</a>
+                <a href="../View/Usuarios.php">Usuarios</a>
+                <a href="../View/adminClientes.php">Clientes</a>
+                <a href="../View/PQRS.php">PQRS</a>
                 <a href="../Controller/cerrarSesion.php">Cerrar Sesión</a>
             </nav>
         </div>

@@ -46,10 +46,10 @@ session_start();
             <nav class="secciones">
                 <a href="#">Inicio</a>
                 <a href="../View/Productos.php">Productos</a>
-                <a href="#">Pedidos</a>
-                <a href="#">Usuarios</a>
-                <a href="adminClientes.php">Clientes</a>
-                <a href="#">PQRS</a> <br><br><br>
+                <!-- <a href="#">Pedidos</a> -->
+                <a href="../View/Usuarios.php">Usuarios</a>
+                <a href="../View/adminClientes.php">Clientes</a>
+                <a href="../View/PQRS.php">PQRS</a> <br><br><br>
                 <a href="../Controller/cerrarSesion.php">Cerrar Sesión</a>
             </nav>
         </div>

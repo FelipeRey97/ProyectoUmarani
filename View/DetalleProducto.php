@@ -64,11 +64,11 @@
             
         
         <div class="menu">
-            <b><a href="#">Inicio</a></b>
-            <b><a href="../WebUmarani/Collares.html">Collares</a></b>
-            <b><a href="../WebUmarani/Pulseras.html">Pulseras</a></b>
-            <b><a href="../WebUmarani/anillos.html">Anillos</a></b>
-            <b><a href="../WebUmarani/anillos.html">Nosotros</a></b>
+            <b><a href="../View/catalogo.php">Inicio</a></b>
+            <b><a href="#">Collares</a></b>
+            <b><a href="#">Pulseras</a></b>
+            <b><a href="#">Anillos</a></b>
+            <b><a href="#">Nosotros</a></b>
             <!-- <a href="#">Ofertas</a> -->
 
         </div>
