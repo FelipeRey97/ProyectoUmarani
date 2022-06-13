@@ -65,7 +65,7 @@
                
             
             <div class="menu">
-                <b><a href="Index.php">Inicio</a></b>
+                <b><a href="../View/catalogo.php">Inicio</a></b>
                 <b><a href="Collares.php">Collares</a></b>
                 <b><a href="Pulseras.php">Pulseras</a></b>
                 <b><a href="anillos.php">Anillos</a></b>

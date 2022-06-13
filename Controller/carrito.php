@@ -3,8 +3,8 @@ session_start();
 
 
 $sesionId= $_REQUEST['sesionId'];
-$artId = $_POST['artId'];
-$Cant = $_POST['Cant'];
+$artId = $_REQUEST['artId'];
+$Cant = $_REQUEST['Cant'];
 
 
 $conexion1 = mysqli_connect("localhost","root","","proyecto") 

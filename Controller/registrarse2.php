@@ -12,7 +12,7 @@
     <?php
   
         require_once('../Model/M_Clientes.php');
-        $_SESSION['cMail'] = $_REQUEST['cMail'];
+         $_SESSION['cMail'] = $_REQUEST['cMail'];
 
         $cliente1 = new Clientes;
 
@@ -24,14 +24,21 @@
             $cPassword = $_REQUEST['cPassword'];
             
             $cliente1->insertarCliente($cNombre,$cApellido,$cMail,$cPassword);
-            
+            $cliente1->cerrarConexion();
             ?>
             <script>
                 swal("Operación Realizada","Te has registrado correctamente", "success");
             </script>
             
             <?php
-            header("refresh:1;url=http://localhost/UmaraniWeb/View/iniciarSesion.php");
+            if($_REQUEST['compra'] == 1){
+            $valor= 1;
+            header("refresh:1;url=http://localhost/UmaraniWeb/View/datosfacturacion.php?valor=$valor");
+            }
+            else{
+
+            header("refresh:1;url=http://localhost/UmaraniWeb/View/areacliente.php?valor=0");
+            }
 
         }
         else{

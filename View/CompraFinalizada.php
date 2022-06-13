@@ -1,7 +1,9 @@
-<?php 
-session_start(); 
-require_once('../Controller/vercarrito.php');
-require_once('../Controller/verCheckout.php');
+<?php
+session_start();
+$sesionId= session_id();
+require "../Controller/FinalizarCompra.php";
+require('../Controller/vercarrito.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +16,7 @@ require_once('../Controller/verCheckout.php');
 </head>
 <body>
     
-    <link rel="stylesheet" href="../CSS/carroDeCompras.css">
+    <link rel="stylesheet" href="../CSS/estilos.css">
     <script src="https://kit.fontawesome.com/f243ce0afc.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
@@ -25,7 +27,7 @@ require_once('../Controller/verCheckout.php');
         <header class="header">
         <div class="contacto">
                <a class="searchButton" href="#"> <i class="fas fa-search"></i></a>
-                <a href="../View/iniciarSesion.php"><i class="fas fa-user"></i></a>
+                <a class="accountButton" href="#"><i class="fas fa-user"></i></a>
                 <a class="kartButton" href="#"><i class="fas fa-shopping-bag"></i></a>
             </div>
             <!-- Carro de compras  -->
@@ -64,7 +66,7 @@ require_once('../Controller/verCheckout.php');
                     </div>
 
                     <div class="bottom">
-                        <div class="infoTotal"><P class="shopTotal">$ <?php echo "$total" ?></P>
+                        <div class="infoTotal"><P class="shopTotal">TOTAL: $ <?php echo "$total" ?></P>
                              <a class="buy-button" href="../View/checkout.php">Checkout</a>
                         </div>
                     </div>
@@ -86,6 +88,44 @@ require_once('../Controller/verCheckout.php');
                
                 </div>
             </div>
+            <div class="accountOpacity ocultar">
+                <div class="accountMenu "  > 
+                    <div class="topAccountMenu">
+                        <a href="#"></a> <a class="cerrar-menuCuenta" href="#"> <i class="fas fa-times"></i></a>
+                    </div>
+                    <div class="middleAccountMenu">
+                    <?php
+                         if(isset($_SESSION['cMail'])){
+
+                            
+                         
+                    ?>
+                        <a href="areaCliente.php">Mi perfil </a><br><br>
+                        <a href="#">Mis compras </a><br><br>
+                        <a href="#">cerrar Sesion </a><br><br>
+                        
+
+                        <?php
+                            }
+                            else{
+
+                                ?>
+                                <a href="iniciarSesion.php">Iniciar Sesion </a><br><br>
+                                <a href="registarse.php">Registrarse </a><br><br>
+                                 <a href="#">Ayuda </a><br><br>
+                            
+                            <?php
+
+                                }   
+                                ?>
+                            
+                    </div>
+                    <div class="bottomAccountMenu">
+                        
+                    </div>
+               
+                </div>
+            </div>
                 
                 <div class="logo">
                     <a href="#"><img src="../Uploads/logo.png" alt=""></a>
@@ -94,7 +134,7 @@ require_once('../Controller/verCheckout.php');
                
                 
             <div class="menu">
-                <b><a href="../View/catalogo.php">Inicio</a></b>
+                <b><a href="#">Inicio</a></b>
                 <b><a href="../WebUmarani/Collares.html">Collares</a></b>
                 <b><a href="../WebUmarani/Pulseras.html">Pulseras</a></b>
                 <b><a href="../WebUmarani/anillos.html">Anillos</a></b>
@@ -104,79 +144,10 @@ require_once('../Controller/verCheckout.php');
             </div>
         </header>
         <section class="section">
-           <div class="shopCartTitle">
-               <h1>Tu Selección de Productos</h1>
-           </div>
-           
-           <div class="productos">
-
-           <?php  
-                $totalpagar = 0;
-                 while($check = mysqli_fetch_array($checkout)) { 
-           
-           ?>
-               <div class="articleContainer">
-                   
-                   <div class="articleImg">
-                       <img src="<?php echo "$check[artVista]" ?>" alt="">
-                   </div>
-                   <div class="articleInfo">
-                       <p>ID: <?php echo "$check[artId]" ?> </p>
-                       <h2> <?php echo "$check[artNombre]" ?></h2>
-                   </div>
-                   <div class="articlePrice">
-                       <h4 >precio Unidad:</h4>
-                       <p>$ <?php echo "$check[artPrecio]" ?></p>
-                   </div>
-                   <div class="articleQuantity">
-                       <div class="articleQuantityInput">
-                           <label for="">Cantidad:</label>
-                           <input type="text" disabled value="<?php echo "$check[artCarroCant]" ?>">
-                       </div>
-                       <div class="articleDelete">
-                           <p><?php $costo = $check['artPrecio'] * $check['artCarroCant']; echo "$costo"; ?></p>
-                       </div>
-                   </div>
-               </div>
-               <?php 
-                       $totalpagar = $totalpagar + $costo; }
-                    ?>
-           </div>
-           <div class="totalPagar">
-               <h1>Total</h1>
-               <div class="subtotal">
-                   <div class="valorSubtotal">
-                       <h4>Subtotal</h4>
-                       <p><?php echo "$totalpagar" ?></p>
-                   </div>
-                   <div class="valorEnvio">
-                       <h4>Costo Envío </h4>
-                       <p>$0</p>
-                   </div>
-               </div>
-               <!-- <div class="descuentos">
-                   <div class="totaldescuentos">
-                       <h4>Total descuentos</h4>
-                       <p>$0</p>
-                   </div>
-               </div> -->
-               <div class="costoFinal">
-                   <div class="valorCostoFinal">
-                       <h4>Total</h4>
-                       <p><?php echo "$totalpagar" ?></p>
-                   </div>
-               </div>
-               <div class="irPagos">
-                    <?php if(isset($_SESSION['cMail'])){
-                        ?>
-                        <a href="../View/DatosFacturacion.php">Continuar</a>
-                    <?php }else{ ?>
-                        <a href="../View/iniciarSesion.php?valor=1">Continuar</a>
-                    <?php  } ?>
-                   
-               </div>
-           </div>
-
+                <h1>Gracias Por tu Compra</h1><br><br>
+                <p>El numero de pedido es: </p>
+                <a href="../View/catalogo.php">Volver a la tienda</a>
+        
         </section>
         <footer class="footer">
             <div class="informacion">
@@ -213,5 +184,6 @@ require_once('../Controller/verCheckout.php');
 
     <script src="../JS/CartShop.js"></script>
     <script src="../JS/SearchEngine.js"></script>
+    <script src="../JS/accountMenu.js"></script>
 </body>
 </html>

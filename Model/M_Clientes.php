@@ -5,11 +5,30 @@ session_start();
 ?>
 
 <?php
- if($_SESSION['cMail'] == false){
-    
-    header("refresh:1;url=http://localhost/UmaraniWeb/View/iniciarSesion.php");
+if(isset($_SESSION['cMail'])){
 
- }
+}else{
+
+if(isset($_REQUEST['compra'])){
+    if($_REQUEST['compra'] == 1){
+        $valor= 1;
+        header("refresh:20;url=http://localhost/UmaraniWeb/View/iniciarSesion.php?valor=$valor");
+        }
+        else{
+
+            header("refresh:20;url=http://localhost/UmaraniWeb/View/iniciarSesion.php?valor=0");
+        }
+
+    }else{
+        header("location: http://localhost/UmaraniWeb/View/iniciarSesion.php");
+    }
+
+}
+ 
+    
+    
+
+ 
 ?>
 
 
@@ -81,7 +100,7 @@ session_start();
 
         public function cerrarConexion(){
 
-            $this->con->close();
+            $this->cl->close();
         }
 
 
@@ -90,7 +109,11 @@ session_start();
     $conexion = mysqli_connect('localhost','root','','proyecto') or 
         die ("problemas en la conexion" . mysqli_error($conexion));
 
-        $registroCliente = mysqli_query($conexion,"select * from cliente where clienteEmail ='$_SESSION[cMail]'") 
-        or die ("problemas en el select" . mysqli_error($conexion));
+        if(isset($_SESSION['cMail'])){
+            $registroCliente = mysqli_query($conexion,"select * from cliente where clienteEmail ='$_SESSION[cMail]'") 
+            or die ("problemas en el select" . mysqli_error($conexion));
+        }
+
+        
 
 ?>

@@ -59,7 +59,13 @@
                 <label for="">Contraseña:</label><br>
                 <input class="control" type="password" required  name="cPassword"><br>
                 <p><input type="checkbox"> He leído y Acepto los  <a href="../View/terminosycondiciones.php"> <b> Términos y Condiciones</b> </p><br><br>
-                
+                    <?php  if(isset($_REQUEST['valor'])){
+                        $valor = $_REQUEST['valor'];
+                    } else{
+
+                        $valor = 0;
+                    }?>
+                    <input type="hidden" name="compra" value="<?php echo "$valor" ?>">
                 <input class="boton-iniciarSesion" type="submit" value="Registrarse">
             </form>
         </div>

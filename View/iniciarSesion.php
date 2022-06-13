@@ -94,7 +94,7 @@ require_once('../Controller/verCheckout.php');
                
                 
             <div class="menu">
-                <b><a href="#">Inicio</a></b>
+                <b><a href="../View/catalogo.php">Inicio</a></b>
                 <b><a href="../WebUmarani/Collares.html">Collares</a></b>
                 <b><a href="../WebUmarani/Pulseras.html">Pulseras</a></b>
                 <b><a href="../WebUmarani/anillos.html">Anillos</a></b>
@@ -112,8 +112,6 @@ require_once('../Controller/verCheckout.php');
                     <input class="control" type="text" name="cMail" required>  <br>
                     <label for="">Contraseña:</label><br>
                     <input class="control" type="password" name="cPassword" required><br>
-                    <p>¿Nuevo en Umarani? <a href="../View/Registrarse.php"> <b>Regístrate aquí</b> </a></p><br><br>
-                    <a href="../WebUmarani/recuperarContraseña.html"><b>¿Olvidaste tu contraseña?</b></a><br><br>
                     <?php  if(isset($_REQUEST['valor'])){
                         $valor = $_REQUEST['valor'];
                     } else{
@@ -121,6 +119,10 @@ require_once('../Controller/verCheckout.php');
                         $valor = 0;
                     }
                     ?>
+                    <p>¿Nuevo en Umarani? <a href="../View/Registrarse.php?valor=<?php echo "$valor"?>"> <b>Regístrate aquí</b> </a></p><br><br>
+                    
+                    <a href="../WebUmarani/recuperarContraseña.html"><b>¿Olvidaste tu contraseña?</b></a><br><br>
+                    
                     <input type="hidden" name="compra" value="<?php echo "$valor" ?>">
                     <input class="boton-iniciarSesion" type="submit" value="Iniciar Sesión">
                 </form>

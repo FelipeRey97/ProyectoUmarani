@@ -111,7 +111,7 @@ require('../Controller/vercarrito.php');
 
                                 ?>
                                 <a href="iniciarSesion.php">Iniciar Sesion </a><br><br>
-                                <a href="registarse.php">Registrarse </a><br><br>
+                                <a href="registrarse.php">Registrarse </a><br><br>
                                  <a href="#">Ayuda </a><br><br>
                             
                             <?php
@@ -165,13 +165,14 @@ require('../Controller/vercarrito.php');
                     <a href="../Controller/DetalleArticulo.php?arId=<?php echo "$producto[artId]"?>">Ver Detalle</a>
                 </div>
                 <div class="comprar addToKart">
-                    <form action="../Controller/carrito.php" method="post">
-                        <input type="hidden" name="sesionId" value="<?php echo "$sesionId" ?>">
+                    <!-- <form action="../Controller/carrito.php" method="post"> -->
+                        <!-- <input type="hidden" name="sesionId" value="<?php echo "$sesionId" ?>">
                         <input type="hidden" name="artId" value="<?php echo "$producto[artId]"?>">
                         <input type="hidden" name="Cant" Value="1">
                         
-                        <input type="submit" Value="Comprar">
-                    </form>
+                        <input type="submit" Value="Comprar"> -->
+                        <a href="../Controller/carrito.php?sesionId=<?php echo "$sesionId" ?>&artId=<?php echo "$producto[artId]"?>&Cant=1">Comprar</a>
+                    <!-- </form> -->
                 </div>
             </article>
             <?php  
