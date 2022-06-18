@@ -1,8 +1,9 @@
 <?php
 session_start();
 $sesionId= session_id();
-require "../Controller/FinalizarCompra.php";
+// require "../Controller/FinalizarCompra.php";
 require('../Controller/vercarrito.php');
+
 
 ?>
 
@@ -16,7 +17,7 @@ require('../Controller/vercarrito.php');
 </head>
 <body>
     
-    <link rel="stylesheet" href="../CSS/estilos.css">
+    <link rel="stylesheet" href="../CSS/CompraFin.css">
     <script src="https://kit.fontawesome.com/f243ce0afc.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
@@ -144,9 +145,11 @@ require('../Controller/vercarrito.php');
             </div>
         </header>
         <section class="section">
-                <h1>Gracias Por tu Compra</h1><br><br>
-                <p>El numero de pedido es: </p>
-                <a href="../View/catalogo.php">Volver a la tienda</a>
+                <h1>¡Muchas Gracias Por tu Compra!</h1><br><br>
+                <p>El número de tu pedido es: </p><br><br>
+                <p><b> <?php echo "$_REQUEST[pedidoId]";  ?> </b> </p><br><br>
+                <a href="../View/catalogo.php">Volver a la tienda</a><br><br><br>
+                <a href="../Controller/ImprimirFactura.php?factId=<?php echo $_REQUEST['pedidoId']?>">Imprimir Factura</a><br><br>
         
         </section>
         <footer class="footer">

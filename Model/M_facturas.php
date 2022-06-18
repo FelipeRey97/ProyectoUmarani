@@ -13,11 +13,11 @@
             $this->fact = new mysqli('localhost','root','','proyecto');
             
         }
-        public function insertarFactura($clienteId,$todaydate,$total,$clienteDoc,$tipoPago){
+        public function insertarFactura($clienteId,$todaydate,$total,$clienteDoc,$tipoPago,$dirC,$impuestoId){
 
 
-            $this->fact->query("INSERT INTO factura (facturaFecha,facturaCostoTotal ,facturaClienteDoc,facturaClienteId,factura_tipoPagoId)
-            VALUES ('$todaydate','$total','$clienteDoc','$clienteId','$tipoPago')
+            $this->fact->query("INSERT INTO factura (facturaFecha,facturaCostoTotal,facturaClienteDoc,facturaClienteId,factura_tipoPagoId,facturaClienteDireccion,facturaImpuestoId)
+            VALUES ('$todaydate','$total','$clienteDoc','$clienteId','$tipoPago','$dirC','$impuestoId')
             ") or die ("problemas en el select " . mysqli_error($fact));
 
             

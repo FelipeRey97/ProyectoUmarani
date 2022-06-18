@@ -1,0 +1,843 @@
+*{
+
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.ocultar {
+
+    visibility: hidden;
+}
+
+
+.header{
+
+    background: rgb(255, 249, 249); 
+    margin: 0px 0px;
+}
+
+    .contacto{
+
+        background: #e2e2e2;
+        padding: 10px;
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 13px;
+        text-align: end;
+        position: fixed;
+        width: 100%;
+    }
+        .contacto a{
+
+            color: rgb(77, 77, 77);  
+            padding: 0px 15px;
+            font-size: 15px;
+            transition: 0.2s ease-in-out;
+            
+        }
+
+        .kartOpacity{
+
+            position: absolute;
+            background: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            height: 100%;
+            transition: all 5s ease ease-in-out;
+        }
+        .carrito{
+
+            position: absolute;
+            width: 22vw;
+            margin-left: 77.6%;
+            background: rgb(146, 146, 146);
+            height: max-content;
+            transition: all 5s ease ease-in-out;
+            
+        }
+
+            .top{
+
+                background: rgb(39, 39, 39);
+                padding: 30px;
+                margin: 10px;
+                text-align: end;
+            }
+                .top a{
+
+                    text-decoration: none;
+                    color: #fff;
+                    font-family: open;
+                    font-family: 'Open Sans', sans-serif;
+                    
+                }
+                    .cerrar-carrito{
+
+                        margin-left: 100px;
+                        font-size: 30px;
+                        color: #cacaca;
+                    }
+                   
+
+            .middle{
+
+                background: rgb(240, 240, 240);
+                padding: 30px;
+                margin: 10px;
+                height: max-content;
+            }
+
+            .bottom{
+
+                background: rgb(39, 39, 39);
+                padding: 30px;
+                margin: 10px;
+                font-family: 'Open Sans', sans-serif;
+                font-size: 20px;
+                color: #fff;
+            }
+
+                .buy-button{
+                    display: block;
+                    margin-top: 15px;
+                    padding: 10px;
+                    background: #2e2e2e;
+                    text-align: center;
+                    color: #fff;
+                    text-decoration: none;
+                    font-family: 'Open Sans', sans-serif;
+                    transition: 0.3s ease-in-out;
+                    transition: all 5s ease ease-in-out;
+                }
+                .buy-button:hover{
+                    transition: 0.3s ease-in-out;
+                    background: #e6e6e6;
+                    color: rgb(51, 51, 51);
+
+                }
+
+                .searchOpacity{
+
+                    position: absolute;
+                    background: rgba(0, 0, 0, 0.5);
+                    width: 100%;
+                    height: 100%;
+                    transition: all 5s ease ease-in-out;
+
+                }
+                .searchEngine{
+        
+                    position: absolute;
+                    width: 22vw;
+                    margin-left: 77.6%;
+                    background: rgb(146, 146, 146);
+                    height: max-content;
+                    transition: all 5s ease ease-in-out;
+                    
+                }
+        
+                    .topSearchEngine{
+        
+                        background: rgb(39, 39, 39);
+                        padding: 30px;
+                        margin: 10px;
+                        text-align: end;
+                    }
+                        .topSearchEngine a{
+        
+                            text-decoration: none;
+                            color: #fff;
+                            font-family: 'Open Sans', sans-serif;
+                            
+                        }
+
+                            .cerrar-buscador{
+        
+                                margin-left: 80px;
+                                font-size: 30px;
+                                color: #cacaca;
+                            }
+                            
+        
+                    .middleSearchEngine{
+        
+                        background: rgb(240, 240, 240);
+                        padding: 30px;
+                        margin: 10px 10px 0px 10px;
+                        height: max-content;
+                        border-bottom: 1px solid #8a8a8aad;
+                    }
+                        .middleSearchEngine input{
+
+                            padding: 12px;
+                            width: 100%;
+                            font-family: 'Open Sans', sans-serif;
+                            border: 1px solid rgba(77, 77, 77, 0.575);
+                            outline: 0px;
+                            font-size: 16px;
+                        }
+        
+                    .bottomSearchEngine{
+        
+                        background: rgb(255, 255, 255);
+                        padding: 30px;
+                        margin: 0px 10px 10px 10px;
+                        font-family: 'Open Sans', sans-serif;
+                        font-size: 20px;
+                        color: #fff;
+                        
+                    }
+                
+            .accountOpacity{
+
+                position: absolute;
+                background: rgba(0, 0, 0, 0.5);
+                width: 100%;
+                height: 100%;
+                transition: all 5s ease ease-in-out;
+
+            }
+            .accountMenu{
+    
+                position: absolute;
+                width: 22vw;
+                margin-left: 77.6%;
+                background: rgb(146, 146, 146);
+                height: max-content;
+                transition: all 5s ease ease-in-out;
+                
+            }
+    
+                .topAccountMenu{
+    
+                    background: rgb(39, 39, 39);
+                    padding: 30px;
+                    margin: 10px;
+                    text-align: end;
+                }
+                    .topAccountMenu a{
+    
+                        text-decoration: none;
+                        color: #fff;
+                        font-family: 'Open Sans', sans-serif;
+                        
+                    }
+
+                        .cerrar-AccountMenu{
+    
+                            margin-left: 80px;
+                            font-size: 30px;
+                            color: #cacaca;
+                        }
+                        
+    
+                .middleAccountMenu{
+    
+                    background: rgb(240, 240, 240);
+                    padding: 30px;
+                    margin: 10px 10px 0px 10px;
+                    height: max-content;
+                    border-bottom: 1px solid #8a8a8aad;
+                }
+                    .middleAccountMenu input{
+
+                        padding: 12px;
+                        width: 100%;
+                        font-family: 'Open Sans', sans-serif;
+                        border: 1px solid rgba(77, 77, 77, 0.575);
+                        outline: 0px;
+                        font-size: 16px;
+                    }
+    
+                .bottomAccountMenu{
+    
+                    background: rgb(255, 255, 255);
+                    padding: 30px;
+                    margin: 0px 10px 10px 10px;
+                    font-family: 'Open Sans', sans-serif;
+                    font-size: 20px;
+                    color: #fff;
+                    
+                }
+                
+        
+
+
+            .contenedor{
+
+                display: flex;  
+                padding: 15px;
+                
+            }
+
+            .miniatura{
+
+                height: 80px;
+                width: 80px;
+                margin-right: 10px;
+            }
+
+            .miniatura img{
+
+                height: 80px;
+                width: 80px;
+
+            }
+
+            .info{
+
+                padding-right: 10px;
+            }
+            .contenedor h3{
+
+                font-family: 'Open Sans', sans-serif;
+            }
+
+            .contenedor p{
+
+                font-family: 'Open Sans', sans-serif;
+                font-size: 15px;
+            }
+            .contenedor label{
+
+                font-family: 'Open Sans', sans-serif;
+                font-size: 15px;
+                
+            }
+            .contenedor input{
+
+                width: 30px;
+                font-family: 'Open Sans', sans-serif;
+                text-align: center;
+                border: 1px solid #312015;
+                margin-left: 40%;
+                
+            }
+            .contenedor a{
+                
+                display: block;
+                margin-top: 20px;
+                margin-left: 60%;
+                color: rgb(255, 49, 49);
+                font-size: 20px;
+                width: 20px;
+                
+            }
+
+
+        .contacto a:hover{
+
+            color: rgb(255, 255, 255); 
+            transition: 0.2s ease-in-out;
+        }
+
+        .logo{
+
+            /* background: #E04DB0;   */
+           flex: 1 1 auto;
+           overflow: hidden;
+           justify-content: center;
+           display: flex;
+        }
+
+            .logo img{
+
+                height: 220px;
+                width: 220px;
+                margin-top: 0px;
+                transition: 0.5s ease-in-out;
+                
+            }
+                .logo img:hover{
+
+                   transform: rotate(10deg);
+                   transition: 0.5s ease-in-out;
+                }
+                
+                
+            .redsocial a:hover{
+
+                color: rgb(255, 245, 238);  
+                transition: 0.2s ease-in-out;
+            }
+
+    .menu{
+
+        background: #f0f0f0;
+        margin: 0px 0px;
+        text-align: center;
+        padding: 10px 0px;
+        border-bottom: 1px solid #e2e2e2;
+        border-top: 1px solid #e2e2e2;
+    }
+        .menu a{
+
+            color: #2e2e2e;
+            text-decoration: none;
+            padding: 0px 50px;
+            font-size: 15px;
+            font-family: 'Open Sans', sans-serif;
+            transform: scale(1);
+            transition: 0.5s;
+        }
+            .menu a:hover{
+
+                color: #db79a8; 
+                transition: 0.5s;
+            }
+
+
+.section{
+
+    background: rgb(255, 249, 249); 
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0px 0px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    text-align: center;
+}
+
+   section h1{
+
+    font-size: 35px;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    color: #442c37ce;
+
+   }
+   section p{
+
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    color: #442c37ce;
+
+   }
+   section a{
+
+    text-decoration: none;
+    padding: 10px;
+    background: #ffbdddd3;
+    margin: 10px;
+    color: rgb(59, 59, 59);
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 2px;
+    transition: 0.2s ease-in-out;
+   }
+
+   section a:hover{
+
+    transition: 0.2s ease-in-out;
+    background: #ffe3f0d3;
+    
+   }
+
+.footer{
+    margin-top: 0px;
+    /* background: #CEAB93; */
+    
+}
+    .informacion {
+
+        background: #e2e2e2;
+        margin: 0px;
+        padding: 30px 0px;
+        display: flex;
+        align-items:baseline;
+        justify-content: space-evenly;
+
+    }
+        .servicio{
+
+            /* background: #000000; */
+            flex: 0 1 auto;
+            
+        }
+        .servicio h1{
+
+            
+            margin-bottom: 20px;
+            font-family: 'Open Sans', sans-serif;
+            color:  rgb(53, 53, 53);
+            font-size: 20px;
+        }
+            .servicio a{
+
+                text-decoration: none;  
+                font-family: 'Open Sans', sans-serif;
+                color:  rgb(53, 53, 53);
+                font-size: 15px;
+                transition: 0.2s ease-in-out;
+            }
+                .servicio a:hover{
+
+                    color:  rgb(255, 255, 255);
+                    transition: 0.2s ease-in-out;
+                }
+        .nosotros{
+
+            /* background: #000000; */
+            flex: 0 1 auto;
+            
+        }
+
+        .nosotros h1{
+
+            
+            margin-bottom: 20px;
+            font-family: 'Open Sans', sans-serif;
+            color:  rgb(53, 53, 53);
+            font-size: 20px;
+
+        }
+            .nosotros a{
+                
+                text-decoration: none;  
+                font-family: 'Open Sans', sans-serif;
+                color:  rgb(53, 53, 53);
+                font-size: 15px;
+                transition: 0.2s ease-in-out;
+            }
+
+                .nosotros a:hover{
+
+                    color:  rgb(255, 255, 255);
+                    transition: 0.2s ease-in-out;
+                }
+        .contactoinfo{
+            /* background: #000000; */
+            flex: 0 1 auto;
+            
+        }
+            .contactoinfo h1{
+
+          
+            margin-bottom: 20px;
+            font-family: 'Open Sans', sans-serif;
+            color:  rgb(53, 53, 53);
+            font-size: 20px;
+            }
+            .contactoinfo a{
+
+                text-decoration: none;  
+                font-family: 'Open Sans', sans-serif;
+                color:  rgb(53, 53, 53);
+                font-size: 15px;
+                transition: 0.2s ease-in-out;
+            }
+
+                .contactoinfo a:hover{
+
+                    color:  rgb(255, 255, 255);
+                    transition: 0.2s ease-in-out;
+
+                }
+    .pie{
+
+        background: #CEAB93;
+        margin: 0px 0px;
+        padding: 0px;
+        
+    }
+
+        .desarrollado{
+            background: #8a8a8a;
+            text-align: center;
+            padding: 10px;
+        }
+            .desarrollado p{
+
+                font-family: 'Lobster', cursive;
+                color: #ffffff;
+            }
+
+    @media screen and (max-width: 1400px) {
+        
+        .menu a{
+
+            padding: 20px;
+        }
+
+
+    }
+
+    @media screen and (max-width: 1200px) {
+
+        .menu a{
+
+            padding: 10px;
+        }
+
+        .buscar {
+
+            width: 300px;
+        }
+        
+        .imagen {
+
+            height: 400px;
+        }
+        .imagen img{
+
+            height: 400px;
+        }
+        .producto img:hover{
+
+            transform: scale(1.1);
+        }
+    }
+
+    @media screen and (max-width: 1200px) {
+        
+        .logo img {
+
+            width: 200px;
+            height: 200px;
+
+        }
+
+    }
+    @media screen and (max-width: 950px) {
+        
+        .imagen {
+
+            height: 300px;
+        }
+        .imagen img{
+
+            height: 300px;
+        }
+
+        .menu a{
+
+            font-size: 25px;
+        }
+
+    }
+    @media screen and (max-width: 850px) {
+        
+
+        .texto-principal p{
+
+            font-size: 20px;
+        }
+
+        .servicio h1{
+            font-size: 18px;
+        }
+        .servicio a{
+
+            font-size: 15px;
+        }
+        .nosotros h1{
+
+            font-size: 18px;
+        }
+        .nosotros a{
+
+            font-size: 15px;
+
+        }
+        .contactoinfo h1{
+            font-size: 18px;
+
+        }
+        .contactoinfo a{
+
+            font-size: 15px;
+        }
+
+        .logo img:hover{
+
+            transform: none;
+        }
+    }
+    @media screen and (max-width: 800px) {
+        
+        .redsocial a{
+
+            font-size: 25px;
+        }
+
+        .buscar {
+
+            padding: 5px;
+            width: 220px;
+            margin-top: 50px;
+        }
+        .boton {
+
+            padding: 7px;
+        }
+    
+        .logo img{
+            height: 150px ;
+            width: 150px;
+        }
+
+        .imagen {
+
+            height: 250px;
+        }
+
+        .imagen img{
+
+            height: 250px;
+        }
+        .texto-principal{
+
+            padding: 20px 0px;
+        }
+    }
+    @media screen and (max-width: 600px) {
+
+        .logo img{
+
+            margin-top: -30px;
+            margin-left: -30px;
+        }
+        .buscador{
+
+            margin-top: -130px;
+        }
+        .buscar {
+
+            width: 250px;
+        }
+
+        .imagen{
+
+            height: 200px;
+        }
+        .imagen img{
+
+            height: 200px;
+        }
+
+        .redsocial {
+
+            display:none;
+        }
+
+        .servicio h1{
+            font-size: 15px;
+
+        }
+        .servicio a{
+            font-size: 12px;
+        }
+        .nosotros h1{
+            font-size: 15px;
+        }
+        .nosotros a{
+            font-size: 12px;
+        }
+        .contactoinfo h1{
+            font-size: 15px;
+        }
+        
+        .contactoinfo a{
+            font-size: 12px;
+        }
+    }
+    @media screen and (max-width: 530px){
+        
+        
+        .buscar {
+
+            margin-top: 150px;
+            
+            
+        }
+        
+        .logo img{
+
+          margin: 0px auto;
+          display: block;
+        }
+
+        .producto{
+
+            flex: 1 1 32%;
+            flex-wrap: wrap;
+            margin: 0px auto;
+        }
+        .imagen {
+            height: 350px;
+            width: 200px;
+            margin: 0px auto;
+        }
+        .imagen img{
+
+            height: 350px;
+            width: 200px;
+            margin: 10px auto;
+        }
+    }   
+    @media screen and (max-width: 423px) {
+
+        .navegacion a{
+
+            font-size: 18px;
+            margin: 0px 2px;
+            padding: 12px;
+            
+        }
+        .informacion{
+
+            flex-direction: column;
+            flex-wrap: wrap;
+            margin: 0px auto;
+            
+        }
+
+        .servicio{
+
+            text-align: center;
+            margin: 0px auto;
+        }
+        .nosotros{
+
+            text-align: center;
+            margin: 0px auto;
+            margin-top: 20px;
+        }
+
+        .contactoinfo{
+
+            text-align: center;
+            margin: 0px auto;
+            margin-top: 20px;
+
+        }
+    }
+@media screen and (max-width: 330px){
+    
+        .navegacion a{
+
+            font-size: 15px;
+            padding: 5px;
+            
+        }
+        .boton {
+
+            margin-top: 20px;
+        }
+
+
+}
+@media screen and (max-width: 330px){
+    
+    .menu a{
+
+        display: block;
+        font-size: 15px;
+    }
+
+    .texto-principal p{
+
+        font-size: 15px;
+    }
+
+}

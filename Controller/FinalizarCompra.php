@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+
 <?php 
 
 require_once('../Model/M_facturas.php');
@@ -9,10 +21,10 @@ $total = $_REQUEST['costoTotal'];
 $clienteDoc = $_REQUEST['clienteDoc'];
 $tipoPago = $_REQUEST['tipoPago'];
 $sesionId = $_REQUEST['sesionId'];
-
-
+$dirC = $_REQUEST['direccionC'];
+$impuestoId = 1;
 $fact1 = new Factura ();
-$fact1->insertarFactura($clienteId,$todaydate,$total,$clienteDoc,$tipoPago);
+$fact1->insertarFactura($clienteId,$todaydate,$total,$clienteDoc,$tipoPago,$dirC,$impuestoId);
 
 
 $facturaId = mysqli_query($conexionFactura,"SELECT facturaId FROM factura
@@ -56,11 +68,20 @@ mysqli_close($conexionFactura);
 
 
 <script>
-         swal("Operación Realizada", "Se ha guardado el Usuario Satisfactoriamente!", "success");
+         swal("Operación Realizada", "Se ha realizado la Compra!", "success");
          
       </script>
 <?php
 
-header("Location: http://localhost/UmaraniWeb/view/catalogo.php");
+header("refresh:1;url=http://localhost/umaraniweb/view/comprafinalizada.php?pedidoId=$id");
 
 ?>
+
+
+
+
+
+
+</body>
+</html>
+

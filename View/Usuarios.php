@@ -52,6 +52,7 @@ session_start();
                 <a href="#">Inicio</a>
                 <a href="../View/Productos.php">Productos</a>
                 <a href="../View/pedidos.php">Pedidos</a>
+                <a href="#">Facturas</a>
                 <a href="#">Usuarios</a>
                 <a href="adminClientes.php">Clientes</a>
                 <a href="../View/PQRS.php">PQRS</a> <br><br><br>

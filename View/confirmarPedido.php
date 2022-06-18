@@ -23,6 +23,7 @@ $direccion= $_REQUEST['direccion'] ." ". $_REQUEST['detdireccion'];
 $clienteId = $_REQUEST['clienteId'];
 $todaydate = date('Y/m/d');
 $tipoPago = $_REQUEST['tipoPago'];
+$direccionCompleta = $_REQUEST['direccion'] ." ". $_REQUEST['detdireccion'] . " " . $_REQUEST['ciudad'] . " - " . $_REQUEST['dpto'];
 ?>
 
 <!DOCTYPE html>
@@ -149,7 +150,7 @@ $tipoPago = $_REQUEST['tipoPago'];
                      <input type="hidden" name="clienteDoc" value="<?php echo "$documento" ?>">
                      <input type="hidden" name="tipoPago" value="<?php echo "$tipoPago" ?>">
                      <input type="hidden" name="sesionId" value="<?php echo "$sesionId" ?>">
-                     <input type="hidden" name="" value="">
+                     <input type="hidden" name="direccionC" value="<?php echo "$direccionCompleta" ?>">
                     <input class="ctrl" type="submit" value="Realizar Pedido">
                 </form>
             </div>
