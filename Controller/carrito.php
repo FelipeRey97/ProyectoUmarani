@@ -41,7 +41,6 @@ if($idArt == $artId && $idSesion == $sesionId){
 
     mysqli_close($conexion1);
 
-
 }
     
 

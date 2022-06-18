@@ -16,7 +16,7 @@
         public function insertarPedido($idFactura,$todaydate,$clienteId,$id,$total){
 
 
-            $this->ped->query("INSERT INTO pedido(pedidoId,pedidoFechaInicio,pedidoClienteId ,pedidoFacturaId,pedidoCostoTotal)
+            $this->ped->query("INSERT INTO pedido(pedidoId,pedidoFechaInicio,pedidoClienteId,pedidoFacturaId,pedidoCostoTotal)
             VALUES ('$id','$todaydate','$clienteId','$idFactura','$total')
             ") or die ("problemas en el select " . mysqli_error($ped));
 
