@@ -1,6 +1,6 @@
 <?php
 
-    require_once("../Controller/verUsuario.php");
+    require_once("../Controller/mostrarFacturas.php");
    
 ?>
 
@@ -52,9 +52,9 @@ session_start();
                 <a href="#">Inicio</a>
                 <a href="../View/Productos.php">Productos</a>
                 <a href="../View/pedidos.php">Pedidos</a>
-                <a href="../View/facturas.php">Facturas</a>
-                <a href="#">Usuarios</a>
-                <a href="adminClientes.php">Clientes</a>
+                <a href="#">Facturas</a>
+                <a href="../View/Usuarios.php">Usuarios</a>
+                <a href="../View/adminClientes.php">Clientes</a>
                 <a href="../View/PQRS.php">PQRS</a> <br><br><br>
                 <a href="../Controller/cerrarSesion.php">Cerrar Sesión</a>
             </nav>
@@ -95,32 +95,25 @@ session_start();
                 <table>
                     <tr>
                         <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Documento</th>
-                        <th>Rol</th>
-                        <th>Estado</th>
+                        <th>Fecha</th>
+                        <th>Valor Total</th>
+                        <th>Método Pago</th>
                         <th>Acciones</th>
                     </tr>
 
                      <?php
                         
                         // se muestran los datos de los usuarios almacenados en la variable $usuarios
-                        foreach($usuarios as $user){
-                        
+                        foreach($regFacturas as $row){
             
                      ?>
                     <tr class="información" >
-                        <td> <?php echo $user['usuarioId']   ?> </td>
-                        <td> <?php echo $user['usuarioNombre']   ?></td>
-                        <td> <?php echo $user['usuarioApellido']   ?></td>
-                        <td> <?php echo $user['usuarioDoc']   ?></td>
-                        <td> <?php echo $user['rolNombre']   ?></td>
-                        <td> <?php echo $user['usuarioEstado']   ?></td>
+                        <td> <?php echo $row['facturaId']   ?> </td>
+                        <td> <?php echo $row['facturaFecha']   ?></td>
+                        <td> <?php echo $row['facturaCostoTotal']   ?></td>
+                        <td> <?php echo $row['tipoPagoNombre']   ?></td>
                         <td>
-                            <a class="edit" href="DetalleUsuario.php?tabla=<?php echo "$user[usuarioId]" ?>"><i class="far fa-edit"></i></i></a>
-                            <!-- <a class="detail" href="detalleUsuario.php"><i class="far fa-eye"></i></a> -->
-                            <a on class="cancel" href="../Controller/borrarUsuario.php?tabla=<?php echo "$user[usuarioId]" ?>"><i class="fas fa-ban"></i></a>
+                            <a on class="cancel" href="../Controller/ImprimirFactura.php?factId=<?php echo "$row[facturaId]" ?>"><i class="fas fa-file-pdf"></i></a>
                         </td>
                 
                         <?php  

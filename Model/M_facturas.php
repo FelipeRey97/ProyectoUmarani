@@ -25,10 +25,8 @@
         public function verFacturas(){
 
             $query = $this->fact->query("SELECT * FROM factura
-            JOIN productoporfactura
-            ON prodFact_FactId   = facturaId
-            JOIN articulo 
-            ON artId = prodFact_ArtId ");
+            JOIN tipopago
+            ON tipoPagoId = factura_tipoPagoId");
             
            
 
