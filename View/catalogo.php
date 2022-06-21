@@ -3,7 +3,7 @@ session_start();
 $sesionId= session_id();
 require "../Controller/mostrarCatalogo.php";
 require('../Controller/vercarrito.php');
-
+require_once("../Controller/buscador.php");
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,10 @@ require('../Controller/vercarrito.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
+
 <body>
     
     <link rel="stylesheet" href="../CSS/estilos.css">
@@ -56,7 +59,7 @@ require('../Controller/vercarrito.php');
                                   <form action="" class="cantidad">
                                        <label for="">Cantidad:</label>
                                        <p class="quantity">   <?php echo "$dat[artCarroCant]" ?></p>
-                                       <a class= "delete" href="../Controller/borrarCarrito.php?artId=<?php echo "$dat[artId]"?>&sesionId=<?php echo "$sesionId" ?>"><i class="far fa-window-close"></i></a>
+                                         <a class= "delete" href="../Controller/borrarCarrito.php?artId=<?php echo "$dat[artId]"?>&sesionId=<?php echo "$sesionId" ?>"><i class="far fa-window-close"></i></a>
                                   </form>
 
                         </div> 
@@ -80,7 +83,29 @@ require('../Controller/vercarrito.php');
                         <a href="#">BUSCAR EN EL SITIO</a> <a class="cerrar-buscador" href="#"> <i class="fas fa-times"></i></a>
                     </div>
                     <div class="middleSearchEngine">
-                        <input type="text" placeholder="Buscar Productos" >
+                        <form action="" method="post">
+                        <input onkeyup="buscar_ahora($('#buscar').val());" type="text" name="buscar" id="buscar" placeholder="Buscar Productos" >
+                        <div id="datos_buscador" class=" kartItem"> </div>
+                        </form>
+                        <script>
+                            function buscar_ahora(buscar){
+                            var parametros = {"buscar":buscar};
+                            $.ajax({
+                            data:parametros,
+                            type: 'POST',
+                            url: '../Controller/buscador.php',
+                            success: function(data){
+
+                                document.getElementById("datos_buscador").innerHTML = data;
+                            }
+                            })
+                            }
+
+                        </script>
+                            
+
+                        
+                        
                     </div>
                     <div class="bottomSearchEngine">
                         
@@ -215,6 +240,7 @@ require('../Controller/vercarrito.php');
 
 
     </div>
+    
 
     <script src="../JS/CartShop.js"></script>
     <script src="../JS/SearchEngine.js"></script>

@@ -166,6 +166,7 @@
                         margin: 10px 10px 0px 10px;
                         height: max-content;
                         border-bottom: 1px solid #8a8a8aad;
+
                     }
                         .middleSearchEngine input{
 
@@ -260,7 +261,14 @@
                     
                 }
                 
-        
+            .Buscar_contenedor{
+
+                display: flex;  
+                padding: 15px;
+                flex-wrap: wrap;
+                margin: 10px;
+                    
+             }
 
 
             .contenedor{
