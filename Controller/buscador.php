@@ -35,14 +35,16 @@ $conexion1 = mysqli_connect('localhost','root','','proyecto') or
 
     while($res = mysqli_fetch_array($resultados)){
     ?>
-        <div id="datos_buscador" class="Buscar_contenedor kartItem"> 
+        <div id="datos_buscador" class="Buscar_contenedor kartItem">  
         <div class="miniatura">
+        <a href="../Controller/DetalleArticulo.php?arId=<?php echo "$res[artId]"?>">
             <img src= " <?php echo "$res[artVista]"  ?>" alt="">
         </div>
         <div class="info">
             <h3 class="title"><?php echo "$res[artNombre]"  ?></h3>
-            <br> <p class="price" ><?php echo "$res[artPrecio]"  ?></p>
+            <br> <p class="price" >$ <?php echo "$res[artPrecio]"  ?></p>
         </div>
+        </a>
         </div>
         
     <?php
