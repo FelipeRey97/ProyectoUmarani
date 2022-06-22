@@ -125,9 +125,9 @@ require_once("../Controller/buscador.php");
                             
                          
                     ?>
-                        <a href="areaCliente.php">Mi perfil </a><br><br>
-                        <a href="#">Mis compras </a><br><br>
-                        <a href="#">cerrar Sesion </a><br><br>
+                        <a href="../View/areaCliente.php"><i class="fas fa-user-circle"></i> Mi perfil </a><br><br>
+                        <a href="../View/clientePedidos.php"><i class="fas fa-dolly"></i> Mis compras </a><br><br>
+                        <a href="../Controller/cerrarSesionCliente.php"><i class="fas fa-door-open"></i> cerrar Sesion </a><br><br>
                         
 
                         <?php
@@ -135,9 +135,9 @@ require_once("../Controller/buscador.php");
                             else{
 
                                 ?>
-                                <a href="iniciarSesion.php">Iniciar Sesion </a><br><br>
-                                <a href="registrarse.php">Registrarse </a><br><br>
-                                 <a href="#">Ayuda </a><br><br>
+                                <a href="iniciarSesion.php"><i class="fas fa-sign-in-alt"></i>  Iniciar Sesion </a><br><br>
+                                <a href="registrarse.php"><i class="fas fa-user-plus"></i> Registrarse </a><br><br>
+                                 <a href="../View/ayudaCliente.php"><i class="fas fa-question"></i>  Ayuda </a><br><br>
                             
                             <?php
 

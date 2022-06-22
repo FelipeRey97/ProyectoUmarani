@@ -240,14 +240,11 @@
                     height: max-content;
                     border-bottom: 1px solid #8a8a8aad;
                 }
-                    .middleAccountMenu input{
+                    .middleAccountMenu a{
 
-                        padding: 12px;
-                        width: 100%;
+                        text-decoration: none;
+                        color: rgb(75, 75, 75);
                         font-family: 'Open Sans', sans-serif;
-                        border: 1px solid rgba(77, 77, 77, 0.575);
-                        outline: 0px;
-                        font-size: 16px;
                     }
     
                 .bottomAccountMenu{

@@ -13,11 +13,11 @@
             $this->ped = new mysqli('localhost','root','','proyecto');
             
         }
-        public function insertarPedido($idFactura,$todaydate,$clienteId,$id,$total){
+        public function insertarPedido($idFactura,$todaydate,$clienteId,$id,$total,$direccionId){
 
 
-            $this->ped->query("INSERT INTO pedido(pedidoId,pedidoFechaInicio,pedidoClienteId,pedidoFacturaId,pedidoCostoTotal)
-            VALUES ('$id','$todaydate','$clienteId','$idFactura','$total')
+            $this->ped->query("INSERT INTO pedido(pedidoId,pedidoFechaInicio,pedidoClienteId,pedidoFacturaId,pedidoCostoTotal,pedidoDireccionId)
+            VALUES ('$id','$todaydate','$clienteId','$idFactura','$total',$direccionId)
             ") or die ("problemas en el select " . mysqli_error($ped));
 
             
@@ -25,8 +25,8 @@
         public function verPedido(){
 
             $query = $this->ped->query("SELECT * FROM pedido
-            JOIN factura
-            ON pedidoFacturaId = facturaId");
+            JOIN direccionpedido
+            ON direccionId = pedidoDireccionId");
             
            
             $retorno = [];
@@ -58,6 +58,8 @@
 
     }
 
+    $conexionPedido = mysqli_connect("localhost","root","","proyecto") 
+    or die ("problemas con la conexion");
 
 ?>
 

@@ -1,7 +1,7 @@
 <?php
 session_start();
-    require_once('../Controller/mostrarPedidos.php');
-   
+    require_once('../Controller/mostrarDetallePedido.php');
+    
 ?>
 
 <?php 
@@ -23,7 +23,7 @@ session_start();
     <title>Document</title>
 </head>
 <body>
-<link rel="stylesheet" href="../CSS/tiendaEstilos.css">
+<link rel="stylesheet" href="../CSS/productosEstilos.css">
 <script src="https://kit.fontawesome.com/f243ce0afc.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
@@ -55,67 +55,68 @@ session_start();
         </div>
         <div class="content">
         <header class="header">
-            <h1>Gestión de Pedidos</h1>
+            <h1>Pedido No. <?php echo "$id" ?></h1>
         </header>
         <section class="section">
 
             <div class="container">
-                <div class="registros">
+                <!-- <div class="registros">
                  <p> Mostrar  <select name="" id="">
                     <option value="">5</option>
                     <option value="">10</option>
                     <option value="">15</option>
                </select>  Registros </p>  
-                </div>
+                </div> -->
                 <div class="filtros" >
-                    <form action="">
-                        <label for="id">ID Usuario: </label>
-                        <input name="id" type="text" class="idpedido">
-                        <label for=""> Estado: </label>
-                        <select name="" id="">Estado
-                            <option value="">Activo</option>
-                            <option value="">Inactivo</option>
-                            <option value="">Bloqueado</option>
+                        <h1>Datos Pedido</h1><br><br>
+                        <p><b>Cliente: </b>  <?php echo "$nombre $apellido" ?></p><br>
+                        <p><b>Telefono: </b>   <?php echo "$telefono" ?>   </p><br>
+                        <p><b>Dirección: </b>  <?php echo "$direccion" ?> </p><br>
+                        <!-- <p><b>Método Pago: </b>  Contado </p><br> -->
+                        <p><b>Mail: </b>  andresfrey97@gmail.com </p><br>
+                        <p> <b> Ver Factura Asociada: </b><a class="cancel" href="../Controller/ImprimirFactura.php?factId=<?php echo "$id" ?>"> <i class="fas fa-file-pdf"></i></a><br> </p><br>
+                        <form action="../Controller/ordenDespacho.php" method="post"> 
+                        <label for="">Inserte el Codigo de envio: </label>
+                        <input type="text">
+                        <select name="" id="">
+                            <option value=""></option>
+
                         </select>
-                        <label for=""> Rol: </label>
-                        <select name="" id="">Estado
-                            <option value="">Todos</option>
-                            <option value="">Mayor a Menor</option>
-                        </select>
-                        <input class="searchButton" type="button" value="Buscar">
-                    </form>
+                        <input class="searchButton" type="submit" value="Guardar">
+                        </form><br><br>
+                        <h1>Detalle Pedido</h1><br>
                     <!-- <a href="../View/nuevoUsuario.php">Nuevo Usuario</a> -->
                 </div>
                 <table>
                     <tr>
-                        <th>ID</th>
-                        <th>Fecha Inicio</th>
-                        <th>Fecha Fin</th>
-                        <th>Estado</th>
-                        <th>Monto</th>
-                        <th>Departamento</th>
-                        <th>Ciudad/Municipio</th>
-                        <th>Acciones</th>
+                        <th>Codigo</th>
+                        <th>Cantidad</th>
+                        <th>Imagen</th>
+                        <th>Articulo</th>
+                        <th>Precio Unitario</th>
+                        <th>Costo Total</th>
+                        <!-- <th>Ciudad/Municipio</th>
+                        <th>Acciones</th> -->
                     </tr>
 
                      <?php
                         
                         // se muestran los datos de los usuarios almacenados en la variable $usuarios
-                        foreach($registros as $pedido){
+                        while($detPed = mysqli_fetch_array($detallePedido)){
                         
             
                      ?>
                     <tr class="información" >
-                        <td> <?php echo $pedido['pedidoId']   ?> </td>
-                        <td> <?php echo $pedido['pedidoFechaInicio']   ?></td>
-                        <td> <?php echo $pedido['pedidoFechaFin']   ?></td>
-                        <td> <?php echo $pedido['pedidoEstado']   ?></td>
-                        <td> <?php echo "$ " . $pedido['pedidoCostoTotal']   ?></td>
-                        <td> <?php echo $pedido['direccionDep']   ?></td>
-                        <td> <?php echo $pedido['direccionCiudad']   ?></td>
-                        <td>
-                            <a class="edit" href="../Controller/mostrarDetallePedido.php?ped=<?php echo "$pedido[pedidoId]" ?>"><i class="far fa-edit"></i></i></a>
-                            <a class="detail" href="detalleUsuario.php"><i class="far fa-eye"></i></a>
+                        <td> <?php echo $detPed['artId']   ?></td>
+                        <td> <?php echo $detPed['prodPedCant']   ?> </td>
+                        <td> <img src="<?php echo $detPed['artVista']   ?>" alt=""> </td>
+                        <td> <?php echo $detPed['artNombre']   ?></td>
+                        <td> <?php echo "$ " . $detPed['artPrecio']   ?></td>
+                        <td> <?php echo "$ " . $detPed['artPrecio'] * $detPed['prodPedCant']  ?></td>
+                        <!-- <td> <?php echo $detPed['direccionCiudad']   ?></td>
+                        <td> -->
+                            <!-- <a class="edit" href="DetalleUsuario.php?tabla=<?php echo "$user[usuarioId]" ?>"><i class="far fa-edit"></i></i></a>
+                            <a class="detail" href="detalleUsuario.php"><i class="far fa-eye"></i></a> -->
                             
                         </td>
                 

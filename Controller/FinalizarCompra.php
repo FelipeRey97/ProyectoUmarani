@@ -22,6 +22,9 @@ $clienteDoc = $_REQUEST['clienteDoc'];
 $tipoPago = $_REQUEST['tipoPago'];
 $sesionId = $_REQUEST['sesionId'];
 $dirC = $_REQUEST['direccionC'];
+$dpto = $_REQUEST['dpto'];
+$ciudad = $_REQUEST['ciudad'];
+$direccion = $_REQUEST['direccion'];
 $impuestoId = 1;
 $fact1 = new Factura ();
 $fact1->insertarFactura($clienteId,$todaydate,$total,$clienteDoc,$tipoPago,$dirC,$impuestoId);
@@ -38,9 +41,13 @@ while ($factId = mysqli_fetch_array($facturaId)){
 }
 
 $idFactura=  $id;
+$direccionId = $id;
+
+mysqli_query($conexionFactura,"INSERT INTO direccionpedido (direccionId,direccionDep,direccionCiudad,direccionDomicilio)
+VALUES ($direccionId,'$dpto','$ciudad','$direccion')");
 
 $gPedido = new Pedido ();
-$gPedido->insertarPedido($idFactura,$todaydate,$clienteId,$id,$total);
+$gPedido->insertarPedido($idFactura,$todaydate,$clienteId,$id,$total,$direccionId);
 
 $articulos = mysqli_query($conexionFactura,"SELECT * FROM carrito 
 JOIN articulo
@@ -52,6 +59,7 @@ while ($art = mysqli_fetch_array($articulos)){
     $articuloId = $art['artId'];
     $cantidad = $art['artCarroCant'];
     $precio = $art['artPrecio'];
+    $cantActual = $art['artCantidad'];
 
     mysqli_query($conexionFactura, "INSERT INTO productoporpedido (prodPed_artId,prodPed_pedidoId,prodPedCant,prodPedValorArt)
     VALUES ($articuloId,$id,$cantidad,$precio)") or die ("problemas en el insert");
@@ -59,7 +67,12 @@ while ($art = mysqli_fetch_array($articulos)){
     mysqli_query($conexionFactura, "INSERT INTO productoporfactura (prodFact_ArtId,prodFact_FactId,prodFactCantidad,prodFactPrecio)
     VALUES ($articuloId,$idFactura,$cantidad,$precio)") or die ("problemas en el insert");
 
+    mysqli_query($conexionFactura,"UPDATE articulo SET artCantidad = $cantActual - $cantidad 
+    WHERE artId = $articuloId");
+
 }
+
+
 
 
 mysqli_close($conexionFactura);

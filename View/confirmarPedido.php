@@ -151,6 +151,9 @@ $direccionCompleta = $_REQUEST['direccion'] ." ". $_REQUEST['detdireccion'] . " 
                      <input type="hidden" name="tipoPago" value="<?php echo "$tipoPago" ?>">
                      <input type="hidden" name="sesionId" value="<?php echo "$sesionId" ?>">
                      <input type="hidden" name="direccionC" value="<?php echo "$direccionCompleta" ?>">
+                     <input type="hidden" name="dpto" value="<?php echo "$dpto" ?>">
+                     <input type="hidden" name="ciudad" value="<?php echo "$ciudad" ?>">
+                     <input type="hidden" name="direccion" value="<?php echo "$direccion" ?>">
                     <input class="ctrl" type="submit" value="Realizar Pedido">
                 </form>
             </div>
