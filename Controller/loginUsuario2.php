@@ -36,6 +36,7 @@
         $_SESSION['doc'] = $filas['usuarioDoc'];
         $_SESSION['apellido'] = $filas['usuarioApellido'];
         $_SESSION['rol'] = $filas['rolNombre'];
+        $_SESSION['usuarioId'] = $filas['usuarioId'];
     }
     else{
         ?>

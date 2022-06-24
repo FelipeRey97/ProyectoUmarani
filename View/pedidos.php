@@ -90,7 +90,7 @@ session_start();
                     <tr>
                         <th>ID</th>
                         <th>Fecha Inicio</th>
-                        <th>Fecha Fin</th>
+                        <th>Fecha Estado</th>
                         <th>Estado</th>
                         <th>Monto</th>
                         <th>Departamento</th>
@@ -114,8 +114,20 @@ session_start();
                         <td> <?php echo $pedido['direccionDep']   ?></td>
                         <td> <?php echo $pedido['direccionCiudad']   ?></td>
                         <td>
-                            <a class="edit" href="../Controller/mostrarDetallePedido.php?ped=<?php echo "$pedido[pedidoId]" ?>"><i class="far fa-edit"></i></i></a>
-                            <a class="detail" href="detalleUsuario.php"><i class="far fa-eye"></i></a>
+                            <?php if($pedido['pedidoEstado'] == 'Pendiente'){ ?>
+                                   <a class="edit" href="../Controller/mostrarDetallePedido.php?ped=<?php echo "$pedido[pedidoId]" ?>"><i class="far fa-edit"></i></i></a>
+                                   <?php if($_SESSION['rol'] == 'ADMINISTRADOR'){ ?>
+                                    <a class="detail" href="../Controller/mostrarDetallePedido.php?vis=<?php echo "$pedido[pedidoId]" ?>"><i class="far fa-eye"></i></a>
+                                    <?php  }    ?>
+                             <?php  }else { ?>
+                                <?php if($_SESSION['rol'] == 'ADMINISTRADOR'){ ?>
+                                    <a class="edit" href="../Controller/mostrarDetallePedido.php?ped=<?php echo "$pedido[pedidoId]" ?>"><i class="far fa-edit"></i></i></a>
+                                    <?php  }    ?>
+                                 <a class="detail" href="../Controller/mostrarDetallePedido.php?vis=<?php echo "$pedido[pedidoId]" ?>"><i class="far fa-eye"></i></a>
+                                 
+                                 <?php }?>
+                            
+                           
                             
                         </td>
                 

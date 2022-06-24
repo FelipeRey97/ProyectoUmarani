@@ -64,29 +64,25 @@ session_start();
             <div class="container">
                 
                 <div class="filtros" >
-                        <h1>Datos Pedido</h1><br><br>
+                        <h1>Datos Cliente</h1><br><br>
                         <p><b>Cliente: </b>  <?php echo "$nombre $apellido" ?></p><br>
                         <p><b>Telefono: </b>   <?php echo "$telefono" ?>   </p><br>
                         <p><b>Dirección: </b>  <?php echo "$direccion" ?> </p><br>
                         <!-- <p><b>Método Pago: </b>  Contado </p><br> -->
                         <p><b>Mail: </b>  andresfrey97@gmail.com </p><br>
                         <p> <b> Ver Factura Asociada: </b><a class="cancel" href="../Controller/ImprimirFactura.php?factId=<?php echo "$id" ?>"> <i class="fas fa-file-pdf"></i></a><br> </p><br>
-                        <!-- Se prepara formulario para ingresar la orden de Envio -->
-                        <form action="../Controller/ordenDespacho.php" method="post"> 
-                        <label for="">Inserte el Código de envio: </label>
-                        <input type="text" name="despachoId">
-                        <select name="empresaId" id="">
-                            <?php while($emp = mysqli_fetch_array($empresaenvio)) {  ?>
-                            <option value="<?php echo "$emp[empresaId]"  ?> "> <?php echo "$emp[empresaNombre]" ?> </option>
-                            <?php  }  ?>
-                        </select>
-                        <input type="hidden" value="<?php echo "$id" ?>" name="pedidoId">
-                        <input type="hidden" value="<?php echo "$_SESSION[usuarioId]" ?>" name="usuarioId">
-                        <input type="hidden" value="<?php echo "$date" ?>" name="date">
-                        <input class="searchButton" type="submit" value="Guardar">
-                        </form><br><br> 
-                        <!-- Detalle del pedido con los productos y su cantidad solicitada por el cliente  -->
+                        <!-- Se muestran los datos del gestor  -->
+                      <?php  if(isset($cGuia)) {   ?>
+                        <h1>Datos de Gestor</h1> <br>
+                        <p><b>Codigo:</b> <?php echo "$uCodigo" ?> </p><br>
+                        <p><b>Nombre:</b> <?php echo "$uNombre $uApellido" ?></p><br>
+                        <h1>Datos de Envío</h1> <br>
+                        <p><b>Empresa:</b> <?php echo "$eLogistica" ?></p><br>
+                        <p><b>Número de Guía:</b> <?php echo "$cGuia" ?></p><br>
+                        <?php    }   ?><!-- Detalle del pedido con los productos y su cantidad solicitada por el cliente  -->
                         <h1>Detalle Pedido</h1><br>
+                        <p><b>Estado:</b> <?php if(isset($pedEstado)) {echo "$pedEstado"; } else {echo"Pendiente";} ?> </p><br>
+                        <p><b>Fecha Envio:</b> <?php if(isset($estadoFecha)) {echo "$estadoFecha"; } else {echo"";} ?> </p><br>
                     <!-- <a href="../View/nuevoUsuario.php">Nuevo Usuario</a> -->
                 </div>
                 <table>
@@ -103,7 +99,7 @@ session_start();
 
                      <?php
                         
-                        // se muestran los datos de los usuarios almacenados en la variable $usuarios
+                        // se muestran los datos de los articulos solicitados en el pedido
                         while($detPed = mysqli_fetch_array($detallePedido)){
                         
             

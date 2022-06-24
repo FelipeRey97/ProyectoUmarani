@@ -26,7 +26,8 @@
 
             $query = $this->ped->query("SELECT * FROM pedido
             JOIN direccionpedido
-            ON direccionId = pedidoDireccionId");
+            ON direccionId = pedidoDireccionId
+            ORDER BY pedidoId DESC");
             
            
             $retorno = [];
