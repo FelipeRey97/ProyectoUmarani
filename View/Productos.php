@@ -43,10 +43,11 @@ session_start();
             </div>
             <nav class="secciones">
                 <a href="">Inicio</a>
-                <!-- <a href="#">Productos</a> -->
+                 <a href="../View/Productos.php">Productos</a> 
                 <a href="../View/pedidos.php">Pedidos</a>
+                <?php if($_SESSION['rol'] == 'ADMINISTRADOR')  { ?>
                 <a href="../View/Usuarios.php">Usuarios</a>
-                <a href="../View/adminClientes.php">Clientes</a>
+                <a href="../View/adminClientes.php">Clientes</a> <?php } ?>
                 <a href="../View/PQRS.php">PQRS</a>
                 <a href="../Controller/cerrarSesion.php">Cerrar Sesión</a>
             </nav>
@@ -89,7 +90,7 @@ session_start();
                         </select>
                         <input class="searchButton" type="button" value="Buscar">
                     </form>
-                    <a href="../View/NuevoProducto.php">Nuevo Producto</a>
+                    <a class="edit" href="../View/NuevoProducto.php">Nuevo Producto</a>
                 </div>
                 <table>
                     <tr>
@@ -125,8 +126,9 @@ session_start();
                         <td>
                         <a class="edit" href="editarProducto.php?aId=<?php echo "$producto[artId]" ?>"><i class="far fa-edit"></i></i></a>
                         <a class="detail" href="#"><i class="far fa-eye"></i></a>
+                        <?php if($_SESSION['rol'] == 'ADMINISTRADOR')  { ?>
                         <a on class="cancel" href="../Controller/borrarArticulo.php?aId=<?php echo "$producto[artId]" ?>"><i class="fas fa-ban"></i></a>
-                        </td>
+                        </td> <?php } ?>
                 
                         <?php  
                             

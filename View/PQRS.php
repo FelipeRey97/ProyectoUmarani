@@ -1,4 +1,6 @@
-<?php  require_once('../Controller/mostrarPQRS.php'); ?>
+<?php  
+session_start();
+require_once('../Controller/mostrarPQRS.php'); ?>
 
 
 <!DOCTYPE html>
@@ -24,14 +26,15 @@
                 <h1>Tienda Web Umarani</h1>
             </div>
             <div class="usuario">
-                <h4>Nombre de Usuario</h4>
-                <h5>Administrador</h5>
+            <h4><?php echo "$_SESSION[rol] "; ?></h4>
+             <h5><?php echo "$_SESSION[nombre] $_SESSION[apellido] "; ?></h5>
             </div>
             <nav class="secciones">
                 <a href="#">Inicio</a>
                 <a href="../View/Productos.php">Productos</a>
-                <a href="../View/pedidos.php">Pedidos</a>
+                <?php if($_SESSION['rol'] == 'ADMINISTRADOR')  { ?>
                 <a href="../View/Usuarios.php">Usuarios</a>
+                <a href="../View/adminClientes.php">Clientes</a> <?php } ?>
                 <a href="adminClientes.php">Clientes</a>
                 <!-- <a href="../View/PQRS.php">PQRS</a> <br><br><br> -->
                 <a href="../Controller/cerrarSesion.php">Cerrar Sesión</a>
@@ -101,7 +104,6 @@
                         <td>
                             <a class="edit" href="#"><i class="far fa-edit"></i></i></a>
                             <a class="detail" href="#"><i class="far fa-eye"></i></a>
-                            <a class="cancel" href="#"><i class="fas fa-ban"></i></a>
                         </td>
                     </tr>
                     <?php  } ?>
