@@ -35,8 +35,8 @@ require_once('../Controller/mostrarPQRS.php'); ?>
                 <?php if($_SESSION['rol'] == 'ADMINISTRADOR')  { ?>
                 <a href="../View/Usuarios.php">Usuarios</a>
                 <a href="../View/adminClientes.php">Clientes</a> <?php } ?>
-                <a href="adminClientes.php">Clientes</a>
-                <!-- <a href="../View/PQRS.php">PQRS</a> <br><br><br> -->
+                <a href="../View/Pedidos.php">Pedidos</a>
+                 <a href="../View/PQRS.php">PQRS</a> <br><br><br> 
                 <a href="../Controller/cerrarSesion.php">Cerrar Sesión</a>
             </nav>
         </div>
@@ -98,7 +98,7 @@ require_once('../Controller/mostrarPQRS.php'); ?>
                         <td><?php echo $reg['pqrsId'] ?></td>
                         <td><?php echo $reg['pqrsNombre'] ?></td>
                         <td><?php echo $reg['pqrsTelefono'] ?></td>
-                        <td><?php echo $reg['pqrsTiNombre'] ?></td>
+                        <td><?php echo $reg['pqrsTipoNombre'] ?></td>
                         <td><?php echo $reg['pqrsFecha'] ?></td>
                         <td><?php echo $reg['pqrsEstado'] ?></td>
                         <td>

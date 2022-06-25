@@ -46,7 +46,7 @@
         </header>
         <section class="section">
         <?php  
-        
+         
         $fecha=date("Y/m/d");
         
         ?>
@@ -61,13 +61,13 @@
                 <input class="control" type="text" required name="pMail" >  <br>
                 <label for="">Télefono de contacto*:</label><br>
                 <input class="control" type="text" required name="ptelefono">  <br>
-                <!-- <label for="">Número del pedido*:</label><br>
-                <input class="control" type="text" name="pNumero"><br> -->
+                <label for="">Número del pedido*:</label><br>
+                <input class="control" type="text" name="pNumero"><br>
                 <label for="">Imagen del producto donde se evidencie el problema de calidad:</label><br>
                 <input class="control" type="file"   name="pImagen"><br>
                 <label for="">Coméntanos lo sucedido*:</label><br>
                 <textarea class="control" name="pComentario"></textarea><br>
-                <input type="hidden" value="<?php $_REQUEST['pqTipo'] ?>" name=tipoId >
+                <input type="hidden" value="<?php echo "$_REQUEST[pqTipo]" ?>" name=tipoId >
                 <input type="hidden" value="<?php echo "$fecha"; ?>" name=pFecha >
                 <input class="boton-iniciarSesion" type="submit" value="Enviar">
             </form>

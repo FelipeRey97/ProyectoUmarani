@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bitter&family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bitter&family=Lobster&family=Shadows+Into+Light&display=swap" rel="stylesheet">
 
-    <div class="padre">
+    <div class="padre"> 
         <header class="header">
             <div class="contacto">
                <a href="#"> <i class="fas fa-search"></i></a>
@@ -67,7 +67,7 @@
                 <input class="control" type="file"   name="pImagen"><br> -->
                 <label for="">Escribe tu mensaje*:</label><br>
                 <textarea class="control" name="pComentario"></textarea><br>
-                <input type="hidden" value="<?php $_REQUEST['pqTipo'] ?>" name=tipoId >
+                <input type="hidden" value="<?php echo "$_REQUEST[pqTipo]" ?>" name=tipoId >
                 <input type="hidden" value="<?php echo "$fecha"; ?>" name=pFecha >
                 <input class="boton-iniciarSesion" type="submit" value="Enviar">
             </form>

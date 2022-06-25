@@ -13,10 +13,12 @@
 <?php
 
 
-require('../Model/M_PQRS.php');
+require_once('../Model/M_PQRS.php');
 
 $pq = new PQRS();
 
+$tipo = $_REQUEST['tipoId'];
+echo "$tipo";
 
 $clienteId = false;
 
@@ -35,66 +37,206 @@ $clienteId = false;
 
      }
  }
- 
+
+if(isset($_FILES['pImagen'])){
+
 $nombre_imagen = $_FILES['pImagen']['name'];
 $temporal = $_FILES['pImagen']['tmp_name'];
 $carpeta = "../Uploads/ReclamoImagen";
 $ruta = $carpeta.'/'.$nombre_imagen;
 
-move_uploaded_file($temporal,$carpeta.'/'.$nombre_imagen);
+}
 
 
-if ($clienteId == false){
+switch($tipo) {
 
+case 1:
+
+    move_uploaded_file($temporal,$carpeta.'/'.$nombre_imagen);
+
+
+    if ($clienteId == false){
+    
+        ?>
+        <script>
+        swal("Atención", "El email registrado no corresponde a ningun cliente", "warning");
+        </script>
+        <?php
+    
+    }
+    
+    
+    else if($_REQUEST['pNombre'] != "" && $_REQUEST['pMail'] != "" && $_REQUEST['ptelefono'] != "" && $_REQUEST['pComentario'] != ""
+    && $_REQUEST['tipoId'] !="" && $_REQUEST['pFecha'] !="" && $_REQUEST['pNumero'] !="" && $clienteId != false ){
+    
+    
+    $pNombre = $_REQUEST['pNombre'];
+    $pMail = $_REQUEST['pMail'];
+    $ptelefono = $_REQUEST['ptelefono'];
+    $pComentario = $_REQUEST['pComentario'];
+    $tipoId = $_REQUEST['tipoId'];
+    $pFecha = $_REQUEST['pFecha'];
+    $pedidoId = $_REQUEST['pNumero'];
+    
+    
+    $pq->insertarPqrs1($pNombre,$pMail,$ptelefono,$pComentario,$tipoId,$pFecha,$ruta,$clienteId,$pedidoId);
     ?>
     <script>
-    swal("Atención", "El email registrado no corresponde a ningun cliente", "warning");
+        swal("Operación Realizada", "Se ha generado la Petición Satisfactoriamente!", "success");
+    </script>
+    
+    <?php
+     
+    
+    }
+    else{
+    
+    ?>
+    <script>
+    swal("Atención", "Por favor complete todos los campos", "warning");
     </script>
     <?php
+    
+    }
+    
+    
+    $leerPqrs = mysqli_query($conexion,"SELECT * FROM pqrs 
+    JOIN pqrstipo
+    ON pqrsOrigenId = pqrsTipoId
+    WHERE pqrsId IN (SELECT max(pqrsId) FROM pqrs)");
+
+    while($lpqrs = mysqli_fetch_array($leerPqrs)){
+
+        $pqrsId = $lpqrs['pqrsId'];
+        $pqrsTipo = $lpqrs['pqrsTipoNombre'];
+    }
+
+    header("refresh:1;url=http://localhost/umaraniweb/view/ayudaClienteFin.php?Id=$pqrsId&Tipo=$pqrsTipo");
+
+
+    break;
+
+case 2:
+
+
+    if ($clienteId == false){
+    
+        ?>
+        <script>
+        swal("Atención", "El email registrado no corresponde a ningun cliente", "warning");
+        </script>
+        <?php
+    
+    }
+    
+    
+    else if($_REQUEST['pNombre'] != "" && $_REQUEST['pMail'] != "" && $_REQUEST['ptelefono'] != "" && $_REQUEST['pComentario'] != ""
+    && $_REQUEST['tipoId'] !="" && $_REQUEST['pFecha'] !="" && $_REQUEST['pNumero'] !="" && $clienteId != false ){
+    
+    
+    $pNombre = $_REQUEST['pNombre'];
+    $pMail = $_REQUEST['pMail'];
+    $ptelefono = $_REQUEST['ptelefono'];
+    $pComentario = $_REQUEST['pComentario'];
+    $tipoId = $_REQUEST['tipoId'];
+    $pFecha = $_REQUEST['pFecha'];
+    $pedidoId = $_REQUEST['pNumero'];
+    
+    
+    $pq->insertarPqrs2($pNombre,$pMail,$ptelefono,$pComentario,$tipoId,$pFecha,$clienteId,$pedidoId);
+    ?>
+    <script>
+        swal("Operación Realizada", "Se ha generado la Petición Satisfactoriamente!", "success");
+    </script>
+    
+    <?php
+     
+    
+    }
+    else{
+    
+    ?>
+    <script>
+    swal("Atención", "Por favor complete todos los campos", "warning");
+    </script>
+    <?php
+    
+    }
+    
+    
+    $leerPqrs = mysqli_query($conexion,"SELECT * FROM pqrs 
+    JOIN pqrstipo
+    ON pqrsOrigenId = pqrsTipoId
+    WHERE pqrsId IN (SELECT max(pqrsId) FROM pqrs)");
+
+    while($lpqrs = mysqli_fetch_array($leerPqrs)){
+
+        $pqrsId = $lpqrs['pqrsId'];
+        $pqrsTipo = $lpqrs['pqrsTipoNombre'];
+    }
+
+    header("refresh:1;url=http://localhost/umaraniweb/view/ayudaClienteFin.php?Id=$pqrsId&Tipo=$pqrsTipo");
+
+
+
+    break;
+
+
+
+case 3:
+
+    
+    if($_REQUEST['pNombre'] != "" && $_REQUEST['pMail'] != "" && $_REQUEST['ptelefono'] != "" && $_REQUEST['pComentario'] != ""
+    && $_REQUEST['tipoId'] !="" && $_REQUEST['pFecha'] !="" ){
+    
+    
+    $pNombre = $_REQUEST['pNombre'];
+    $pMail = $_REQUEST['pMail'];
+    $ptelefono = $_REQUEST['ptelefono'];
+    $pComentario = $_REQUEST['pComentario'];
+    $tipoId = $_REQUEST['tipoId'];
+    $pFecha = $_REQUEST['pFecha'];
+    
+    
+    $pq->insertarPqrs3($pNombre,$pMail,$ptelefono,$pComentario,$tipoId,$pFecha);
+    ?>
+    <script>
+        swal("Operación Realizada", "Se ha generado la Petición Satisfactoriamente!", "success");
+    </script>
+    
+    <?php
+     
+    
+    }
+    else{
+    
+    ?>
+    <script>
+    swal("Atención", "Por favor complete todos los campos", "warning");
+    </script>
+    <?php
+    
+    }
+
+    $leerPqrs = mysqli_query($conexion,"SELECT * FROM pqrs 
+    JOIN pqrstipo
+    ON pqrsOrigenId = pqrsTipoId
+    WHERE pqrsId IN (SELECT max(pqrsId) FROM pqrs)");
+
+    while($lpqrs = mysqli_fetch_array($leerPqrs)){
+
+        $pqrsId = $lpqrs['pqrsId'];
+        $pqrsTipo = $lpqrs['pqrsTipoNombre'];
+    }
+
+    header("refresh:1;url=http://localhost/umaraniweb/view/ayudaClienteFin.php?Id=$pqrsId&Tipo=$pqrsTipo");
+    break;
+    
 
 }
 
 
-else if($_REQUEST['pNombre'] != "" && $_REQUEST['pMail'] != "" && $_REQUEST['ptelefono'] != "" && $_REQUEST['pComentario'] != ""
-&& $_REQUEST['tipoId'] !="" && $_REQUEST['pFecha'] !="" && $clienteId != false ){
 
-
-$pNombre = $_REQUEST['pNombre'];
-$pMail = $_REQUEST['pMail'];
-$ptelefono = $_REQUEST['ptelefono'];
-$pComentario = $_REQUEST['pComentario'];
-$tipoId = $_REQUEST['tipoId'];
-$pFecha = $_REQUEST['pFecha'];
-// $pNumero = $_REQUEST['pNumero'];
-
-
-$pq->insertarPqrs($pNombre,$pMail,$ptelefono,$pComentario,$tipoId,$pFecha,$ruta,$clienteId);
-?>
-<script>
-    swal("Operación Realizada", "Se ha guardado el Usuario Satisfactoriamente!", "success");
-</script>
-
-<?php
- 
-
-}
-else{
-
-?>
-<script>
-swal("Atención", "Por favor complete todos los campos", "warning");
-</script>
-<?php
-
-}
-
-
-// mysqli_query($conexion,"insert into pqrs (pqrsNombre,pqrsMail,pqrsTelefono,pqrsDescripcion,pqrsOrigenId,pqrsFecha,pqrsClienteId,pqrsPedidoId,pqrsImagen)
-// values('$_REQUEST[pNombre]','$_REQUEST[pMail]','$_REQUEST[ptelefono]','$_REQUEST[pComentario]',$_REQUEST[tipoId],'$_REQUEST[pFecha]',
-// $clienteId,$_REQUEST[pNumero],'$ruta')");
-
-
- require_once('../View/formGarantia.php');
 
 ?>
 

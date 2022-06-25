@@ -1,11 +1,9 @@
 <?php
 session_start();
-?>
+$sesionId= session_id();
+// require "../Controller/FinalizarCompra.php";
+require('../Controller/vercarrito.php');
 
-
-<?php 
-    $conexion = mysqli_connect("localhost","root","","proyecto") 
-    or die ("problemas con la conexion");
 
 ?>
 
@@ -18,8 +16,8 @@ session_start();
     <title>Document</title>
 </head>
 <body>
-    <!-- Hola mundo -->
-    <link rel="stylesheet" href="../CSS/ayudaCliente.css">
+    
+    <link rel="stylesheet" href="../CSS/CompraFin.css">
     <script src="https://kit.fontawesome.com/f243ce0afc.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
@@ -28,28 +26,56 @@ session_start();
 
     <div class="padre">
         <header class="header">
-            <div class="contacto">
-                <a class="accountButton"  href="#"> <i class="fas fa-user"></i></a>
+        <div class="contacto">
                <a class="searchButton" href="#"> <i class="fas fa-search"></i></a>
+                <a class="accountButton" href="#"><i class="fas fa-user"></i></a>
                 <a class="kartButton" href="#"><i class="fas fa-shopping-bag"></i></a>
             </div>
+            <!-- Carro de compras  -->
             <div class="kartOpacity ocultar">
                 <div class="carrito "  > 
                     <div class="top">
                         <a href="#">Carrito de Compras</a> <a class="cerrar-carrito" href="#"> <i class="fas fa-times"></i> </a>
                     </div>
+
                     <div class="middle">
-    
+                    <?php 
+                    $total = 0;
+                    while($dat = mysqli_fetch_array($datos)) {  
+
+                        
+                    ?>
+                        <div class="contenedor kartItem">
+                       
+                                  <div class="miniatura">
+                                      <img src= " <?php echo "$dat[artVista]"  ?>" alt="">
+                                  </div>
+                                  <div class="info">
+                                      <h3 class="title"><?php echo "$dat[artNombre]"  ?></h3>
+                                      <br> <p class="price" ><?php $costo = $dat['artPrecio'] * $dat['artCarroCant']; echo "$costo";  ?></p>
+                                  </div>
+                                  <form action="" class="cantidad">
+                                       <label for="">Cantidad:</label>
+                                       <p class="quantity">   <?php echo "$dat[artCarroCant]" ?></p>
+                                       <a class= "delete" href="../Controller/borrarCarrito.php?artId=<?php echo "$dat[artId]"?>&sesionId=<?php echo "$sesionId" ?>"><i class="far fa-window-close"></i></a>
+                                  </form>
+
+                        </div> 
+                        <?php 
+                       $total = $total + $costo; }
+                     ?>
                     </div>
+
                     <div class="bottom">
-                        <div class="infoTotal"><P class="shopTotal">$0</P>
-                             <a class="buy-button" href="#">Ver Carrito</a>
+                        <div class="infoTotal"><P class="shopTotal">TOTAL: $ <?php echo "$total" ?></P>
+                             <a class="buy-button" href="../View/checkout.php">Checkout</a>
                         </div>
                     </div>
                
                 </div>
             </div>
-            <div class="searchOpacity ocultar ">
+            <!-- Apertura para la busqueda -->
+            <div class="searchOpacity ocultar "> 
                 <div class="searchEngine "  > 
                     <div class="topSearchEngine">
                         <a href="#">BUSCAR EN EL SITIO</a> <a class="cerrar-buscador" href="#"> <i class="fas fa-times"></i></a>
@@ -76,7 +102,7 @@ session_start();
                          
                     ?>
                         <a href="../View/areaCliente.php">Mi perfil </a><br><br>
-                        <a href="../View/clientePedidos.php">Mis compras </a><br><br>
+                        <a href="../view/clientePedidos.php">Mis compras </a><br><br>
                         <a href="../Controller/cerrarSesionCliente.php">cerrar Sesion </a><br><br>
                         
 
@@ -86,7 +112,7 @@ session_start();
 
                                 ?>
                                 <a href="../View/iniciarSesion.php">Iniciar Sesion </a><br><br>
-                                <a href="../View/Registrarse.php">Registrarse </a><br><br>
+                                <a href="../View/registarse.php">Registrarse </a><br><br>
                                  <a href="../View/ayudaCliente.php">Ayuda </a><br><br>
                             
                             <?php
@@ -101,38 +127,33 @@ session_start();
                
                 </div>
             </div>
-           
+                
                 <div class="logo">
                     <a href="#"><img src="../Uploads/logo.png" alt=""></a>
                     
                 </div>
                
-            
+                
             <div class="menu">
-                <b><a href="#">Inicio</a></b>
-                <b><a href="Collares.php">Collares</a></b>
-                <b><a href="Pulseras.php">Pulseras</a></b>
-                <b><a href="anillos.php">Anillos</a></b>
-                <b><a href="Nosotros.php">Nosotros</a></b>
+                <b><a href="../View/catalogo.php">Inicio</a></b>
+                <b><a href="../WebUmarani/Collares.html">Collares</a></b>
+                <b><a href="../WebUmarani/Pulseras.html">Pulseras</a></b>
+                <b><a href="../WebUmarani/anillos.html">Anillos</a></b>
+                <b><a href="../WebUmarani/anillos.html">Nosotros</a></b>
                 <!-- <a href="#">Ofertas</a> -->
 
             </div>
         </header>
         <section class="section">
-
-             <h1>Hola, ¿Cómo te podemos ayudar?</h1><br><br>
-             <div class="contentLinks">
-                <a href="../View/formGarantia.php?pqTipo=1">Necesito reportar una <br><br> <b>Garantia </b> </a>
-                <a href="../view/formErrorPedido.php?pqTipo=2">Necesito reportar un<br><br> <b>Error en mi Pedido</b></a>
-                <!-- <a href="">Quiero comprar<br><br> <b>Al por Mayor</b></a> -->
-                <a href="../View/formConsulta.php?pqTipo=3">Quiero hacer una <br><br> <b>Pregunta General</b></a>
-
-             </div>
-             
-
-
+                <h1>¡Hemos registrado tu solicitud!</h1><br><br>
+                <p>Hemos registrado tu solicitud de <b> <?php echo "$_REQUEST[Tipo]";  ?>.</b> Estarás reicibiendo la respuesta vía Mail. 
+                <br><br> El numero de tu solicitud es: </p><br><br>
+                <p><b> <?php echo "$_REQUEST[Id]";  ?> </b> </p><br><br>
+                <a href="../View/catalogo.php">Volver a la tienda</a><br><br><br>
+                <!-- <a href="../Controller/ImprimirFactura.php?factId=<?php echo $_REQUEST['pedidoId']?>">Imprimir Factura</a><br><br> -->
+        
         </section>
-         <footer class="footer">
+        <footer class="footer">
             <div class="informacion">
                 <div class="servicio">
                     <h1>Servicio al cliente</h1>
@@ -161,12 +182,11 @@ session_start();
         </footer>
 
 
-
-
     </div>
 
-    <script src="../WebUmarani/JS/ShopingCart.js"></script>
-    <script src="../WebUmarani/JS/SearchEngine.js"></script>
+    <script src="../JS/CartShop.js"></script>
+    <script src="../JS/SearchEngine.js"></script>
     <script src="../JS/accountMenu.js"></script>
 </body>
 </html>
+
