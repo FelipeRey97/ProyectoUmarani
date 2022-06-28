@@ -318,19 +318,20 @@ CREATE TABLE `pqrs` (
   `pqrsMail` varchar(200) NOT NULL,
   `pqrsDescripcion` text NOT NULL,
   `pqrsTelefono` varchar(12) NOT NULL,
-  `pqrsEstado` varchar(30) NOT NULL,
+  `pqrsEstado` varchar(30) NOT NULL DEFAULT 'Pendiente',
   `pqrsFecha` date NOT NULL,
-  `pqrsClienteId` int(11) NOT NULL,
-  `pqrsUsuarioId` int(11) NOT NULL,
+  `pqrsClienteId` int(11) DEFAULT NULL,
+  `pqrsUsuarioId` int(11) DEFAULT NULL,
   `pqrsOrigenId` int(11) NOT NULL,
+  `pqrsPedidoId` int(11) DEFAULT NULL,
+  `pqrsImagen` varchar(250) NOT NULL,
   PRIMARY KEY (`pqrsId`),
-  KEY `fk_pqrsClienteId` (`pqrsClienteId`),
   KEY `fk_pqrsUsuarioId` (`pqrsUsuarioId`),
   KEY `fk_pqrsOrigenId` (`pqrsOrigenId`),
   CONSTRAINT `fk_pqrsClienteId` FOREIGN KEY (`pqrsClienteId`) REFERENCES `cliente` (`clienteId`),
   CONSTRAINT `fk_pqrsOrigenId` FOREIGN KEY (`pqrsOrigenId`) REFERENCES `pqrstipo` (`pqrsTipoId`),
   CONSTRAINT `fk_pqrsUsuarioId` FOREIGN KEY (`pqrsUsuarioId`) REFERENCES `usuariotienda` (`usuarioId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -339,6 +340,7 @@ CREATE TABLE `pqrs` (
 
 LOCK TABLES `pqrs` WRITE;
 /*!40000 ALTER TABLE `pqrs` DISABLE KEYS */;
+INSERT INTO `pqrs` VALUES (1,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','quiero realizar una consulta','3154272647','Atendida','2022-06-24',NULL,NULL,3,NULL,''),(2,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','mi pedido esta demorado.','3154272647','Atendida','2022-06-24',1,NULL,2,15,''),(3,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','mi anillo llego malo','3154272647','Pendiente','2022-06-24',1,NULL,1,15,'../Uploads/ReclamoImagen/26.jpg'),(4,'ANDRES FELIPE REY PINO','ledypino@outlook.com','quiero realizar una consulta','3154272647','Pendiente','2022-06-25',NULL,NULL,3,NULL,''),(5,'ANDRES FELIPE REY PINO','ledypino@outlook.com','quiero realizar una consulta','3154272647','Pendiente','2022-06-25',NULL,NULL,3,NULL,''),(6,'ANDRES FELIPE REY PINO','ledypino@outlook.com','quiero realizar una consulta','3154272647','Pendiente','2022-06-25',NULL,NULL,3,NULL,''),(7,'ANDRES FELIPE REY PINO','ledypino@outlook.com','quiero realizar una consulta','3154272647','Pendiente','2022-06-25',NULL,NULL,3,NULL,''),(8,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','el anillo ha llegado con defectos','3154272647','Pendiente','2022-06-25',1,NULL,1,15,'../Uploads/ReclamoImagen/27.jpg'),(9,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','El anillo me ha llegado con defectos','3154272647','Pendiente','2022-06-25',1,NULL,1,15,'../Uploads/ReclamoImagen/28.jpg'),(10,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','El pedido está demorado de hace una semana. ','3154272647','Pendiente','2022-06-25',1,NULL,2,15,'');
 /*!40000 ALTER TABLE `pqrs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -374,17 +376,15 @@ DROP TABLE IF EXISTS `productoporfactura`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `productoporfactura` (
-  `prodFactId` int(11) NOT NULL AUTO_INCREMENT,
   `prodFact_ArtId` int(11) NOT NULL,
   `prodFact_FactId` int(11) NOT NULL,
   `prodFactCantidad` int(11) NOT NULL,
   `prodFactPrecio` int(11) NOT NULL,
-  PRIMARY KEY (`prodFactId`),
   KEY `fk_prodFact_ArtId` (`prodFact_ArtId`),
   KEY `fk_prodFact_FactId` (`prodFact_FactId`),
   CONSTRAINT `fk_prodFact_ArtId` FOREIGN KEY (`prodFact_ArtId`) REFERENCES `articulo` (`artId`),
   CONSTRAINT `fk_prodFact_FactId` FOREIGN KEY (`prodFact_FactId`) REFERENCES `factura` (`facturaId`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -393,7 +393,7 @@ CREATE TABLE `productoporfactura` (
 
 LOCK TABLES `productoporfactura` WRITE;
 /*!40000 ALTER TABLE `productoporfactura` DISABLE KEYS */;
-INSERT INTO `productoporfactura` VALUES (1,1,3,1,15000),(2,1,4,1,15000),(3,2,4,1,25000),(4,3,7,1,30000),(5,3,9,1,30000),(6,4,9,1,145000),(7,3,10,1,30000),(8,2,10,1,25000),(9,2,11,2,25000),(10,3,11,1,30000),(11,4,11,3,145000),(12,7,11,1,25000),(13,2,12,2,25000),(14,1,12,3,15000),(15,5,12,1,40000),(16,9,12,1,25000),(17,10,13,1,27000),(18,3,13,1,30000),(19,11,13,1,15000),(20,2,14,1,25000),(21,9,15,3,25000);
+INSERT INTO `productoporfactura` VALUES (1,3,1,15000),(1,4,1,15000),(2,4,1,25000),(3,7,1,30000),(3,9,1,30000),(4,9,1,145000),(3,10,1,30000),(2,10,1,25000),(2,11,2,25000),(3,11,1,30000),(4,11,3,145000),(7,11,1,25000),(2,12,2,25000),(1,12,3,15000),(5,12,1,40000),(9,12,1,25000),(10,13,1,27000),(3,13,1,30000),(11,13,1,15000),(2,14,1,25000),(9,15,3,25000);
 /*!40000 ALTER TABLE `productoporfactura` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -405,17 +405,15 @@ DROP TABLE IF EXISTS `productoporpedido`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `productoporpedido` (
-  `prodPedId` int(11) NOT NULL AUTO_INCREMENT,
   `prodPed_artId` int(11) NOT NULL,
   `prodPed_pedidoId` int(11) NOT NULL,
   `prodPedCant` int(11) NOT NULL,
   `prodPedValorArt` int(11) NOT NULL,
-  PRIMARY KEY (`prodPedId`),
   KEY `fk_prodPed_artId` (`prodPed_artId`),
   KEY `fk_prodPed_pedidoId` (`prodPed_pedidoId`),
   CONSTRAINT `fk_prodPed_artId` FOREIGN KEY (`prodPed_artId`) REFERENCES `articulo` (`artId`),
   CONSTRAINT `fk_prodPed_pedidoId` FOREIGN KEY (`prodPed_pedidoId`) REFERENCES `pedido` (`pedidoId`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -424,8 +422,39 @@ CREATE TABLE `productoporpedido` (
 
 LOCK TABLES `productoporpedido` WRITE;
 /*!40000 ALTER TABLE `productoporpedido` DISABLE KEYS */;
-INSERT INTO `productoporpedido` VALUES (1,1,3,1,15000),(2,1,4,1,15000),(3,2,4,1,25000),(4,3,7,1,30000),(5,3,9,1,30000),(6,4,9,1,145000),(7,3,10,1,30000),(8,2,10,1,25000),(9,2,11,2,25000),(10,3,11,1,30000),(11,4,11,3,145000),(12,7,11,1,25000),(13,2,12,2,25000),(14,1,12,3,15000),(15,5,12,1,40000),(16,9,12,1,25000),(17,10,13,1,27000),(18,3,13,1,30000),(19,11,13,1,15000),(20,2,14,1,25000),(21,9,15,3,25000);
+INSERT INTO `productoporpedido` VALUES (1,3,1,15000),(1,4,1,15000),(2,4,1,25000),(3,7,1,30000),(3,9,1,30000),(4,9,1,145000),(3,10,1,30000),(2,10,1,25000),(2,11,2,25000),(3,11,1,30000),(4,11,3,145000),(7,11,1,25000),(2,12,2,25000),(1,12,3,15000),(5,12,1,40000),(9,12,1,25000),(10,13,1,27000),(3,13,1,30000),(11,13,1,15000),(2,14,1,25000),(9,15,3,25000);
 /*!40000 ALTER TABLE `productoporpedido` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `resolucion`
+--
+
+DROP TABLE IF EXISTS `resolucion`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `resolucion` (
+  `resolucionId` int(11) NOT NULL,
+  `resolucionUsuarioId` int(11) NOT NULL,
+  `resolucionpqrsId` int(11) NOT NULL,
+  `resolucionMensaje` varchar(500) NOT NULL,
+  `resolucionFecha` date NOT NULL,
+  PRIMARY KEY (`resolucionId`),
+  KEY `resolucionUsuarioId` (`resolucionUsuarioId`),
+  KEY `resolucionpqrsId` (`resolucionpqrsId`),
+  CONSTRAINT `resolucion_ibfk_1` FOREIGN KEY (`resolucionUsuarioId`) REFERENCES `usuariotienda` (`usuarioId`),
+  CONSTRAINT `resolucion_ibfk_2` FOREIGN KEY (`resolucionpqrsId`) REFERENCES `pqrs` (`pqrsId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `resolucion`
+--
+
+LOCK TABLES `resolucion` WRITE;
+/*!40000 ALTER TABLE `resolucion` DISABLE KEYS */;
+INSERT INTO `resolucion` VALUES (1,2,1,'la acabas de realizar, buen dia. ','2022-06-28'),(2,2,2,'y lo solicito en verde? ','2022-06-28');
+/*!40000 ALTER TABLE `resolucion` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -517,4 +546,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-24  7:42:19
+-- Dump completed on 2022-06-28 18:12:18

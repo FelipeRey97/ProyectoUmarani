@@ -1,7 +1,14 @@
 <?php  
 session_start();
 require_once('../Controller/mostrarPQRS.php'); ?>
+<?php 
+// se valida la sesion del usuario, en caso de no tener sesion sera redirigido al login
+    if($_SESSION['doc'] == false){
 
+        header("Location: http://localhost/UmaraniWeb/View/loginUsuario.php");
+    }
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,8 +62,6 @@ require_once('../Controller/mostrarPQRS.php'); ?>
                 </div>
                 <div class="exportar">
                     <a class="excel" href="#"><i class="fas fa-file-excel"></i> Excel</a>
-                  <a class="pdf" href="#"><i class="fas fa-file-pdf"></i> PDF </a>
-                  
                 </div>
                 <div class="filtros" >
                     <form action="">
@@ -102,8 +107,19 @@ require_once('../Controller/mostrarPQRS.php'); ?>
                         <td><?php echo $reg['pqrsFecha'] ?></td>
                         <td><?php echo $reg['pqrsEstado'] ?></td>
                         <td>
-                            <a class="edit" href="#"><i class="far fa-edit"></i></i></a>
-                            <a class="detail" href="#"><i class="far fa-eye"></i></a>
+                            <?php if($reg['pqrsEstado'] == 'Pendiente'){ ?>
+                                   <a class="edit" href="../View/GestionPqrs.php?pqEdit=<?php echo "$reg[pqrsId]" ?>"><i class="far fa-edit"></i></i></a>
+                                   <?php if($_SESSION['rol'] == 'ADMINISTRADOR'){ ?>
+                                    <a class="detail" href="../View/detalleResolucion.php?pqVis=<?php echo "$reg[pqrsId]" ?>"><i class="far fa-eye"></i></a>
+                                    <?php  }    ?>
+                             <?php  }else { ?>
+                                <?php if($_SESSION['rol'] == 'ADMINISTRADOR'){ ?>
+                                    <a class="edit" href="../View/GestionPqrs.php?pqEdit=<?php echo "$reg[pqrsId]" ?>"><i class="far fa-edit"></i></i></a>
+                                    <?php  }    ?>
+                                 <a class="detail" href="../View/detalleResolucion.php?pqVis=<?php echo "$reg[pqrsId]" ?>"><i class="far fa-eye"></i></a>
+                                 
+                                 <?php }?>
+                            
                         </td>
                     </tr>
                     <?php  } ?>

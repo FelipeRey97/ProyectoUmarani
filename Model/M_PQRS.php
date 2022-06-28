@@ -47,7 +47,8 @@
 
             $query = $this->pqrs->query("SELECT * FROM pqrs
             JOIN pqrsTipo
-            ON pqrsOrigenId = pqrsTipoId");
+            ON pqrsOrigenId = pqrsTipoId
+            ORDER BY pqrsId DESC");
             
 
             $retorno = [];
@@ -78,6 +79,8 @@
 
 
     }
+
+    $conexionPqrs = mysqli_connect("localhost","root","","proyecto");
 
 
 ?>
