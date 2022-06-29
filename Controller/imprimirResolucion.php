@@ -3,7 +3,7 @@
 require('../fpdf/fpdf.php');
 require('../Model/M_resolucion.php');
 
-$id = 2;
+$id = $_REQUEST['rId'];
 
 $datos = mysqli_query($conexion,"SELECT * FROM resolucion
 JOIN pqrs 
@@ -26,6 +26,7 @@ while($date = mysqli_fetch_array($obtenerMes)){
 while($dat = mysqli_fetch_array($datos)){
 
     $nombre = $dat['pqrsNombre'];
+    $respuesta = $dat['resolucionMensaje'];
     
 }
 
@@ -114,39 +115,32 @@ $pdf = new PDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->Ln(-20);
-$pdf->setFont('Arial','',11);
-$pdf->Cell(0,0,"Bucaramanga, $dia de $mes de $año",0,1,'L');
-$pdf->Ln(45);
+$pdf->setFont('Arial','',12);
+$pdf->Cell(0,10,"Bucaramanga, $dia de $mes de $año",0,1,'L');
+$pdf->Ln(60);
 $pdf->Cell(0,0,utf8_decode("Respetado Señor(a): "),0,1,'L');
 $pdf->Ln(10);
-$pdf->setFont('Arial','B',11);
+$pdf->setFont('Arial','B',12);
 $pdf->Cell(0,0,utf8_decode("$nombre"),0,1,'L');
 $pdf->Ln(10);
 $pdf->Cell(0,0,utf8_decode("E.        S.        M."),0,1,'L');
-$pdf->Ln(37);
-$pdf->setFont('Arial','',11);
-$pdf->MultiCell(0,5,utf8_decode("Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, velit dolorum quod similique voluptates perspiciatis itaque reiciendis ullam, eius accusamus unde illo eos fugiat fugit excepturi rem harum repellat. Provident itaque cum facilis sunt vitae qui enim voluptas ipsa eveniet voluptatibus. Iusto, debitis accusamus, odit excepturi voluptatum mollitia explicabo suscipit laborum amet fuga velit quam rerum saepe. Sapiente est laudantium provident consequatur at! Dolore saepe, mollitia optio accusantium, quos et obcaecati iusto ratione quia assumenda, tempora expedita temporibus facere quo maiores. Cum fugiat optio dolorem. Corporis cumque, laudantium distinctio tempore iusto quas odit! Iusto quo, dolorem dolore error eius dignissimos."),0,'J',false);
-$pdf->setFont('Arial','',11);
-$pdf->SetFont('Times','',12);
-$pdf->Ln(40);
+$pdf->Ln(30);
+$pdf->setFont('Arial','',12);
+$pdf->MultiCell(0,5,utf8_decode("$respuesta"),0,'J',false);
+$pdf->setFont('Arial','',12);
+$pdf->Ln(30);
 $pdf->Cell(0,0,utf8_decode("Cordialmente."),0,1,'L');
 $pdf->Image('../Uploads/firma.png',10,220,50);
-$pdf->Ln(60);
-$pdf->setFont('Arial','',11);
+$pdf->Ln(55);
+$pdf->setFont('Arial','',12);
 $pdf->Cell(0,0,utf8_decode("Tatiana Martínez."),0,1,'L');
 $pdf->Ln(5);
 $pdf->Cell(0,0,utf8_decode("C.C:1098813441"),0,1,'L');
 $pdf->Ln(5);
-$pdf->setFont('Arial','B',11);
+$pdf->setFont('Arial','B',12    );
 $pdf->Cell(0,0,utf8_decode("Umarani Accesorios"),0,1,'L');
 $pdf->Ln(5);
 $pdf->Output();
-
-
-
-
-
-
 
 
 

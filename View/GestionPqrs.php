@@ -70,7 +70,7 @@ session_start();
                         <p><b>Id Cliente: </b>  <?php if(isset($clienteId)) { echo "$clienteId"; }else{ echo""; }?> </p><br>
                         <p><b>Mail: </b> <?php echo "$Mail" ?> </p><br>
                         <p> <b> Fecha de solicitud: </b> <?php echo"$fecha" ?> </p> <br>
-                        <p> <b> Estado: </b> <?php echo"$estado" ?> </p> <br>
+                        <p> <b> Estado: </b> <?php echo"$estado"; if(isset($usuario)) { echo" Por $usuario  id: $usuarioId"; } else{echo"";} ?>  </p> <br>
                         <p> <b> Tipo: </b> <?php echo"$tipo" ?> </p> <br>
                         <?php if($imagen != null){ ?>
                         <p> <b> Imagen: </b><br> </p><br>
@@ -82,7 +82,7 @@ session_start();
                         <p>Por favor Diligencie el contenido de la respuesta en el cuadro de texto que se presenta a continuacion, los demás datos serán formateados por el sistema automaticamente.</p><br><br>
                         <!-- Se prepara formulario para ingresar la respuesta a la consulta o reclamo del cliente -->
                         <form action="../Controller/guardarResolucion.php" method="post"> 
-                        <textarea class="control" name="respuesta" id="" cols="160" rows="10"></textarea>
+                        <textarea class="control" name="respuesta" id="" cols="160" rows="10"><?php if(isset($respuesta)){ echo "$respuesta"; } else{echo"";} ?></textarea>
                         <input type="hidden" value="<?php echo "$id" ?>" name="pqrsId">
                         <input type="hidden" value="<?php echo "$_SESSION[usuarioId]" ?>" name="usuarioId">
                         <input type="hidden" value="<?php echo "$date" ?>" name="date"><br><br>

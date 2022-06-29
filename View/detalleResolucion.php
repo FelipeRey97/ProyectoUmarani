@@ -80,7 +80,7 @@ session_start();
                         <p><?php echo"$descripcion" ?></p><br> <br>
                         <h1>Respuesta</h1><br>
                         <p><b>Usuario:</b> <?php if(isset($usuario)) { echo"$usuario"; } else{ echo ""; }?> </p><br>
-                        <p><b>Respuesta Adjunta:  <?php if(isset($usuario)) { ?> <a class="cancel" href=""><i class="fas fa-file-pdf"></i></a> </b></p> <?php } else{ echo ""; }?> 
+                        <p><b>Respuesta Adjunta:  <?php if(isset($usuario)) { ?> <a class="cancel" href="../Controller/imprimirResolucion.php?rId=<?php echo "$pId" ?>"><i class="fas fa-file-pdf"></i></a> </b></p> <?php } else{ echo ""; }?> 
 
                     
                 </table>
