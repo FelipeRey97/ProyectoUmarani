@@ -1,6 +1,10 @@
 <?php  
 session_start();
-require_once('../Controller/mostrarPQRS.php'); ?>
+require_once('../Controller/mostrarPQRS.php');
+$paginas = $cantidad/$registrosxpagina;
+$paginas = ceil($paginas);
+?>
+
 <?php 
 // se valida la sesion del usuario, en caso de no tener sesion sera redirigido al login
     if($_SESSION['doc'] == false){
@@ -125,12 +129,17 @@ require_once('../Controller/mostrarPQRS.php'); ?>
                     <?php  } ?>
                 </table>
                 <nav class="paginacion">
-                <a class="prev-next" href="#">Anterior </a>
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a class="prev-next" href="#"> Siguiente</a>
+                <a class="prev-next" <?php if($_GET['pagina']<=1){ ?> hidden <?php }else{ echo""; } ?> href="../View/PQRS.php?pagina=<?php echo "$_GET[pagina]"-1 ?>">Anterior </a>
+
+                <?php for($i=0; $i < $paginas; $i++){ ?>
+
+                    <a href="../View/PQRS.php?pagina=<?php echo "$i"+1; ?>"><?php echo "$i"+1;  ?></a>
+
+                  <?php     }   ?>
+
+
+                <a class="prev-next" <?php if($_GET['pagina']>=$paginas){ ?> hidden <?php }else{ echo""; } ?> href="../View/PQRS.php?pagina=<?php echo "$_GET[pagina]"+1 ?>"> Siguiente</a>
+
                 </nav>
             </div>
         </section>

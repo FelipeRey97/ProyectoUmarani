@@ -30,7 +30,7 @@
 
     if($filas){
 
-        header("Location: http://localhost/umaraniweb/view/pedidos.php");
+        header("Location: ../view/pedidos.php");
         session_start();
         $_SESSION['nombre'] = $filas['usuarioNombre'];
         $_SESSION['doc'] = $filas['usuarioDoc'];

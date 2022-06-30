@@ -45,12 +45,21 @@
 
         public function verPqrs(){
 
-            $query = $this->pqrs->query("SELECT * FROM pqrs
+            $cantidad = $this->pqrs->query("SELECT COUNT(*) as cantidad FROM pqrs");
+
+            $cant = mysqli_fetch_array($cantidad);
+            $registrosxpagina = 5;
+
+            $inicio = ($_GET['pagina']-1)*$registrosxpagina;
+
+            $limit = $cant['cantidad']/2;
+
+            $query = $this->pqrs->query("SELECT * FROM pqrs 
             JOIN pqrsTipo
             ON pqrsOrigenId = pqrsTipoId
-            ORDER BY pqrsId DESC");
+            ORDER BY pqrsId DESC
+            LIMIT $inicio,$limit");
             
-
             $retorno = [];
             $i = 0;
             while($fila = $query->fetch_assoc()) {
