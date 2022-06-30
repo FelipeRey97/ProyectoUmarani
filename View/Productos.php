@@ -1,7 +1,10 @@
 <?php
 
     require_once("../Controller/mostrarProducto.php");
-   
+    
+    $paginas = $cantidad/10;
+    $paginas = ceil($paginas);
+
 ?>
 
 <?php
@@ -14,7 +17,7 @@ session_start();
         header("Location: http://localhost/UmaraniWeb/View/loginUsuario.php");
     }
 ?>
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,12 +46,12 @@ session_start();
             </div>
             <nav class="secciones">
                 <a href="">Inicio</a>
-                 <a href="../View/Productos.php">Productos</a> 
-                <a href="../View/pedidos.php">Pedidos</a>
+                 <a href="../View/Productos.php?pagina=1">Productos</a> 
+                <a href="../View/pedidos.php?pagina=1">Pedidos</a>
                 <?php if($_SESSION['rol'] == 'ADMINISTRADOR')  { ?>
-                <a href="../View/Usuarios.php">Usuarios</a>
-                <a href="../View/adminClientes.php">Clientes</a> <?php } ?>
-                <a href="../View/PQRS.php">PQRS</a><br><br><br>
+                <a href="../View/Usuarios.php?pagina=1">Usuarios</a>
+                <a href="../View/adminClientes.php?pagina=1">Clientes</a> <?php } ?>
+                <a href="../View/PQRS.php?pagina=1">PQRS</a><br><br><br>
                 <a href="../Controller/cerrarSesion.php">Cerrar Sesión</a>
             </nav>
         </div>
@@ -136,16 +139,17 @@ session_start();
                      ?>
                     </tr>
                     
-                   
                     
                 </table>
                 <nav class="paginacion">
-                <a class="prev-next" href="#">Anterior </a>
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a class="prev-next" href="#"> Siguiente</a>
+                <a class="prev-next" <?php if($_GET['pagina']<=1){ ?> hidden <?php }else{ echo ""; } ?> href="../view/productos.php?pagina=<?php echo "$_GET[pagina]"-1; ?>">Anterior </a>
+                <?php for($i=0; $i < $paginas; $i++){
+
+                  ?> <a href="../view/productos.php?pagina=<?php echo"$i"+1 ?>"><?php echo "$i"+1;  ?> </a>   
+               
+                <?php  } ?>
+               
+                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> hidden <?php }else{ echo ""; } ?> href="../view/productos.php?pagina=<?php echo "$_GET[pagina]"+1; ?>"> Siguiente</a>
                 </nav>
             </div>
         </section>

@@ -5,7 +5,7 @@
 
     class Producto {
 
-            private $prod;
+            private $prod; 
 
         public function __construct()
         {
@@ -25,9 +25,19 @@
 
         public function verProducto(){
 
+
+            $cantidad = $this->prod->query("SELECT COUNT(*) as cantidad FROM articulo");
+
+            $cant = mysqli_fetch_array($cantidad);
+            $registrosxpagina = 10;
+
+            $inicio = ($_GET['pagina']-1)*$registrosxpagina;
+
             $query = $this->prod->query("SELECT * FROM articulo
             JOIN categoria
-            ON artCategoriaId = categoriaId");
+            ON artCategoriaId = categoriaId
+            ORDER BY artId DESC
+            LIMIT $inicio,$registrosxpagina");
             
 
             $retorno = [];

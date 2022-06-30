@@ -47,6 +47,7 @@ $resolucionusuario = mysqli_query($conexionPqrs,"SELECT * FROM resolucion
 JOIN usuariotienda
 ON usuarioId = resolucionUsuarioId
 WHERE resolucionId = $id");
+}
 
 if(isset($resolucionusuario)){
 

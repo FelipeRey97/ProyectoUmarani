@@ -52,13 +52,12 @@
 
             $inicio = ($_GET['pagina']-1)*$registrosxpagina;
 
-            $limit = $cant['cantidad']/2;
 
             $query = $this->pqrs->query("SELECT * FROM pqrs 
             JOIN pqrsTipo
             ON pqrsOrigenId = pqrsTipoId
             ORDER BY pqrsId DESC
-            LIMIT $inicio,$limit");
+            LIMIT $inicio,$registrosxpagina");
             
             $retorno = [];
             $i = 0;

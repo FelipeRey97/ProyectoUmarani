@@ -50,7 +50,7 @@ session_start();
                 <?php if($_SESSION['rol'] == 'ADMINISTRADOR')  { ?>
                 <a href="../View/Usuarios.php">Usuarios</a>
                 <a href="../View/adminClientes.php">Clientes</a> <?php } ?>
-                <a href="../View/PQRS.php">PQRS</a> <br><br><br>
+                <a href="../View/PQRS.php?pagina=1">PQRS</a> <br><br><br>
                 <a href="../Controller/cerrarSesion.php">Cerrar Sesión</a>
             </nav>
         </div>

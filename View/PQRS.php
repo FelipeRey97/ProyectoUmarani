@@ -42,12 +42,12 @@ $paginas = ceil($paginas);
             </div>
             <nav class="secciones">
                 <a href="#">Inicio</a>
-                <a href="../View/Productos.php">Productos</a>
+                <a href="../View/Productos.php?pagina=1">Productos</a>
                 <?php if($_SESSION['rol'] == 'ADMINISTRADOR')  { ?>
-                <a href="../View/Usuarios.php">Usuarios</a>
-                <a href="../View/adminClientes.php">Clientes</a> <?php } ?>
-                <a href="../View/Pedidos.php">Pedidos</a>
-                 <a href="../View/PQRS.php">PQRS</a> <br><br><br> 
+                <a href="../View/Usuarios.php?pagina=1">Usuarios</a>
+                <a href="../View/adminClientes.php?pagina=1">Clientes</a> <?php } ?>
+                <a href="../View/Pedidos.php?pagina=1">Pedidos</a>
+                 <a href="../View/PQRS.php?pagina=1">PQRS</a> <br><br><br> 
                 <a href="../Controller/cerrarSesion.php">Cerrar Sesión</a>
             </nav>
         </div>
