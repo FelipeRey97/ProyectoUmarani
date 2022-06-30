@@ -30,7 +30,7 @@
 
     if($filas){
 
-        header("Location: ../view/pedidos.php");
+        header("Location: ../view/pedidos.php?pagina=1");
         session_start();
         $_SESSION['nombre'] = $filas['usuarioNombre'];
         $_SESSION['doc'] = $filas['usuarioDoc'];

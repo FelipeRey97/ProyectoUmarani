@@ -5,7 +5,7 @@
 
     class Factura {
 
-            private $fact;
+            private $fact; 
 
         public function __construct()
         {
@@ -24,9 +24,18 @@
         }
         public function verFacturas(){
 
+            $cantidad = $this->fact->query("SELECT COUNT(*) as cantidad FROM factura");
+
+            $cant = mysqli_fetch_array($cantidad);
+            $registrosxpagina = 10;
+
+            $inicio = ($_GET['pagina']-1)*$registrosxpagina;
+
             $query = $this->fact->query("SELECT * FROM factura
             JOIN tipopago
-            ON tipoPagoId = factura_tipoPagoId");
+            ON tipoPagoId = factura_tipoPagoId
+            ORDER BY facturaId DESC
+            LIMIT $inicio,$registrosxpagina");
             
            
 

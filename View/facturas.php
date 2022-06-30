@@ -1,6 +1,8 @@
 <?php
 
     require_once("../Controller/mostrarFacturas.php");
+    $paginas = $cantidad/10;
+    $paginas = ceil($paginas);
    
 ?>
 
@@ -123,12 +125,14 @@ session_start();
                     
                 </table>
                 <nav class="paginacion">
-                <!-- <a class="prev-next" href="#">Anterior </a>
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a class="prev-next" href="#"> Siguiente</a> -->
+                <a class="prev-next" <?php if($_GET['pagina']<=1){ ?> hidden <?php }else{ echo ""; } ?> href="../view/facturas.php?pagina=<?php echo "$_GET[pagina]"-1; ?>">Anterior </a>
+                <?php for($i=0; $i < $paginas; $i++){
+
+                  ?> <a href="../view/facturas.php?pagina=<?php echo"$i"+1 ?>"><?php echo "$i"+1;  ?> </a>   
+               
+                <?php  } ?>
+               
+                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> hidden <?php }else{ echo ""; } ?> href="../view/facturas.php?pagina=<?php echo "$_GET[pagina]"+1; ?>"> Siguiente</a>
                 </nav>
             </div>
         </section>

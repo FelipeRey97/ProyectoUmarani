@@ -37,7 +37,7 @@
             ORDER BY pedidoId DESC
             LIMIT $inicio,$registrosxpagina");
             
-           
+            
             $retorno = [];
             $i = 0;
             while($fila = $query->fetch_assoc()) {
