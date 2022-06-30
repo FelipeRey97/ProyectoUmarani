@@ -328,10 +328,11 @@ CREATE TABLE `pqrs` (
   PRIMARY KEY (`pqrsId`),
   KEY `fk_pqrsUsuarioId` (`pqrsUsuarioId`),
   KEY `fk_pqrsOrigenId` (`pqrsOrigenId`),
+  KEY `fk_pqrsClienteId` (`pqrsClienteId`),
   CONSTRAINT `fk_pqrsClienteId` FOREIGN KEY (`pqrsClienteId`) REFERENCES `cliente` (`clienteId`),
   CONSTRAINT `fk_pqrsOrigenId` FOREIGN KEY (`pqrsOrigenId`) REFERENCES `pqrstipo` (`pqrsTipoId`),
   CONSTRAINT `fk_pqrsUsuarioId` FOREIGN KEY (`pqrsUsuarioId`) REFERENCES `usuariotienda` (`usuarioId`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -340,7 +341,7 @@ CREATE TABLE `pqrs` (
 
 LOCK TABLES `pqrs` WRITE;
 /*!40000 ALTER TABLE `pqrs` DISABLE KEYS */;
-INSERT INTO `pqrs` VALUES (1,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','quiero realizar una consulta','3154272647','Atendida','2022-06-24',NULL,NULL,3,NULL,''),(2,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','mi pedido esta demorado.','3154272647','Atendida','2022-06-24',1,NULL,2,15,''),(3,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','mi anillo llego malo','3154272647','Pendiente','2022-06-24',1,NULL,1,15,'../Uploads/ReclamoImagen/26.jpg'),(4,'ANDRES FELIPE REY PINO','ledypino@outlook.com','quiero realizar una consulta','3154272647','Pendiente','2022-06-25',NULL,NULL,3,NULL,''),(5,'ANDRES FELIPE REY PINO','ledypino@outlook.com','quiero realizar una consulta','3154272647','Pendiente','2022-06-25',NULL,NULL,3,NULL,''),(6,'ANDRES FELIPE REY PINO','ledypino@outlook.com','quiero realizar una consulta','3154272647','Pendiente','2022-06-25',NULL,NULL,3,NULL,''),(7,'ANDRES FELIPE REY PINO','ledypino@outlook.com','quiero realizar una consulta','3154272647','Pendiente','2022-06-25',NULL,NULL,3,NULL,''),(8,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','el anillo ha llegado con defectos','3154272647','Pendiente','2022-06-25',1,NULL,1,15,'../Uploads/ReclamoImagen/27.jpg'),(9,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','El anillo me ha llegado con defectos','3154272647','Pendiente','2022-06-25',1,NULL,1,15,'../Uploads/ReclamoImagen/28.jpg'),(10,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','El pedido está demorado de hace una semana. ','3154272647','Pendiente','2022-06-25',1,NULL,2,15,'');
+INSERT INTO `pqrs` VALUES (1,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','quiero realizar una consulta','3154272647','Atendida','2022-06-24',NULL,NULL,3,NULL,''),(2,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','mi pedido esta demorado.','3154272647','Atendida','2022-06-24',1,NULL,2,15,''),(3,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','mi anillo llego malo','3154272647','Atendida','2022-06-24',1,NULL,1,15,'../Uploads/ReclamoImagen/26.jpg'),(4,'ANDRES FELIPE REY PINO','ledypino@outlook.com','quiero realizar una consulta','3154272647','Atendida','2022-06-25',NULL,NULL,3,NULL,''),(5,'ANDRES FELIPE REY PINO','ledypino@outlook.com','quiero realizar una consulta','3154272647','Pendiente','2022-06-25',NULL,NULL,3,NULL,''),(6,'ANDRES FELIPE REY PINO','ledypino@outlook.com','quiero realizar una consulta','3154272647','Pendiente','2022-06-25',NULL,NULL,3,NULL,''),(7,'ANDRES FELIPE REY PINO','ledypino@outlook.com','quiero realizar una consulta','3154272647','Pendiente','2022-06-25',NULL,NULL,3,NULL,''),(8,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','el anillo ha llegado con defectos','3154272647','Pendiente','2022-06-25',1,NULL,1,15,'../Uploads/ReclamoImagen/27.jpg'),(9,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','El anillo me ha llegado con defectos','3154272647','Pendiente','2022-06-25',1,NULL,1,15,'../Uploads/ReclamoImagen/28.jpg'),(10,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','El pedido está demorado de hace una semana. ','3154272647','Pendiente','2022-06-25',1,NULL,2,15,''),(11,'MAURICIO FERNANDEZ','marullas@gmail.com','Donde puedo ubicarlos','3163458908','Atendida','2022-06-29',NULL,NULL,3,NULL,'');
 /*!40000 ALTER TABLE `pqrs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -453,7 +454,7 @@ CREATE TABLE `resolucion` (
 
 LOCK TABLES `resolucion` WRITE;
 /*!40000 ALTER TABLE `resolucion` DISABLE KEYS */;
-INSERT INTO `resolucion` VALUES (1,2,1,'la acabas de realizar, buen dia. ','2022-06-28'),(2,2,2,'y lo solicito en verde? ','2022-06-28');
+INSERT INTO `resolucion` VALUES (1,2,1,'la acabas de realizar, buen dia. ','2022-06-28'),(2,2,2,'y lo solicito en verde? ','2022-06-28'),(3,1,3,'is simply dummy text of the printing and typesetting industry.','2022-06-29'),(4,2,4,'is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing so','2022-06-29'),(11,2,11,'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various vers','2022-06-29');
 /*!40000 ALTER TABLE `resolucion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -546,4 +547,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-28 18:12:18
+-- Dump completed on 2022-06-30 11:12:37
