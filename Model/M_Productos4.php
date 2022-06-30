@@ -25,6 +25,24 @@
 
         public function verProducto(){
 
+            $query = $this->prod->query("SELECT * FROM articulo
+            JOIN categoria
+            ON artCategoriaId = categoriaId
+            ORDER BY artId DESC");
+            
+
+            $retorno = [];
+            $i = 0;
+            while($fila = $query->fetch_assoc()) {
+
+                $retorno[$i] = $fila;
+                $i++;
+            }
+            return $retorno;
+        }
+
+        public function verInventario(){
+
 
             $cantidad = $this->prod->query("SELECT COUNT(*) as cantidad FROM articulo");
 
