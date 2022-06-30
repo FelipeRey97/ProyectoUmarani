@@ -50,7 +50,7 @@ WHERE resolucionId = $id");
 
 if(isset($resolucionusuario)){
 
-    while($datosU = mysqli_fetch_array($resolucionusuario))
+    while($datosU = mysqli_fetch_array($resolucionusuario)) {
     {
         $usuarioId = $datosU['usuarioId'];
         $usuario = $datosU['usuarioNombre'] . " " . $datosU['usuarioApellido'];
