@@ -36,7 +36,7 @@ $con2 = new Conexion();
 
       <?php
 
-      header("refresh:1;url=http://localhost/UmaraniWeb/View/Usuarios.php");
+      header("refresh:1;url=../View/Usuarios.php?pagina=1");
 
       
 }

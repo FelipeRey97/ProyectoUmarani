@@ -14,7 +14,7 @@ session_start();
 // se valida la sesion del usuario, en caso de no tener sesion sera redirigido al login
     if($_SESSION['doc'] == false){
 
-        header("Location: http://localhost/UmaraniWeb/View/loginUsuario.php");
+        header("Location: ..View/loginUsuario.php");
     }
 
 ?>

@@ -33,11 +33,11 @@
             <?php
             if($_REQUEST['compra'] == 1){
             $valor= 1;
-            header("refresh:1;url=http://localhost/UmaraniWeb/View/datosfacturacion.php?valor=$valor");
+            header("refresh:1;url=../datosfacturacion.php?valor=$valor");
             }
             else{
 
-            header("refresh:1;url=http://localhost/UmaraniWeb/View/areacliente.php?valor=0");
+            header("refresh:1;url=../View/areacliente.php?valor=0");
             }
 
         }

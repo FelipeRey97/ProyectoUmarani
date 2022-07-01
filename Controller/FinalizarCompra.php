@@ -86,7 +86,7 @@ mysqli_close($conexionFactura);
       </script>
 <?php
 
-header("refresh:1;url=http://localhost/umaraniweb/view/comprafinalizada.php?pedidoId=$id");
+header("refresh:1;url=../view/comprafinalizada.php?pedidoId=$id");
 
 ?>
 

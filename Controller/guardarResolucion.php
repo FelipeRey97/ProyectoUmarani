@@ -43,7 +43,7 @@ or die ("problemas en el update" . mysqli_error($conexion));
     </script>
    <?php
 
-      header("refresh:2;url=http://localhost/umaraniweb/View/PQRS.php");
+      header("refresh:2;url=../View/PQRS.php?pagina=1");
 }
 else{
 
@@ -57,7 +57,7 @@ else{
     
     </script>
    <?php
-   include('../View/GestionPqrs.php');
+   include('../View/GestionPqrs.php?pagina=1');
 }
 
 

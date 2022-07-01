@@ -48,7 +48,7 @@
                 </script>
                 
                 <?php
-            header("refresh:1;url=http://localhost/UmaraniWeb/View/Productos.php");
+            header("refresh:1;url=../View/Productos.php?pagina=1");
    
         } 
         else{

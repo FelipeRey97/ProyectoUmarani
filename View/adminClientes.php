@@ -1,11 +1,12 @@
 <?php
 session_start();
-
+require_once('../Controller/mostrarClientes.php');
+$paginas = $cantidad/5;
+$paginas = ceil($paginas);
 ?>
 
 <?php 
-    $conexion = mysqli_connect("localhost","root","","proyecto") 
-    or die ("problemas con la conexion");
+    
 
 ?>
 
@@ -95,13 +96,8 @@ session_start();
                     </tr>
 
                      <?php
-                        
-                        
-                        $regClientes = mysqli_query($conexion, "select clienteId,clienteNombre,clienteApellido,clienteTelefono,clienteEmail
-                        from cliente") 
-                        or die ("problemas en el select" . mysqli_error($conexion)); 
 
-                        while($reg = mysqli_fetch_array($regClientes)){
+                        foreach($registros as $reg){
                         
             
                      ?>
@@ -124,12 +120,14 @@ session_start();
                     
                 </table>
                 <nav class="paginacion">
-                <a class="prev-next" href="#">Anterior </a>
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a class="prev-next" href="#"> Siguiente</a>
+                <a class="prev-next" <?php if($_GET['pagina']<=1){ ?> hidden <?php }else{ echo ""; } ?> href="../view/adminClientes.php?pagina=<?php echo "$_GET[pagina]"-1; ?>">Anterior </a>
+                <?php for($i=0; $i < $paginas; $i++){
+
+                  ?> <a href="../view/adminClientes.php?pagina=<?php echo"$i"+1 ?>"><?php echo "$i"+1;  ?> </a>   
+               
+                <?php  } ?>
+               
+                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> hidden <?php }else{ echo ""; } ?> href="../view/adminClientes.php?pagina=<?php echo "$_GET[pagina]"+1; ?>"> Siguiente</a>
                 </nav>
             </div>
         </section>

@@ -33,7 +33,7 @@ $cliente2 = new Clientes();
 
       <?php
 
-      header("refresh:1;url=http://localhost/UmaraniWeb/View/areaCliente.php");
+      header("refresh:1;url=../View/areaCliente.php");
 
       
 }

@@ -33,7 +33,7 @@ $date = $_REQUEST['date'];
 <?php
 
     
-  header("refresh:1;url=http://localhost/UmaraniWeb/View/pedidos.php");
+  header("refresh:1;url=../View/pedidos.php?pagina=1");
 
 }
 

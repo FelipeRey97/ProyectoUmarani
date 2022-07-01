@@ -38,7 +38,7 @@ if($_REQUEST['unombre'] != "" && $_REQUEST['uapellido'] != "" && $_REQUEST['udoc
 
       <?php
 
-      header("refresh:1;url=http://localhost/UmaraniWeb/View/Usuarios.php");
+      header("refresh:1;url=../View/Usuarios.php");
       
 }
 else{

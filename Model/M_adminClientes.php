@@ -1,37 +1,3 @@
-<?php
-session_start();
-
-       
-?>
-
-<?php
-if(isset($_SESSION['cMail'])){
-
-}else{
-
-if(isset($_REQUEST['compra'])){
-    if($_REQUEST['compra'] == 1){
-        $valor= 1;
-        header("refresh:20;url=../View/iniciarSesion.php?valor=$valor");
-        }
-        else{
-
-            header("refresh:20;url=..View/iniciarSesion.php?valor=0");
-        }
-
-    }else{
-        header("location: ../View/iniciarSesion.php");
-    }
-
-}
- 
-    
-    
-
- 
-?>
-
-
 <?php 
 //primera clase creada, permite lo metodos para insert, select, update set y delete de usuarios con conexion a la BD
 
@@ -62,8 +28,16 @@ if(isset($_REQUEST['compra'])){
 
         public function verCliente(){
 
+            $cantidad = $this->cl->query("SELECT COUNT(*) as cantidad FROM factura");
+
+            $cant = mysqli_fetch_array($cantidad);
+            $registrosxpagina = 5;
+
+            $inicio = ($_GET['pagina']-1)*$registrosxpagina;
+
             $query = $this->cl->query("SELECT * FROM cliente 
-            ORDER BY clienteId DESC  ");
+            ORDER BY clienteId DESC
+            LIMIT $inicio,$registrosxpagina ");
             
             $retorno = [];
             $i = 0;
@@ -105,14 +79,8 @@ if(isset($_REQUEST['compra'])){
 
     }
 
-    $conexion = mysqli_connect('localhost','root','','proyecto') or 
-        die ("problemas en la conexion" . mysqli_error($conexion));
+    $conexionClientes = mysqli_connect("localhost","root","","proyecto")
+    or die ("problemas en la conexion");
 
-        if(isset($_SESSION['cMail'])){
-            $registroCliente = mysqli_query($conexion,"select * from cliente where clienteEmail ='$_SESSION[cMail]'") 
-            or die ("problemas en el select" . mysqli_error($conexion));
-        }
 
-        
-
-?>
+    ?>

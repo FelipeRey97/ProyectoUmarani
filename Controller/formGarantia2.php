@@ -111,7 +111,7 @@ case 1:
         $pqrsTipo = $lpqrs['pqrsTipoNombre'];
     }
 
-    header("refresh:1;url=http://localhost/umaraniweb/view/ayudaClienteFin.php?Id=$pqrsId&Tipo=$pqrsTipo");
+    header("refresh:1;url=../view/ayudaClienteFin.php?Id=$pqrsId&Tipo=$pqrsTipo");
 
 
     break;
@@ -175,7 +175,7 @@ case 2:
         $pqrsTipo = $lpqrs['pqrsTipoNombre'];
     }
 
-    header("refresh:1;url=http://localhost/umaraniweb/view/ayudaClienteFin.php?Id=$pqrsId&Tipo=$pqrsTipo");
+    header("refresh:1;url=../view/ayudaClienteFin.php?Id=$pqrsId&Tipo=$pqrsTipo");
 
 
 
@@ -229,7 +229,7 @@ case 3:
         $pqrsTipo = $lpqrs['pqrsTipoNombre'];
     }
 
-    header("refresh:1;url=http://localhost/umaraniweb/view/ayudaClienteFin.php?Id=$pqrsId&Tipo=$pqrsTipo");
+    header("refresh:1;url=../view/ayudaClienteFin.php?Id=$pqrsId&Tipo=$pqrsTipo");
     break;
     
 

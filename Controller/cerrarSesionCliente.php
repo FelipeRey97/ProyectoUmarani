@@ -1,5 +1,5 @@
 <?php
 session_start();
 session_destroy();
-header('Location: http://localhost/UmaraniWeb/View/iniciarSesion.php');
+header('Location:../View/iniciarSesion.php');
 ?>
