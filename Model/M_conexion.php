@@ -8,7 +8,7 @@
 
         public function __construct()
         {
-
+ 
             $this->con = new mysqli('localhost','root','','proyecto');
             
         }
@@ -23,9 +23,18 @@
         }
         public function verUsuario(){
 
+            $cantidad = $this->con->query("SELECT COUNT(*) as cantidad FROM factura");
+
+            $cant = mysqli_fetch_array($cantidad);
+            $registrosxpagina = 5;
+
+            $inicio = ($_GET['pagina']-1)*$registrosxpagina;
+
             $query = $this->con->query("SELECT * FROM usuariotienda
             JOIN rol
-            ON rolId = usuarioRolId");
+            ON rolId = usuarioRolId
+            ORDER BY usuarioId DESC
+            LIMIT $inicio,$registrosxpagina");
             
            
 
@@ -67,6 +76,9 @@
 
 
     }
+
+    $conexionUsuario = mysqli_connect("localhost","root","","proyecto") 
+    or die("problemas con la conexion");
 
 
 ?>

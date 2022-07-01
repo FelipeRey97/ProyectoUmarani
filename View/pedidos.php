@@ -49,6 +49,7 @@ session_start();
                 <a href="#">Inicio</a>
                 <a href="../View/Productos.php?pagina=1">Productos</a>
                 <a href="../View/Pedidos.php?pagina=1">Pedidos</a> 
+                <a href="../view/facturas.php?pagina=1">Facturas</a>
                 <?php if($_SESSION['rol'] == 'ADMINISTRADOR')  { ?>
                 <a href="../View/Usuarios.php?pagina=1">Usuarios</a>
                 <a href="../View/adminClientes.php?pagina=1">Clientes</a> <?php } ?>
@@ -63,12 +64,7 @@ session_start();
         <section class="section">
 
             <div class="container">
-                <div class="registros">
-                 <p> Mostrar  <select name="" id="">
-                    <option value="">5</option>
-                    <option value="">10</option>
-                    <option value="">15</option>
-               </select>  Registros </p>  
+                <div class="registros">  
                 </div>
                 <div class="filtros" >
                     <form action="">
