@@ -88,9 +88,11 @@ session_start();
                             <option value="">Agotado</option>
                         </select>
                         <label for=""> Valor: </label>
-                        <select name="" id="">Estado
-                            <option value="">Menor a Mayor</option>
-                            <option value="">Mayor a Menor</option>
+                        <select name="categoria" id="">Categoria
+                            <option value="">Seleccione</option>
+                            <option value="Collares">Collares</option>
+                            <option value="Pulseras">Pulseras</option>
+                            <option value="Anillos">Anillos</option>
                         </select>
                         <input class="searchButton" type="button" value="Buscar">
                     </form>

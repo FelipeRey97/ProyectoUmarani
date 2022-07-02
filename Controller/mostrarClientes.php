@@ -13,5 +13,4 @@ $resultado = mysqli_query($conexionClientes,"SELECT COUNT(*) AS cantidad FROM us
     $cantidad = $res['cantidad'];
 
 
-
 ?>

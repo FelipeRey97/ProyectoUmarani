@@ -1,7 +1,7 @@
 <?php 
 
 //Segunda clase creada, permite lo metodos para insert, select, update set y delete de productos con conexion a la BD
-
+ 
 
     class Producto {
 
