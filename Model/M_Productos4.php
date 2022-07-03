@@ -15,7 +15,7 @@
             private $sentencia;
 
         public function __construct()
-        {
+        { 
 
             $this->prod = new mysqli('localhost','root','','proyecto');
             
@@ -47,8 +47,6 @@
             JOIN categoria
             ON artCategoriaId = categoriaId
             ORDER BY artId DESC");
-            
-
             $retorno = [];
             $i = 0;
             while($fila = $query->fetch_assoc()) {
@@ -76,7 +74,7 @@
             ORDER BY artId DESC
             LIMIT $inicio,$registrosxpagina
            ");
-            
+           
             $retorno = [];
             $i = 0;
             while($fila = $query->fetch_assoc()) {

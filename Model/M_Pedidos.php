@@ -19,7 +19,7 @@
             $this->ped->query("INSERT INTO pedido(pedidoId,pedidoFechaInicio,pedidoClienteId,pedidoFacturaId,pedidoCostoTotal,pedidoDireccionId)
             VALUES ('$id','$todaydate','$clienteId','$idFactura','$total',$direccionId)
             ") or die ("problemas en el select " . mysqli_error($ped));
-
+ 
             
         }
         public function verPedido(){

@@ -16,7 +16,7 @@ session_start();
 
         header("Location: ../View/loginUsuario.php");
     }
-?>
+?> 
  
 <!DOCTYPE html>
 <html lang="en">
@@ -112,11 +112,12 @@ session_start();
                             <option value="id">ID</option>
                             <option value="nombre">Nombre</option>
                         </select>
-                        <input name="input" placeholder="Escribe iD o titulo" type="text" class="idpedido">
+                        <input name="textbox" placeholder="Escribe iD o titulo" type="text" class="idpedido">
                         <label for=""> Estado: </label>
                         <select name="estado" id="">Estado
-                            <option value="">Disponible</option>
-                            <option value="">Agotado</option>
+                            <option value="">Seleccione</option>
+                            <option value="Disponible">Disponible</option>
+                            <option value="Agotado">Agotado</option>
                         </select>
                         <label for=""> Categoria: </label>
                         <select name="categoria" id="">Categoria
@@ -126,7 +127,7 @@ session_start();
                             <option value="Anillos">Anillos</option>
                         </select>
                         <input class="searchButton" type="submit" value="Buscar">
-                    </form><br>
+                    </form><br><br>
                     <a class="" href="../View/NuevoProducto.php">Nuevo Producto</a>
                 </div>
                 <table>
@@ -176,14 +177,14 @@ session_start();
                     
                 </table>
                 <nav class="paginacion">
-                <a class="prev-next" <?php if($_GET['pagina']<=1){ ?> hidden <?php }else{ echo ""; } ?> href="../view/productos.php?pagina=<?php echo "$_GET[pagina]"-1;?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; } ?>&criterio=id&input=&estado=&categoria=#">Anterior </a>
+                <a class="prev-next" <?php if($_GET['pagina']<=1){ ?> hidden <?php }else{ echo ""; } ?> href="../view/productos.php?pagina=<?php echo "$_GET[pagina]"-1;?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&criterio=id&input=<?php if(isset($_REQUEST['textbox'])){ echo "$_REQUEST[textbox]"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&categoria=<?php if(isset($_REQUEST['categoria'])){ echo "$_REQUEST[categoria]"; } ?>">Anterior </a>
                 <?php for($i=0; $i < $paginas; $i++){
 
-                  ?> <a href="../view/productos.php?pagina=<?php echo"$i"+1 ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; } ?>&criterio=id&input=&estado=&categoria=#"><?php echo "$i"+1;  ?> </a>   
+                  ?> <a href="../view/productos.php?pagina=<?php echo"$i"+1 ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&criterio=id&input=<?php if(isset($_REQUEST['textbox'])){ echo "$_REQUEST[textbox]"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&categoria=<?php if(isset($_REQUEST['categoria'])){ echo "$_REQUEST[categoria]"; } ?>"><?php echo "$i"+1;  ?> </a>   
                
                 <?php  } ?>
                
-                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> hidden <?php }else{ echo ""; } ?> href="../view/productos.php?pagina=<?php echo "$_GET[pagina]"+1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&criterio=id&input=&estado=&categoria=<?php if(isset($_REQUEST['categoria'])){ echo "$_REQUEST[categoria]"; } ?>"> Siguiente</a>
+                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> hidden <?php }else{ echo ""; } ?> href="../view/productos.php?pagina=<?php echo "$_GET[pagina]"+1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&criterio=id&input=<?php if(isset($_REQUEST['textbox'])){ echo "$_REQUEST[textbox]"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&categoria=<?php if(isset($_REQUEST['categoria'])){ echo "$_REQUEST[categoria]"; } ?>"> Siguiente</a>
                 </nav>
             </div>
         </section>
