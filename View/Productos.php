@@ -2,7 +2,7 @@
 
     require_once("../Controller/mostrarProducto.php");
     
-    $paginas = $cantidad/10;
+    $paginas = $cantidad/$prod1->artporpag;
     $paginas = ceil($paginas);
 
 ?>
@@ -14,7 +14,7 @@ session_start();
 <?php 
     if($_SESSION['doc'] == false){
 
-        header("Location: http://localhost/UmaraniWeb/View/loginUsuario.php");
+        header("Location: ../View/loginUsuario.php");
     }
 ?>
  
@@ -63,40 +63,71 @@ session_start();
         <section class="section">
             <div class="container">
                 <div class="registros">
-                 <!-- <p> Mostrar  <select name="" id="">
-                    <option value="">5</option>
-                    <option value="">10</option>
-                    <option value="">15</option>
-               </select>  Registros </p>   -->
+                <form action="#">
+                 <p> Mostrar   <select name="artxpag" id="">
+                 <?php $P= $_GET['artxpag']; 
+                    switch ($P) {
+                        case 5:
+                            ?>
+                    <option selected value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option> <?php
+                            break;
+                        
+                        case 10:
+                            ?>
+                            <option value="5">5</option>
+                            <option selected value="10">10</option>
+                            <option value="20">20</option> <?php
+                            
+                            break;
+                        case 20:
+
+                            ?>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option selected value="20">20</option> <?php
+
+                            break;
+                        default: 
+                        ?>
+                        <option selected value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option> <?php
+                    }  
+                
+                ?>
+                    
+                    <input type="hidden" name="pagina" value="1">
+               </select>  Registros </p>  
                 </div>
                 <div class="exportar">
-                    <!-- <a class="excel" href="#"><i class="fas fa-file-excel"></i> Excel</a>
-                  <a class="pdf" href="#"><i class="fas fa-file-pdf"></i> PDF </a> -->
-                  
+                     <a class="excel" href="#"><i class="fas fa-file-excel"></i> Excel</a> 
+                  <!-- <a class="pdf" href="#"><i class="fas fa-file-pdf"></i> PDF </a> --> 
                 </div>
                 <div class="filtros" >
-                    <form action="">
-                        <!-- <label for="fechainicio">Desde: </label>
-                        <input type="date" name="fechainicio"><br><br>
-                        <label for="fechafin">Hasta:  </label>
-                        <input type="date" name="fechafin"><br><br> -->
-                        <label for="id">ID Articulo: </label>
-                        <input name="id" type="text" class="idpedido">
+                 
+                        <label for="">Seleccione:</label>
+                        <select name="criterio" id="">
+                            <option value="id">ID</option>
+                            <option value="nombre">Nombre</option>
+                        </select>
+                        <input name="input" placeholder="Escribe iD o titulo" type="text" class="idpedido">
                         <label for=""> Estado: </label>
-                        <select name="" id="">Estado
+                        <select name="estado" id="">Estado
                             <option value="">Disponible</option>
                             <option value="">Agotado</option>
                         </select>
-                        <label for=""> Valor: </label>
+                        <label for=""> Categoria: </label>
                         <select name="categoria" id="">Categoria
                             <option value="">Seleccione</option>
                             <option value="Collares">Collares</option>
                             <option value="Pulseras">Pulseras</option>
                             <option value="Anillos">Anillos</option>
                         </select>
-                        <input class="searchButton" type="button" value="Buscar">
-                    </form>
-                    <a class="edit" href="../View/NuevoProducto.php">Nuevo Producto</a>
+                        <input class="searchButton" type="submit" value="Buscar">
+                    </form><br>
+                    <a class="" href="../View/NuevoProducto.php">Nuevo Producto</a>
                 </div>
                 <table>
                     <tr>
@@ -145,14 +176,14 @@ session_start();
                     
                 </table>
                 <nav class="paginacion">
-                <a class="prev-next" <?php if($_GET['pagina']<=1){ ?> hidden <?php }else{ echo ""; } ?> href="../view/productos.php?pagina=<?php echo "$_GET[pagina]"-1; ?>">Anterior </a>
+                <a class="prev-next" <?php if($_GET['pagina']<=1){ ?> hidden <?php }else{ echo ""; } ?> href="../view/productos.php?pagina=<?php echo "$_GET[pagina]"-1;?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; } ?>&criterio=id&input=&estado=&categoria=#">Anterior </a>
                 <?php for($i=0; $i < $paginas; $i++){
 
-                  ?> <a href="../view/productos.php?pagina=<?php echo"$i"+1 ?>"><?php echo "$i"+1;  ?> </a>   
+                  ?> <a href="../view/productos.php?pagina=<?php echo"$i"+1 ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; } ?>&criterio=id&input=&estado=&categoria=#"><?php echo "$i"+1;  ?> </a>   
                
                 <?php  } ?>
                
-                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> hidden <?php }else{ echo ""; } ?> href="../view/productos.php?pagina=<?php echo "$_GET[pagina]"+1; ?>"> Siguiente</a>
+                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> hidden <?php }else{ echo ""; } ?> href="../view/productos.php?pagina=<?php echo "$_GET[pagina]"+1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&criterio=id&input=&estado=&categoria=<?php if(isset($_REQUEST['categoria'])){ echo "$_REQUEST[categoria]"; } ?>"> Siguiente</a>
                 </nav>
             </div>
         </section>

@@ -5,13 +5,31 @@
 
     class Producto {
 
-            private $prod; 
+            private $prod;
+            private $id;
+            private $titulo;
+            private $precio;
+            private $estado;
+            private $categoria;
+            public $artporpag;
+            private $sentencia;
 
         public function __construct()
         {
 
             $this->prod = new mysqli('localhost','root','','proyecto');
             
+        }
+        public function inicializar($artxpag){
+
+            $this->artporpag = $artxpag;
+          
+
+        }
+        public function filtrar($where){
+
+            $this->sentencia = $where;
+
         }
         public function insertarProducto($ruta,$aNombre,$aPrecio,$aCantidad,$aestado,$aCategoria){
 
@@ -43,21 +61,22 @@
 
         public function verInventario(){
 
-
+            $sentencia = $this->sentencia;
             $cantidad = $this->prod->query("SELECT COUNT(*) as cantidad FROM articulo");
 
             $cant = mysqli_fetch_array($cantidad);
-            $registrosxpagina = 10;
+            $registrosxpagina = $this->artporpag;
 
             $inicio = ($_GET['pagina']-1)*$registrosxpagina;
 
             $query = $this->prod->query("SELECT * FROM articulo
             JOIN categoria
             ON artCategoriaId = categoriaId
+            $sentencia
             ORDER BY artId DESC
-            LIMIT $inicio,$registrosxpagina");
+            LIMIT $inicio,$registrosxpagina
+           ");
             
-
             $retorno = [];
             $i = 0;
             while($fila = $query->fetch_assoc()) {
@@ -66,6 +85,7 @@
                 $i++;
             }
             return $retorno;
+            
         }
        
           public function actualizarProducto($artId,$ruta,$aNombre,$aPrecio,$aCantidad,$aestado,$aCategoria){
@@ -85,7 +105,7 @@
          $this->prod->query("DELETE FROM articulo WHERE artId = '$artId'") 
          or die ("problemas en el select " . mysqli_error($prod));
 
-         header("Location: http://localhost/UmaraniWeb/View/productos.php");
+         header("Location: ../View/productos.php");
         }
 
         public function cerrarConexion(){
