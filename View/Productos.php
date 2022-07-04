@@ -1,13 +1,4 @@
 <?php
-
-    require_once("../Controller/mostrarProducto.php");
-    
-    $paginas = $cantidad/$prod1->artporpag;
-    $paginas = ceil($paginas);
-
-?>
-
-<?php
 session_start();
 
 ?>
@@ -16,8 +7,25 @@ session_start();
 
         header("Location: ../View/loginUsuario.php");
     }
-?> 
- 
+?>
+
+<?php
+
+    if(isset($_GET['pagina'])){
+
+        
+    }else{
+        $_GET['pagina'] = 1;
+    }
+
+    require_once("../Controller/mostrarProducto.php");
+    
+    $paginas = $cantidad/$prod1->artporpag;
+    $paginas = ceil($paginas);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -128,7 +136,7 @@ session_start();
                         </select>
                         <input class="searchButton" type="submit" value="Buscar">
                     </form><br><br>
-                    <a class="" href="../View/NuevoProducto.php">Nuevo Producto</a>
+                    <a class="new" href="../View/NuevoProducto.php">Nuevo Producto</a>
                 </div>
                 <table>
                     <tr>
@@ -180,7 +188,7 @@ session_start();
                 <a class="prev-next" <?php if($_GET['pagina']<=1){ ?> hidden <?php }else{ echo ""; } ?> href="../view/productos.php?pagina=<?php echo "$_GET[pagina]"-1;?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&criterio=id&input=<?php if(isset($_REQUEST['textbox'])){ echo "$_REQUEST[textbox]"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&categoria=<?php if(isset($_REQUEST['categoria'])){ echo "$_REQUEST[categoria]"; } ?>">Anterior </a>
                 <?php for($i=0; $i < $paginas; $i++){
 
-                  ?> <a href="../view/productos.php?pagina=<?php echo"$i"+1 ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&criterio=id&input=<?php if(isset($_REQUEST['textbox'])){ echo "$_REQUEST[textbox]"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&categoria=<?php if(isset($_REQUEST['categoria'])){ echo "$_REQUEST[categoria]"; } ?>"><?php echo "$i"+1;  ?> </a>   
+                  ?> <a  <?php if($_GET['pagina'] == $i+1) { ?> class="active" <?php } ?> href="../view/productos.php?pagina=<?php echo"$i"+1 ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&criterio=id&input=<?php if(isset($_REQUEST['textbox'])){ echo "$_REQUEST[textbox]"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&categoria=<?php if(isset($_REQUEST['categoria'])){ echo "$_REQUEST[categoria]"; } ?>"><?php echo "$i"+1;  ?> </a>   
                
                 <?php  } ?>
                

@@ -245,6 +245,12 @@
             background: #999999;
             color: #ebebeb;
         }
+        .active{
+
+            background: #427eff77;
+            border-radius: 2px;
+            color: #fff;
+        }
 .footer{
 
     background: #f0f0f0;

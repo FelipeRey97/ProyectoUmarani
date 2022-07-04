@@ -12,7 +12,7 @@ $paginas = ceil($paginas);
         header("Location: http://localhost/UmaraniWeb/View/loginUsuario.php");
     }
 
-?>
+?> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -58,30 +58,69 @@ $paginas = ceil($paginas);
         </header>
         <section class="section">
             <div class="container">
-                <div class="registros">
+            <div class="registros">
+                <form action="#">
+                 <p> Mostrar   <select name="artxpag" id="">
+                 <?php $P= $_GET['artxpag']; 
+                    switch ($P) {
+                        case 5:
+                            ?>
+                    <option selected value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option> <?php
+                            break;
+                        
+                        case 10:
+                            ?>
+                            <option value="5">5</option>
+                            <option selected value="10">10</option>
+                            <option value="20">20</option> <?php
+                            
+                            break;
+                        case 20:
+
+                            ?>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option selected value="20">20</option> <?php
+
+                            break;
+                        default: 
+                        ?>
+                        <option selected value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option> <?php
+                    }  
+                
+                ?>
+                    
+                    <input type="hidden" name="pagina" value="1">
+               </select>  Registros </p>  
                 </div>
                 <div class="exportar">
-                    <a class="excel" href="#"><i class="fas fa-file-excel"></i> Excel</a>
+                     <a class="excel" href="#"><i class="fas fa-file-excel"></i> Excel</a> 
+                  <!-- <a class="pdf" href="#"><i class="fas fa-file-pdf"></i> PDF </a> --> 
                 </div>
                 <div class="filtros" >
-                    <form action="">
+                    
                         <label for="fechainicio">Desde: </label>
                         <input type="date" name="fechainicio"><br><br>
                         <label for="fechafin">Hasta:  </label>
                         <input type="date" name="fechafin"><br><br>
-                        <label for="id">ID Articulo: </label>
-                        <input name="id" type="text" class="idpedido">
                         <label for=""> Estado: </label>
-                        <select name="" id="">Estado
-                            <option value="">Disponible</option>
-                            <option value="">Agotado</option>
+                        <select name="estado" id="">Estado
+                            <option value="">Seleccione</option>
+                            <option value="Atendida">Atendida</option>
+                            <option value="Pendiente">Pendiente</option>
                         </select>
-                        <label for=""> Valor: </label>
-                        <select name="" id="">Estado
-                            <option value="">Menor a Mayor</option>
-                            <option value="">Mayor a Menor</option>
+                        <label for=""> Tipo: </label>
+                        <select name="tipo" id="">
+                            <option value="">Seleccione</option>
+                            <option value="Consulta">Consulta</option>
+                            <option value="Pedido">Pedido</option>
+                            <option value="Garantia">Garantia</option>
                         </select>
-                        <input class="searchButton" type="button" value="Buscar">
+                        <input class="searchButton" type="submit" value="Buscar">
                     </form>
                 </div>
                 <table>
@@ -125,17 +164,14 @@ $paginas = ceil($paginas);
                     <?php  } ?>
                 </table>
                 <nav class="paginacion">
-                <a class="prev-next" <?php if($_GET['pagina']<=1){ ?> hidden <?php }else{ echo""; } ?> href="../View/PQRS.php?pagina=<?php echo "$_GET[pagina]"-1 ?>">Anterior </a>
+                <a class="prev-next" <?php if($_GET['pagina']<=1){ ?> hidden <?php }else{ echo ""; } ?> href="../view/PQRS.php?pagina=<?php echo "$_GET[pagina]"-1;?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&tipo=<?php if(isset($_REQUEST['tipo'])){ echo "$_REQUEST[tipo]"; } ?>&fechainicio=<?php if(isset($_REQUEST['fechainicio'])){ echo "$_REQUEST[fechainicio]"; } ?>&fechafin=<?php if(isset($_REQUEST['fechafin'])){ echo "$_REQUEST[fechafin]"; } ?>">Anterior </a>
+                <?php for($i=0; $i < $paginas; $i++){
 
-                <?php for($i=0; $i < $paginas; $i++){ ?>
-
-                    <a href="../View/PQRS.php?pagina=<?php echo "$i"+1; ?>"><?php echo "$i"+1;  ?></a>
-
-                  <?php     }   ?>
-
-
-                <a class="prev-next" <?php if($_GET['pagina']>=$paginas){ ?> hidden <?php }else{ echo""; } ?> href="../View/PQRS.php?pagina=<?php echo "$_GET[pagina]"+1 ?>"> Siguiente</a>
-
+                  ?> <a  <?php if($_GET['pagina'] == $i+1) { ?> class="active" <?php } ?> href="../view/PQRS.php?pagina=<?php echo"$i"+1 ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&tipo=<?php if(isset($_REQUEST['tipo'])){ echo "$_REQUEST[tipo]"; } ?>&fechainicio=<?php if(isset($_REQUEST['fechainicio'])){ echo "$_REQUEST[fechainicio]"; } ?>&fechafin=<?php if(isset($_REQUEST['fechafin'])){ echo "$_REQUEST[fechafin]"; } ?>"><?php echo "$i"+1;  ?> </a>   
+               
+                <?php  } ?>
+               
+                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> hidden <?php }else{ echo ""; } ?> href="../view/PQRS.php?pagina=<?php echo "$_GET[pagina]"+1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&tipo=<?php if(isset($_REQUEST['tipo'])){ echo "$_REQUEST[tipo]"; } ?>&fechainicio=<?php if(isset($_REQUEST['fechainicio'])){ echo "$_REQUEST[fechainicio]"; } ?>&fechafin=<?php if(isset($_REQUEST['fechafin'])){ echo "$_REQUEST[fechafin]"; } ?>"> Siguiente</a>
                 </nav>
             </div>
         </section>

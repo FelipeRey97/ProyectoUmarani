@@ -77,8 +77,8 @@ session_start();
                         <label for="foto1">Imagen Principal:</label> 
                         <input type="file" name="foto1" id="foto1"><br><br>
                         <input class="searchButton" type="submit" value="Registrar">
-                    </form>
-                    <a href="../View/Productos.php">Volver</a>
+                    </form><br><br>
+                    <a class="searchButton" href="../View/Productos.php">Volver</a>
                 </div>
  
             </div>

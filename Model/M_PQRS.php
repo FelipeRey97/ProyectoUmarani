@@ -3,15 +3,28 @@
 //Segunda clase creada, permite lo metodos para insert, select, update set y delete de productos con conexion a la BD
 
 
-    class PQRS {
+    class PQRS { 
 
             private $pqrs;
-
+            public $artporpag;
+            private $sentencia;
         public function __construct()
         {
 
             $this->pqrs = new mysqli('localhost','root','','proyecto');
             
+        } 
+
+        public function inicializar($artxpag){
+
+            $this->artporpag = $artxpag;
+
+
+        }
+        public function filtrar($where){
+
+            $this->sentencia = $where;
+
         }
         public function insertarPqrs1($pNombre,$pMail,$ptelefono,$pComentario,$tipoId,$pFecha,$ruta,$clienteId,$pedidoId){
 
@@ -45,10 +58,12 @@
 
         public function verPqrs(){
 
+            $sentencia = $this->sentencia;
+
             $cantidad = $this->pqrs->query("SELECT COUNT(*) as cantidad FROM pqrs");
 
             $cant = mysqli_fetch_array($cantidad);
-            $registrosxpagina = 5;
+            $registrosxpagina = $this->artporpag;
 
             $inicio = ($_GET['pagina']-1)*$registrosxpagina;
 
@@ -56,9 +71,10 @@
             $query = $this->pqrs->query("SELECT * FROM pqrs 
             JOIN pqrsTipo
             ON pqrsOrigenId = pqrsTipoId
+            $sentencia
             ORDER BY pqrsId DESC
             LIMIT $inicio,$registrosxpagina");
-            
+            echo $sentencia;
             $retorno = [];
             $i = 0;
             while($fila = $query->fetch_assoc()) {

@@ -165,11 +165,32 @@
 
         background:rgba(18, 151, 0, 0.849);
         color: #fff;
-    }
+    } 
+        .new{
+
+            background:rgba(18, 151, 0, 0.849);
+            color: #fff;
+            text-decoration: none;
+            padding: 8px;
+            border-radius: 4px;
+            font-family: 'Open Sans', sans-serif;
+            transition: 0.3s ease-in-out;
+        }
+        .new:hover{
+
+            background:rgba(121, 219, 106, 0.849);
+            transition: 0.2s ease-in-out;
+        }
         .excel:hover{
 
             background: rgba(118, 214, 105, 0.849);
             transition: 0.2s ease-in-out;
+        }
+        .active{
+
+            background: #427eff77;
+            border-radius: 2px;
+            color: #fff;
         }
     .pdf{
 

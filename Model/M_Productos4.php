@@ -11,7 +11,7 @@
             private $precio;
             private $estado;
             private $categoria;
-            public $artporpag;
+            public  $artporpag;
             private $sentencia;
 
         public function __construct()
