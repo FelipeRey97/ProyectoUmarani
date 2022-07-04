@@ -1,18 +1,14 @@
 <?php  
 session_start();
+if($_SESSION['doc'] == false){
+
+    header("Location: ../View/loginUsuario.php");
+}
 require_once('../Controller/mostrarPQRS.php');
 $paginas = $cantidad/$registrosxpagina;
 $paginas = ceil($paginas);
 ?>
 
-<?php 
-// se valida la sesion del usuario, en caso de no tener sesion sera redirigido al login
-    if($_SESSION['doc'] == false){
-
-        header("Location: http://localhost/UmaraniWeb/View/loginUsuario.php");
-    }
-
-?> 
 
 <!DOCTYPE html>
 <html lang="en">

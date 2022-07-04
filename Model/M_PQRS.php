@@ -74,7 +74,7 @@
             $sentencia
             ORDER BY pqrsId DESC
             LIMIT $inicio,$registrosxpagina");
-            echo $sentencia;
+            
             $retorno = [];
             $i = 0;
             while($fila = $query->fetch_assoc()) {

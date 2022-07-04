@@ -16,7 +16,77 @@ if(isset($_GET['artxpag'])){
 
 // combinatoria de filtros y busquedas
 
-if(isset($_REQUEST['tipo']) && $_REQUEST['tipo'] != ""){
+if(isset($_REQUEST['estado']) && $_REQUEST['estado'] != "" && $_REQUEST['fechainicio'] != "" && $_REQUEST['fechafin'] != "" && $_REQUEST['tipo'] != "" ){
+    $desde = $_REQUEST['fechainicio'];
+    $hasta = $_REQUEST['fechafin'];
+    $estado = $_REQUEST['estado'];
+    $tipo = $_REQUEST['tipo'];
+    $where = "WHERE pqrsEstado like '%$estado%' AND pqrsTipoNombre like '%$tipo%' AND pqrsFecha BETWEEN '$desde' AND '$hasta'";
+    $pq1->filtrar($where);
+}  
+
+else if(isset($_REQUEST['estado']) && $_REQUEST['estado'] != "" && $_REQUEST['fechainicio'] != "" && $_REQUEST['fechafin'] != "" ){
+    $desde = $_REQUEST['fechainicio'];
+    $hasta = $_REQUEST['fechafin'];
+    $estado = $_REQUEST['estado'];
+    $where = "WHERE pqrsEstado like '%$estado%' AND pqrsFecha BETWEEN '$desde' AND '$hasta'";
+    $pq1->filtrar($where);
+}  
+
+else if(isset($_REQUEST['tipo']) && $_REQUEST['tipo'] != "" && $_REQUEST['fechainicio'] != "" && $_REQUEST['fechafin'] != "" ){
+    $desde = $_REQUEST['fechainicio'];
+    $hasta = $_REQUEST['fechafin'];
+    $tipo = $_REQUEST['tipo'];
+    $where = "WHERE pqrsTipoNombre like '%$tipo%' AND pqrsFecha BETWEEN '$desde' AND '$hasta'";
+    $pq1->filtrar($where);
+} 
+else if(isset($_REQUEST['tipo']) && $_REQUEST['tipo'] != "" && $_REQUEST['fechainicio'] != "" && $_REQUEST['fechafin'] == ""){
+
+    $desde = $_REQUEST['fechainicio'];
+    $hasta = "9999-01-01";
+    $tipo = $_REQUEST['tipo'];
+    $where = "WHERE pqrsTipoNombre like '%$tipo%' AND pqrsFecha BETWEEN '$desde' AND '$hasta'";
+    $pq1->filtrar($where);
+        
+    } 
+else if(isset($_REQUEST['estado']) && $_REQUEST['estado'] != "" && $_REQUEST['fechainicio'] != "" && $_REQUEST['fechafin'] == ""){
+
+    $desde = $_REQUEST['fechainicio'];
+    $hasta = "9999-01-01";
+    $estado = $_REQUEST['estado'];
+    $where = "WHERE pqrsEstado like '%$estado%' AND pqrsFecha BETWEEN '$desde' AND '$hasta'";
+    $pq1->filtrar($where);
+        
+    } 
+else if(isset($_REQUEST['estado']) && $_REQUEST['estado'] != "" && $_REQUEST['fechainicio'] == "" && $_REQUEST['fechafin'] != ""){
+
+$desde = "2022-01-01";
+$hasta =  $_REQUEST['fechafin'];
+$estado = $_REQUEST['estado'];
+$where = "WHERE pqrsEstado like '%$estado%' AND pqrsFecha BETWEEN '$desde' AND '$hasta'";
+$pq1->filtrar($where);
+
+}
+else if(isset($_REQUEST['estado']) && $_REQUEST['estado'] != "" && $_REQUEST['fechainicio'] == "" && $_REQUEST['fechafin'] != ""){
+
+$desde = "2022-01-01";
+$hasta =  $_REQUEST['fechafin'];
+$estado = $_REQUEST['estado'];
+$where = "WHERE pqrsEstado like '%$estado%' AND pqrsFecha BETWEEN '$desde' AND '$hasta'";
+$pq1->filtrar($where);
+
+     }
+
+else if(isset($_REQUEST['estado']) && $_REQUEST['estado'] != "" && isset($_REQUEST['tipo']) && $_REQUEST['tipo'] != ""){
+
+$tipo = $_REQUEST['tipo'];
+$estado = $_REQUEST['estado'];
+$where = "WHERE pqrsEstado like '%$estado%' AND pqrsTipoNombre like '%$tipo%'";
+$pq1->filtrar($where);
+
+        }
+
+else if(isset($_REQUEST['tipo']) && $_REQUEST['tipo'] != ""){
 
     $tipo = $_REQUEST['tipo'];
     $where = "WHERE pqrsTipoNombre like '%$tipo%'";
@@ -27,7 +97,7 @@ if(isset($_REQUEST['tipo']) && $_REQUEST['tipo'] != ""){
     $estado = $_REQUEST['estado'];
     $where = "WHERE pqrsEstado = '$estado'";
     $pq1->filtrar($where);
-    echo "funciona";
+    
 }
 
 else if(isset($_REQUEST['fechainicio']) && isset($_REQUEST['fechafin'])){
@@ -37,12 +107,14 @@ else if(isset($_REQUEST['fechainicio']) && isset($_REQUEST['fechafin'])){
     $hasta = $_REQUEST['fechafin'];
     $where = "WHERE pqrsFecha BETWEEN '$desde' AND '$hasta'";
     $pq1->filtrar($where);
+    
     }else if($_REQUEST['fechainicio'] != "" && $_REQUEST['fechafin'] == ""){
 
     $desde = $_REQUEST['fechainicio'];
     $hasta = "9999/01/01";
     $where = "WHERE pqrsFecha BETWEEN '$desde' AND '$hasta'";
     $pq1->filtrar($where);
+        
     } 
     else if($_REQUEST['fechainicio'] == "" && $_REQUEST['fechafin'] != ""){
 
@@ -75,6 +147,6 @@ $reg = mysqli_fetch_array($resultado);
 
 $cantidad = $reg['cantidad'];
 
-$registrosxpagina = 5;
+$registrosxpagina = $pq1->artporpag;
 
 ?> 
