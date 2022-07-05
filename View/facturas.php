@@ -1,25 +1,21 @@
 <?php
+    session_start();
+    if($_SESSION['doc'] == false){
+
+        header("Location: ../View/loginUsuario.php");
+    }
+    if(isset($_GET['pagina'])){
+
+        
+    }else{
+        $_GET['pagina'] = 1;
+    }
 
     require_once("../Controller/mostrarFacturas.php");
-    $paginas = $cantidad/10;
+    $paginas = $cantidad/$registrosxpagina;
     $paginas = ceil($paginas);
    
 ?>
-
-<?php
-// sesion del usuario iniciada desde el login (para usuarios de la tienda)
-session_start();
-
-?>
-<?php 
-// se valida la sesion del usuario, en caso de no tener sesion sera redirigido al login
-    if($_SESSION['doc'] == false){
-
-        header("Location: http://localhost/UmaraniWeb/View/loginUsuario.php");
-    }
-
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -69,26 +65,67 @@ session_start();
         <section class="section">
 
             <div class="container">
-                <div class="registros">
+            <div class="registros">
+                <form action="#" >
+                 <p> Mostrar   <select name="artxpag" id="">
+                 <?php $P= $_GET['artxpag']; 
+                    switch ($P) {
+                        case 5:
+                            ?>
+                    <option selected value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option> <?php
+                            break;
+                        
+                        case 10:
+                            ?>
+                            <option value="5">5</option>
+                            <option selected value="10">10</option>
+                            <option value="20">20</option> <?php
+                            
+                            break;
+                        case 20:
+
+                            ?>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option selected value="20">20</option> <?php
+
+                            break;
+                        default: 
+                        ?>
+                        <option selected value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option> <?php
+                    }  
+                
+                ?>
+                    
+                    <input type="hidden" name="pagina" value="1">
+               </select>  Registros </p>  
                 </div>
-                <div class="filtros" >
-                    <form action="">
-                        <label for="id">ID Usuario: </label>
+                <div class="filtros">
+                    <label for="">Desde:</label>
+                    <input class="date" name="fechainicio" type="date" class="idpedido"><br><br>
+                    <label for="">Hasta:</label>
+                    <input class="date" name="fechafin" type="date" class="idpedido"><br><br>
+                        <label for="id">ID factura: </label>
                         <input name="id" type="text" class="idpedido">
-                        <label for=""> Estado: </label>
-                        <select name="" id="">Estado
-                            <option value="">Activo</option>
-                            <option value="">Inactivo</option>
-                            <option value="">Bloqueado</option>
+                        <label for="order"> Costo: </label>
+                        <select name="ordenar" id="">
+                            <option value="">Seleccione</option>
+                            <option value="maytomen">Mayor a menor </option>
+                            <option value="mentomay">Menor a mayor</option>
                         </select>
-                        <label for=""> Rol: </label>
-                        <select name="" id="">Estado
-                            <option value="">Todos</option>
-                            <option value="">Mayor a Menor</option>
+                        <label for="pago"> Pago: </label>
+                        <select name="pago" id="">Estado
+                            <option value="">Seleccione</option>
+                            <option value="Debito">Debito</option>
+                            <option value="Credito">Credito</option>
                         </select>
-                        <input class="searchButton" type="button" value="Buscar">
+                        <input class="searchButton" type="submit" value="Buscar">
                     </form>
-                    <a href="../View/nuevoUsuario.php">Nuevo Usuario</a>
+                   
                 </div>
                 <table>
                     <tr>
@@ -121,14 +158,14 @@ session_start();
                     
                 </table>
                 <nav class="paginacion">
-                <a class="prev-next" <?php if($_GET['pagina']<=1){ ?> hidden <?php }else{ echo ""; } ?> href="../view/facturas.php?pagina=<?php echo "$_GET[pagina]"-1; ?>">Anterior </a>
+                <a class="prev-next" <?php if($_GET['pagina']<=1){ ?> hidden <?php }else{ echo ""; } ?> href="../view/facturas.php?pagina=<?php echo "$_GET[pagina]"-1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&pago=<?php if(isset($_REQUEST['pago'])){ echo "$_REQUEST[pago]"; } ?>&ordenar=<?php if(isset($_REQUEST['ordenar'])){ echo "$_REQUEST[ordenar]"; } ?>&fechainicio=<?php if(isset($_REQUEST['fechainicio'])){ echo "$_REQUEST[fechainicio]"; } ?>&fechafin=<?php if(isset($_REQUEST['fechafin'])){ echo "$_REQUEST[fechafin]"; } ?>">Anterior </a>
                 <?php for($i=0; $i < $paginas; $i++){
 
-                  ?> <a href="../view/facturas.php?pagina=<?php echo"$i"+1 ?>"><?php echo "$i"+1;  ?> </a>   
+                  ?> <a <?php if($_GET['pagina'] == $i+1 ){ ?> class="active" <?php } ?> href="../view/facturas.php?pagina=<?php echo"$i"+1 ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&pago=<?php if(isset($_REQUEST['pago'])){ echo "$_REQUEST[pago]"; } ?>&ordenar=<?php if(isset($_REQUEST['ordenar'])){ echo "$_REQUEST[ordenar]"; } ?>&fechainicio=<?php if(isset($_REQUEST['fechainicio'])){ echo "$_REQUEST[fechainicio]"; } ?>&fechafin=<?php if(isset($_REQUEST['fechafin'])){ echo "$_REQUEST[fechafin]"; } ?>"><?php echo "$i"+1;  ?> </a>   
                
                 <?php  } ?>
                
-                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> hidden <?php }else{ echo ""; } ?> href="../view/facturas.php?pagina=<?php echo "$_GET[pagina]"+1; ?>"> Siguiente</a>
+                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> hidden <?php }else{ echo ""; } ?> href="../view/facturas.php?pagina=<?php echo "$_GET[pagina]"+1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&pago=<?php if(isset($_REQUEST['pago'])){ echo "$_REQUEST[pago]"; } ?>&ordenar=<?php if(isset($_REQUEST['ordenar'])){ echo "$_REQUEST[ordenar]"; } ?>&fechainicio=<?php if(isset($_REQUEST['fechainicio'])){ echo "$_REQUEST[fechainicio]"; } ?>&fechafin=<?php if(isset($_REQUEST['fechafin'])){ echo "$_REQUEST[fechafin]"; } ?>"> Siguiente</a>
                 </nav>
             </div>
         </section>

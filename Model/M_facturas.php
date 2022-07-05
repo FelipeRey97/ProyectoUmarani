@@ -3,16 +3,32 @@
 
 //primera clase creada, permite lo metodos para insert, select, update set y delete de usuarios con conexion a la BD
 
-    class Factura {
+    class Factura { 
 
             private $fact; 
-
+            private $sentencia;
+            public $artporpag;
+            private $orden;
+            
         public function __construct()
         {
 
             $this->fact = new mysqli('localhost','root','','proyecto');
             
         }
+        public function inicializar($artxpag){
+
+            $this->artporpag = $artxpag;
+        }
+        public function filtrar($where){
+
+            $this->sentencia = $where;
+        }
+        public function ordenar($orderby){
+
+            $this->orden = $orderby;
+        }
+
         public function insertarFactura($clienteId,$todaydate,$total,$clienteDoc,$tipoPago,$dirC,$impuestoId){
 
 
@@ -24,17 +40,20 @@
         }
         public function verFacturas(){
 
+            $sentencia = $this->sentencia;
+            $orderby = $this->orden;
             $cantidad = $this->fact->query("SELECT COUNT(*) as cantidad FROM factura");
 
             $cant = mysqli_fetch_array($cantidad);
-            $registrosxpagina = 10;
+            $registrosxpagina = $this->artporpag;
 
             $inicio = ($_GET['pagina']-1)*$registrosxpagina;
 
             $query = $this->fact->query("SELECT * FROM factura
             JOIN tipopago
             ON tipoPagoId = factura_tipoPagoId
-            ORDER BY facturaId DESC
+            $sentencia
+            $orderby 
             LIMIT $inicio,$registrosxpagina");
             
            

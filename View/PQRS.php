@@ -4,6 +4,12 @@ if($_SESSION['doc'] == false){
 
     header("Location: ../View/loginUsuario.php");
 }
+if(isset($_GET['pagina'])){
+
+        
+}else{
+    $_GET['pagina'] = 1;
+}
 require_once('../Controller/mostrarPQRS.php');
 $paginas = $cantidad/$registrosxpagina;
 $paginas = ceil($paginas);
