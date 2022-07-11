@@ -251,6 +251,16 @@
             border-radius: 2px;
             color: #fff;
         }
+        .new{
+
+            background:rgba(18, 151, 0, 0.849);
+            color: #fff;
+            text-decoration: none;
+            padding: 8px;
+            border-radius: 4px;
+            font-family: 'Open Sans', sans-serif;
+            transition: 0.3s ease-in-out;
+        }
 .footer{
 
     background: #f0f0f0;

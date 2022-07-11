@@ -1,7 +1,18 @@
 <?php
 session_start();
+if($_SESSION['doc'] == false){
+
+    header("Location: ..View/loginUsuario.php");
+}
+
+if(isset($_GET['pagina'])){
+
+        
+}else{
+    $_GET['pagina'] = 1;
+}
 require_once('../Controller/mostrarClientes.php');
-$paginas = $cantidad/5;
+$paginas = $cantidad/$registrosxpagina;
 $paginas = ceil($paginas);
 ?>
 
@@ -9,8 +20,6 @@ $paginas = ceil($paginas);
     
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -59,29 +68,55 @@ $paginas = ceil($paginas);
         <section class="section">
 
             <div class="container">
-                <div class="registros">
-                 <!-- <p> Mostrar  <select name="" id="">
-                    <option value="">5</option>
-                    <option value="">10</option>
-                    <option value="">15</option>
-               </select>  Registros </p>   -->
-                </div>
+            <div class="registros">
+                <form action="#" >
+                 <p> Mostrar   <select name="artxpag" id="">
+                 <?php $P= $_GET['artxpag']; 
+                    switch ($P) {
+                        case 5:
+                            ?>
+                    <option selected value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option> <?php
+                            break;
+                        
+                        case 10:
+                            ?>
+                            <option value="5">5</option>
+                            <option selected value="10">10</option>
+                            <option value="20">20</option> <?php
+                            
+                            break;
+                        case 20:
+
+                            ?>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option selected value="20">20</option> <?php
+
+                            break;
+                        default: 
+                        ?>
+                        <option selected value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option> <?php
+                    }  
+                
+                ?> <input type="hidden" name="pagina" value="1">
+                </select>  Registros </p>  
+                 </div>
                 <div class="filtros" >
                     <form action="">
-                        <label for="id">ID Usuario: </label>
-                        <input name="id" type="text" class="idpedido">
-                        <label for=""> Estado: </label>
-                        <select name="" id="">Estado
-                            <option value="">Activo</option>
-                            <option value="">Inactivo</option>
-                            <option value="">Bloqueado</option>
+                        <label for="">Criterio:</label>
+                        <select name="criterio" id="">
+                            <option value="">Seleccione</option>
+                            <option value="id">Id</option>
+                            <option value="nombre">Nombre</option>
+                            <option value="correo">Correo Electronico</option>
+                            <option value="telefono">Teléfono</option>
                         </select>
-                        <label for=""> Rol: </label>
-                        <select name="" id="">Estado
-                            <option value="">Todos</option>
-                            <option value="">Mayor a Menor</option>
-                        </select>
-                        <input class="searchButton" type="button" value="Buscar">
+                        <input name="textbox" type="text" class="idpedido">
+                        <input class="searchButton" type="submit" value="Buscar">
                     </form>
                     
                 </div>
@@ -120,14 +155,14 @@ $paginas = ceil($paginas);
                     
                 </table>
                 <nav class="paginacion">
-                <a class="prev-next" <?php if($_GET['pagina']<=1){ ?> hidden <?php }else{ echo ""; } ?> href="../view/adminClientes.php?pagina=<?php echo "$_GET[pagina]"-1; ?>">Anterior </a>
+                <a class="prev-next" <?php if($_GET['pagina']<=1){ ?> hidden <?php }else{ echo ""; } ?> href="../view/adminClientes.php?pagina=<?php echo "$_GET[pagina]"-1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo "5";}?>&criterio=<?php if(isset($_GET['criterio'])){ echo "$_GET[criterio]"; } else { echo ""; }?>&textbox=<?php if(isset($_GET['textbox'])){ echo "$_GET[textbox]";}else{ echo "";} ?>">Anterior </a>
                 <?php for($i=0; $i < $paginas; $i++){
 
-                  ?> <a href="../view/adminClientes.php?pagina=<?php echo"$i"+1 ?>"><?php echo "$i"+1;  ?> </a>   
+                  ?> <a <?php if($_GET['pagina'] == $i+1){ ?> class= "active" <?php }  ?> href="../view/adminClientes.php?pagina=<?php echo"$i"+1 ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo "5";}?>&criterio=<?php if(isset($_GET['criterio'])){ echo "$_GET[criterio]"; } else { echo ""; }?>&textbox=<?php if(isset($_GET['textbox'])){ echo "$_GET[textbox]";}else{ echo "";} ?>"><?php echo "$i"+1;?> </a>   
                
                 <?php  } ?>
                
-                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> hidden <?php }else{ echo ""; } ?> href="../view/adminClientes.php?pagina=<?php echo "$_GET[pagina]"+1; ?>"> Siguiente</a>
+                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> hidden <?php }else{ echo ""; } ?> href="../view/adminClientes.php?pagina=<?php echo "$_GET[pagina]"+1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo "5";}?>&criterio=<?php if(isset($_GET['criterio'])){ echo "$_GET[criterio]"; } else { echo ""; }?>&textbox=<?php if(isset($_GET['textbox'])){ echo "$_GET[textbox]";}else{ echo "";} ?>"> Siguiente</a>
                 </nav>
             </div>
         </section>

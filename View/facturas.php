@@ -16,7 +16,7 @@
     $paginas = ceil($paginas);
    
 ?>
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,7 +60,7 @@
         </div>
         <div class="content">
         <header class="header">
-            <h1>Gestión de Usuarios</h1>
+            <h1>Facturas</h1>
         </header>
         <section class="section">
 

@@ -3,14 +3,24 @@
 //primera clase creada, permite lo metodos para insert, select, update set y delete de usuarios con conexion a la BD
 
     class Conexion {
-
+ 
             private $con;
+            public $artporpag;
+            private $sentencia;
 
         public function __construct()
         {
  
             $this->con = new mysqli('localhost','root','','proyecto');
             
+        }
+        public function inicializar($artxpag){
+
+            $this->artporpag = $artxpag;
+        }
+        public function filtrar($where){
+
+            $this->sentencia = $where;
         }
         public function insertarUsuario($unombre,$uapellido,$udocumento,$ucontraseña,$uestado,$urol){
 
@@ -23,16 +33,18 @@
         }
         public function verUsuario(){
 
+            $sentencia = $this->sentencia;
             $cantidad = $this->con->query("SELECT COUNT(*) as cantidad FROM factura");
 
             $cant = mysqli_fetch_array($cantidad);
-            $registrosxpagina = 5;
+            $registrosxpagina = $this->artporpag;
 
             $inicio = ($_GET['pagina']-1)*$registrosxpagina;
 
             $query = $this->con->query("SELECT * FROM usuariotienda
             JOIN rol
             ON rolId = usuarioRolId
+            $sentencia
             ORDER BY usuarioId DESC
             LIMIT $inicio,$registrosxpagina");
             
@@ -66,7 +78,7 @@
          $this->con->query("DELETE FROM  usuarioTienda WHERE usuarioId = '$_REQUEST[tabla]'") 
          or die ("problemas en el select " . mysqli_error($con));
 
-         header("Location: http://localhost/UmaraniWeb/View/Usuarios.php");
+         header("Location: ../View/Usuarios.php");
         }
 
         public function cerrarConexion(){

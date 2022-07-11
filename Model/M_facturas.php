@@ -27,7 +27,7 @@
         public function ordenar($orderby){
 
             $this->orden = $orderby;
-        }
+        } 
 
         public function insertarFactura($clienteId,$todaydate,$total,$clienteDoc,$tipoPago,$dirC,$impuestoId){
 

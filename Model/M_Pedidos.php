@@ -1,11 +1,12 @@
 <?php 
 
-
 //primera clase creada, permite lo metodos para insert, select, update set y delete de usuarios con conexion a la BD
  
     class Pedido {
 
             private $ped;
+            public $artporpag;
+            private $sentencia;
 
         public function __construct()
         {
@@ -13,6 +14,17 @@
             $this->ped = new mysqli('localhost','root','','proyecto');
             
         }
+        public function inicializar($artxpag){
+
+            $this->artporpag = $artxpag;
+
+        }
+        public function filtrar($where){
+
+            $this->sentencia = $where;
+
+        }
+
         public function insertarPedido($idFactura,$todaydate,$clienteId,$id,$total,$direccionId){
 
 
@@ -24,16 +36,19 @@
         }
         public function verPedido(){
 
+            $sentencia = $this->sentencia;
+
             $cantidad = $this->ped->query("SELECT COUNT(*) as cantidad FROM pedido");
 
             $cant = mysqli_fetch_array($cantidad);
-            $registrosxpagina = 10;
+            $registrosxpagina = $this->artporpag;
 
             $inicio = ($_GET['pagina']-1)*$registrosxpagina;
 
             $query = $this->ped->query("SELECT * FROM pedido
             JOIN direccionpedido
             ON direccionId = pedidoDireccionId
+            $sentencia
             ORDER BY pedidoId DESC
             LIMIT $inicio,$registrosxpagina");
             

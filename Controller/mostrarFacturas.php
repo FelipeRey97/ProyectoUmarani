@@ -98,7 +98,7 @@ else if(isset($_REQUEST['fechainicio']) && isset($_REQUEST['fechafin'])){
     }
 
 }
-else{
+else{ 
 
     $where = "";
     $fact1->filtrar($where);

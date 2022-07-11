@@ -6,12 +6,23 @@
     class Clientes {
 
             private $cl;
+            public $artporpag;
+            private $sentencia;
 
         public function __construct()
         {
 
             $this->cl = new mysqli('localhost','root','','proyecto');
             
+        }
+        public function inicializar($artxpag){
+
+            $this->artporpag = $artxpag;
+        }
+        public function filtrar($where){
+
+            $this->sentencia = $where;
+
         }
         public function insertarCliente($cNombre,$cApellido,$cMail,$cPassword){
 
@@ -23,19 +34,19 @@
             
         }
 
-        
-
 
         public function verCliente(){
 
+            $sentencia = $this->sentencia;
             $cantidad = $this->cl->query("SELECT COUNT(*) as cantidad FROM factura");
 
             $cant = mysqli_fetch_array($cantidad);
-            $registrosxpagina = 5;
+            $registrosxpagina = $this->artporpag;
 
             $inicio = ($_GET['pagina']-1)*$registrosxpagina;
 
             $query = $this->cl->query("SELECT * FROM cliente 
+            $sentencia
             ORDER BY clienteId DESC
             LIMIT $inicio,$registrosxpagina ");
             

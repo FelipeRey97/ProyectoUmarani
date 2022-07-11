@@ -1,20 +1,22 @@
 <?php
 session_start();
+if($_SESSION['doc'] == false){
+
+    header("Location: ../View/loginUsuario.php");
+}
+
+if(isset($_GET['pagina'])){
+
+        
+}else{
+    $_GET['pagina'] = 1;
+}
+
     require_once('../Controller/mostrarPedidos.php');
 
-   $paginas = $cantidad/10;
+   $paginas = $cantidad/$registrosxpagina;
    $paginas = ceil($paginas);
 ?>
-
-<?php 
-// se valida la sesion del usuario, en caso de no tener sesion sera redirigido al login
-    if($_SESSION['doc'] == false){
-
-        header("Location: http://localhost/UmaraniWeb/View/loginUsuario.php");
-    }
-
-?> 
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,32 +66,83 @@ session_start();
         <section class="section">
 
             <div class="container">
-                <div class="registros">  
+            <div class="registros">
+                <form action="#" >
+                 <p> Mostrar   <select name="artxpag" id="">
+                 <?php $P= $_GET['artxpag']; 
+                    switch ($P) {
+                        case 5:
+                            ?>
+                    <option selected value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option> <?php
+                            break;
+                        
+                        case 10:
+                            ?>
+                            <option value="5">5</option>
+                            <option selected value="10">10</option>
+                            <option value="20">20</option> <?php
+                            
+                            break;
+                        case 20:
+
+                            ?>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option selected value="20">20</option> <?php
+
+                            break;
+                        default: 
+                        ?>
+                        <option selected value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option> <?php
+                    }  
+                
+                ?>
+                    
+                    <input type="hidden" name="pagina" value="1">
+               </select>  Registros </p>  
                 </div>
                 <div class="filtros" >
-                    <form action="">
-                        <label for="id">ID Usuario: </label>
+                    <label for="">Desde:</label>
+                    <input class="date" name="fechainicio" type="date" class="idpedido"><br><br>
+                    <label for="">Hasta:</label>
+                    <input class="date" name="fechafin" type="date" class="idpedido"><br><br>
+                        <label for="id">Id Pedido: </label>
                         <input name="id" type="text" class="idpedido">
                         <label for=""> Estado: </label>
-                        <select name="" id="">Estado
-                            <option value="">Activo</option>
-                            <option value="">Inactivo</option>
-                            <option value="">Bloqueado</option>
+                        <select name="estado" id="">
+                            <option value="">Seleccione</option>
+                            <option value="pendiente">Pendiente</option>
+                            <option value="enviado">Enviado</option>
+                          <option value="cancelado">Cancelado</option>
                         </select>
-                        <label for=""> Rol: </label>
-                        <select name="" id="">Estado
-                            <option value="">Todos</option>
-                            <option value="">Mayor a Menor</option>
+                        <label for=""> Ordenar: </label>
+                        <select name="order" id="">Estado
+                            <option value="">Seleccione</option>
+                            <option value="">Precio Mayor a Menor</option>
+                            <option value="">Precio Menor a Mayor</option>
+                            <option value="">Antiguos primero</option>
+                            <option value="">Recientes primero</option>
                         </select>
-                        <input class="searchButton" type="button" value="Buscar">
+                        <label for=""> Departamento: </label>
+                        <select name="dpto" id="">Estado
+                            <option value="">Seleccione</option>
+                           <?php while($dep = mysqli_fetch_array($fila)){
+                            ?>
+                            <option value="<?php echo "$dep[dptoNombre]" ?>"><?php echo "$dep[dptoNombre]" ?> </option>
+                       <?php } ?>
+                        </select>
+                        <input class="searchButton" type="submit" value="Buscar">
                     </form>
                     <!-- <a href="../View/nuevoUsuario.php">Nuevo Usuario</a> -->
                 </div>
                 <table>
                     <tr>
                         <th>ID</th>
-                        <th>Fecha Inicio</th>
-                        <th>Fecha Estado</th>
+                        <th>Fecha</th>
                         <th>Estado</th>
                         <th>Monto</th>
                         <th>Departamento</th>
@@ -107,7 +160,6 @@ session_start();
                     <tr class="información" >
                         <td> <?php echo $pedido['pedidoId']   ?> </td>
                         <td> <?php echo $pedido['pedidoFechaInicio']   ?></td>
-                        <td> <?php echo $pedido['pedidoFechaFin']   ?></td>
                         <td> <?php echo $pedido['pedidoEstado']   ?></td>
                         <td> <?php echo "$ " . $pedido['pedidoCostoTotal']   ?></td>
                         <td> <?php echo $pedido['direccionDep']   ?></td>
@@ -126,8 +178,6 @@ session_start();
                                  
                                  <?php }?>
                             
-                           
-                            
                         </td>
                 
                         <?php  
@@ -140,7 +190,7 @@ session_start();
                  <a class="prev-next" <?php if($_GET['pagina']<=1 ){ ?> hidden <?php }else{ echo ""; } ?> href="../view/pedidos.php?pagina=<?php echo"$_GET[pagina]"-1; ?>">Anterior </a>
 
                  <?php for($i =0; $i < $paginas; $i++){ ?>
-                <a href="../view/pedidos.php?pagina=<?php echo "$i"+1 ?>"><?php echo "$i"+1 ?></a>
+                <a <?php if($_GET['pagina'] == $i+1){ ?> class="active" <?php }?> href="../view/pedidos.php?pagina=<?php echo "$i"+1 ?>"><?php echo "$i"+1 ?></a>
                 <?php }  ?>
 
                 <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> hidden <?php }else{ echo ""; } ?> href="../view/pedidos.php?pagina=<?php echo"$_GET[pagina]"+1; ?>"> Siguiente</a> 
