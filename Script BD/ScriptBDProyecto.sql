@@ -184,6 +184,30 @@ INSERT INTO `direccionpedido` VALUES (2,'SANTANDER','BUCARAMANGA','Calle 35 # 7-
 UNLOCK TABLES;
 
 --
+-- Table structure for table `dpto`
+--
+
+DROP TABLE IF EXISTS `dpto`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dpto` (
+  `dptoId` int(11) NOT NULL AUTO_INCREMENT,
+  `dptoNombre` varchar(60) COLLATE utf8mb4_spanish_ci NOT NULL,
+  PRIMARY KEY (`dptoId`)
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dpto`
+--
+
+LOCK TABLES `dpto` WRITE;
+/*!40000 ALTER TABLE `dpto` DISABLE KEYS */;
+INSERT INTO `dpto` VALUES (1,'Amazonas'),(2,'Antioquia'),(3,'Arauca'),(4,'Atlantico'),(5,'Bogotá'),(6,'Bolivar'),(7,'Boyaca'),(8,'Caldas'),(9,'Caqueta'),(10,'Casanare'),(11,'Cauca'),(12,'Cesar'),(13,'Choco'),(14,'Cordoba'),(15,'Cundinamarca'),(16,'Guainia'),(17,'Guaviare'),(18,'Huila'),(19,'La Guajira'),(20,'Magdalena'),(21,'Meta'),(22,'Nariño'),(23,'Norte de Santander '),(24,'Putumayo'),(25,'Quindío'),(26,'Risaralda'),(27,'San Andres y Providencia'),(28,'Santander'),(29,'Sucre'),(30,'Tolima'),(31,'Valle del Cauca'),(32,'Vaupes'),(33,'Vichada');
+/*!40000 ALTER TABLE `dpto` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `empresaenvio`
 --
 
@@ -547,4 +571,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-03 14:21:11
+-- Dump completed on 2022-07-11 11:30:03
