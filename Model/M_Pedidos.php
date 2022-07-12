@@ -50,7 +50,6 @@
             $registrosxpagina = $this->artporpag;
 
             $inicio = ($_GET['pagina']-1)*$registrosxpagina;
-
             $query = $this->ped->query("SELECT * FROM pedido
             JOIN direccionpedido
             ON direccionId = pedidoDireccionId

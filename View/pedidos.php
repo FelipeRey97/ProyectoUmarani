@@ -105,10 +105,6 @@ if(isset($_GET['pagina'])){
                     <input type="hidden" name="pagina" value="1">
                </select>  Registros </p>  
                 </div>
-                <div class="exportar">
-                     <a class="excel" href="#"><i class="fas fa-file-excel"></i> Excel</a> 
-                  <!-- <a class="pdf" href="#"><i class="fas fa-file-pdf"></i> PDF </a> --> 
-                </div>
                 <div class="filtros" >
                     <label for="">Desde:</label>
                     <input class="date" name="fechainicio" type="date" class="idpedido"><br><br>
@@ -139,9 +135,13 @@ if(isset($_GET['pagina'])){
                             <option value="<?php echo "$dep[dptoNombre]" ?>"><?php echo "$dep[dptoNombre]" ?> </option>
                        <?php } ?>
                         </select>
-                        <input class="searchButton" type="submit" value="Buscar">
+                        <input type="hidden" value="pedido" name="v">
+                        <input class="searchButton" type="button" value="Buscar"
+                         onclick="this.form.action='#';this.form.submit();" />
+                        <input class="excel searchButton" type="button" value="exportar"
+                         onclick="this.form.action='../Controller/exportarXslx.php?v=pedido';this.form.submit();" />
                     </form>
-                    <!-- <a href="../View/nuevoUsuario.php">Nuevo Usuario</a> -->
+                    
                 </div>
                 <table>
                     <tr>
