@@ -104,7 +104,7 @@ session_start();
                         <option value="20">20</option> <?php
                     }  
                 
-                ?>
+                ?> 
                     
                     <input type="hidden" name="pagina" value="1">
                </select>  Registros </p>  

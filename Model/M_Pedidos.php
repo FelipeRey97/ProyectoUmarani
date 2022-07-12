@@ -2,11 +2,12 @@
 
 //primera clase creada, permite lo metodos para insert, select, update set y delete de usuarios con conexion a la BD
  
-    class Pedido {
+    class Pedido { 
 
             private $ped;
             public $artporpag;
             private $sentencia;
+            private $orden;
 
         public function __construct()
         {
@@ -24,6 +25,11 @@
             $this->sentencia = $where;
 
         }
+        public function ordenar($orderby){
+
+            $this->orden = $orderby;
+
+        }
 
         public function insertarPedido($idFactura,$todaydate,$clienteId,$id,$total,$direccionId){
 
@@ -37,7 +43,7 @@
         public function verPedido(){
 
             $sentencia = $this->sentencia;
-
+            $orderby = $this->orden;
             $cantidad = $this->ped->query("SELECT COUNT(*) as cantidad FROM pedido");
 
             $cant = mysqli_fetch_array($cantidad);
@@ -49,7 +55,7 @@
             JOIN direccionpedido
             ON direccionId = pedidoDireccionId
             $sentencia
-            ORDER BY pedidoId DESC
+            $orderby
             LIMIT $inicio,$registrosxpagina");
             
             

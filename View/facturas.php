@@ -6,7 +6,7 @@
     }
     if(isset($_GET['pagina'])){
 
-        
+         
     }else{
         $_GET['pagina'] = 1;
     }

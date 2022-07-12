@@ -5,7 +5,7 @@ require_once('../Model/M_facturas.php');
 $fact1 = new Factura();
 
 //Selector de cantidad de registros por pagina
-
+ 
 if(isset($_GET['artxpag'])){    
     $artxpag = $_REQUEST['artxpag'];
     $fact1->inicializar($artxpag);

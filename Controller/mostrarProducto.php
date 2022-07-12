@@ -10,10 +10,19 @@ if(isset($_GET['artxpag'])){
     $artxpag = 5;
     $prod1->inicializar($artxpag);
 }
-
+ 
 // Combinatoria para los filtros y búsquedas
 
-if(isset($_REQUEST['categoria']) && $_REQUEST['categoria'] != "" ){
+if (isset($_REQUEST['categoria']) && isset($_REQUEST['estado']) && $_REQUEST['categoria'] != "" && $_REQUEST['estado'] != "" ){
+
+    $estado = $_REQUEST['estado'];
+    $categoria = $_REQUEST['categoria'];
+    $where = "WHERE categoriaNombre like '%$categoria%' AND artEstado like '%$estado%'";
+    $prod1->filtrar($where);
+
+}
+ 
+else if(isset($_REQUEST['categoria']) && $_REQUEST['categoria'] != "" ){
 
 
     $categoria = $_REQUEST['categoria'];

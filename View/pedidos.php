@@ -7,7 +7,7 @@ if($_SESSION['doc'] == false){
 
 if(isset($_GET['pagina'])){
 
-        
+         
 }else{
     $_GET['pagina'] = 1;
 }
@@ -105,6 +105,10 @@ if(isset($_GET['pagina'])){
                     <input type="hidden" name="pagina" value="1">
                </select>  Registros </p>  
                 </div>
+                <div class="exportar">
+                     <a class="excel" href="#"><i class="fas fa-file-excel"></i> Excel</a> 
+                  <!-- <a class="pdf" href="#"><i class="fas fa-file-pdf"></i> PDF </a> --> 
+                </div>
                 <div class="filtros" >
                     <label for="">Desde:</label>
                     <input class="date" name="fechainicio" type="date" class="idpedido"><br><br>
@@ -120,12 +124,12 @@ if(isset($_GET['pagina'])){
                           <option value="cancelado">Cancelado</option>
                         </select>
                         <label for=""> Ordenar: </label>
-                        <select name="order" id="">Estado
+                        <select name="ordenar" >
                             <option value="">Seleccione</option>
-                            <option value="">Precio Mayor a Menor</option>
-                            <option value="">Precio Menor a Mayor</option>
-                            <option value="">Antiguos primero</option>
-                            <option value="">Recientes primero</option>
+                            <option value="maytomen">Precio Mayor a Menor</option>
+                            <option value="mentomay">Precio Menor a Mayor</option>
+                            <option value="antiguos">Antiguos primero</option>
+                            <option value="recientes">Recientes primero</option>
                         </select>
                         <label for=""> Departamento: </label>
                         <select name="dpto" id="">Estado
