@@ -109,10 +109,6 @@ session_start();
                     <input type="hidden" name="pagina" value="1">
                </select>  Registros </p>  
                 </div>
-                <div class="exportar">
-                     <a class="excel" href="#"><i class="fas fa-file-excel"></i> Excel</a> 
-                  <!-- <a class="pdf" href="#"><i class="fas fa-file-pdf"></i> PDF </a> --> 
-                </div>
                 <div class="filtros" >
                  
                         <label for="">Seleccione:</label>
@@ -134,7 +130,11 @@ session_start();
                             <option value="Pulseras">Pulseras</option>
                             <option value="Anillos">Anillos</option>
                         </select>
-                        <input class="searchButton" type="submit" value="Buscar">
+                        <input type="hidden" value="productos" name="v" >
+                        <input class="searchButton" type="button" value="Buscar"
+                        onclick="this.form.action='#';this.form.submit();"/>
+                        <input class ="excel" type="button" value="Exportar" 
+                        onclick="this.form.action='../Controller/exportarXslx.php';this.form.submit();" />
                     </form><br><br>
                     <a class="new" href="../View/NuevoProducto.php">Nuevo Producto</a>
                 </div>

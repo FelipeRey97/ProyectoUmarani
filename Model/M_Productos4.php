@@ -6,11 +6,6 @@
     class Producto {
 
             private $prod;
-            private $id;
-            private $titulo;
-            private $precio;
-            private $estado;
-            private $categoria;
             public  $artporpag;
             private $sentencia;
 
@@ -53,7 +48,7 @@
 
                 $retorno[$i] = $fila;
                 $i++;
-            }
+            } 
             return $retorno;
         }
 

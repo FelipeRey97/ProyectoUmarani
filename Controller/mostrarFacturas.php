@@ -36,6 +36,13 @@ if(isset($_REQUEST['pago']) && $_REQUEST['pago'] != "" && isset($_REQUEST['orden
         }
     
 }
+else if (isset($_REQUEST['ordenar']) && isset($_REQUEST['id']) && $_REQUEST['ordenar'] == "" && $_REQUEST['id'] == "" && $_REQUEST['fechainicio'] == "" && $_REQUEST['fechafin'] =="" ){
+
+    $orderby = "ORDER BY facturaId DESC";
+    $fact1->ordenar($orderby);
+    $where = "";
+    $fact1->filtrar($where);
+}
 
 else if(isset($_REQUEST['id']) && $_REQUEST['id']){
 

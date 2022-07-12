@@ -115,8 +115,12 @@ $paginas = ceil($paginas);
                             <option value="correo">Correo Electronico</option>
                             <option value="telefono">Teléfono</option>
                         </select>
+                        <input type="hidden" value="clientes" name="v">
                         <input name="textbox" type="text" class="idpedido">
-                        <input class="searchButton" type="submit" value="Buscar">
+                        <input class="searchButton" type="button" value="Buscar"
+                        onclick="this.form.action='#';this.form.submit();" />
+                        <input class="excel" type="button" value="Exportar"
+                        onclick="this.form.action='../Controller/exportarXslx.php';this.form.submit();" />
                     </form>
                     
                 </div>

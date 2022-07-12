@@ -143,7 +143,7 @@
         font-size: 18px;
         padding: 10px;
     }
-    .exportar{
+    .exportar{ 
 
         padding: 15px 0px;
         
@@ -158,14 +158,20 @@
     }
     .excel{
 
-        background:rgba(18, 151, 0, 0.849);
+        padding: 5px;
+        font-family: 'Open Sans', sans-serif;
+        background: #15b300;
         color: #fff;
+        border: 0.5px solid #15b300;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: 0.3s ease-in-out;
     }
-        .excel:hover{
+    .excel:hover{
 
-            background: rgba(118, 214, 105, 0.849);
-            transition: 0.2s ease-in-out;
-        }
+        background: #40eb2a;
+        transition: 0.3s ease-in-out;
+    }
     .pdf{
 
         background: rgba(228, 0, 0, 0.815);
@@ -218,10 +224,12 @@
         border: 0.5px solid #1d92ff;
         border-radius: 4px;
         cursor: pointer;
+        transition: 0.3s ease-in-out;
     }
     .searchButton:hover{
 
-        background: #66b5ff;;
+        background: #66b5ff;
+        transition: 0.3s ease-in-out;
     }
     .paginacion{
 

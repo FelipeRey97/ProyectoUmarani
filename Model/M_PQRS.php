@@ -13,7 +13,7 @@
 
             $this->pqrs = new mysqli('localhost','root','','proyecto');
             
-        } 
+        }  
 
         public function inicializar($artxpag){
 

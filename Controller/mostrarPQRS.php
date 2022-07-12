@@ -98,7 +98,7 @@ else if(isset($_REQUEST['tipo']) && $_REQUEST['tipo'] != ""){
     $where = "WHERE pqrsEstado = '$estado'";
     $pq1->filtrar($where);
     
-}
+} 
 
 else if(isset($_REQUEST['fechainicio']) && isset($_REQUEST['fechafin'])){
 

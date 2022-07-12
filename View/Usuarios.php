@@ -124,7 +124,11 @@
                             <option value="empleado">EMPLEADO</option>
                             <option value="admin">ADMINISTRADOR</option>
                         </select>
-                        <input class="searchButton" type="submit" value="Buscar">
+                        <input type="hidden" name="v" value="usuarios">
+                        <input class="searchButton" type="button" value="Buscar"
+                        onclick="this.form.action='#';this.form.submit();" />
+                        <input clas="excel" type="button" value="Exportar"
+                        onclick="this.form.action='../Controller/exportarXslx.php';this.form.submit()"/>
                     </form>
                     <br><br><a class="new" href="../View/nuevoUsuario.php">Nuevo Usuario</a>
                 </div>

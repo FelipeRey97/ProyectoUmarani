@@ -138,7 +138,7 @@ if(isset($_GET['pagina'])){
                         <input type="hidden" value="pedido" name="v">
                         <input class="searchButton" type="button" value="Buscar"
                          onclick="this.form.action='#';this.form.submit();" />
-                        <input class="excel searchButton" type="button" value="exportar"
+                        <input class="excel" type="button" value="Exportar"
                          onclick="this.form.action='../Controller/exportarXslx.php?v=pedido';this.form.submit();" />
                     </form>
                     

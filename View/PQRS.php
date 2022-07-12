@@ -15,7 +15,7 @@ $paginas = $cantidad/$registrosxpagina;
 $paginas = ceil($paginas);
 ?>
 
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,10 +99,6 @@ $paginas = ceil($paginas);
                     <input type="hidden" name="pagina" value="1">
                </select>  Registros </p>  
                 </div>
-                <div class="exportar">
-                     <a class="excel" href="#"><i class="fas fa-file-excel"></i> Excel</a> 
-                  <!-- <a class="pdf" href="#"><i class="fas fa-file-pdf"></i> PDF </a> --> 
-                </div>
                 <div class="filtros" >
                     
                         <label for="fechainicio">Desde: </label>
@@ -122,7 +118,11 @@ $paginas = ceil($paginas);
                             <option value="Pedido">Pedido</option>
                             <option value="Garantia">Garantia</option>
                         </select>
-                        <input class="searchButton" type="submit" value="Buscar">
+                        <input type="hidden" value="pqrs" name="v">
+                        <input class="searchButton" type="button" value="Buscar"
+                        onclick="this.form.action='#';this.form.submit();" />
+                        <input class="excel" type="button" value="Exportar"
+                        onclick="this.form.action='../Controller/exportarXslx.php';this.form.submit();" />
                     </form>
                 </div>
                 <table>
