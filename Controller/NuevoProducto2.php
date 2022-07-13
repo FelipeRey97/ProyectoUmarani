@@ -16,8 +16,11 @@
                 // Se obtiene el nombre de la imagen y el nombre de la imagen temporal
                  // se crea la ruta de la carpeta donde se guarda la imagen
                  // se mueve la imagen a la carpeta ../Uploads/ImagenPrincipal y se guarda la ruta como texto en la BD
+ 
 
-                if($_FILES['foto1']['name'] != ""){
+
+ 
+                if(isset($_FILES['foto1']) && $_FILES['foto1']['name'] != ""){
                     $nombre_imagen = $_FILES['foto1']['name'];
                     $temporal = $_FILES['foto1']['tmp_name'];
                     $carpeta='../Uploads/ImagenPrincipal';
@@ -29,7 +32,9 @@
                 $prod = new Producto();
                 // Se valida que los formularios del nuevo producto no se envien vacios
 
-        if($_REQUEST['aNombre'] != "" && $_REQUEST['aPrecio'] != "" && $_REQUEST['aCantidad'] != "" && $_REQUEST['aestado'] != ""
+        if(isset($_REQUEST['registrar'])){
+
+        if(isset($_REQUEST['aNombre']) && $_REQUEST['aNombre'] != "" && $_REQUEST['aPrecio'] != "" && $_REQUEST['aCantidad'] != "" && $_REQUEST['aestado'] != ""
         && $_REQUEST['aCategoria'] !=""){
 
 
@@ -59,43 +64,11 @@
         <?php
         
         }
-
-// 
-
-
-                //Este codigo permite guardar una galeria de imagenes asociada a cada producto
-                // Pendiente de estructurar al MVC con su respectiva tabla
-
-
-                // $registros = mysqli_query($conexion,"select artId, artNombre from articulo where artId in (select max(artId) from articulo)") or die("problemas en el select" . mysqli_error($conexion));
-
-                // while($reg = mysqli_fetch_array($registros)){
-                
-                //     $artId = $reg['artId'];
-                //     $artNombre = $reg['artNombre'];
-                // }
-                // ?>
+    }
+               ?>
 
                 
 
-                <!-- <p>Los datos del articulo  Se ha guardado correctamente con id  </p> <br><br>
-
-                <p>A continuación proceda a añadir las imagenes de Galería para el articulo: </p>
-                <p>Debe añadir minimo 1 imagen hasta un maximo de 5 </p>
-                <p>Las imagenes deben pesar menos de 2Mb </p> <br><br>
-
-                <form action="NuevoProducto3.php" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="artId" value="">
-                    <label for="foto1">Galeria 1:</label> 
-                    <input type="file" name="foto2" id="foto2"><br><br>
-                    <label for="foto1">Galeria 2:</label> 
-                    <input type="file" name="foto3" id="foto3"><br><br>
-                    <label for="foto1">Galeria 3:</label> 
-                    <input type="file" name="foto4" id="foto4"><br><br>
-                    <label for="foto1">Galeria 4:</label> 
-                    <input type="file" name="foto5" id="foto5"><br><br>
-                    <input type="submit" name="btn-agregar" value="Agregar">
-                </form>  -->
 
             </div>
         </section>

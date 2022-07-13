@@ -265,6 +265,10 @@
         background: #40eb2a;
         transition: 0.3s ease-in-out;
     }
+    .ocultar a{
+
+        display: none;
+    }
     .paginacion{
 
         margin: 20px 0px 20px 60px;

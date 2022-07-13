@@ -159,14 +159,14 @@ $paginas = ceil($paginas);
                     
                 </table>
                 <nav class="paginacion">
-                <a class="prev-next" <?php if($_GET['pagina']<=1){ ?> hidden <?php }else{ echo ""; } ?> href="../view/adminClientes.php?pagina=<?php echo "$_GET[pagina]"-1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo "5";}?>&criterio=<?php if(isset($_GET['criterio'])){ echo "$_GET[criterio]"; } else { echo ""; }?>&textbox=<?php if(isset($_GET['textbox'])){ echo "$_GET[textbox]";}else{ echo "";} ?>">Anterior </a>
+                <a class="prev-next" <?php if($_GET['pagina']<=1){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../view/adminClientes.php?pagina=<?php echo "$_GET[pagina]"-1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo "5";}?>&criterio=<?php if(isset($_GET['criterio'])){ echo "$_GET[criterio]"; } else { echo ""; }?>&textbox=<?php if(isset($_GET['textbox'])){ echo "$_GET[textbox]";}else{ echo "";} ?>">Anterior </a>
                 <?php for($i=0; $i < $paginas; $i++){
 
                   ?> <a <?php if($_GET['pagina'] == $i+1){ ?> class= "active" <?php }  ?> href="../view/adminClientes.php?pagina=<?php echo"$i"+1 ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo "5";}?>&criterio=<?php if(isset($_GET['criterio'])){ echo "$_GET[criterio]"; } else { echo ""; }?>&textbox=<?php if(isset($_GET['textbox'])){ echo "$_GET[textbox]";}else{ echo "";} ?>"><?php echo "$i"+1;?> </a>   
                
                 <?php  } ?>
                
-                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> hidden <?php }else{ echo ""; } ?> href="../view/adminClientes.php?pagina=<?php echo "$_GET[pagina]"+1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo "5";}?>&criterio=<?php if(isset($_GET['criterio'])){ echo "$_GET[criterio]"; } else { echo ""; }?>&textbox=<?php if(isset($_GET['textbox'])){ echo "$_GET[textbox]";}else{ echo "";} ?>"> Siguiente</a>
+                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../view/adminClientes.php?pagina=<?php echo "$_GET[pagina]"+1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo "5";}?>&criterio=<?php if(isset($_GET['criterio'])){ echo "$_GET[criterio]"; } else { echo ""; }?>&textbox=<?php if(isset($_GET['textbox'])){ echo "$_GET[textbox]";}else{ echo "";} ?>"> Siguiente</a>
                 </nav>
             </div>
         </section>

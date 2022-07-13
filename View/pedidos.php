@@ -191,13 +191,13 @@ if(isset($_GET['pagina'])){
                     
                 </table>
                 <nav class="paginacion">
-                 <a class="prev-next" <?php if($_GET['pagina']<=1 ){ ?> hidden <?php }else{ echo ""; } ?> href="../view/pedidos.php?pagina=<?php echo"$_GET[pagina]"-1; ?>">Anterior </a>
+                 <a class="prev-next" <?php if($_GET['pagina']<=1 ){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../view/pedidos.php?pagina=<?php echo"$_GET[pagina]"-1; ?>">Anterior </a>
 
                  <?php for($i =0; $i < $paginas; $i++){ ?>
                 <a <?php if($_GET['pagina'] == $i+1){ ?> class="active" <?php }?> href="../view/pedidos.php?pagina=<?php echo "$i"+1 ?>"><?php echo "$i"+1 ?></a>
                 <?php }  ?>
 
-                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> hidden <?php }else{ echo ""; } ?> href="../view/pedidos.php?pagina=<?php echo"$_GET[pagina]"+1; ?>"> Siguiente</a> 
+                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../view/pedidos.php?pagina=<?php echo"$_GET[pagina]"+1; ?>"> Siguiente</a> 
                 </nav>
             </div>
         </section>

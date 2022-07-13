@@ -18,8 +18,9 @@ require('../Model/M_conexion.php');
 
 $con = new Conexion();
 
+if(isset($_REQUEST['registrar'])){
 
-if($_REQUEST['unombre'] != "" && $_REQUEST['uapellido'] != "" && $_REQUEST['udocumento'] != "" && $_REQUEST['ucontraseña'] != ""
+if(isset($_REQUEST['unombre']) && $_REQUEST['unombre'] != "" && $_REQUEST['uapellido'] != "" && $_REQUEST['udocumento'] != "" && $_REQUEST['ucontraseña'] != ""
 && $_REQUEST['uestado'] != "" && $_REQUEST['urol'] != ""){
 
    $unombre =  $_REQUEST['unombre'];
@@ -51,10 +52,10 @@ else{
    
 }
 
-
+}
 
 $con->cerrarConexion();
-require('../View/nuevoUsuario.php');
+
 
 ?>
    

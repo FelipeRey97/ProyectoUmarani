@@ -1,4 +1,11 @@
+<?php
+    session_start();
+    if($_SESSION['doc'] == false){
 
+        header("Location: ..View/loginUsuario.php");
+    }
+    require('../Controller/crearUsuario2.php');
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,16 +51,17 @@
         <section class="section">
             <div class="container">
                 <div class="filtros" >
-                    <form action="../Controller/crearUsuario2.php" method="post">
-                        <label for="unombre" >NOMBRE: </label>
-                        <input type="text" name="unombre"><br><br>
-                        <label for="upellido">APELLIDO:  </label>
-                        <input type="text" name="uapellido"><br><br>
-                        <label for="udocumento">DOCUMENTO:  </label>
-                        <input name="udocumento" type="text" class=""> <br><br>
-                        <label for="ucontraseña">CONTRASEÑA:  </label>
-                        <input name="ucontraseña" type="text" class=""> <br><br>
-                        <label for="uestado"> ESTADO: </label>
+                    <form action="" method="post">
+                        <label for="unombre" >Nombres: </label><br>
+                        <input placeholder="Ingrese Los Nombres" class="control" type="text" name="unombre"><br><br>
+                        <label for="upellido">Apellidos:  </label><br>
+                        <input placeholder="Ingrese Los Apellidos" class="control" type="text" name="uapellido"><br><br>
+                        <label for="udocumento">Documento:  </label><br>
+                        <input placeholder="Ingrese el Número Documento" class="control" name="udocumento" type="text" > <br><br>
+                        <label for="ucontraseña">Contraseña:  </label><br>
+                        <input disabled class="control" name="ucontraseña" value="Umarani2022" type="text" > <br><br>
+                        <input class="control" name="ucontraseña" value="Umarani2022" type="hidden" >
+                        <label for="uestado"> Estado: </label>
                         <select name="uestado" id="">Estado
                             <option value="Activo">Activo</option>
                             <option value="Inactivo">Inactivo</option>
@@ -64,8 +72,8 @@
                             <option value="1">Administrador</option>
                             <option value="2">Empleado</option>
                         </select><br><br>
-                        <input class="searchButton" type="submit" value="Registrar">
-                        <a href="../View/Usuarios.php">Volver</a>
+                        <input class="registrar" type="submit" name="registrar" value="Registrar">
+                        <a class="searchButton" href="../View/Usuarios.php">Volver</a>
                     </form>
 
                 </div>

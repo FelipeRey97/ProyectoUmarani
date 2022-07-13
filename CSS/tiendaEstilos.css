@@ -225,6 +225,7 @@
         border-radius: 4px;
         cursor: pointer;
         transition: 0.3s ease-in-out;
+        text-decoration: none;
     }
     .searchButton:hover{
 
@@ -268,6 +269,36 @@
             border-radius: 4px;
             font-family: 'Open Sans', sans-serif;
             transition: 0.3s ease-in-out;
+        }
+        .control{
+
+            width: 300px;
+            padding: 5px;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .registrar{
+
+        padding: 5px;
+        font-family: 'Open Sans', sans-serif;
+        background: #18af0b;
+        color: #fff;
+        border: 0.5px solid #18af0b;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: 0.3s ease-in-out;
+        width: 260px;
+        font-size: 15px;
+
+        }
+        .registrar:hover{
+
+            transition: 0.3s ease-in-out;
+            background: #2cda1c;
+        }
+        .ocultar{
+
+            display: none;
         }
 .footer{
 

@@ -6,10 +6,11 @@ session_start();
 // se valida la sesion del usuario, en caso de no tener sesion sera redirigido al login
     if($_SESSION['doc'] == false){
 
-        header("Location: http://localhost/UmaraniWeb/View/loginUsuario.php");
+        header("Location: ../View/loginUsuario.php");
     }
+    include('../Controller/NuevoProducto2.php');
 ?>
-
+ 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -56,29 +57,29 @@ session_start();
         <section class="section">
             <div class="container">
                 <div class="filtros" >
-                    <form action="../Controller/NuevoProducto2.php" method="post" enctype="multipart/form-data">
-                        <label for="aNombre" >Nombre: </label>
-                        <input type="text" name="aNombre"><br><br>
-                        <label for="aPrecio">Precio:  </label>
-                        <input type="text" name="aPrecio"><br><br>
-                        <label for="aCantidad">Cantidad:  </label>
-                        <input name="aCantidad" type="text" class=""> <br><br>
+                    <form action="#" method="post" enctype="multipart/form-data">
+                        <label for="aNombre" >Nombre: </label><br>
+                        <input placeholder="Ingrese el Nombre del Artículo" class="control" type="text" name="aNombre"><br><br>
+                        <label for="aPrecio">Precio:  </label><br>
+                        <input placeholder="Ingrese en valor numérico el precio del artículo" class="control" type="text" name="aPrecio"><br><br>
+                        <label for="aCantidad">Cantidad:  </label><br>
+                        <input placeholder="Ingrese en valor numérico la cantidad disponible" class="control" name="aCantidad" type="text" class=""> <br><br>
                         <label for="aestado"> Estado: </label>
-                        <select name="aestado" id="">Estado
-                            <option value="Disponible">Disponible</option>
-                            <option value="Agotado">Agotado</option>
+                        <select class="control" name="aestado" id="">Estado
+                            <option class="control" value="Disponible">Disponible</option>
+                            <option class="control"  value="Agotado">Agotado</option>
                         </select> <br><br>
                         <label for="aCategoria"> Categoria </label>
-                        <select name="aCategoria">
+                        <select class="" name="aCategoria">
                             <option value="1">Collar</option>
                             <option value="2">Pulsera</option>
                             <option value="3">Anillo</option>
                         </select><br><br>
-                        <label for="foto1">Imagen Principal:</label> 
-                        <input type="file" name="foto1" id="foto1"><br><br>
-                        <input class="searchButton" type="submit" value="Registrar">
+                        <label for="foto1">Imagen:</label> <br><br>
+                        <input class="" type="file" name="foto1" id="foto1"><br><br>
+                        <input class="registrar" type="submit" name="registrar" value="Registrar">
+                        <a class="searchButton" href="../View/Productos.php">Volver</a>
                     </form><br><br>
-                    <a class="searchButton" href="../View/Productos.php">Volver</a>
                 </div>
  
             </div>
