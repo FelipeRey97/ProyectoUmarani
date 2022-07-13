@@ -56,7 +56,7 @@ $paginas = ceil($paginas);
                 <a href="../view/facturas.php?pagina=1">Facturas</a>
                 <?php if($_SESSION['rol'] == 'ADMINISTRADOR')  { ?>
                 <a href="../View/Usuarios.php?pagina=1">Usuarios</a>
-                <a href="../View/adminClientes.php?pagina=1">Clientes</a> <?php } ?>
+                <a class="select" href="../View/adminClientes.php?pagina=1">Clientes</a> <?php } ?>
                 <a href="../View/PQRS.php?pagina=1">PQRS</a><br><br><br>
                 <a href="../Controller/cerrarSesion.php">Cerrar Sesión</a>
             </nav>

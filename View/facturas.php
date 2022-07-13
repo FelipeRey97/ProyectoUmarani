@@ -50,7 +50,7 @@
                 <a href="#">Inicio</a>
                 <a href="../View/Productos.php?pagina=1">Productos</a>
                 <a href="../View/pedidos.php?pagina=1">Pedidos</a>
-                <a href="../view/facturas.php?pagina=1">Facturas</a>
+                <a class="select" href="../view/facturas.php?pagina=1">Facturas</a>
                 <?php if($_SESSION['rol'] == 'ADMINISTRADOR')  { ?>
                 <a href="../View/Usuarios.php?pagina=1">Usuarios</a>
                 <a href="../View/adminClientes.php?pagina=1">Clientes</a> <?php } ?>

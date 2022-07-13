@@ -17,6 +17,10 @@
     height: auto;
     
 }
+.select{
+
+    border-bottom: 1px solid #00FFDD;
+}
     .titulo{
         background: #8d8d8d;
         padding: 10px;
@@ -66,7 +70,7 @@
         }
             .secciones a:hover{
 
-                background: #7483c5;
+                background: #00ffdd75;
                 transition: 0.3s ease-in-out;
             }
 
@@ -264,7 +268,7 @@
 
         background: #40eb2a;
         transition: 0.3s ease-in-out;
-    }
+    } 
     .ocultar a{
 
         display: none;

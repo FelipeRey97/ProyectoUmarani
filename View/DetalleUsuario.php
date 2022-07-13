@@ -10,7 +10,7 @@ session_start();
 <?php 
     if($_SESSION['doc'] == false){
 
-        header("Location: http://localhost/UmaraniWeb/View/loginUsuario.php");
+        header("Location: ../View/loginUsuario.php");
     }
 
 ?>
@@ -63,46 +63,10 @@ session_start();
         <section class="section">
 
             <div class="container">
-                <div class="registros">
-
-                <!-- a continuacion filtros para paginacion, busqueda y ordenamiento,  pdte de programar. -->
-
-                 <!-- <p> Mostar  <select name="" id="">
-                    <option value="">5</option>
-                    <option value="">10</option>
-                    <option value="">15</option>
-               </select>  Registros </p>   -->
-                </div>
                 <div class="filtros" >
-                    <!-- <form action="">
-                        <label for="id">ID Usuario: </label>
-                        <input name="id" type="text" class="idpedido">
-                        <label for=""> Estado: </label>
-                        <select name="" id="">Estado
-                            <option value="">Activo</option>
-                            <option value="">Inactivo</option>
-                            <option value="">Bloqueado</option>
-                        </select>
-                        <label for=""> Rol: </label>
-                        <select name="" id="">Estado
-                            <option value="">Todos</option>
-                            <option value="">Mayor a Menor</option>
-                        </select>
-                        <input class="searchButton" type="button" value="Buscar">
-                    </form> -->
-                    <!-- <a href="nuevoUsuario.php">Nuevo Usuario</a> -->
+                   
                 </div>
                 <table>
-                    <!-- <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Documento</th>
-                        <th>Rol</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr> -->
-
                      <?php
                         
                         //obtencion de datos para precargar los datos en el formulario de edicion.
@@ -123,14 +87,14 @@ session_start();
 
                    
                     <form action="../Controller/actualizarUsuario.php" method="post">
-                        <label for="unombre"  >NOMBRE: </label>
-                        <input type="text" name="unombre" value="<?php echo "$reg[usuarioNombre]" ?>"><br><br>
-                        <label for="upellido">APELLIDO:  </label>
-                        <input type="text" name="uapellido"value="<?php echo "$reg[usuarioApellido]" ?>" ><br><br>
-                        <!-- <label for="udocumento">DOCUMENTO:  </label>
-                        <input name="udocumento" type="text" value="<?php echo "$reg[usuarioDoc]" ?>" class=""> <br><br> -->
-                        <label for="ucontraseña">CONTRASEÑA:  </label>
-                        <input name="ucontraseña" type="text" value="<?php echo "$reg[usuarioContraseña]" ?>" class=""> <br><br>
+                        <label for="unombre"  >Nombres: </label><br>
+                        <input class="control" type="text" name="unombre" value="<?php echo "$reg[usuarioNombre]" ?>"><br><br>
+                        <label for="upellido">Apellidos:  </label><br>
+                        <input class="control" type="text" name="uapellido"value="<?php echo "$reg[usuarioApellido]" ?>" ><br><br>
+                        <label for="udocumento">Documento:  </label><br>
+                        <input class="control" name="udocumento" type="text" value="<?php echo "$reg[usuarioDoc]" ?>" class=""> <br><br>
+                        <label for="ucontraseña">Contraseña:  </label><br>
+                        <input class="control" name="ucontraseña" type="text" value="<?php echo "$reg[usuarioContraseña]" ?>" class=""> <br><br>
                         <label for=""> ROL: </label>
                         <select name="urol">
                         <?php if($reg['rolNombre'] == "ADMINISTRADOR"){
@@ -165,8 +129,8 @@ session_start();
                             ?>
                         </select> <br><br>
                         <input type="hidden" name="tabla" value="<?php echo "$_REQUEST[tabla]" ?>">
-                        <input class="searchButton" type="submit" value="Guardar Cambios">
-                        <a href="../View/Usuarios.php">Volver</a>
+                        <input class="registrar" type="submit" value="Guardar Cambios">
+                        <a class="searchButton" href="../View/Usuarios.php">Volver</a>
                     </form>
                     </div>     
                         <?php  

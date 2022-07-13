@@ -53,7 +53,7 @@
                 <a href="../View/Productos.php?pagina=1">Productos</a>
                 <a href="../View/pedidos.php?pagina=1">Pedidos</a>
                 <a href="../View/facturas.php?pagina=1">Facturas</a>
-                <a href="../view/usuarios.php?pagina=1">Usuarios</a>
+                <a class="select" href="../view/usuarios.php?pagina=1">Usuarios</a>
                 <a href="../view/adminClientes.php?pagina=1">Clientes</a>
                 <a href="../View/PQRS.php?pagina=1">PQRS</a> <br><br><br>
                 <a href="../Controller/cerrarSesion.php">Cerrar Sesión</a>

@@ -50,7 +50,7 @@ if(isset($_GET['pagina'])){
             <nav class="secciones">
                 <a href="#">Inicio</a>
                 <a href="../View/Productos.php?pagina=1">Productos</a>
-                <a href="../View/Pedidos.php?pagina=1">Pedidos</a> 
+                <a class="select" href="../View/Pedidos.php?pagina=1">Pedidos</a> 
                 <a href="../view/facturas.php?pagina=1">Facturas</a>
                 <?php if($_SESSION['rol'] == 'ADMINISTRADOR')  { ?>
                 <a href="../View/Usuarios.php?pagina=1">Usuarios</a>

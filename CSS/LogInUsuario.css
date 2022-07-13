@@ -3,12 +3,14 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    
 }
 
 .header{
 
-    background: rgb(255, 249, 249); 
+    
     margin: 0px 0px;
+    background: rgb(255, 176, 213); 
 }
 
     .contacto{
@@ -179,6 +181,8 @@
     display: flex;
     flex-wrap: wrap;
     height: 700px;
+    background: #fff;
+    
 }
 
 .form-container{
@@ -188,8 +192,8 @@
     margin-left: auto;
     margin-right: auto;
     padding: 0px;
-    background: #f0f0f0;
-    border: 1px solid #8a8a8a8e;
+    border: 1px solid #dbdbdb8e;
+    background: rgba(255, 247, 251, 0.795); 
     
 }
     .form-container h1{
@@ -199,7 +203,7 @@
         margin-bottom: 10px;
         font-family: 'Open Sans', sans-serif;
         font-size: 20px;
-        color: rgb(58, 58, 58);
+        color: rgb(88, 88, 88);
     }
     .recuperacion{
 
@@ -230,15 +234,16 @@
         border: none;
         outline: none;
         font-family: 'Open Sans', sans-serif;
-        background: #ffffff;
+        background: #ffffff00;
         font-size: 15px;
-        border: 1px solid #8a8a8a;
+        border-bottom: 1px solid #ff57a8;
+
     }
     .iniciar-sesion a{
 
         text-decoration: none;
         font-family: 'Open Sans', sans-serif;
-        color: rgb(9, 46, 43);
+        color: #c988a7; 
         transition: 0.3s ease-in-out;
         font-size: 14px;
     } 
@@ -251,27 +256,26 @@
     .iniciar-sesion p{
 
         font-family: 'Open Sans', sans-serif;
-        color: rgb(44, 44, 44);
+        color: rgb(255, 255, 255);
         font-size: 14px;
     }
     .boton-iniciarSesion{
 
         padding: 12px;
         width: 350px;
-        border: 1px solid #8888888c;
+        border: none; 
         cursor: pointer;
-        background: #4e4e4e8c;
-        color: #fff;
+        background: #ff7b9c; 
+        color: rgb(255, 255, 255);
         font-family: 'Open Sans', sans-serif;
         font-size: 15px;
         transition: 0.3s ease-in-out;
     }
         .boton-iniciarSesion:hover{
 
-            background: #ffd0e7; 
-            transition: 0.3s ease-in-out;
-            font-size: 16px;
-            color: rgb(27, 27, 27);
+            background: #ffa0ce; 
+            transition: 0.2s ease-in-out;
+            color: rgb(248, 248, 248);
         }
 
        

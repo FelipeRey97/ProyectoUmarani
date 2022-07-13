@@ -6,7 +6,7 @@ session_start();
 // se valida la sesion del usuario, en caso de no tener sesion sera redirigido al login
     if($_SESSION['doc'] == false){
 
-        header("Location: http://localhost/UmaraniWeb/View/loginUsuario.php");
+        header("Location: ../View/loginUsuario.php");
     }
 ?>
 
@@ -71,12 +71,12 @@ session_start();
                 <div class="filtros" >
                   
                     <form action="../Controller/actualizarProducto2.php" method="post" enctype="multipart/form-data">
-                        <label for="aNombre" >Nombre: </label>
-                        <input type="text" name="aNombre" value="<?php echo "$reg[artNombre]"?>" ><br><br>
-                        <label for="aPrecio">Precio:  </label>
-                        <input type="text" name="aPrecio" value="<?php echo "$reg[artPrecio]"?>"  ><br><br>
-                        <label for="aCantidad">Cantidad:  </label>
-                        <input name="aCantidad" type="text" value="<?php echo "$reg[artCantidad]"?>"  class=""> <br><br>
+                        <label for="aNombre" >Nombre: </label><br>
+                        <input class="control" type="text" name="aNombre" value="<?php echo "$reg[artNombre]"?>" ><br><br>
+                        <label for="aPrecio">Precio:  </label><br>
+                        <input class="control" type="text" name="aPrecio" value="<?php echo "$reg[artPrecio]"?>"  ><br><br>
+                        <label for="aCantidad">Cantidad:  </label><br>
+                        <input class="control" name="aCantidad" type="text" value="<?php echo "$reg[artCantidad]"?>"  class=""> <br><br>
                         <label for="aestado"> Estado: </label>
                         <select name="aestado" id="">Estado
                         <?php if($reg['artEstado'] == "Disponible"){
@@ -113,10 +113,14 @@ session_start();
                             <option value="2">Pulsera</option>
                             <option value="3">Anillo</option> -->
                         </select><br><br>
-                        <label for="foto1">Imagen Principal:</label> 
-                        <input type="file" name="foto1" id="foto1" value="<?php echo "$reg[artVista]"?>" ><br><br>
-                        <input class="searchButton" type="submit" value="Registrar">
+                        <label for="foto1">Imagen Actual:</label> <br><br>
+                        <img class="vista" src="<?php echo "$reg[artVista]"?>" alt=""><br><br>
+                        <label for="">Si desea cambiar la imagen del producto selecciónela aquí:</label><br><br>
+                        <input type="file" name="foto1" id="foto1" value="" ><br><br>
+                        <input class="registrar" type="submit" value="Registrar">
                         <input type="hidden" name="aId" value="<?php echo "$_REQUEST[aId]" ?>">
+                        <input type="hidden" name="rutaActual" value="<?php echo "$reg[artVista]"?>" >
+                        <a class="searchButton" href="../View/Productos.php">Volver</a>
                     </form>
                     <?php  
                             
@@ -129,7 +133,6 @@ session_start();
 
                      ?>
 
-                    <a href="../View/Productos.php">Volver</a>
                 </div>
  
             </div>

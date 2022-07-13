@@ -10,6 +10,9 @@
 <body>
     
 <?php 
+if(isset($_REQUEST['iniciar-sesion'])){
+
+
     $usuario= $_POST['usuario'];
     $contraseña= $_POST['contraseña'];
 
@@ -26,8 +29,6 @@
 
     $filas = mysqli_fetch_array($resultado);
 
-
-
     if($filas){
 
         header("Location: ../view/pedidos.php?pagina=1");
@@ -40,9 +41,6 @@
     }
     else{
         ?>
-        <?php 
-            include('../View/LoginUsuario.php');
-            ?>
             <script>
                 swal('Error','Usuario o contraseña Erroneos','warning');
             
@@ -52,7 +50,7 @@
         <?php 
     }
 
-
+}
 ?>
 
 
