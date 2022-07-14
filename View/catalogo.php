@@ -187,7 +187,7 @@ require_once("../Controller/buscador.php");
                 </div>
                 <div class="verdetalle itemId">
                      <p hidden><?php echo $producto['artId']   ?></p>
-                    <a href="../Controller/DetalleArticulo.php?arId=<?php echo "$producto[artId]"?>">Ver Detalle</a>
+                    <a href="../view/DetalleProducto.php?arId=<?php echo "$producto[artId]"?>">Ver Detalle</a>
                 </div>
                 <div class="comprar addToKart">
                     <!-- <form action="../Controller/carrito.php" method="post"> -->

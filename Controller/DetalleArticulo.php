@@ -20,7 +20,7 @@ while ($det = mysqli_fetch_array($detalleProducto)){
 
 }
 
- include('../View/DetalleProducto.php');
+ 
     
 
 

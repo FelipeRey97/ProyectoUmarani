@@ -8,12 +8,12 @@ $Cant = $_REQUEST['Cant'];
 
 
 $conexion1 = mysqli_connect("localhost","root","","proyecto") 
-or die ("problemas con la conexion");
+or die ("problemas con la conexion"); 
 
 $datos = mysqli_query($conexion1,"SELECT * FROM carrito 
     JOIN articulo 
     ON articuloId = artId
-    WHERE sesionId = '$sesionId'") or die("problemas en el select" . mysqli_error($conexion1));
+    WHERE articuloId = $artId AND sesionId = '$sesionId'") or die("problemas en el select" . mysqli_error($conexion1));
 if(isset($datos)){
 
     while($dat = mysqli_fetch_array($datos)){
@@ -31,15 +31,15 @@ if($idArt == $artId && $idSesion == $sesionId){
     $Cant = $cantidad + 1;
 
     mysqli_query($conexion1, "UPDATE carrito SET artCarroCant = $Cant   
-    WHERE articuloId = $idArt AND sesionId = '$sesionId' ");
-      mysqli_close($conexion1);
+    WHERE articuloId = $idArt AND sesionId = '$sesionId' AND carId = $carId ");
+   
 
-}else{
+}else if($idArt == ""){
 
     mysqli_query($conexion1,"INSERT INTO carrito (sesionId,articuloId,artCarroCant) 
     VALUES ('$sesionId',$artId,$Cant)") or die ("problemas en el insert" . mysqli_error($conexion1));
 
-    mysqli_close($conexion1);
+   
 
 }
     

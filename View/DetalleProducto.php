@@ -1,3 +1,9 @@
+<?php
+include('../Controller/DetalleArticulo.php');
+
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,7 +67,6 @@
                 
             </div>
             
-        
         <div class="menu">
             <b><a href="../View/catalogo.php">Inicio</a></b>
             <b><a href="#">Collares</a></b>
@@ -95,7 +100,7 @@
                 <div class="precio"><p href="#"> $ <?php echo "$artPrecio" ?></p><br></div>
                    <div class="estado"><p href="#"><b><?php echo "$artEstado" ?></b></p><br></div> 
                     <div class="comprar"><a href=""><i class="fas fa-cart-plus"></i> Añadir al carrito</a><br></div>
-                    <div class="favoritos"><a href=""><i class="fas fa-heart"></i> Añadir a Favoritos </a><br></div>
+                    <div class="favoritos"><a href="../View/catalogo.php"> Regresar al Catálogo </a><br></div>
             </div>
             
         </section>
