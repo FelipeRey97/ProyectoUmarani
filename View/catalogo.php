@@ -160,16 +160,22 @@ require_once("../Controller/buscador.php");
                 
             <div class="menu">
                 <b><a href="#">Inicio</a></b>
-                <b><a href="../WebUmarani/Collares.html">Collares</a></b>
-                <b><a href="../WebUmarani/Pulseras.html">Pulseras</a></b>
-                <b><a href="../WebUmarani/anillos.html">Anillos</a></b>
-                <b><a href="../WebUmarani/anillos.html">Nosotros</a></b>
+                <b><a href="../View/collares.php?seccion=collares">Collares</a></b>
+                <b><a href="../View/pulseras.php?seccion=pulseras">Pulseras</a></b>
+                <b><a href="../View/anillos.php?seccion=anillos">Anillos</a></b>
+                <b><a href="..">Nosotros</a></b>
                 <!-- <a href="#">Ofertas</a> -->
 
             </div>
         </header>
         <section class="section">
-
+            <form action="">
+                <input type="submit" value="Filtrar"><br>
+                <input type="checkbox" name="Recientes">Recientes<br>
+                <input type="checkbox" name="Antiguos">Antiguos<br>
+                <input type="checkbox" name="Mayor">Precio Mayor<br>
+                <input type="checkbox" name="Menor">Precio Menor<br>
+            </form>
         <?php
                 // Se muestra cada "producto" almacenado en productos
                         foreach($productos as $producto){
@@ -190,14 +196,7 @@ require_once("../Controller/buscador.php");
                     <a href="../view/DetalleProducto.php?arId=<?php echo "$producto[artId]"?>">Ver Detalle</a>
                 </div>
                 <div class="comprar addToKart">
-                    <!-- <form action="../Controller/carrito.php" method="post"> -->
-                        <!-- <input type="hidden" name="sesionId" value="<?php echo "$sesionId" ?>">
-                        <input type="hidden" name="artId" value="<?php echo "$producto[artId]"?>">
-                        <input type="hidden" name="Cant" Value="1">
-                        
-                        <input type="submit" Value="Comprar"> -->
-                        <a href="../Controller/carrito.php?sesionId=<?php echo "$sesionId" ?>&artId=<?php echo "$producto[artId]"?>&Cant=1">Comprar</a>
-                    <!-- </form> -->
+                   <a href="../Controller/carrito.php?sesionId=<?php echo "$sesionId"?>&artId=<?php echo "$producto[artId]"?>&Cant=1">Comprar</a>
                 </div>
             </article>
             <?php  

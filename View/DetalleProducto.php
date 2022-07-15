@@ -100,7 +100,7 @@ include('../Controller/DetalleArticulo.php');
                 <div class="precio"><p href="#"> $ <?php echo "$artPrecio" ?></p><br></div>
                    <div class="estado"><p href="#"><b><?php echo "$artEstado" ?></b></p><br></div> 
                     <div class="comprar"><a href=""><i class="fas fa-cart-plus"></i> Añadir al carrito</a><br></div>
-                    <div class="favoritos"><a href="../View/catalogo.php"> Regresar al Catálogo </a><br></div>
+                    <div class="favoritos"><a href="<?php echo $_SERVER['HTTP_REFERER'];  ?>"> Regresar </a><br></div>
             </div>
             
         </section>

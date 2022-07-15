@@ -6,7 +6,6 @@ $sesionId= $_REQUEST['sesionId'];
 $artId = $_REQUEST['artId'];
 $Cant = $_REQUEST['Cant'];
 
-
 $conexion1 = mysqli_connect("localhost","root","","proyecto") 
 or die ("problemas con la conexion"); 
 
@@ -26,26 +25,30 @@ if(isset($datos)){
   
 }
 
-if($idArt == $artId && $idSesion == $sesionId){
+
+if(isset($idArt) && $idArt == $artId && $idSesion == $sesionId){
 
     $Cant = $cantidad + 1;
 
-    mysqli_query($conexion1, "UPDATE carrito SET artCarroCant = $Cant   
+    echo mysqli_query($conexion1, "UPDATE carrito SET artCarroCant = $Cant   
     WHERE articuloId = $idArt AND sesionId = '$sesionId' AND carId = $carId ");
-   
-
+   ?><script>
+    r=1;
+   </script>
+ <?php   
 }else if($idArt == ""){
 
-    mysqli_query($conexion1,"INSERT INTO carrito (sesionId,articuloId,artCarroCant) 
+    echo mysqli_query($conexion1,"INSERT INTO carrito (sesionId,articuloId,artCarroCant) 
     VALUES ('$sesionId',$artId,$Cant)") or die ("problemas en el insert" . mysqli_error($conexion1));
 
-   
+?><script>
+r=1;
+</script>
+<?php 
 
 }
+
+header("location:" .$_SERVER['HTTP_REFERER']. "");
     
-
-
-
-header("Location:" .$_SERVER['HTTP_REFERER']."");
 
 ?>

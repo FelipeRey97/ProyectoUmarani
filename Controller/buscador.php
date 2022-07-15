@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../CSS/estilos.css">
 </head>
 
-<body>
+<body> 
 
 <?php
 

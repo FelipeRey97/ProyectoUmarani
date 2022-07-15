@@ -8,6 +8,8 @@
             private $prod;
             public  $artporpag;
             private $sentencia;
+            private $seccion;
+            private $ordenCatalogo;
 
         public function __construct()
         { 
@@ -20,6 +22,14 @@
             $this->artporpag = $artxpag;
           
 
+        }
+        public function seccionCatalogo($seccion){
+
+            $this->seccion = $seccion;
+
+        }public function ordenarCatalogo($orden){
+
+            $this->ordenCatalogo = $orden;
         }
         public function filtrar($where){
 
@@ -37,11 +47,17 @@
         }
 
         public function verProducto(){
-
+            $seccion = $this->seccion;
+            $orden = $this->ordenCatalogo;
             $query = $this->prod->query("SELECT * FROM articulo
             JOIN categoria
             ON artCategoriaId = categoriaId
-            ORDER BY artId DESC");
+            $seccion
+            $orden
+            ");
+
+
+
             $retorno = [];
             $i = 0;
             while($fila = $query->fetch_assoc()) {
@@ -50,7 +66,7 @@
                 $i++;
             } 
             return $retorno;
-        }
+        } 
 
         public function verInventario(){
 
