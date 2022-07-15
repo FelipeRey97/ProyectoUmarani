@@ -10,6 +10,7 @@
     visibility: hidden;
 }
 
+
 .header{
 
     background: rgb(255, 249, 249); 
@@ -41,7 +42,7 @@
             position: absolute;
             background: rgba(0, 0, 0, 0.5);
             width: 100%;
-            height: 100%; 
+            height: 100%;
             transition: all 5s ease ease-in-out;
         }
         .carrito{
@@ -76,10 +77,7 @@
                         font-size: 30px;
                         color: #cacaca;
                     }
-                    .cerrar-carrito:hover{
-
-                        
-                    }
+                   
 
             .middle{
 
@@ -159,10 +157,7 @@
                                 font-size: 30px;
                                 color: #cacaca;
                             }
-                            .cerrar-buscador:hover{
-        
-                                
-                            }
+                            
         
                     .middleSearchEngine{
         
@@ -192,6 +187,79 @@
                         color: #fff;
                         
                     }
+                
+            .accountOpacity{
+
+                position: absolute;
+                background: rgba(0, 0, 0, 0.5);
+                width: 100%;
+                height: 100%;
+                transition: all 5s ease ease-in-out;
+
+            }
+            .accountMenu{
+    
+                position: absolute;
+                width: 22vw;
+                margin-left: 77.6%;
+                background: rgb(146, 146, 146);
+                height: max-content;
+                transition: all 5s ease ease-in-out;
+                
+            }
+    
+                .topAccountMenu{
+    
+                    background: rgb(39, 39, 39);
+                    padding: 30px;
+                    margin: 10px;
+                    text-align: end;
+                }
+                    .topAccountMenu a{
+    
+                        text-decoration: none;
+                        color: #fff;
+                        font-family: 'Open Sans', sans-serif;
+                        
+                    }
+
+                        .cerrar-AccountMenu{
+    
+                            margin-left: 80px;
+                            font-size: 30px;
+                            color: #cacaca;
+                        }
+                        
+    
+                .middleAccountMenu{
+    
+                    background: rgb(240, 240, 240);
+                    padding: 30px;
+                    margin: 10px 10px 0px 10px;
+                    height: max-content;
+                    border-bottom: 1px solid #8a8a8aad;
+                }
+                    .middleAccountMenu input{
+
+                        padding: 12px;
+                        width: 100%;
+                        font-family: 'Open Sans', sans-serif;
+                        border: 1px solid rgba(77, 77, 77, 0.575);
+                        outline: 0px;
+                        font-size: 16px;
+                    }
+    
+                .bottomAccountMenu{
+    
+                    background: rgb(255, 255, 255);
+                    padding: 30px;
+                    margin: 0px 10px 10px 10px;
+                    font-family: 'Open Sans', sans-serif;
+                    font-size: 20px;
+                    color: #fff;
+                    
+                }
+                
         
 
 
@@ -356,7 +424,8 @@
 
          padding: 7px;
          width: 85%;
-         border: 1px solid #83838398;
+         border: none;
+         border-bottom: 1px solid #83838398;
          font-family: 'Open Sans', sans-serif;
          color: #363636;
          font-size: 15px;

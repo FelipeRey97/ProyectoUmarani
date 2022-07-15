@@ -393,7 +393,7 @@
     margin: 0px 0px;
     display: flex;
     flex-wrap: wrap;
-    height: 700px;
+    height: 780px;
 }
 
 .form-container{
@@ -404,7 +404,7 @@
     margin-right: auto;
     padding: 0px;
     background: #f0f0f0;
-    border: 1px solid #8a8a8a8e;
+    
     
 }
     .form-container h1{
@@ -441,13 +441,13 @@
 
         padding: 10px;
         margin-bottom: 20px;
-        width: 400px;
+        width: 380px;
         border: none;
+        border-bottom: 1px solid #686868;
         outline: none;
         font-family: 'Open Sans', sans-serif;
-        background: #ffffff;
+        background: #ffffff00;
         font-size: 15px;
-        border: 1px solid #8a8a8a;
     }
     .iniciar-sesion a{
 

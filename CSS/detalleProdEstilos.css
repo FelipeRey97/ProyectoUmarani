@@ -1,203 +1,51 @@
 *{
 
-margin: 0px;
-padding: 0px;
-box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
 }
 
 .ocultar {
 
-visibility: hidden;
+    visibility: hidden;
 }
 
 
 .header{
 
-background: rgb(255, 249, 249); 
-margin: 0px 0px;
+    background: rgb(255, 249, 249); 
+    margin: 0px 0px;
 }
 
-.contacto{
+    .contacto{
 
-    background: #e2e2e2;
-    padding: 10px;
-    text-align: center;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 13px;
-    text-align: end;
-    position: fixed;
-    width: 100%;
-}
-    .contacto a{
-
-        color: rgb(77, 77, 77);  
-        padding: 0px 15px;
-        font-size: 15px;
-        transition: 0.2s ease-in-out;
-        
-    }
-
-    .kartOpacity{
-
-        position: absolute;
-        background: rgba(0, 0, 0, 0.5);
+        background: #e2e2e2;
+        padding: 10px;
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 13px;
+        text-align: end;
+        position: fixed;
         width: 100%;
-        height: 100%;
-        transition: all 5s ease ease-in-out;
     }
-    .carrito{
+        .contacto a{
 
-        position: absolute;
-        width: 22vw;
-        margin-left: 77.6%;
-        background: rgb(146, 146, 146);
-        height: max-content;
-        transition: all 5s ease ease-in-out;
-        
-    }
-
-        .top{
-
-            background: rgb(39, 39, 39);
-            padding: 30px;
-            margin: 10px;
-            text-align: end;
-        }
-            .top a{
-
-                text-decoration: none;
-                color: #fff;
-                font-family: open;
-                font-family: 'Open Sans', sans-serif;
-                
-            }
-                .cerrar-carrito{
-
-                    margin-left: 100px;
-                    font-size: 30px;
-                    color: #cacaca;
-                }
-                
-
-        .middle{
-
-            background: rgb(240, 240, 240);
-            padding: 30px;
-            margin: 10px;
-            height: max-content;
-        }
-
-        .bottom{
-
-            background: rgb(39, 39, 39);
-            padding: 30px;
-            margin: 10px;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 20px;
-            color: #fff;
-        }
-
-            .buy-button{
-                display: block;
-                margin-top: 15px;
-                padding: 10px;
-                background: #2e2e2e;
-                text-align: center;
-                color: #fff;
-                text-decoration: none;
-                font-family: 'Open Sans', sans-serif;
-                transition: 0.3s ease-in-out;
-                transition: all 5s ease ease-in-out;
-            }
-            .buy-button:hover{
-                transition: 0.3s ease-in-out;
-                background: #e6e6e6;
-                color: rgb(51, 51, 51);
-
-            }
-
-            .searchOpacity{
-
-                position: absolute;
-                background: rgba(0, 0, 0, 0.5);
-                width: 100%;
-                height: 100%;
-                transition: all 5s ease ease-in-out;
-
-            }
-            .searchEngine{
-    
-                position: absolute;
-                width: 22vw;
-                margin-left: 77.6%;
-                background: rgb(146, 146, 146);
-                height: max-content;
-                transition: all 5s ease ease-in-out;
-                
-            }
-    
-                .topSearchEngine{
-    
-                    background: rgb(39, 39, 39);
-                    padding: 30px;
-                    margin: 10px;
-                    text-align: end;
-                }
-                    .topSearchEngine a{
-    
-                        text-decoration: none;
-                        color: #fff;
-                        font-family: 'Open Sans', sans-serif;
-                        
-                    }
-
-                        .cerrar-buscador{
-    
-                            margin-left: 80px;
-                            font-size: 30px;
-                            color: #cacaca;
-                        }
-                        
-    
-                .middleSearchEngine{
-    
-                    background: rgb(240, 240, 240);
-                    padding: 30px;
-                    margin: 10px 10px 0px 10px;
-                    height: max-content;
-                    border-bottom: 1px solid #8a8a8aad;
-                }
-                    .middleSearchEngine input{
-
-                        padding: 12px;
-                        width: 100%;
-                        font-family: 'Open Sans', sans-serif;
-                        border: 1px solid rgba(77, 77, 77, 0.575);
-                        outline: 0px;
-                        font-size: 16px;
-                    }
-    
-                .bottomSearchEngine{
-    
-                    background: rgb(255, 255, 255);
-                    padding: 30px;
-                    margin: 0px 10px 10px 10px;
-                    font-family: 'Open Sans', sans-serif;
-                    font-size: 20px;
-                    color: #fff;
-                    
-                }
+            color: rgb(77, 77, 77);  
+            padding: 0px 15px;
+            font-size: 15px;
+            transition: 0.2s ease-in-out;
             
-        .accountOpacity{
+        }
+
+        .kartOpacity{
 
             position: absolute;
             background: rgba(0, 0, 0, 0.5);
             width: 100%;
             height: 100%;
             transition: all 5s ease ease-in-out;
-
         }
-        .accountMenu{
+        .carrito{
 
             position: absolute;
             width: 22vw;
@@ -208,185 +56,345 @@ margin: 0px 0px;
             
         }
 
-            .topAccountMenu{
+            .top{
 
                 background: rgb(39, 39, 39);
                 padding: 30px;
                 margin: 10px;
                 text-align: end;
             }
-                .topAccountMenu a{
+                .top a{
 
                     text-decoration: none;
                     color: #fff;
+                    font-family: open;
                     font-family: 'Open Sans', sans-serif;
                     
                 }
+                    .cerrar-carrito{
 
-                    .cerrar-AccountMenu{
-
-                        margin-left: 80px;
+                        margin-left: 100px;
                         font-size: 30px;
                         color: #cacaca;
                     }
-                    
+                   
 
-            .middleAccountMenu{
+            .middle{
 
                 background: rgb(240, 240, 240);
                 padding: 30px;
-                margin: 10px 10px 0px 10px;
+                margin: 10px;
                 height: max-content;
-                border-bottom: 1px solid #8a8a8aad;
             }
-                .middleAccountMenu input{
 
-                    padding: 12px;
-                    width: 100%;
-                    font-family: 'Open Sans', sans-serif;
-                    border: 1px solid rgba(77, 77, 77, 0.575);
-                    outline: 0px;
-                    font-size: 16px;
-                }
+            .bottom{
 
-            .bottomAccountMenu{
-
-                background: rgb(255, 255, 255);
+                background: rgb(39, 39, 39);
                 padding: 30px;
-                margin: 0px 10px 10px 10px;
+                margin: 10px;
                 font-family: 'Open Sans', sans-serif;
                 font-size: 20px;
                 color: #fff;
+            }
+
+                .buy-button{
+                    display: block;
+                    margin-top: 15px;
+                    padding: 10px;
+                    background: #2e2e2e;
+                    text-align: center;
+                    color: #fff;
+                    text-decoration: none;
+                    font-family: 'Open Sans', sans-serif;
+                    transition: 0.3s ease-in-out;
+                    transition: all 5s ease ease-in-out;
+                }
+                .buy-button:hover{
+                    transition: 0.3s ease-in-out;
+                    background: #e6e6e6;
+                    color: rgb(51, 51, 51);
+
+                } 
+
+                .searchOpacity{
+
+                    position: absolute;
+                    background: rgba(0, 0, 0, 0.5);
+                    width: 100%;
+                    height: 100%;
+                    transition: all 5s ease ease-in-out;
+
+                }
+                .searchEngine{
+        
+                    position: absolute;
+                    width: 22vw;
+                    margin-left: 77.6%;
+                    background: rgb(146, 146, 146);
+                    height: max-content;
+                    transition: all 5s ease ease-in-out;
+                    
+                }
+        
+                    .topSearchEngine{
+        
+                        background: rgb(39, 39, 39);
+                        padding: 30px;
+                        margin: 10px;
+                        text-align: end;
+                    }
+                        .topSearchEngine a{
+        
+                            text-decoration: none;
+                            color: #fff;
+                            font-family: 'Open Sans', sans-serif;
+                            
+                        }
+
+                            .cerrar-buscador{
+        
+                                margin-left: 80px;
+                                font-size: 30px;
+                                color: #cacaca;
+                            }
+                            
+        
+                    .middleSearchEngine{
+        
+                        background: rgb(240, 240, 240);
+                        padding: 30px;
+                        margin: 10px 10px 0px 10px;
+                        height: max-content;
+                        border-bottom: 1px solid #8a8a8aad;
+
+                    }
+                        .middleSearchEngine input{
+
+                            padding: 12px;
+                            width: 100%;
+                            font-family: 'Open Sans', sans-serif;
+                            border: 1px solid rgba(77, 77, 77, 0.575);
+                            outline: 0px;
+                            font-size: 16px;
+                        }
+        
+                    .bottomSearchEngine{
+        
+                        background: rgb(255, 255, 255);
+                        padding: 30px;
+                        margin: 0px 10px 10px 10px;
+                        font-family: 'Open Sans', sans-serif;
+                        font-size: 20px;
+                        color: #fff;
+                        
+                    }
+                
+            .accountOpacity{
+
+                position: absolute;
+                background: rgba(0, 0, 0, 0.5);
+                width: 100%;
+                height: 100%;
+                transition: all 5s ease ease-in-out;
+
+            }
+            .accountMenu{
+    
+                position: absolute;
+                width: 22vw;
+                margin-left: 77.6%;
+                background: rgb(146, 146, 146);
+                height: max-content;
+                transition: all 5s ease ease-in-out;
                 
             }
-            
     
+                .topAccountMenu{
+    
+                    background: rgb(39, 39, 39);
+                    padding: 30px;
+                    margin: 10px;
+                    text-align: end;
+                }
+                    .topAccountMenu a{
+    
+                        text-decoration: none;
+                        color: #fff;
+                        font-family: 'Open Sans', sans-serif;
+                        
+                    }
+
+                        .cerrar-AccountMenu{
+    
+                            margin-left: 80px;
+                            font-size: 30px;
+                            color: #cacaca;
+                        }
+                        
+    
+                .middleAccountMenu{
+    
+                    background: rgb(240, 240, 240);
+                    padding: 30px;
+                    margin: 10px 10px 0px 10px;
+                    height: max-content;
+                    border-bottom: 1px solid #8a8a8aad;
+                }
+                    .middleAccountMenu a{
+
+                        text-decoration: none;
+                        color: rgb(75, 75, 75);
+                        font-family: 'Open Sans', sans-serif;
+                    }
+    
+                .bottomAccountMenu{
+    
+                    background: rgb(255, 255, 255);
+                    padding: 30px;
+                    margin: 0px 10px 10px 10px;
+                    font-family: 'Open Sans', sans-serif;
+                    font-size: 20px;
+                    color: #fff;
+                    
+                }
+                
+            .Buscar_contenedor{
+
+                display: flex;  
+                padding: 15px;
+                flex-wrap: wrap;
+                margin: 10px;
+                    
+             }
+             .Buscar_contenedor a{
+
+                text-decoration: none;
+                color: #2e2e2e;
+             }
 
 
-        .contenedor{
+            .contenedor{
 
-            display: flex;  
-            padding: 15px;
-            
-        }
-
-        .miniatura{
-
-            height: 80px;
-            width: 80px;
-            margin-right: 10px;
-        }
-
-        .miniatura img{
-
-            height: 80px;
-            width: 80px;
-
-        }
-
-        .info{
-
-            padding-right: 10px;
-        }
-        .contenedor h3{
-
-            font-family: 'Open Sans', sans-serif;
-        }
-
-        .contenedor p{
-
-            font-family: 'Open Sans', sans-serif;
-            font-size: 15px;
-        }
-        .contenedor label{
-
-            font-family: 'Open Sans', sans-serif;
-            font-size: 15px;
-            
-        }
-        .contenedor input{
-
-            width: 30px;
-            font-family: 'Open Sans', sans-serif;
-            text-align: center;
-            border: 1px solid #312015;
-            margin-left: 40%;
-            
-        }
-        .contenedor a{
-            
-            display: block;
-            margin-top: 20px;
-            margin-left: 60%;
-            color: rgb(255, 49, 49);
-            font-size: 20px;
-            width: 20px;
-            
-        }
-
-
-    .contacto a:hover{
-
-        color: rgb(255, 255, 255); 
-        transition: 0.2s ease-in-out;
-    }
-
-    .logo{
-
-        /* background: #E04DB0;   */
-        flex: 1 1 auto;
-        overflow: hidden;
-        justify-content: center;
-        display: flex;
-    }
-
-        .logo img{
-
-            height: 220px;
-            width: 220px;
-            margin-top: 0px;
-            transition: 0.5s ease-in-out;
-            
-        }
-            .logo img:hover{
-
-                transform: rotate(10deg);
-                transition: 0.5s ease-in-out;
+                display: flex;  
+                padding: 15px;
+                
             }
-            
-            
-        .redsocial a:hover{
 
-            color: rgb(255, 245, 238);  
+            .miniatura{
+
+                height: 80px;
+                width: 80px;
+                margin-right: 10px;
+            }
+
+            .miniatura img{
+
+                height: 80px;
+                width: 80px;
+
+            }
+
+            .info{
+
+                padding-right: 10px;
+            }
+            .contenedor h3{
+
+                font-family: 'Open Sans', sans-serif;
+            }
+
+            .contenedor p{
+
+                font-family: 'Open Sans', sans-serif;
+                font-size: 15px;
+            }
+            .contenedor label{
+
+                font-family: 'Open Sans', sans-serif;
+                font-size: 15px;
+                
+            }
+            .contenedor input{
+
+                width: 30px;
+                font-family: 'Open Sans', sans-serif;
+                text-align: center;
+                border: 1px solid #312015;
+                margin-left: 40%;
+                
+            }
+            .contenedor a{
+                
+                display: block;
+                margin-top: 20px;
+                margin-left: 60%;
+                color: rgb(255, 49, 49);
+                font-size: 20px;
+                width: 20px;
+                
+            }
+
+
+        .contacto a:hover{
+
+            color: rgb(255, 255, 255); 
             transition: 0.2s ease-in-out;
         }
 
-.menu{
+        .logo{
 
-    background: #f0f0f0;
-    margin: 0px 0px;
-    text-align: center;
-    padding: 10px 0px;
-    border-bottom: 1px solid #e2e2e2;
-    border-top: 1px solid #e2e2e2;
-}
-    .menu a{
-
-        color: #2e2e2e;
-        text-decoration: none;
-        padding: 0px 50px;
-        font-size: 15px;
-        font-family: 'Open Sans', sans-serif;
-        transform: scale(1);
-        transition: 0.5s;
-    }
-        .menu a:hover{
-
-            color: #db79a8; 
-            transition: 0.5s;
+            /* background: #E04DB0;   */
+           flex: 1 1 auto;
+           overflow: hidden;
+           justify-content: center;
+           display: flex;
         }
 
+            .logo img{
 
+                height: 220px;
+                width: 220px;
+                margin-top: 0px;
+                transition: 0.5s ease-in-out;
+                
+            }
+                .logo img:hover{
+
+                   transform: rotate(10deg);
+                   transition: 0.5s ease-in-out;
+                }
+                
+                
+            .redsocial a:hover{
+
+                color: rgb(255, 245, 238);  
+                transition: 0.2s ease-in-out;
+            }
+
+    .menu{
+
+        background: #f0f0f0;
+        margin: 0px 0px;
+        text-align: center;
+        padding: 10px 0px;
+        border-bottom: 1px solid #e2e2e2;
+        border-top: 1px solid #e2e2e2;
+    }
+        .menu a{
+
+            color: #2e2e2e;
+            text-decoration: none;
+            padding: 0px 50px;
+            font-size: 15px;
+            font-family: 'Open Sans', sans-serif;
+            transform: scale(1);
+            transition: 0.5s;
+        }
+            .menu a:hover{
+
+                color: #db79a8; 
+                transition: 0.5s;
+            }
 
 .section{
 
@@ -401,17 +409,18 @@ margin: 0px 0px;
 
     .producto{
 
-     background: rgb(255, 236, 220);
+    background: rgb(255, 236, 220);
     flex: 0 1 25%;
     margin: 10px 5px;
     border-radius: 4px;
+
     }
         .imagen{
 
             margin-top: 0px;
             height: 500px;
             overflow: hidden;
-            
+            width: 100%;
         }
         
             .imagen img {
@@ -433,17 +442,17 @@ margin: 0px 0px;
             padding-right: 10px;
         }
             .detalles h1{
-
+                text-align: start;
                 margin: 10px 0px 10px 20px;
             }
             .detalles p{
-
+                text-align: start;
                 margin: 0px 0px 20px 20px;
 
             }
 
             .descripcion{
-
+                text-align: start;
                 margin-top: 150px;
             }
     
@@ -455,7 +464,7 @@ margin: 0px 0px;
             }
             
             .descripcion p{
-    
+                text-align: start;
                 font-family: 'Bitter', serif;
                 margin: 10px 0px 20px 20px;
                 text-align: justify;
@@ -471,7 +480,7 @@ margin: 0px 0px;
             padding-left: 10px;
         }
             .precio p{
-
+                text-align: start;
                 font-size: 40px;
             }
             .estado p{

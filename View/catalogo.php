@@ -163,7 +163,7 @@ require_once("../Controller/buscador.php");
                 <b><a href="../View/collares.php?seccion=collares">Collares</a></b>
                 <b><a href="../View/pulseras.php?seccion=pulseras">Pulseras</a></b>
                 <b><a href="../View/anillos.php?seccion=anillos">Anillos</a></b>
-                <b><a href="..">Nosotros</a></b>
+                <b><a href="../View/terminosycondiciones.php">Nosotros</a></b>
                 <!-- <a href="#">Ofertas</a> -->
 
             </div>
