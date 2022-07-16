@@ -33,7 +33,7 @@ CREATE TABLE `articulo` (
   PRIMARY KEY (`artId`),
   KEY `fk_artCategoriaId` (`artCategoriaId`),
   CONSTRAINT `fk_artCategoriaId` FOREIGN KEY (`artCategoriaId`) REFERENCES `categoria` (`categoriaId`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `articulo` (
 
 LOCK TABLES `articulo` WRITE;
 /*!40000 ALTER TABLE `articulo` DISABLE KEYS */;
-INSERT INTO `articulo` VALUES (1,'New Ring',15000,13,'../Uploads/ImagenPrincipal/21.jpg','Disponible',3),(2,'Silver Collar',25000,49,'../Uploads/ImagenPrincipal/7.jpg','Disponible',1),(3,'Hand Collar',30000,25,'../Uploads/ImagenPrincipal/4.jpg','Disponible',1),(4,'Old Ring',145000,30,'../Uploads/ImagenPrincipal/23.jpg','Disponible',3),(5,'Silver Ring',40000,25,'../Uploads/ImagenPrincipal/26.jpg','Disponible',3),(6,'Golden Ring',60000,10,'../Uploads/ImagenPrincipal/30.jpg','Disponible',3),(7,'White Wrist',25000,30,'../Uploads/ImagenPrincipal/38.jpg','Disponible',2),(8,'Silver Wrist',30000,29,'../Uploads/ImagenPrincipal/39.jpg','Disponible',2),(9,'Black Wrist',25000,22,'../Uploads/ImagenPrincipal/43.jpg','Disponible',2),(10,'Plate Collar',27000,10,'../Uploads/ImagenPrincipal/6.jpg','Disponible',1),(11,'Gray Collar',15000,15,'../Uploads/ImagenPrincipal/18.jpg','Disponible',1),(12,'White Collar',30000,25,'../Uploads/ImagenPrincipal/8.jpg','Disponible',1);
+INSERT INTO `articulo` VALUES (1,'New Ring',15000,13,'../Uploads/ImagenPrincipal/21.jpg','Disponible',3),(2,'Silver Collar',25000,48,'../Uploads/ImagenPrincipal/7.jpg','Disponible',1),(3,'Hand Collar',30000,25,'../Uploads/ImagenPrincipal/4.jpg','Disponible',1),(4,'Old Ring',145000,30,'../Uploads/ImagenPrincipal/23.jpg','Disponible',3),(5,'Silver Ring',40000,25,'../Uploads/ImagenPrincipal/26.jpg','Disponible',3),(6,'Golden Ring',60000,10,'../Uploads/ImagenPrincipal/30.jpg','Disponible',3),(7,'White Wrist',25000,30,'../Uploads/ImagenPrincipal/38.jpg','Disponible',2),(8,'Silver Wrist',30000,29,'../Uploads/ImagenPrincipal/39.jpg','Disponible',2),(9,'Black Wrist',25000,22,'../Uploads/ImagenPrincipal/43.jpg','Disponible',2),(10,'Plate Collar',27000,10,'../Uploads/ImagenPrincipal/6.jpg','Disponible',1),(11,'Gray Collar',15000,15,'../Uploads/ImagenPrincipal/18.jpg','Disponible',1),(12,'White Collar',30000,25,'../Uploads/ImagenPrincipal/8.jpg','Disponible',1),(13,'Winter Collar',15000,65,'../Uploads/ImagenPrincipal/14.png','Disponible',1),(14,'Summer Ring',50000,70,'../Uploads/ImagenPrincipal/22.jpg','Disponible',3);
 /*!40000 ALTER TABLE `articulo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -59,7 +59,7 @@ CREATE TABLE `carrito` (
   `articuloId` int(11) NOT NULL,
   `artCarroCant` int(11) NOT NULL,
   PRIMARY KEY (`carId`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +68,7 @@ CREATE TABLE `carrito` (
 
 LOCK TABLES `carrito` WRITE;
 /*!40000 ALTER TABLE `carrito` DISABLE KEYS */;
-INSERT INTO `carrito` VALUES (2,'bhsaf98hfblp209s2tp753k883',9,3),(3,'luimcf5j7riijsaa4s0a93lerc',1,2),(4,'luimcf5j7riijsaa4s0a93lerc',8,1);
+INSERT INTO `carrito` VALUES (35,'u8tf64kgbjff3vf621q2dco7v9',1,2),(40,'qb2im5jugoc2cnhgmh43gpdrk5',12,2),(41,'qb2im5jugoc2cnhgmh43gpdrk5',11,2),(42,'qb2im5jugoc2cnhgmh43gpdrk5',8,2),(45,'ed0c1ai165pbdeb06enqeji2os',3,1),(46,'dmdq1oepl21a3glihc90nh377q',3,2),(47,'frd7dagjg8lgitlukbdqps9tl5',3,1),(48,'r7anhp94062ju30esbu38i0qjl',2,2),(49,'u82c9g6fp0rvndcer5ua4jp3p0',2,1);
 /*!40000 ALTER TABLE `carrito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,7 +111,7 @@ CREATE TABLE `cliente` (
   `clienteEmail` varchar(150) NOT NULL,
   `clienteContraseña` varchar(10) NOT NULL,
   PRIMARY KEY (`clienteId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +120,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (1,'ANDRES FELIPE','REY PINO','3154272647','andresfrey97@gmail.com','123456'),(2,'MARIA','MENDEZ','','mariajosemendezmoros@gmail.com','123456');
+INSERT INTO `cliente` VALUES (1,'ANDRES FELIPE','REY PINO','3154272647','andresfrey97@gmail.com','123456'),(2,'MARIA','MENDEZ','','mariajosemendezmoros@gmail.com','123456'),(3,'CAMILO','PEREZ','','camiloperes@gmail.com','123456');
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -179,7 +179,7 @@ CREATE TABLE `direccionpedido` (
 
 LOCK TABLES `direccionpedido` WRITE;
 /*!40000 ALTER TABLE `direccionpedido` DISABLE KEYS */;
-INSERT INTO `direccionpedido` VALUES (2,'SANTANDER','BUCARAMANGA','Calle 35 # 7-72 Torre Gardenia 202'),(3,'SANTANDER','BUCARAMANGA','Calle 35 # 7-72 Torre Gardenia 202'),(4,'SANTANDER','BUCARAMANGA','Calle 35 # 7-72 Torre Gardenia 202'),(7,'SANTANDER','BUCARAMANGA','Calle 35 # 7-72 Torre Gardenia 202'),(9,'SANTANDER','BUCARAMANGA','Calle 35 # 7-72 Torre Gardenia 202'),(10,'SANTANDER','BUCARAMANGA','Calle 35 # 7-72 Torre Gardenia 202'),(11,'SANTANDER','FLORIDABLANCA','Calle 35 # 7-72'),(12,'SANTANDER','BUCARAMANGA','Calle 35 # 7-72 Torre Gardenia 202'),(13,'SANTANDER','FLORIDABLANCA','Calle 35 # 7-72'),(15,'SANTANDER','FLORIDABLANCA','Calle 48 # 21-84 Cañaveral'),(16,'SANTANDER','BUCARAMANGA','Calle 35 # 7 -72 ');
+INSERT INTO `direccionpedido` VALUES (2,'SANTANDER','BUCARAMANGA','Calle 35 # 7-72 Torre Gardenia 202'),(3,'SANTANDER','BUCARAMANGA','Calle 35 # 7-72 Torre Gardenia 202'),(4,'SANTANDER','BUCARAMANGA','Calle 35 # 7-72 Torre Gardenia 202'),(7,'SANTANDER','BUCARAMANGA','Calle 35 # 7-72 Torre Gardenia 202'),(9,'SANTANDER','BUCARAMANGA','Calle 35 # 7-72 Torre Gardenia 202'),(10,'SANTANDER','BUCARAMANGA','Calle 35 # 7-72 Torre Gardenia 202'),(11,'SANTANDER','FLORIDABLANCA','Calle 35 # 7-72'),(12,'SANTANDER','BUCARAMANGA','Calle 35 # 7-72 Torre Gardenia 202'),(13,'SANTANDER','FLORIDABLANCA','Calle 35 # 7-72'),(15,'SANTANDER','FLORIDABLANCA','Calle 48 # 21-84 Cañaveral'),(16,'SANTANDER','BUCARAMANGA','Calle 35 # 7 -72 '),(17,'CUNDINAMARCA','BOGOTA','Calle 10 # 20 - 30 ');
 /*!40000 ALTER TABLE `direccionpedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -253,7 +253,7 @@ CREATE TABLE `factura` (
   KEY `impuestoId` (`facturaImpuestoId`),
   CONSTRAINT `fk_facturaClienteDoc` FOREIGN KEY (`facturaClienteId`) REFERENCES `cliente` (`clienteId`),
   CONSTRAINT `fk_factura_tipoPagoId` FOREIGN KEY (`factura_tipoPagoId`) REFERENCES `tipopago` (`tipoPagoId`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -262,7 +262,7 @@ CREATE TABLE `factura` (
 
 LOCK TABLES `factura` WRITE;
 /*!40000 ALTER TABLE `factura` DISABLE KEYS */;
-INSERT INTO `factura` VALUES (2,'2022-06-17',15000,'1098813441',1,1,'Calle 35 # 7-72 Torre Gardenia 202 ',1),(3,'2022-06-17',15000,'1098813441',1,1,'Calle 35 # 7-72 Torre Gardenia 202 ',1),(4,'2022-06-17',40000,'1098813441',1,1,'Calle 35 # 7-72 Torre Gardenia 202 ',1),(7,'2022-06-18',30000,'1098813441',1,1,'Calle 35 # 7-72 Torre Gardenia 202 ',1),(9,'2022-06-18',175000,'1098813441',1,1,'Calle 35 # 7-72 Torre Gardenia 202 ',1),(10,'2022-06-18',55000,'1098813441',1,1,'Calle 35 # 7-72 Torre Gardenia 202 ',1),(11,'2022-06-19',540000,'1098813441',1,1,'$direccionCompleta',1),(12,'2022-06-19',160000,'1098813441',1,1,'Calle 35 # 7-72 Torre Gardenia 202 BUCARAMANGA - SANTANDER',1),(13,'2022-06-20',72000,'1437336',2,2,'Calle 35 # 7-72  FLORIDABLANCA - SANTANDER',1),(14,'2022-06-22',25000,'1098813441',1,1,'Calle 25 # 14-10 Unilago BOGOTA D.C - CUNDINAMARCA',1),(15,'2022-06-22',75000,'1098813441',1,1,'Calle 48 # 21-84 Cañaveral FLORIDABLANCA - SANTANDER',1),(16,'2022-06-30',60000,'1098813441',1,1,'Calle 35 # 7 -72  BUCARAMANGA - SANTANDER',1);
+INSERT INTO `factura` VALUES (2,'2022-06-17',15000,'1098813441',1,1,'Calle 35 # 7-72 Torre Gardenia 202 ',1),(3,'2022-06-17',15000,'1098813441',1,1,'Calle 35 # 7-72 Torre Gardenia 202 ',1),(4,'2022-06-17',40000,'1098813441',1,1,'Calle 35 # 7-72 Torre Gardenia 202 ',1),(7,'2022-06-18',30000,'1098813441',1,1,'Calle 35 # 7-72 Torre Gardenia 202 ',1),(9,'2022-06-18',175000,'1098813441',1,1,'Calle 35 # 7-72 Torre Gardenia 202 ',1),(10,'2022-06-18',55000,'1098813441',1,1,'Calle 35 # 7-72 Torre Gardenia 202 ',1),(11,'2022-06-19',540000,'1098813441',1,1,'$direccionCompleta',1),(12,'2022-06-19',160000,'1098813441',1,1,'Calle 35 # 7-72 Torre Gardenia 202 BUCARAMANGA - SANTANDER',1),(13,'2022-06-20',72000,'1437336',2,2,'Calle 35 # 7-72  FLORIDABLANCA - SANTANDER',1),(14,'2022-06-22',25000,'1098813441',1,1,'Calle 25 # 14-10 Unilago BOGOTA D.C - CUNDINAMARCA',1),(15,'2022-06-22',75000,'1098813441',1,1,'Calle 48 # 21-84 Cañaveral FLORIDABLANCA - SANTANDER',1),(16,'2022-06-30',60000,'1098813441',1,1,'Calle 35 # 7 -72  BUCARAMANGA - SANTANDER',1),(17,'2022-07-16',25000,'1098813441',1,1,'Calle 10 # 20 - 30  BOGOTA - CUNDINAMARCA',1);
 /*!40000 ALTER TABLE `factura` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -325,7 +325,7 @@ CREATE TABLE `pedido` (
 
 LOCK TABLES `pedido` WRITE;
 /*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
-INSERT INTO `pedido` VALUES (2,'2022-06-17',NULL,'Pendiente',1,NULL,2,15000,2),(3,'2022-06-17',NULL,'Pendiente',1,NULL,3,15000,3),(4,'2022-06-17',NULL,'Pendiente',1,NULL,4,40000,4),(7,'2022-06-18',NULL,'Pendiente',1,NULL,7,30000,7),(9,'2022-06-18',NULL,'Pendiente',1,NULL,9,175000,9),(10,'2022-06-18',NULL,'Enviado',1,NULL,10,55000,10),(11,'2022-06-19',NULL,'Enviado',1,NULL,11,540000,11),(12,'2022-06-19',NULL,'Enviado',1,NULL,12,160000,12),(13,'2022-06-20',NULL,'Enviado',2,1,13,72000,13),(14,'2022-06-22',NULL,'Pendiente',1,NULL,14,25000,0),(15,'2022-06-22',NULL,'Enviado',1,NULL,15,75000,15),(16,'2022-06-30',NULL,'Enviado',1,NULL,16,60000,16);
+INSERT INTO `pedido` VALUES (2,'2022-06-17',NULL,'Pendiente',1,NULL,2,15000,2),(3,'2022-06-17',NULL,'Pendiente',1,NULL,3,15000,3),(4,'2022-06-17',NULL,'Pendiente',1,NULL,4,40000,4),(7,'2022-06-18',NULL,'Pendiente',1,NULL,7,30000,7),(9,'2022-06-18',NULL,'Pendiente',1,NULL,9,175000,9),(10,'2022-06-18',NULL,'Enviado',1,NULL,10,55000,10),(11,'2022-06-19',NULL,'Enviado',1,NULL,11,540000,11),(12,'2022-06-19',NULL,'Enviado',1,NULL,12,160000,12),(13,'2022-06-20',NULL,'Enviado',2,1,13,72000,13),(14,'2022-06-22',NULL,'Pendiente',1,NULL,14,25000,0),(15,'2022-06-22',NULL,'Enviado',1,NULL,15,75000,15),(16,'2022-06-30',NULL,'Enviado',1,NULL,16,60000,16),(17,'2022-07-16',NULL,'Pendiente',1,NULL,17,25000,17);
 /*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -418,7 +418,7 @@ CREATE TABLE `productoporfactura` (
 
 LOCK TABLES `productoporfactura` WRITE;
 /*!40000 ALTER TABLE `productoporfactura` DISABLE KEYS */;
-INSERT INTO `productoporfactura` VALUES (1,3,1,15000),(1,4,1,15000),(2,4,1,25000),(3,7,1,30000),(3,9,1,30000),(4,9,1,145000),(3,10,1,30000),(2,10,1,25000),(2,11,2,25000),(3,11,1,30000),(4,11,3,145000),(7,11,1,25000),(2,12,2,25000),(1,12,3,15000),(5,12,1,40000),(9,12,1,25000),(10,13,1,27000),(3,13,1,30000),(11,13,1,15000),(2,14,1,25000),(9,15,3,25000),(1,16,2,15000),(8,16,1,30000);
+INSERT INTO `productoporfactura` VALUES (1,3,1,15000),(1,4,1,15000),(2,4,1,25000),(3,7,1,30000),(3,9,1,30000),(4,9,1,145000),(3,10,1,30000),(2,10,1,25000),(2,11,2,25000),(3,11,1,30000),(4,11,3,145000),(7,11,1,25000),(2,12,2,25000),(1,12,3,15000),(5,12,1,40000),(9,12,1,25000),(10,13,1,27000),(3,13,1,30000),(11,13,1,15000),(2,14,1,25000),(9,15,3,25000),(1,16,2,15000),(8,16,1,30000),(2,17,1,25000);
 /*!40000 ALTER TABLE `productoporfactura` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -447,7 +447,7 @@ CREATE TABLE `productoporpedido` (
 
 LOCK TABLES `productoporpedido` WRITE;
 /*!40000 ALTER TABLE `productoporpedido` DISABLE KEYS */;
-INSERT INTO `productoporpedido` VALUES (1,3,1,15000),(1,4,1,15000),(2,4,1,25000),(3,7,1,30000),(3,9,1,30000),(4,9,1,145000),(3,10,1,30000),(2,10,1,25000),(2,11,2,25000),(3,11,1,30000),(4,11,3,145000),(7,11,1,25000),(2,12,2,25000),(1,12,3,15000),(5,12,1,40000),(9,12,1,25000),(10,13,1,27000),(3,13,1,30000),(11,13,1,15000),(2,14,1,25000),(9,15,3,25000),(1,16,2,15000),(8,16,1,30000);
+INSERT INTO `productoporpedido` VALUES (1,3,1,15000),(1,4,1,15000),(2,4,1,25000),(3,7,1,30000),(3,9,1,30000),(4,9,1,145000),(3,10,1,30000),(2,10,1,25000),(2,11,2,25000),(3,11,1,30000),(4,11,3,145000),(7,11,1,25000),(2,12,2,25000),(1,12,3,15000),(5,12,1,40000),(9,12,1,25000),(10,13,1,27000),(3,13,1,30000),(11,13,1,15000),(2,14,1,25000),(9,15,3,25000),(1,16,2,15000),(8,16,1,30000),(2,17,1,25000);
 /*!40000 ALTER TABLE `productoporpedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -549,7 +549,7 @@ CREATE TABLE `usuariotienda` (
   UNIQUE KEY `UQ_usuarioDoc` (`usuarioDoc`),
   KEY `fk_usuarioRolId` (`usuarioRolId`),
   CONSTRAINT `fk_usuarioRolId` FOREIGN KEY (`usuarioRolId`) REFERENCES `rol` (`rolId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -558,7 +558,7 @@ CREATE TABLE `usuariotienda` (
 
 LOCK TABLES `usuariotienda` WRITE;
 /*!40000 ALTER TABLE `usuariotienda` DISABLE KEYS */;
-INSERT INTO `usuariotienda` VALUES (1,'ANDRES','FELIPE','1098813441',1,'123456','Activo'),(2,'MARIA','MENDEZ','1437336',2,'123456','Activo');
+INSERT INTO `usuariotienda` VALUES (1,'ANDRES','FELIPE','1098813441',1,'123456','Activo'),(2,'MARIA','MENDEZ','1437336',2,'123456','Activo'),(3,'LEDY','PINO BUSTOS','63299825',2,'Umarani202','Activo');
 /*!40000 ALTER TABLE `usuariotienda` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -571,4 +571,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-11 11:30:03
+-- Dump completed on 2022-07-16  9:06:22
