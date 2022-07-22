@@ -36,7 +36,7 @@
 
 
     <div class="padre">
-
+ 
         <div class="board">
             <div class="titulo">
                 <h1>Tienda Web Umarani</h1>
@@ -118,10 +118,10 @@
                             <option value="mentomay">Menor a mayor</option>
                         </select>
                         <label for="pago"> Pago: </label>
-                        <select name="pago" id="">Estado
+                        <select name="pago" id="">
                             <option value="">Seleccione</option>
-                            <option value="Debito">Debito</option>
-                            <option value="Credito">Credito</option>
+                            <option value="DEBITO">Debito</option>
+                            <option value="CREDITO">Credito</option>
                         </select>
                         <input class="searchButton" type="submit" value="Buscar">
                     </form>

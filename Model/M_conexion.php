@@ -5,7 +5,7 @@
     class Conexion {
  
             private $con;
-            public $artporpag;
+            public $artporpag; 
             private $sentencia;
 
         public function __construct()

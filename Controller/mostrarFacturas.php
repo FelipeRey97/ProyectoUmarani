@@ -35,7 +35,14 @@ if(isset($_REQUEST['pago']) && $_REQUEST['pago'] != "" && isset($_REQUEST['orden
         $fact1->ordenar($orderby);
         }
     
+}else if(isset($_REQUEST['pago']) && $_REQUEST['pago'] != ""){
+
+    $pago = $_REQUEST['pago'];
+    $where = "WHERE tipoPagoNombre LIKE'$pago'";
+    $fact1->filtrar($where);
+
 }
+
 else if (isset($_REQUEST['ordenar']) && isset($_REQUEST['id']) && $_REQUEST['ordenar'] == "" && $_REQUEST['id'] == "" && $_REQUEST['fechainicio'] == "" && $_REQUEST['fechafin'] =="" ){
 
     $orderby = "ORDER BY facturaId DESC";
@@ -50,13 +57,7 @@ else if(isset($_REQUEST['id']) && $_REQUEST['id']){
     $where = "WHERE facturaId = $id";
     $fact1->filtrar($where);
 }
-else if(isset($_REQUEST['pago']) && $_REQUEST['pago'] != ""){
-
-    $pago = $_REQUEST['pago'];
-    $where = "WHERE tipoPagoNombre like '%$pago%'";
-    $fact1->filtrar($where);
-
-}else if (isset($_REQUEST['ordenar']) && $_REQUEST['ordenar'] != ""){
+else if (isset($_REQUEST['ordenar']) && $_REQUEST['ordenar'] != ""){
 
     if($_REQUEST['ordenar'] == "maytomen"){
 

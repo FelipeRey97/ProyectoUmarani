@@ -19,4 +19,6 @@ $clienteId = $reg['clienteId'];
 
 }
 
+mysqli_close($conexion);
+
 ?>

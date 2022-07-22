@@ -163,7 +163,7 @@ $paginas = ceil($paginas);
                             
                         </td>
                     </tr>
-                    <?php  } ?>
+                    <?php  } ?> 
                 </table>
                 <nav class="paginacion">
                 <a class="prev-next" <?php if($_GET['pagina']<=1){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../view/PQRS.php?pagina=<?php echo "$_GET[pagina]"-1;?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&tipo=<?php if(isset($_REQUEST['tipo'])){ echo "$_REQUEST[tipo]"; } ?>&fechainicio=<?php if(isset($_REQUEST['fechainicio'])){ echo "$_REQUEST[fechainicio]"; } ?>&fechafin=<?php if(isset($_REQUEST['fechafin'])){ echo "$_REQUEST[fechafin]"; } ?>">Anterior </a>

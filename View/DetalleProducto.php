@@ -188,7 +188,7 @@ require_once("../Controller/buscador.php");
                 <div class="precio"><p href="#"> $ <?php echo "$artPrecio" ?></p><br></div>
                    <div class="estado"><p href="#"><b><?php echo "$artEstado" ?></b></p><br></div> 
                     <div class="comprar"><a href="../Controller/carrito.php?sesionId=<?php echo "$sesionId"?>&artId=<?php echo "$arId"?>&Cant=1"><i class="fas fa-cart-plus"></i> Añadir al carrito</a><br></div>
-                    <div class="favoritos"><a href="<?php if(isset($_SERVER['HTTP_REFERER'])) { echo $_SERVER['HTTP_REFERER'];} else{ echo "../View/catalogo.php";} ?>"> Regresar </a><br></div>
+                    <div class="favoritos"><a href="<?php if(isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER'] != "http://localhost/proyectoumarani/view/DetalleProducto.php?arId=$_GET[arId]") { echo $_SERVER['HTTP_REFERER'];} else{ echo "../View/catalogo.php";} ?>"> Regresar </a><br></div>
             </div>
         </section>
         <footer class="footer">

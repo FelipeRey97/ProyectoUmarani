@@ -33,7 +33,7 @@
             <?php
             if($_REQUEST['compra'] == 1){
             $valor= 1;
-            header("refresh:1;url=../datosfacturacion.php?valor=$valor");
+            header("refresh:1;url=../view/datosfacturacion.php?valor=$valor");
             }
             else{
 

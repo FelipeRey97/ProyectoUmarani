@@ -187,17 +187,17 @@ if(isset($_GET['pagina'])){
                         <?php  
                             
                         }
-                     ?>
+                     ?> 
                     
                 </table>
                 <nav class="paginacion">
-                 <a class="prev-next" <?php if($_GET['pagina']<=1 ){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../view/pedidos.php?pagina=<?php echo"$_GET[pagina]"-1; ?>">Anterior </a>
+                 <a class="prev-next" <?php if($_GET['pagina']<=1 ){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../view/pedidos.php?pagina=<?php echo"$_GET[pagina]"-1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&fechainicio=<?php if(isset($_REQUEST['fechainicio'])){ echo "$_REQUEST[fechainicio]"; } ?>&fechafin=<?php if(isset($_REQUEST['fechafin'])){ echo "$_REQUEST[fechafin]"; } ?>&id=<?php if(isset($_REQUEST['id'])){ echo "$_REQUEST[id]"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&ordenar=<?php if(isset($_REQUEST['ordenar'])){ echo "$_REQUEST[ordenar]"; } ?>&dpto=<?php if(isset($_REQUEST['dpto'])){ echo "$_REQUEST[dpto]"; } ?>">Anterior </a>
 
                  <?php for($i =0; $i < $paginas; $i++){ ?>
-                <a <?php if($_GET['pagina'] == $i+1){ ?> class="active" <?php }?> href="../view/pedidos.php?pagina=<?php echo "$i"+1 ?>"><?php echo "$i"+1 ?></a>
+                <a <?php if($_GET['pagina'] == $i+1){ ?> class="active" <?php }?> href="../view/pedidos.php?pagina=<?php echo "$i"+1 ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&fechainicio=<?php if(isset($_REQUEST['fechainicio'])){ echo "$_REQUEST[fechainicio]"; } ?>&fechafin=<?php if(isset($_REQUEST['fechafin'])){ echo "$_REQUEST[fechafin]"; } ?>&id=<?php if(isset($_REQUEST['id'])){ echo "$_REQUEST[id]"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&ordenar=<?php if(isset($_REQUEST['ordenar'])){ echo "$_REQUEST[ordenar]"; } ?>&dpto=<?php if(isset($_REQUEST['dpto'])){ echo "$_REQUEST[dpto]"; } ?>"><?php echo "$i"+1 ?></a>
                 <?php }  ?>
 
-                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../view/pedidos.php?pagina=<?php echo"$_GET[pagina]"+1; ?>"> Siguiente</a> 
+                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../view/pedidos.php?pagina=<?php echo"$_GET[pagina]"+1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&fechainicio=<?php if(isset($_REQUEST['fechainicio'])){ echo "$_REQUEST[fechainicio]"; } ?>&fechafin=<?php if(isset($_REQUEST['fechafin'])){ echo "$_REQUEST[fechafin]"; } ?>&id=<?php if(isset($_REQUEST['id'])){ echo "$_REQUEST[id]"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&ordenar=<?php if(isset($_REQUEST['ordenar'])){ echo "$_REQUEST[ordenar]"; } ?>&dpto=<?php if(isset($_REQUEST['dpto'])){ echo "$_REQUEST[dpto]"; } ?>"> Siguiente</a> 
                 </nav>
             </div>
         </section>

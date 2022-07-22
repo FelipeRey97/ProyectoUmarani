@@ -75,7 +75,7 @@
                         <input class="registrar" type="submit" name="registrar" value="Registrar">
                         <a class="searchButton" href="../View/Usuarios.php">Volver</a>
                     </form>
-
+ 
                 </div>
  
             </div>

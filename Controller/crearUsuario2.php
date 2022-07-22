@@ -18,7 +18,9 @@ require('../Model/M_conexion.php');
 
 $con = new Conexion();
 
+
 if(isset($_REQUEST['registrar'])){
+
 
 if(isset($_REQUEST['unombre']) && $_REQUEST['unombre'] != "" && $_REQUEST['uapellido'] != "" && $_REQUEST['udocumento'] != "" && $_REQUEST['ucontraseña'] != ""
 && $_REQUEST['uestado'] != "" && $_REQUEST['urol'] != ""){
@@ -37,7 +39,7 @@ if(isset($_REQUEST['unombre']) && $_REQUEST['unombre'] != "" && $_REQUEST['uapel
          
       </script>
 
-      <?php
+      <?php 
 
       header("refresh:1;url=../View/Usuarios.php");
       
