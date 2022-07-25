@@ -4,6 +4,7 @@ session_start();
 ?>
 <?php 
 // se valida la sesion del usuario, en caso de no tener sesion sera redirigido al login
+    include_once('../Controller/actualizarProducto2.php');
     if($_SESSION['doc'] == false){
 
         header("Location: ../View/loginUsuario.php");
@@ -70,15 +71,15 @@ session_start();
                 ?>
                 <div class="filtros" >
                   
-                    <form action="../Controller/actualizarProducto2.php" method="post" enctype="multipart/form-data">
+                    <form action="" method="post" enctype="multipart/form-data">
                         <label for="aNombre" >Nombre: </label><br>
-                        <input class="control" type="text" name="aNombre" value="<?php echo "$reg[artNombre]"?>" ><br><br>
+                        <input class="control" type="text" name="aNombre" required pattern="[A-Za-z ]{3,150}" value="<?php echo "$reg[artNombre]"?>" ><br><br>
                         <label for="aPrecio">Precio:  </label><br>
-                        <input class="control" type="text" name="aPrecio" value="<?php echo "$reg[artPrecio]"?>"  ><br><br>
+                        <input class="control" type="text" name="aPrecio" required pattern="[0-9]{4,11}" value="<?php echo "$reg[artPrecio]"?>"  ><br><br>
                         <label for="aCantidad">Cantidad:  </label><br>
-                        <input class="control" name="aCantidad" type="text" value="<?php echo "$reg[artCantidad]"?>"  class=""> <br><br>
+                        <input class="control" name="aCantidad" type="text" required pattern="[0-9]{1,11}" value="<?php echo "$reg[artCantidad]"?>"  class=""> <br><br>
                         <label for="aestado"> Estado: </label>
-                        <select name="aestado" id="">Estado
+                        <select name="aestado" required pattern="[a-zA-Z ]{4,15}" id="">Estado
                         <?php if($reg['artEstado'] == "Disponible"){
                             echo "<option value=\"$reg[artEstado]\" selected>$reg[artEstado]</option>";
                             echo "<option value=\"Agotado\" >Agotado</option>";
@@ -91,7 +92,7 @@ session_start();
                         ?>
                         </select> <br><br>
                         <label for="aCategoria"> Categoria </label>
-                        <select name="aCategoria">
+                        <select required pattern="[0-9]{1}" name="aCategoria">
                         <?php if($reg['artCategoriaId'] == "1"){
                             echo "<option value=\"$reg[artCategoriaId]\" selected>$reg[categoriaNombre]</option>";
                             echo "<option value=\"2\" >PULSERAS</option>";
@@ -117,13 +118,13 @@ session_start();
                         <img class="vista" src="<?php echo "$reg[artVista]"?>" alt=""><br><br>
                         <label for="">Si desea cambiar la imagen del producto selecciónela aquí:</label><br><br>
                         <input type="file" name="foto1" id="foto1" value="" ><br><br>
-                        <input class="registrar" type="submit" value="Registrar">
+                        <input class="registrar" name="registrar" type="submit" value="Registrar">
                         <input type="hidden" name="aId" value="<?php echo "$_REQUEST[aId]" ?>">
                         <input type="hidden" name="rutaActual" value="<?php echo "$reg[artVista]"?>" >
                         <a class="searchButton" href="../View/Productos.php">Volver</a>
                     </form>
                     <?php  
-                            
+                             
                         }
                     }
                     else {

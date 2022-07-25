@@ -23,7 +23,7 @@ session_start();
     $paginas = $cantidad/$prod1->artporpag;
     $paginas = ceil($paginas);
 
-
+ 
 ?>
 
 <!DOCTYPE html>
@@ -171,9 +171,8 @@ session_start();
                         <td> <?php echo $producto['categoriaNombre']   ?></td>
                         <td>
                         <a class="edit" href="editarProducto.php?aId=<?php echo "$producto[artId]" ?>"><i class="far fa-edit"></i></i></a>
-                        <a class="detail" href="#"><i class="far fa-eye"></i></a>
                         <?php if($_SESSION['rol'] == 'ADMINISTRADOR')  { ?>
-                        <a on class="cancel" href="../Controller/borrarArticulo.php?aId=<?php echo "$producto[artId]" ?>"><i class="fas fa-ban"></i></a>
+                        <a on class="cancel" href="../Controller/borrarArticulo.php?aId=<?php echo "$producto[artId]" ?>"><button class="cancel" onclick="return confirmarDelete()" ><i class="fas fa-ban"></i></button></a>
                         </td> <?php } ?>
                 
                         <?php  
@@ -181,7 +180,23 @@ session_start();
                         }
                      ?>
                     </tr>
-                    
+
+                    <script>
+
+                    function confirmarDelete(){
+
+                        var respuesta = confirm("Desea eliminar el Producto?")
+
+                        if(respuesta == true){
+
+                            return true;
+                         }
+                        else{
+
+                            return false;
+                        }
+                    }
+                    </script>
                     
                 </table>
                 <nav class="paginacion"> 

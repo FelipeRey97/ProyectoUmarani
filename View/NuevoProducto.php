@@ -49,7 +49,7 @@ session_start();
                 <a href="../View/PQRS.php?pagina=1">PQRS</a><br><br><br>
                 <a href="../Controller/cerrarSesion.php">Cerrar Sesión</a>
             </nav>
-        </div>
+        </div> 
         <div class="content">
         <header class="header">
             <h1>Ingresar Producto</h1>
@@ -59,24 +59,24 @@ session_start();
                 <div class="filtros" >
                     <form action="#" method="post" enctype="multipart/form-data">
                         <label for="aNombre" >Nombre: </label><br>
-                        <input placeholder="Ingrese el Nombre del Artículo" class="control" type="text" name="aNombre"><br><br>
+                        <input placeholder="Ingrese el Nombre del Artículo" required pattern="[a-zA-Z ]{3,150}" class="control" type="text" value="<?php if(isset($_REQUEST['aNombre'])){ echo"$_REQUEST[aNombre]";} ?>" name="aNombre"><br><br>
                         <label for="aPrecio">Precio:  </label><br>
-                        <input placeholder="Ingrese en valor numérico el precio del artículo" class="control" type="text" name="aPrecio"><br><br>
+                        <input placeholder="Ingrese en valor numérico el precio del artículo" required pattern="[0-9]{4,11}" class="control" value="<?php if(isset($_REQUEST['aPrecio'])){ echo"$_REQUEST[aPrecio]";} ?>" type="text" name="aPrecio"><br><br>
                         <label for="aCantidad">Cantidad:  </label><br>
-                        <input placeholder="Ingrese en valor numérico la cantidad disponible" class="control" name="aCantidad" type="text" class=""> <br><br>
-                        <label for="aestado"> Estado: </label>
-                        <select class="control" name="aestado" id="">Estado
+                        <input placeholder="Ingrese en valor numérico la cantidad disponible" required pattern="[0-9]{1,11}" class="control" value="<?php if(isset($_REQUEST['aCantidad'])){ echo"$_REQUEST[aCantidad]";} ?>" name="aCantidad" type="text" class=""> <br><br>
+                        <label  for="aestado"> Estado: </label>
+                        <select required pattern="[a-zA-Z ]{4,15}" class="control" name="aestado" id="">Estado
                             <option class="control" value="Disponible">Disponible</option>
                             <option class="control"  value="Agotado">Agotado</option>
                         </select> <br><br>
                         <label for="aCategoria"> Categoria </label>
-                        <select class="" name="aCategoria">
+                        <select required pattern="[0-9]{1}" class="" name="aCategoria">
                             <option value="1">Collar</option>
                             <option value="2">Pulsera</option>
                             <option value="3">Anillo</option>
                         </select><br><br>
                         <label for="foto1">Imagen:</label> <br><br>
-                        <input class="" type="file" name="foto1" id="foto1"><br><br>
+                        <input required class="" type="file" name="foto1" id="foto1"><br><br>
                         <input class="registrar" type="submit" name="registrar" value="Registrar">
                         <a class="searchButton" href="../View/Productos.php">Volver</a>
                     </form><br><br>

@@ -43,7 +43,7 @@
              values('$aNombre','$aPrecio','$ruta',$aCantidad,'$aestado','$aCategoria')")
              or die ("problemas en el insert" .mysqli_error($prod));
 
-            
+             
         }
 
         public function verProducto(){

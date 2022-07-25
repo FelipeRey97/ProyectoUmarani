@@ -17,8 +17,6 @@
                  // se crea la ruta de la carpeta donde se guarda la imagen
                  // se mueve la imagen a la carpeta ../Uploads/ImagenPrincipal y se guarda la ruta como texto en la BD
  
-
-
  
                 if(isset($_FILES['foto1']) && $_FILES['foto1']['name'] != ""){
                     $nombre_imagen = $_FILES['foto1']['name'];
@@ -32,30 +30,94 @@
                 $prod = new Producto();
                 // Se valida que los formularios del nuevo producto no se envien vacios
 
-        if(isset($_REQUEST['registrar'])){
+  if(isset($_REQUEST['registrar'])){
 
-        if(isset($_REQUEST['aNombre']) && $_REQUEST['aNombre'] != "" && $_REQUEST['aPrecio'] != "" && $_REQUEST['aCantidad'] != "" && $_REQUEST['aestado'] != ""
-        && $_REQUEST['aCategoria'] !=""){
+    if(isset($_REQUEST['aNombre']) && $_REQUEST['aNombre'] != ""  && preg_match("/^[A-Za-z ]{3,150}$/", $_REQUEST['aNombre'])){
 
+        $aNombre = htmlentities($_REQUEST['aNombre']);
+        $aNombre = ucfirst($aNombre);
+        $vaNombre = true;
+    }
+    else{
 
-            $aNombre = $_REQUEST['aNombre'];
-            $aPrecio = $_REQUEST['aPrecio'];
-            $aCantidad = $_REQUEST['aCantidad'];
-            $aestado = $_REQUEST['aestado'];
-            $aCategoria = $_REQUEST['aCategoria'];
-            
-                
-                $prod->insertarProducto($ruta,$aNombre,$aPrecio,$aCantidad,$aestado,$aCategoria);
-                ?>
-                <script>
-                    swal("Operación Realizada", "Se ha guardado el Usuario Satisfactoriamente!", "success");
-                </script>
-                
-                <?php
-            header("refresh:1;url=../View/Productos.php?pagina=1");
-   
-        } 
-        else{
+        $vaNombre = false;
+        ?>
+        <script>
+         swal("Atención", "Verifique el Nombre", "warning");
+        </script>
+        <?php
+    }if(isset($_REQUEST['aPrecio']) && $_REQUEST['aPrecio'] != ""  && preg_match("/^[0-9]{3,11}$/", $_REQUEST['aPrecio'])){
+
+        $aPrecio = htmlentities($_REQUEST['aPrecio']);
+        $vaPrecio = true;
+    }
+    else{
+
+        $vaPrecio = false;
+        ?>
+        <script>
+         swal("Atención", "Verifique el Precio", "warning");
+        </script>
+        <?php
+    }
+    if(isset($_REQUEST['aCantidad']) && $_REQUEST['aCantidad'] != ""  && preg_match("/^[0-9]{1,11}$/", $_REQUEST['aCantidad'])){
+
+        $aCantidad = htmlentities($_REQUEST['aCantidad']);
+        $vaCantidad = true;
+    }
+    else{
+
+        $vaCantidad = false;
+        ?>
+        <script>
+         swal("Atención", "Verifique la Cantidad", "warning");
+        </script>
+        <?php
+        
+    }
+    if(isset($_REQUEST['aestado']) && $_REQUEST['aestado'] != ""  && preg_match("/^[a-zA-Z ]{4,15}$/", $_REQUEST['aestado'])){
+
+        $aestado = htmlentities($_REQUEST['aestado']);
+        $aestado = ucfirst($aestado);
+        $vaEstado = true;
+    }
+    else{
+
+        $vaEstado = false;
+        ?>
+        <script>
+         swal("Atención", "Verifique el Estado", "warning");
+        </script>
+        <?php
+
+    }if(isset($_REQUEST['aCategoria']) && $_REQUEST['aCategoria'] != ""  && preg_match("/^[0-9]{1}$/", $_REQUEST['aCategoria'])){
+
+        $aCategoria = htmlentities($_REQUEST['aCategoria']);
+        $aCategoria = ucfirst($aCategoria);
+        $vaCategoria = true;
+    }
+    else{
+
+        $vaCategoria = false;
+        ?>
+        <script>
+         swal("Atención", "Verifique la Categoría", "warning");
+        </script>
+        <?php
+    }
+    
+    if($vaNombre == true && $vaPrecio == true && $vaCantidad == true && $vaEstado == true && $vaCategoria == true){
+
+        $prod->insertarProducto($ruta,$aNombre,$aPrecio,$aCantidad,$aestado,$aCategoria);
+        ?>
+        <script>
+            swal("Operación Realizada", "Se ha guardado el artículo Satisfactoriamente!", "success");
+        </script>
+        
+        <?php
+         header("refresh:1;url=../View/Productos.php?pagina=1");
+    }
+    else if(empty($_REQUEST['aNombre']) || empty($_REQUEST['aPrecio']) || empty($_REQUEST['aCantidad']) || empty($_REQUEST['aestado']) || empty($_REQUEST['aCategoria'])){
         
         ?>
         <script>
@@ -63,12 +125,11 @@
         </script>
         <?php
         
-        }
-    }
+        }            
+    
+   
+        } 
                ?>
-
-                
-
 
             </div>
         </section>
