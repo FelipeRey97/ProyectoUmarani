@@ -4,6 +4,7 @@
 ?>
 
 <?php
+include_once('../Controller/actualizarUsuario.php');
 session_start();
 
 ?>
@@ -86,15 +87,13 @@ session_start();
                   <div class="filtros">
 
                    
-                    <form action="../Controller/actualizarUsuario.php" method="post">
+                    <form action="" method="post">
                         <label for="unombre"  >Nombres: </label><br>
-                        <input class="control" type="text" name="unombre" value="<?php echo "$reg[usuarioNombre]" ?>"><br><br>
+                        <input class="control" type="text" required pattern="[a-zA-Z ]{3,50}" name="unombre" value="<?php echo "$reg[usuarioNombre]" ?>"><br><br>
                         <label for="upellido">Apellidos:  </label><br>
-                        <input class="control" type="text" name="uapellido"value="<?php echo "$reg[usuarioApellido]" ?>" ><br><br>
-                        <label for="udocumento">Documento:  </label><br>
-                        <input class="control" name="udocumento" type="text" value="<?php echo "$reg[usuarioDoc]" ?>" class=""> <br><br>
+                        <input class="control" type="text" required pattern="[a-zA-Z ]{3,50}" name="uapellido"value="<?php echo "$reg[usuarioApellido]" ?>" ><br><br>
                         <label for="ucontraseña">Contraseña:  </label><br>
-                        <input class="control" name="ucontraseña" type="text" value="<?php echo "$reg[usuarioContraseña]" ?>" class=""> <br><br>
+                        <input class="control" name="ucontraseña" type="text" required pattern="[a-zA-Z0-9]{6,20}" value="<?php echo "$reg[usuarioContraseña]" ?>" class=""> <br><br>
                         <label for=""> ROL: </label>
                         <select name="urol">
                         <?php if($reg['rolNombre'] == "ADMINISTRADOR"){
@@ -129,7 +128,7 @@ session_start();
                             ?>
                         </select> <br><br>
                         <input type="hidden" name="tabla" value="<?php echo "$_REQUEST[tabla]" ?>">
-                        <input class="registrar" type="submit" value="Guardar Cambios">
+                        <input class="registrar" name="registrar" type="submit" value="Guardar Cambios">
                         <a class="searchButton" href="../View/Usuarios.php">Volver</a>
                     </form>
                     </div>     
@@ -138,7 +137,7 @@ session_start();
                         }
                     }
                     else {
-
+ 
                         echo 'El usuario no existe';
                     }
 

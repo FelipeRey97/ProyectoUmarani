@@ -57,7 +57,7 @@
                         <label for="upellido">Apellidos:  </label><br>
                         <input placeholder="Ingrese Los Apellidos" pattern="[A-Za-z ]{3,50}" value="<?php if(isset($_REQUEST['uapellido'])){echo "$_REQUEST[uapellido]";}  ?>" required class="control" type="text" name="uapellido"><br><br>
                         <label for="udocumento">Documento:  </label><br>
-                        <input placeholder="Ingrese el Número Documento" pattern="[0-9]{5,12}" value="<?php if(isset($_REQUEST['udocumento'])){echo "$_REQUEST[udocumento]";}  ?>" required class="control" name="udocumento" type="text" > <br><br>
+                        <input placeholder="Ingrese el Número Documento" pattern="[0-9]{5,12}" value="<?php if(isset($_REQUEST['udocumento'])){echo "$_REQUEST[unombre]";}  ?>" required class="control" name="udocumento" type="text" > <br><br>
                         <label for="ucontraseña">Contraseña:  </label><br>
                         <input disabled class="control" name="ucontraseña" pattern="[A-Za-z0-9]{6,20}" required value="Umarani2022" type="text" > <br><br>
                         <input class="control" name="ucontraseña" value="Umarani2022" type="hidden" >
