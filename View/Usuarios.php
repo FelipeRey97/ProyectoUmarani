@@ -13,6 +13,7 @@
     }
     
     require_once("../Controller/verUsuario.php");
+
     $paginas = $cantidad/$registrosxpagina;
     $paginas = ceil($paginas);
 
@@ -39,6 +40,7 @@
 
     <div class="padre">
 
+       
         <div class="board">
             <div class="titulo">
                 <h1>Tienda Web Umarani</h1>
@@ -100,7 +102,7 @@
                     }  
                 
                 ?> <input type="hidden" name="pagina" value="1">
-                </select>  Registros </p>  
+                </select>  Registros </p>   
                  </div>
                    <div class="filtros" >
                         <label for="">Criterio:</label>
@@ -158,15 +160,31 @@
                         <td> <?php echo $user['rolNombre']   ?></td>
                         <td> <?php echo $user['usuarioEstado']   ?></td>
                         <td>
-                            <a class="edit" href="DetalleUsuario.php?tabla=<?php echo "$user[usuarioId]" ?>"><i class="far fa-edit"></i></i></a>
-                            <!-- <a class="detail" href="detalleUsuario.php"><i class="far fa-eye"></i></a> -->
-                            <a on class="cancel" href="../Controller/borrarUsuario.php?tabla=<?php echo "$user[usuarioId]" ?>"><i class="fas fa-ban"></i></a>
+                            <a class="edit" href="DetalleUsuario.php?tabla=<?php echo "$user[usuarioId]" ?>"> <button class="edit" > <i class="far fa-edit"></i></i></a></button>
+    
+                         <a class="cancel" href="../Controller/borrarUsuario.php?tabla=<?php echo "$user[usuarioId]" ?>"><button class="cancel" onclick="return confirmarDelete()" ><i class="fas fa-ban"></i></button></a>
                         </td>
                 
                         <?php  
                             
                         }
                      ?>
+                      <script>
+
+                function confirmarDelete(){
+
+                    var respuesta = confirm("Desea eliminar el usuario?")
+                    
+                    if(respuesta == true){
+
+                        return true;
+                    }
+                    else{
+
+                        return false;
+                    }
+                }
+                    </script>
                     
                 </table>
                 <nav class="paginacion">
