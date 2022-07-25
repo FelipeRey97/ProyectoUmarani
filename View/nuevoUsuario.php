@@ -53,22 +53,22 @@
                 <div class="filtros" >
                     <form action="" method="post">
                         <label for="unombre" >Nombres: </label><br>
-                        <input placeholder="Ingrese Los Nombres" class="control" type="text" name="unombre"><br><br>
+                        <input placeholder="Ingrese Los Nombres" pattern="[A-Za-z ]{3,50}" value="<?php if(isset($_REQUEST['unombre'])){echo "$_REQUEST[unombre]";}  ?>" required class="control" type="text" name="unombre"><br><br>
                         <label for="upellido">Apellidos:  </label><br>
-                        <input placeholder="Ingrese Los Apellidos" class="control" type="text" name="uapellido"><br><br>
+                        <input placeholder="Ingrese Los Apellidos" pattern="[A-Za-z ]{3,50}" value="<?php if(isset($_REQUEST['uapellido'])){echo "$_REQUEST[uapellido]";}  ?>" required class="control" type="text" name="uapellido"><br><br>
                         <label for="udocumento">Documento:  </label><br>
-                        <input placeholder="Ingrese el Número Documento" class="control" name="udocumento" type="text" > <br><br>
+                        <input placeholder="Ingrese el Número Documento" pattern="[0-9]{5,12}" value="<?php if(isset($_REQUEST['udocumento'])){echo "$_REQUEST[udocumento]";}  ?>" required class="control" name="udocumento" type="text" > <br><br>
                         <label for="ucontraseña">Contraseña:  </label><br>
-                        <input disabled class="control" name="ucontraseña" value="Umarani2022" type="text" > <br><br>
+                        <input disabled class="control" name="ucontraseña" pattern="[A-Za-z0-9]{6,20}" required value="Umarani2022" type="text" > <br><br>
                         <input class="control" name="ucontraseña" value="Umarani2022" type="hidden" >
                         <label for="uestado"> Estado: </label>
-                        <select name="uestado" id="">Estado
+                        <select name="uestado" pattern="[A-Za-z]{5,12}" id="">Estado
                             <option value="Activo">Activo</option>
                             <option value="Inactivo">Inactivo</option>
                             <option value="Bloqueado">Bloqueado</option>
                         </select> <br><br>
                         <label for=""> ROL: </label>
-                        <select name="urol">
+                        <select name="urol" pattern="[0-9]{0,1}">
                             <option value="1">Administrador</option>
                             <option value="2">Empleado</option>
                         </select><br><br>

@@ -22,16 +22,106 @@ $con = new Conexion();
 if(isset($_REQUEST['registrar'])){
 
 
-if(isset($_REQUEST['unombre']) && $_REQUEST['unombre'] != "" && $_REQUEST['uapellido'] != "" && $_REQUEST['udocumento'] != "" && $_REQUEST['ucontraseña'] != ""
-&& $_REQUEST['uestado'] != "" && $_REQUEST['urol'] != ""){
-
-   $unombre =  $_REQUEST['unombre'];
-   $uapellido =  $_REQUEST['uapellido'];
-   $udocumento =  $_REQUEST['udocumento'];
-   $ucontraseña =  $_REQUEST['ucontraseña'];
-   $uestado =  $_REQUEST['uestado'];
-   $urol = $_REQUEST['urol'];
    
+if(isset($_REQUEST['unombre'] ) && $_REQUEST['unombre'] != "" && preg_match("/^[A-Za-z ]{3,50}$/", $_REQUEST['unombre'])){
+
+   $unombre = htmlentities($_REQUEST['unombre']);
+   $unombre = strtoupper($unombre);
+   $vNombre= true;
+}
+else{
+
+   $vNombre= false;
+   ?>
+   <script>
+   swal("Atención", "Verifique el Nombre", "warning");
+   </script>
+   <?php
+
+}
+if(isset($_REQUEST['uapellido'] ) && $_REQUEST['uapellido'] != "" && preg_match("/^[A-Za-z ]{3,50}$/", $_REQUEST['uapellido'])){
+
+   $uapellido =  htmlentities($_REQUEST['uapellido']);
+   $uapellido = strtoupper($uapellido);
+   $vApellido= true;
+}else{
+
+   $vApellido= false;
+   ?>
+   <script>
+   swal("Atención", "Verifique el Apellido", "warning");
+   </script>
+   <?php
+
+}if(isset($_REQUEST['udocumento'] ) && $_REQUEST['udocumento'] != "" && preg_match("/^[0-9]{5,12}$/", $_REQUEST['udocumento'])){
+
+   $udocumento =  htmlentities($_REQUEST['udocumento']);
+   
+   $doc = htmlentities($_REQUEST['udocumento']);  //Se ejecuta función para validar si el documento ya se encuentra registrado
+   $val_Doc = $con->comprobarExistencia($doc);
+
+   if($val_Doc == true){
+
+      $vDoc= false;
+      ?>
+      <script>
+      swal("Atención", "El documento ya existe", "warning");
+      </script>
+      <?php
+   }
+   else{
+
+      $vDoc= true;
+
+   }
+
+}else{
+
+   $vDoc= false;
+   ?>
+   <script>
+   swal("Atención", "Verifique el documento", "warning");
+   </script>
+   <?php
+
+}if(isset($_REQUEST['ucontraseña'] ) && $_REQUEST['ucontraseña'] != "" && preg_match("/^[A-Za-z0-9]{5,12}$/", $_REQUEST['uestado']) ){
+
+   $ucontraseña =  htmlentities($_REQUEST['ucontraseña']);
+   $vContraseña= true;
+   
+}else{
+
+   $vContraseña= false;
+   ?>
+      <script>
+      swal("Atención", "verifique la contraseña", "warning");
+      </script>
+      <?php
+
+}if(isset($_REQUEST['uestado']) && $_REQUEST['uestado'] != "" && preg_match("/^[A-Za-z]{5,12}$/", $_REQUEST['uestado'])){
+
+   $uestado =  htmlentities($_REQUEST['uestado']);
+   $uestado = ucfirst($uestado);
+   $vEstado= true;
+   
+}else{
+
+   $vEstado= false;
+   
+
+}if(isset($_REQUEST['urol']) && $_REQUEST['urol'] != "" && preg_match("/^[0-9]{0,1}$/", $_REQUEST['urol'])){
+
+   $urol =  htmlentities($_REQUEST['urol']);
+   $vRol= true;
+   
+}else{
+
+   $vRol= false;
+
+}
+   
+if($vRol == true && $vEstado == true && $vContraseña == true && $vDoc == true && $vApellido == true && $vNombre == true){
+
    $con->insertarUsuario($unombre,$uapellido,$udocumento,$ucontraseña,$uestado,$urol);
       ?>
       <script>
@@ -44,16 +134,16 @@ if(isset($_REQUEST['unombre']) && $_REQUEST['unombre'] != "" && $_REQUEST['uapel
       header("refresh:1;url=../View/Usuarios.php");
       
 }
-else{
+   
+if(empty($_REQUEST['unombre']) || empty($_REQUEST['uapellido']) || empty($_REQUEST['udocumento']) || empty($_REQUEST['ucontraseña']) || empty($_REQUEST['uestado']) || empty($_REQUEST['urol']) ){
    
    ?>
-   <script>
-   swal("Atención", "Por favor complete todos los campos", "warning");
-   </script>
-   <?php
+      <script>
+      swal("Atención", "Complete todos los campos", "warning");
+      </script>
+      <?php
    
 }
-
 }
 
 $con->cerrarConexion();

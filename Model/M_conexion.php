@@ -7,6 +7,7 @@
             private $con;
             public $artporpag; 
             private $sentencia;
+            private $documento;
 
         public function __construct()
         {
@@ -21,6 +22,20 @@
         public function filtrar($where){
 
             $this->sentencia = $where;
+        }
+        public function comprobarExistencia($doc){
+            $this->documento = $doc;
+            $usuarioDoc = $this->documento;
+            $query = $this->con->query("SELECT * FROM usuariotienda WHERE usuarioDoc = $usuarioDoc");
+            
+            if($fila = $query->fetch_assoc()){
+
+                return true;
+            }else{
+
+                return false;
+            }
+
         }
         public function insertarUsuario($unombre,$uapellido,$udocumento,$ucontraseña,$uestado,$urol){
 
