@@ -2,7 +2,7 @@
 
     require('../Model/M_Clientes.php');
 
-
+ 
 
     while ($reg = mysqli_fetch_array($registroCliente)){
 

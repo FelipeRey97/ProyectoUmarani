@@ -1,10 +1,6 @@
+
 <?php
 session_start();
-
-       
-?>
-
-<?php
 if(isset($_SESSION['cMail'])){
 
 }else{
@@ -20,15 +16,11 @@ if(isset($_REQUEST['compra'])){
         }
 
     }else{
-        header("location: ../View/iniciarSesion.php");
+         //header("location: ../View/iniciarSesion.php");
     }
 
 }
- 
-    
-    
-
- 
+  
 ?>
 
 
@@ -40,12 +32,28 @@ if(isset($_REQUEST['compra'])){
     class Clientes {
 
             private $cl;
+            private $mail;
 
         public function __construct()
         {
 
             $this->cl = new mysqli('localhost','root','','proyecto');
             
+        }
+        public function verificarEmail($mail){
+
+            $this->mail = $mail;
+            $mail = $this->mail;
+            $query = $this->cl->query("SELECT * FROM cliente WHERE clienteEmail = '$mail'");
+
+            if($fila = $query->fetch_assoc()){
+
+                return true;
+            }else{
+
+                return false;
+            }
+
         }
         public function insertarCliente($cNombre,$cApellido,$cMail,$cPassword){
 
@@ -56,9 +64,6 @@ if(isset($_REQUEST['compra'])){
 
             
         }
-
-        
-
 
         public function verCliente(){
 

@@ -1,9 +1,10 @@
 <?php
-session_start();
+
 $sesionId= session_id();
 require_once("../controller/verCheckout.php");
 require('../Controller/vercarrito.php');
 require_once("../Controller/buscador.php");
+include_once("../Controller/registrarse2.php");
 ?>
 
 <!DOCTYPE html>
@@ -171,7 +172,7 @@ require_once("../Controller/buscador.php");
         <section class="section">
             <div class="form-container">
                 <h1>Crea tu cuenta</h1>
-            <form action="../Controller/registrarse2.php" method="post" class="iniciar-sesion">
+            <form action="" method="post" class="iniciar-sesion">
                 <label for="">Nombre:</label><br>
                 <input class="control" type="text" required name="cNombre">  <br>
                 <label for="">Apellidos:</label><br>
@@ -179,8 +180,8 @@ require_once("../Controller/buscador.php");
                 <label for="">Correo electrónico:</label><br>
                 <input class="control" type="text" required name="cMail">  <br>
                 <label for="">Contraseña:</label><br>
-                <input class="control" type="password" required  name="cPassword"><br>
-                <p><input type="checkbox"> He leído y Acepto los  <a href="../View/terminosycondiciones.php"> <b> Términos y Condiciones</b> </p><br><br>
+                <input class="control" type="password" name="cClave"><br>
+                <p><input name="terminos" type="checkbox"> He leído y Acepto los  <a href="../View/terminosycondiciones.php"> <b> Términos y Condiciones</b> </p><br><br>
                     <?php  if(isset($_REQUEST['valor'])){
                         $valor = $_REQUEST['valor'];
                     } else{
@@ -188,8 +189,9 @@ require_once("../Controller/buscador.php");
                         $valor = 0;
                     }?>
                     <input type="hidden" name="compra" value="<?php echo "$valor" ?>">
-                <input class="boton-iniciarSesion" type="submit" value="Registrarse">
+                <input class="boton-iniciarSesion" type="submit" name="Registrarse" value="Registrarse">
             </form>
+
         </div>
         </section>
         <footer class="footer">
@@ -200,7 +202,7 @@ require_once("../Controller/buscador.php");
                     <a href="../WebUmarani/terminosycondiciones.html">Términos y Condiciones<br><br></a>
                     <a href="../WebUmarani/terminosycondiciones.html">Tratamiento de datos<br></a>
                 </div>
-                <div class="nosotros">
+                <div class="nosotros"> 
                     <h1>Acerca de nosotros</h1>
                     <a href="#">Vende Umarani <br><br></a>
                     <a href="#">Conoce Umarani <br><br></a>

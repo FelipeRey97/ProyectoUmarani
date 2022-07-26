@@ -197,7 +197,7 @@ require_once("../Controller/buscador.php");
                 <div class="contents">
                     <h3>Contraseña</h3>
                     <p>*******</p>
-                </div>
+                </div> 
                 <div class="edit">
                     <!-- <a href="#">Editar</a> -->
                 </div>
