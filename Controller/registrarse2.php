@@ -16,7 +16,7 @@
 
         $sanitized_Mail = filter_var($_REQUEST['cMail'], FILTER_SANITIZE_EMAIL);
         $sanitized_Mail = filter_var($sanitized_Mail, FILTER_VALIDATE_EMAIL);  //desinfección y filtrado de Email
-        $_SESSION['cMail'] =  $sanitized_Mail;
+       
     }
         $cliente1 = new Clientes;
 
@@ -153,7 +153,7 @@
             }
 
             if($terminos == true && $vcPassword == true && $vcNombre == true && $vcApellido == true && $vsanitized_Mail == true && $vcPassword == true){
-
+                $_SESSION['cMail'] =  $sanitized_Mail;
             $cliente1->insertarCliente($cNombre,$cApellido,$cMail,$cPassword);
             $cliente1->cerrarConexion();
             ?>

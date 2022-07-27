@@ -1,8 +1,9 @@
 <?php
 $sesionId= session_id();
-require('../Controller/datosCliente.php');
-require('../Controller/vercarrito.php');
+require_once('../Controller/datosCliente.php');
+require_once('../Controller/vercarrito.php');
 require_once("../Controller/buscador.php");
+include_once("../Controller/actualizarDatosCliente.php");
 ?>
 
 <!DOCTYPE html>
@@ -148,7 +149,7 @@ require_once("../Controller/buscador.php");
             
         </div>
     
-    </div>
+    </div> 
 </div>
     
     <div class="logo">
@@ -170,13 +171,12 @@ require_once("../Controller/buscador.php");
         <section class="section">
         
            <nav class="areaClienteNav">
-           <form action="../Controller/actualizarDatosCliente.php" method="post">
+           <form action="" method="post">
                <h1>Mi cuenta</h1>
-               <a href="#">Mi perfil</a><br><br>
-               <a href="clienteDirecciones.php">Direcciones de Envío</a><br><br>
-               <a href="#">Pedidos</a><br><br><br><br>
+               <a href="../View/areaCliente.php">Mi perfil</a><br><br>
+               <a href="../View/clientePedidos.php">Pedidos</a><br><br><br><br>
                <a href="../Controller/cerrarSesionCliente.php">Cerrar Sesión</a><br><br>
-                <input type="submit" value="Guardar Cambios"> 
+                <input type="submit" name="guardar" value="Guardar Cambios"> 
            </nav>
 
            <?php 
@@ -188,7 +188,7 @@ require_once("../Controller/buscador.php");
                <div class="nombre">
                    <div class="contents">
                        <h3>Nombre</h3>
-                       <input type="text" value="<?php echo "$nombre"; ?>" name="cNombre"> 
+                       <input type="text" value="<?php if(isset($_REQUEST['cNombre'])){ echo "$_REQUEST[cNombre]"; }else{ echo "$nombre"; } ?>" name="cNombre"> 
                    </div>
                    <div class="edit">
                        <!-- <a href="#">Editar</a> -->
@@ -197,7 +197,7 @@ require_once("../Controller/buscador.php");
                <div class="nombre">
                    <div class="contents">
                        <h3>Apellido</h3>
-                       <input type="text" value="<?php echo "$apellido"; ?>" name="cApellido" >
+                       <input type="text" value="<?php if(isset($_REQUEST['cApellido'])){ echo "$_REQUEST[cApellido]"; }else{ echo "$apellido"; } ?>" name="cApellido" >
                    </div>
                    <div class="edit">
                        <!-- <a href="#">Editar</a> -->
@@ -207,7 +207,7 @@ require_once("../Controller/buscador.php");
                <div class="password">
                 <div class="contents">
                     <h3>Contraseña</h3>
-                    <input type="text" value="<?php echo "$clave"; ?>" name="cClave">
+                    <input type="text" value="<?php if(isset($_REQUEST['cClave'])){ echo "$_REQUEST[cClave]"; }else{ echo "$clave"; } ?>" name="cClave">
                 </div>
                 <div class="edit">
                     <!-- <a href="#">Editar</a> -->
@@ -217,7 +217,7 @@ require_once("../Controller/buscador.php");
                <div class="telefono">
                <div class="contents">
                     <h3>Telefono</h3>
-                    <input type="text" value="<?php echo "$tel"; ?>" name="cTelefono">
+                    <input type="text" value="<?php if(isset($_REQUEST['cTelefono'])){ echo "$_REQUEST[cTelefono]"; }else{ echo "$tel"; } ?>" name="cTelefono">
                 </div>
              </form>  
             </div>

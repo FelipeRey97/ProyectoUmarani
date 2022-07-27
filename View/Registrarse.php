@@ -174,11 +174,11 @@ include_once("../Controller/registrarse2.php");
                 <h1>Crea tu cuenta</h1>
             <form action="" method="post" class="iniciar-sesion">
                 <label for="">Nombre:</label><br>
-                <input class="control" type="text" required name="cNombre">  <br>
+                <input class="control" type="text" required value="<?php if(isset($_REQUEST['cNombre'])){ echo "$_REQUEST[cNombre]"; } ?>" name="cNombre">  <br>
                 <label for="">Apellidos:</label><br>
-                <input class="control" type="text" required name="cApellido" >  <br>
+                <input class="control" type="text" required value="<?php if(isset($_REQUEST['cApellido'])){ echo "$_REQUEST[cApellido]"; } ?>" name="cApellido" >  <br>
                 <label for="">Correo electrónico:</label><br>
-                <input class="control" type="text" required name="cMail">  <br>
+                <input class="control" type="text" required value="<?php if(isset($_REQUEST['cMail'])){ echo "$_REQUEST[cMail]"; } ?>" name="cMail">  <br>
                 <label for="">Contraseña:</label><br>
                 <input class="control" type="password" name="cClave"><br>
                 <p><input name="terminos" type="checkbox"> He leído y Acepto los  <a href="../View/terminosycondiciones.php"> <b> Términos y Condiciones</b> </p><br><br>
