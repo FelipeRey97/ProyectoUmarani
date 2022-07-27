@@ -205,9 +205,6 @@ require('../Controller/vercarrito.php');
             </div>
         </footer>
 
-
-
-
     </div>
 
     <script src="../JS/CartShop.js"></script>

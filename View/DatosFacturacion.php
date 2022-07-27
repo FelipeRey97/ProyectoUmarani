@@ -3,8 +3,8 @@ session_start();
 $sesionId= session_id();
 require_once('../Controller/vercarrito.php');
 require_once('../Controller/verCheckout.php');
-require('../Controller/datosFactura.php');
 require_once("../Controller/buscador.php");
+require('../Controller/datosFactura.php');
 ?>
 
 <!DOCTYPE html>
@@ -18,10 +18,11 @@ require_once("../Controller/buscador.php");
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 
-<body>
+<body> 
 
 <link rel="stylesheet" href="../CSS/datosFacturaEslitos.css">
 <script src="https://kit.fontawesome.com/f243ce0afc.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Bitter&family=Shadows+Into+Light&display=swap" rel="stylesheet">
@@ -175,7 +176,7 @@ require_once("../Controller/buscador.php");
            <div class="shopCartTitle">
                <h1>Datos de Contacto</h1><br>
            </div>
-                <form action="../View/confirmarPedido.php" method="post">
+                <form action="" method="post">
                     <label for="">Email:</label><br>
                     <input class="ctrl" type="text" value="<?php if(isset($mail)){ echo"$mail";} ?>" name="cmail" ><br><br>
                     <label for="">Nombre:</label><br>
@@ -239,7 +240,7 @@ require_once("../Controller/buscador.php");
                         <option value="2">CONTRA-ENTREGA</option>
                     </select><br><br>
                     <input type="hidden" name="clienteId" value="<?php echo "$clienteId" ?>">
-                    <input class="ctrl" type="submit" value="Confirmar Datos">
+                    <input class="ctrl" type="submit" name="Confirmar" value="Confirmar Datos">
                     
                 </form>
             </div>

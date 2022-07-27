@@ -6,7 +6,7 @@ require_once('../Controller/verCheckout.php');
 require('../Controller/vercarrito.php');
 require_once("../Controller/buscador.php");
 ?>
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>

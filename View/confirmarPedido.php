@@ -3,6 +3,7 @@ session_start();
 $sesionId= session_id();
 require_once('../Controller/vercarrito.php');
 require_once('../Controller/verCheckout.php');
+include_once('../Controller/datosFactura.php')
 
 ?>
 
@@ -12,20 +13,9 @@ require_once('../Controller/verCheckout.php');
     header("Location: ../view/iniciarSesion.php?valor=$value");
  }
 
-$mail= $_REQUEST['cmail'];
-$nombre= $_REQUEST['cnombre'];
-$apellido= $_REQUEST['capellido'];
-$documento= $_REQUEST['cdoc'];
-$telefono= $_REQUEST['ctelefono'];
-$dpto= $_REQUEST['dpto'];
-$ciudad= $_REQUEST['ciudad'];
-$direccion= $_REQUEST['direccion'] ." ". $_REQUEST['detdireccion'];
-$clienteId = $_REQUEST['clienteId'];
-$todaydate = date('Y/m/d');
-$tipoPago = $_REQUEST['tipoPago'];
-$direccionCompleta = $_REQUEST['direccion'] ." ". $_REQUEST['detdireccion'] . " " . $_REQUEST['ciudad'] . " - " . $_REQUEST['dpto'];
+ $todaydate = date('Y/m/d');
 ?>
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -195,28 +185,28 @@ $direccionCompleta = $_REQUEST['direccion'] ." ". $_REQUEST['detdireccion'] . " 
                <h1>Datos de Contacto</h1><br>
            </div>
                 <form action="../Controller/FinalizarCompra.php" method="post">
-                    <p class="ctrl"> <?php echo"$mail"?> </p> 
-                    <p class="ctrl"> <?php echo"$nombre"?> </p> 
-                    <p class="ctrl"> <?php echo"$apellido"?> </p> 
-                    <p class="ctrl"> <?php echo"$documento"?> </p> 
-                    <p class="ctrl"> <?php echo"$telefono"?> </p> 
+                    <p class="ctrl"> <?php echo"$_SESSION[mail]";?> </p> 
+                    <p class="ctrl"> <?php echo"$_SESSION[nombre]";?> </p> 
+                    <p class="ctrl"> <?php echo"$_SESSION[apellido]"?> </p> 
+                    <p class="ctrl"> <?php echo"$_SESSION[doc]"?> </p> 
+                    <p class="ctrl"> <?php echo"$_SESSION[telefono]"?> </p> 
             <div class="shopCartTitle">
                  <h1>Datos de Envío</h1>
              </div>
-             <p class="ctrl"> <?php echo"$dpto"?> </p> 
-                    <p class="ctrl"> <?php echo"$ciudad"?> </p> 
-                    <p class="ctrl"> <?php echo"$direccion"?> </p> <br><br>
+             <p class="ctrl"> <?php echo"$_SESSION[dpto]"?> </p> 
+                    <p class="ctrl"> <?php echo"$_SESSION[ciudad]"?> </p> 
+                    <p class="ctrl"> <?php echo"$_SESSION[direccion]"?> </p> <br><br>
                         
-                     <input type="hidden" name="clienteId" value="<?php echo "$clienteId" ?>"  >
-                     <input type="hidden" name="date" value="<?php echo "$todaydate" ?>">
-                     <input type="hidden" name="costoTotal" value="<?php echo "$total" ?>">
-                     <input type="hidden" name="clienteDoc" value="<?php echo "$documento" ?>">
-                     <input type="hidden" name="tipoPago" value="<?php echo "$tipoPago" ?>">
+                     <input type="hidden" name="clienteId" value="<?php echo "$_SESSION[clienteId]"; ?>"  >
+                     <input type="hidden" name="date" value="<?php echo "$todaydate"; ?>">
+                     <input type="hidden" name="costoTotal" value="<?php echo "$total"; ?>">
+                     <input type="hidden" name="clienteDoc" value="<?php echo "$_SESSION[doc]"; ?>">
+                     <input type="hidden" name="tipoPago" value="<?php echo "$_SESSION[tipoPago]" ?>">
                      <input type="hidden" name="sesionId" value="<?php echo "$sesionId" ?>">
-                     <input type="hidden" name="direccionC" value="<?php echo "$direccionCompleta" ?>">
-                     <input type="hidden" name="dpto" value="<?php echo "$dpto" ?>">
-                     <input type="hidden" name="ciudad" value="<?php echo "$ciudad" ?>">
-                     <input type="hidden" name="direccion" value="<?php echo "$direccion" ?>">
+                     <input type="hidden" name="direccionC" value="<?php echo "$_SESSION[direccionCompleta]" ?>">
+                     <input type="hidden" name="dpto" value="<?php echo "$_SESSION[dpto]" ?>">
+                     <input type="hidden" name="ciudad" value="<?php echo "$_SESSION[ciudad]" ?>">
+                     <input type="hidden" name="direccion" value="<?php echo "$_SESSION[direccion]" ?>">
                     <input class="ctrl" type="submit" value="Realizar Pedido">
                 </form>
             </div>
