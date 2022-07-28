@@ -75,7 +75,14 @@ include_once('../Controller/datosFactura.php')
         </div> 
         <?php 
         $total = $total + $costo; }
-        ?>
+        if($total == 0){
+
+            header("Location: ../view/catalogo.php");
+
+        }else{
+        
+            
+        } ?>
     </div>
 
     <div class="bottom">

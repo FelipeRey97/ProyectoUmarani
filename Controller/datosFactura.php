@@ -11,6 +11,7 @@
 
 <?php
 
+if(isset($_SESSION['cMail'])){
 
 $conexion = mysqli_connect('localhost','root','','proyecto') or 
         die ("problemas en la conexion" . mysqli_error($conexion));
@@ -31,6 +32,11 @@ $clienteId = $reg['clienteId'];
 }
 
 mysqli_close($conexion);
+
+}else{
+
+     header("Location: ../view/iniciarsesion.php?valor=1");
+}
 
 if(isset($_REQUEST['Confirmar'])){
 

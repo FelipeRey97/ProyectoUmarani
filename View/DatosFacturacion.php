@@ -5,6 +5,9 @@ require_once('../Controller/vercarrito.php');
 require_once('../Controller/verCheckout.php');
 require_once("../Controller/buscador.php");
 require('../Controller/datosFactura.php');
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -44,6 +47,8 @@ require('../Controller/datosFactura.php');
 
     <div class="middle">
     <?php 
+
+    
     $total = 0;
     while($dat = mysqli_fetch_array($datos)) {  
 
@@ -67,7 +72,14 @@ require('../Controller/datosFactura.php');
         </div> 
         <?php 
         $total = $total + $costo; }
-        ?>
+        if($total == 0){
+
+            header("Location: ../view/catalogo.php");
+
+        }else{
+        
+            
+        } ?>
     </div>
 
     <div class="bottom">
