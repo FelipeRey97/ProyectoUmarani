@@ -2,10 +2,17 @@
 
 require('../Model/M_Pedidos.php');
 
-if(isset($_REQUEST['ped'])){
+if(isset($_REQUEST['ped']) || isset($_REQUEST['rect'])){
 
+if(isset($_REQUEST['rect'])){
 
-$id = $_REQUEST['ped'];
+    $id = $_REQUEST['rect'];
+
+}else if(isset($_REQUEST['ped'])){
+
+    $id=  $_REQUEST['ped'];
+}
+
 
 $datosPedido = mysqli_query($conexionPedido,"SELECT * FROM factura
 JOIN cliente 
@@ -36,16 +43,19 @@ $empresaenvio = mysqli_query($conexionPedido,"SELECT * FROM empresaenvio");
 
 
 
-include('../View/detallePedido.php');
-
-
 }
 
+if(isset($_REQUEST['vis']) || isset($_REQUEST['rect']) ){
 
+    if(isset($_REQUEST['rect'])){
 
-if(isset($_REQUEST['vis'])){
-
-$id = $_REQUEST['vis'];
+        $id = $_REQUEST['rect'];
+    
+    }else if(isset($_REQUEST['vis'])){
+    
+        $id=  $_REQUEST['vis'];
+        
+    }
 
 $datosPedido = mysqli_query($conexionPedido,"SELECT * FROM factura
 JOIN cliente 
@@ -96,7 +106,7 @@ while($desp = mysqli_fetch_array($datosDespacho)){
 }
 
 
-include('../View/VerDetallePedido.php');
+
 
 
 

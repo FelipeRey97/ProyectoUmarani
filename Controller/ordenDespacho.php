@@ -12,30 +12,83 @@
 
 require_once('../Model/M_despacho.php');
 
-if(isset($_REQUEST['despachoId'])){
 
-$despachoId = $_REQUEST['despachoId'];
-$empresaId = $_REQUEST['empresaId'];
-$pedidoId = $_REQUEST['pedidoId'];
-$usuarioId = $_REQUEST['usuarioId'];
-$date = $_REQUEST['date'];
-    $envio = new Despacho();
 
-    $envio->insertarOrden($despachoId,$empresaId,$pedidoId,$usuarioId,$date);
-    $Estado ="Enviado";
-    $envio->actualizarPedido($pedidoId,$Estado);
 
-    $envio->cerrarConexion();
+if(isset($_REQUEST['Guardar'])){
+
+
+
+if(isset($_REQUEST['despachoId']) && $_REQUEST['despachoId'] != "" && preg_match("/^[a-zA-Z0-9]{4,250}$/", $_REQUEST['despachoId'])){
+
+    $despachoId = htmlentities($_REQUEST['despachoId']);
+    $despachoId = filter_var($despachoId, FILTER_SANITIZE_STRING);
+    $VdespachoId = true;
+     
+}
+else{
+
+    $VdespachoId = false;
+
     ?>
-<script>
-    swal("Operación Realizada!", "Se ha guardado la Orden Correctamente!", "success");
-</script>
-<?php
-
-    
-  header("refresh:1;url=../View/pedidos.php?pagina=1");
+    <script>
+        swal("Atención", "Verifique que ha ingresado la orden de despacho correctamente", "warning");
+    </script>
+    <?php
 
 }
+if(isset($_REQUEST['empresaId'])){
+
+    $empresaId = $_REQUEST['empresaId'];
+
+    $vempresaId = true;
+
+}
+else{
+
+    $vempresaId = true;
+    ?>
+    <script>
+        swal("Atención", "Seleccione una empresa de envío", "info");
+    </script>
+    <?php
+
+}
+if($vempresaId == true && $VdespachoId == true){
+
+    $pedidoId = $_REQUEST['pedidoId'];
+    $usuarioId = $_REQUEST['usuarioId'];
+    $date = $_REQUEST['date'];
+        $envio = new Despacho();
+
+        $envio->insertarOrden($despachoId,$empresaId,$pedidoId,$usuarioId,$date);
+        $Estado ="Enviado";
+        $envio->actualizarPedido($pedidoId,$Estado);
+
+        $envio->cerrarConexion();
+        ?>
+    <script>
+        swal("Operación Realizada!", "Se ha guardado la Orden Correctamente!", "success");
+    </script>
+    <?php
+    
+        
+    header("refresh:1;url=../View/pedidos.php?pagina=1");
+
+}
+else if (empty($_REQUEST['despachoId']) || empty($_REQUEST['empresaId'])){
+
+    ?>
+    <script>
+        swal("Atención", "Complete todos los campos", "warning");
+    </script>
+    <?php
+
+}
+
+
+}
+
 
 ?>
 </body>

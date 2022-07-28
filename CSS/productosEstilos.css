@@ -149,6 +149,23 @@
         margin-left: 7px;
         cursor: pointer;
     }
+    .cancel-order{
+
+        padding: 5px;
+        font-family: 'Open Sans', sans-serif;
+        background: #ff1d1d;
+        color: #fff;
+        border: 0.5px solid #ff1d1d;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: 0.3s ease-in-out;
+        text-decoration: none;
+        transition: 0.2s ease-in-out;
+    }.cancel-order:hover{
+
+        background: #ff5858;
+        transition: 0.2s ease-in-out;
+    }
     .edit{
 
         color: rgb(18, 151, 0);

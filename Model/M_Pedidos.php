@@ -38,7 +38,7 @@
             VALUES ('$id','$todaydate','$clienteId','$idFactura','$total',$direccionId)
             ") or die ("problemas en el select " . mysqli_error($ped));
  
-            
+             
         }
         public function verPedido(){
 

@@ -169,16 +169,18 @@ if(isset($_GET['pagina'])){
                         <td> <?php echo $pedido['direccionDep']   ?></td>
                         <td> <?php echo $pedido['direccionCiudad']   ?></td>
                         <td>
-                            <?php if($pedido['pedidoEstado'] == 'Pendiente'){ ?>
-                                   <a class="edit" href="../Controller/mostrarDetallePedido.php?ped=<?php echo "$pedido[pedidoId]" ?>"><i class="far fa-edit"></i></i></a>
+                            <?php if($pedido['pedidoEstado'] == 'Pendiente'){
+                                    
+                                ?>
+                                   <a class="edit" href="../view/detallePedido.php?ped=<?php echo "$pedido[pedidoId]" ?>"><i class="far fa-edit"></i></i></a>
                                    <?php if($_SESSION['rol'] == 'ADMINISTRADOR'){ ?>
-                                    <a class="detail" href="../Controller/mostrarDetallePedido.php?vis=<?php echo "$pedido[pedidoId]" ?>"><i class="far fa-eye"></i></a>
+                                    <a class="detail" href="../view/detallePedido.php?vis=<?php echo "$pedido[pedidoId]" ?>"><i class="far fa-eye"></i></a>
                                     <?php  }    ?>
                              <?php  }else { ?>
                                 <?php if($_SESSION['rol'] == 'ADMINISTRADOR'){ ?>
-                                    <a class="edit" href="../Controller/mostrarDetallePedido.php?ped=<?php echo "$pedido[pedidoId]" ?>"><i class="far fa-edit"></i></i></a>
+                                    <a class="correction" href="../view/detallePedido.php?rect=<?php echo "$pedido[pedidoId]" ?>"><i class="fas fa-exclamation-triangle"></i></i></i></a>
                                     <?php  }    ?>
-                                 <a class="detail" href="../Controller/mostrarDetallePedido.php?vis=<?php echo "$pedido[pedidoId]" ?>"><i class="far fa-eye"></i></a>
+                                 <a class="detail" href="../view/detallePedido.php?vis=<?php echo "$pedido[pedidoId]" ?>"><i class="far fa-eye"></i></a>
                                  
                                  <?php }?>
                             
@@ -208,4 +210,4 @@ if(isset($_GET['pagina'])){
         <p>copyright 2022 Todos los derechos reservados</p>
     </footer>
 </body>
-</html>
+</html> 

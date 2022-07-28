@@ -2,7 +2,7 @@
 session_start();
     require_once('../Controller/mostrarDetallePedido.php');
     $date = date("Y/m/d");
-
+    include_once('../Controller/ordenDespacho.php');
     
 ?>
 
@@ -10,10 +10,10 @@ session_start();
 // se valida la sesion del usuario, en caso de no tener sesion sera redirigido al login
     if($_SESSION['doc'] == false){
 
-        header("Location: http://localhost/UmaraniWeb/View/loginUsuario.php");
+        header("Location: ../View/loginUsuario.php");
     }
 
-?>
+?> 
 
 
 <!DOCTYPE html>
@@ -59,6 +59,9 @@ session_start();
         </div>
         <div class="content">
         <header class="header">
+          <?php  if(isset($nombre)){   //Valida si existen datos, sino existen no muestra resultados y redirige a la seccion pedidos.
+   
+             ?>
             <h1>Pedido No. <?php echo "$id" ?></h1>
         </header>
         <section class="section">
@@ -74,20 +77,60 @@ session_start();
                         <p><b>Mail: </b>  andresfrey97@gmail.com </p><br>
                         <p> <b> Ver Factura Asociada: </b><a class="cancel" href="../Controller/ImprimirFactura.php?factId=<?php echo "$id" ?>"> <i class="fas fa-file-pdf"></i></a><br> </p><br>
                         <!-- Se prepara formulario para ingresar la orden de Envio -->
-                        <form action="../Controller/ordenDespacho.php" method="post"> 
+                        <?php 
+                        if(isset($_REQUEST['ped'])){    ?> 
+                        <form action="" method="post"> 
                         <label for="">Inserte el Código de envio: </label>
-                        <input type="text" name="despachoId">
+                        <input type="text" value="<?php ?>" name="despachoId">
                         <select name="empresaId" id="">
-                            <?php while($emp = mysqli_fetch_array($empresaenvio)) {  ?>
-                            <option value="<?php echo "$emp[empresaId]"  ?> "> <?php echo "$emp[empresaNombre]" ?> </option>
+                            <?php  
+                             while($emp = mysqli_fetch_array($empresaenvio)) {  ?>
+                            <option value="<?php echo "$emp[empresaId]"; ?> "> <?php echo "$emp[empresaNombre]"; ?> </option>
                             <?php  }  ?>
                         </select>
-                        <input type="hidden" value="<?php echo "$id" ?>" name="pedidoId">
-                        <input type="hidden" value="<?php echo "$_SESSION[usuarioId]" ?>" name="usuarioId">
-                        <input type="hidden" value="<?php echo "$date" ?>" name="date">
-                        <input class="searchButton" type="submit" value="Guardar">
-                        </form><br><br> 
-                        <!-- Detalle del pedido con los productos y su cantidad solicitada por el cliente  -->
+                        <input type="hidden" value="<?php echo "$id"; ?>" name="pedidoId">
+                        <input type="hidden" value="<?php echo "$_SESSION[usuarioId]"; ?>" name="usuarioId">
+                        <input type="hidden" value="<?php echo "$date"; ?>" name="date">
+                        <input class="searchButton" name="Guardar" type="submit" value="Guardar">
+                        </form><br><br>  <?php }
+                               else if(isset($_REQUEST['vis']) && isset($cGuia) ){
+
+                                
+                            ?>
+                            <h1>Datos Envío</h1><br><br>
+                            <p><b>Id Despacho: </b> <?php echo "$cGuia"; ?> </p><br>
+                            <p><b>Empresa: </b> <?php echo "$eLogistica"; ?> </p><br>
+                            <p><b>Usuario: </b> <?php echo "$uNombre ". " ". "$uApellido"; ?> </p><br>
+                            <p><b>Usuario Id: </b> <?php echo "$uCodigo"; ?> </p><br>
+                            <p><b>Estado: </b> <?php echo "$pedEstado"; ?> </p><br> 
+                            <p><b>Fecha de Envio: </b> <?php echo "$estadoFecha"; ?> </p><br>
+                        
+                    <?php  }
+                   else if(isset($_REQUEST['rect']) && !isset($_REQUEST['ped'])){ ?>
+
+                        <form action="" method="post"> 
+                        <label for="">Inserte el Nuevo Código de envio: </label>
+                        <input type="text" value="<?php ?>" name="despachoId">
+                        <select name="empresaId" id="">
+                            <?php  
+                             while($emp = mysqli_fetch_array($empresaenvio)) {  ?>
+                            <option value="<?php echo "$emp[empresaId]"; ?> "> <?php echo "$emp[empresaNombre]"; ?> </option>
+                            <?php  }  ?>
+                        </select>
+                        <input type="hidden" value="<?php echo "$id"; ?>" name="pedidoId">
+                        <input type="hidden" value="<?php echo "$_SESSION[usuarioId]"; ?>" name="usuarioId">
+                        <input type="hidden" value="<?php echo "$date"; ?>" name="date">
+                        <input class="searchButton" name="Guardar" type="submit" value="Guardar">
+                        </form> <button class="cancel-order" name="cancelar" > Cancelar Pedido </button> <br><br>  
+
+                        <h1>Datos Envío</h1><br><br>
+                            <p><b>Id Despacho: </b> <?php echo "$cGuia"; ?> </p><br>
+                            <p><b>Empresa: </b> <?php echo "$eLogistica"; ?> </p><br>
+                            <p><b>Usuario: </b> <?php echo "$uNombre ". " ". "$uApellido"; ?> </p><br>
+                            <p><b>Usuario Id: </b> <?php echo "$uCodigo"; ?> </p><br>
+                            <p><b>Estado: </b> <?php echo "$pedEstado"; ?> </p><br> 
+                            <p><b>Fecha de Envio: </b> <?php echo "$estadoFecha"; ?> </p><br>
+                            <?php } ?>  <!-- Detalle del pedido con los productos y su cantidad solicitada por el cliente  -->
                         <h1>Detalle Pedido</h1><br>
                     <!-- <a href="../View/nuevoUsuario.php">Nuevo Usuario</a> -->
                 </div>
@@ -130,6 +173,12 @@ session_start();
                      ?>
                     
                 </table>
+
+                <?php  }else{
+
+                    header("Location: ../view/pedidos.php");
+
+                } ?>
                 <nav class="paginacion">
                 <!-- <a class="prev-next" href="#">Anterior </a>
                 <a href="#">1</a>
