@@ -176,7 +176,11 @@ if(isset($_GET['pagina'])){
                                    <?php if($_SESSION['rol'] == 'ADMINISTRADOR'){ ?>
                                     <a class="detail" href="../view/detallePedido.php?vis=<?php echo "$pedido[pedidoId]" ?>"><i class="far fa-eye"></i></a>
                                     <?php  }    ?>
-                             <?php  }else { ?>
+                             <?php  }else if($pedido['pedidoEstado'] == 'Cancelado' ){ ?>
+
+                                <a class="detail" href="../view/detallePedido.php?vis=<?php echo "$pedido[pedidoId]" ?>"><i class="far fa-eye"></i></a>
+                                <?php   }  
+                             else { ?>
                                 <?php if($_SESSION['rol'] == 'ADMINISTRADOR'){ ?>
                                     <a class="correction" href="../view/detallePedido.php?rect=<?php echo "$pedido[pedidoId]" ?>"><i class="fas fa-exclamation-triangle"></i></i></i></a>
                                     <?php  }    ?>

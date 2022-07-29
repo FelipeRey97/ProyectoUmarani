@@ -6,6 +6,7 @@
     class Despacho {
 
             private $desp;
+            private $despachoId;
 
         public function __construct()
         {
@@ -20,7 +21,7 @@
             VALUES ('$despachoId','$empresaId','$pedidoId','$usuarioId','$date')") 
             or die ("problemas en el select " . mysqli_error($desp));
 
-            
+             
         }
         public function verPedido(){
 
@@ -37,15 +38,12 @@
             }
             return $retorno;
         }
-       
-           public function actualizarPedido($pedidoId,$Estado){
+       public function eliminarDespacho($old_DespachoId){
 
+            $this->desp->query("DELETE FROM despacho WHERE despachoId = '$old_DespachoId'");
 
-           $this->desp->query("UPDATE pedido SET  pedidoEstado = '$Estado' 
-           WHERE pedidoId = $pedidoId ") or die ("problemas en el select " . mysqli_error($desp));
-
+       }
            
-          }
 
 
         public function cerrarConexion(){

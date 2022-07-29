@@ -106,7 +106,7 @@ session_start();
                             <p><b>Fecha de Envio: </b> <?php echo "$estadoFecha"; ?> </p><br>
                         
                     <?php  }
-                   else if(isset($_REQUEST['rect']) && !isset($_REQUEST['ped'])){ ?>
+                   else if(isset($_REQUEST['rect'])){ ?>
 
                         <form action="" method="post"> 
                         <label for="">Inserte el Nuevo Código de envio: </label>
@@ -120,8 +120,10 @@ session_start();
                         <input type="hidden" value="<?php echo "$id"; ?>" name="pedidoId">
                         <input type="hidden" value="<?php echo "$_SESSION[usuarioId]"; ?>" name="usuarioId">
                         <input type="hidden" value="<?php echo "$date"; ?>" name="date">
-                        <input class="searchButton" name="Guardar" type="submit" value="Guardar">
-                        </form> <button class="cancel-order" name="cancelar" > Cancelar Pedido </button> <br><br>  
+                        <input class="searchButton" name="corregir" type="submit" value="Rectificar">
+                        <input type="hidden" value="<?php echo "$cGuia"?>" name="old_DespachoId"><br>
+                        <button onclick="this.form.submit();" class="cancel-order" name="cancelar" > Cancelar Pedido </button> <br><br> 
+                        </form>  
 
                         <h1>Datos Envío</h1><br><br>
                             <p><b>Id Despacho: </b> <?php echo "$cGuia"; ?> </p><br>

@@ -68,15 +68,14 @@
             return $retorno;
         }
        
-            public function actualizarPedido($unombre,$uapellido,$ucontraseña,$uestado,$urol,$usuarioId){
+        public function actualizarPedido($pedidoId,$Estado){
 
 
-           $this->ped->query("UPDATE usuariotienda SET  usuarioNombre = '$unombre' ,usuarioApellido = '$uapellido',
-           usuarioContraseña = '$ucontraseña',usuarioEstado = '$uestado',usuarioRolId = $urol
-           WHERE usuarioId = $usuarioId ") or die ("problemas en el select " . mysqli_error($ped));
-
-           
-          }
+            $this->ped->query("UPDATE pedido SET  pedidoEstado = '$Estado' 
+            WHERE pedidoId = $pedidoId ") or die ("problemas en el select " . mysqli_error($ped));
+ 
+            
+           }
 
 
         public function cerrarConexion(){
