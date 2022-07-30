@@ -14,51 +14,85 @@
 <?php
 
 require_once('../Model/M_resolucion.php');
+require_once('../Model/M_PQRS.php');
 
-$id = $_REQUEST['pqrsId'];
-$usuarioId = $_REQUEST['usuarioId'];
-$mensaje = $_REQUEST['respuesta'];
-$fecha = $_REQUEST['date'];
+if(isset($_REQUEST['guardar'])){
 
-$pqrsId = $id;
+if(isset($_REQUEST['respuesta']) && $_REQUEST['respuesta'] != ""){
 
-if(isset($id) && isset($usuarioId) && isset($usuarioId) && isset($mensaje) && isset($fecha)){
+  $mensaje = htmlentities($_REQUEST['respuesta']);
+  $mensaje = filter_var($mensaje, FILTER_SANITIZE_STRING);
 
-mysqli_query($conexion,"INSERT INTO resolucion (resolucionId,resolucionUsuarioId,resolucionpqrsId,resolucionMensaje,resolucionFecha)
-VALUES($id,$usuarioId,$pqrsId,'$mensaje','$fecha')")
-or die ("problemas en el select" . mysqli_error($conexion));
+  $Vmensaje = true;
 
-mysqli_query($conexion,"UPDATE pqrs SET pqrsEstado = 'Atendida' 
-WHERE pqrsId = $id") 
-or die ("problemas en el update" . mysqli_error($conexion));
+}else{
 
-?>
+  ?>
+    <script>
+    swal("Faltan datos por Completar", "Por Favor Complete Todos los Datos", "warning", {
+        button: "Ok!",
+      });
+    </script>
+   <?php
+    $Vmensaje = false;
+
+}
+  
+if($Vmensaje == true){
+
+  $res1 = new Resolucion();
+  $pq1 = new PQRS();
+
+  $id = $_REQUEST['pqrsId'];
+  $usuarioId = $_REQUEST['usuarioId'];
+
+  $fecha = $_REQUEST['date'];
+  $pqrsId = $id;
+
+  $validar_pqrs = $res1->validarResolucion($pqrsId);
+
+  if($validar_pqrs == true){
+
+    $res1->actualizarResolucion($pqrsId,$mensaje,$fecha,$usuarioId);
+    ?>
+    <script>
+    
+    swal("Correcto", "Se ha corregido la respuesta Satisfactoriamente!", "success", {
+        button: "Ok!",
+      });
+
+    </script>
+   <?php
+
+      header("refresh:1;url=../View/PQRS.php?pagina=1");
+
+  }if($validar_pqrs == false){
+
+    $res1->insertarResolucion($id,$usuarioId,$pqrsId,$mensaje,$fecha);
+    $pq1->actualizarEstado($id);
+
+    ?>
     <script>
     
     swal("Correcto", "Se ha guardado la respuesta Satisfactoriamente!", "success", {
         button: "Ok!",
       });
 
-    
     </script>
    <?php
 
-      header("refresh:2;url=../View/PQRS.php?pagina=1");
-}
-else{
+      header("refresh:1;url=../View/PQRS.php?pagina=1");
 
-    ?>
-    <script>
-    
-    swal("Faltan datos por Completar", "Por Favor Complete Todos los Datos", "warning", {
-        button: "Ok!",
-      });
+  }
 
-    
-    </script>
-   <?php
-   include('../View/GestionPqrs.php?pagina=1');
+  
+
+  
+
 }
+
+}
+
 
 
 ?>

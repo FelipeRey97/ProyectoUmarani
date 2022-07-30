@@ -24,7 +24,7 @@ while($det = mysqli_fetch_array($detallepqrs)){
     $estado = $det['pqrsEstado'];
     $tipo = $det['pqrsTipoNombre'];
     $imagen = $det['pqrsImagen'];
-    $descripcion = $det['pqrsDescripcion'];
+    $descripcion = $det['pqrsDescripcion']; 
 }
 
 $resoluciondatos = mysqli_query($conexionPqrs,"SELECT * FROM resolucion

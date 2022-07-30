@@ -2,6 +2,7 @@
 session_start();
    
     require('../Controller/C_GestionPqrs.php');
+    require_once('../Controller/guardarResolucion.php');
     $date = date("Y/m/d");
 ?>
 
@@ -9,12 +10,11 @@ session_start();
 // se valida la sesion del usuario, en caso de no tener sesion sera redirigido al login
     if($_SESSION['doc'] == false){
 
-        header("Location: http://localhost/UmaraniWeb/View/loginUsuario.php");
+        header("Location: ../View/loginUsuario.php");
     }
 
 ?>
-
-
+      
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,7 +68,6 @@ session_start();
                         <h1>Datos Remitente</h1><br><br>
                         <p><b>Nombre: </b>  <?php echo "$nombre" ?></p><br>
                         <p><b>Telefono: </b>   <?php echo "$telefono" ?>   </p><br>
-                        <p><b>Id Cliente: </b>  <?php if(isset($clienteId)) { echo "$clienteId"; }else{ echo""; }?> </p><br>
                         <p><b>Mail: </b> <?php echo "$Mail" ?> </p><br>
                         <p> <b> Fecha de solicitud: </b> <?php echo"$fecha" ?> </p> <br>
                         <p> <b> Estado: </b> <?php echo"$estado"; if(isset($usuario)) { echo" Por $usuario  id: $usuarioId"; } else{echo"";} ?>  </p> <br>
@@ -82,16 +81,14 @@ session_start();
                         <h1>Respuesta</h1><br>
                         <p>Por favor Diligencie el contenido de la respuesta en el cuadro de texto que se presenta a continuacion, los demás datos serán formateados por el sistema automaticamente.</p><br><br>
                         <!-- Se prepara formulario para ingresar la respuesta a la consulta o reclamo del cliente -->
-                        <form action="../Controller/guardarResolucion.php" method="post"> 
+                        <form action="" method="post"> 
                         <textarea class="control" name="respuesta" id="" cols="160" rows="10"><?php if(isset($respuesta)){ echo "$respuesta"; } else{echo"";} ?></textarea>
                         <input type="hidden" value="<?php echo "$id" ?>" name="pqrsId">
                         <input type="hidden" value="<?php echo "$_SESSION[usuarioId]" ?>" name="usuarioId">
                         <input type="hidden" value="<?php echo "$date" ?>" name="date"><br><br>
-                        <input class="searchButton" type="submit" value="Guardar">
+                        <input class="searchButton" type="submit" name="guardar" value="Guardar">
                         </form><br><br> 
                         
-                            
-                    
                 </table>
                 <nav class="paginacion">
 

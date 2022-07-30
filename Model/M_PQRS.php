@@ -99,6 +99,12 @@
             }
 
         }
+        public function actualizarEstado($id){
+
+            $this->pqrs->query("UPDATE pqrs SET pqrsEstado = 'Atendida' 
+            WHERE pqrsId = $id");
+
+        }
 
         public function cerrarConexion(){
 
