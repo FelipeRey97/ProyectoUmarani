@@ -1,49 +1,171 @@
+<?php
+session_start();
+$sesionId= session_id();
+require "../Controller/mostrarCatalogo.php";
+require('../Controller/vercarrito.php');
+require_once("../Controller/buscador.php");
+include_once('../Controller/formGarantia2.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-    <link rel="stylesheet" href="../CSS/formGarantia.css.">
-    <script src="https://kit.fontawesome.com/f243ce0afc.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bitter&family=Shadows+Into+Light&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bitter&family=Lobster&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
 
-    <div class="padre">
-        <header class="header">
-            <div class="contacto">
-               <a href="#"> <i class="fas fa-search"></i></a>
-                <a href="../WebUmarani/iniciarSesion.html"><i class="fas fa-user"></i></a>
-                <a class="kartButton" href="#"><i class="fas fa-shopping-bag"></i></a>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+
+<body>
+
+<link rel="stylesheet" href="../CSS/formGarantia.css">
+<script src="https://kit.fontawesome.com/f243ce0afc.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter&family=Lobster&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+
+<div class="padre">
+    <header class="header">
+    <div class="contacto">
+            <a class="searchButton" href="#"> <i class="fas fa-search"></i></a>
+            <a class="accountButton" href="#"><i class="fas fa-user"></i></a>
+            <a class="kartButton" href="#"><i class="fas fa-shopping-bag"></i></a>
+        </div>
+        <!-- Carro de compras  -->
+        <div class="kartOpacity ocultar">
+            <div class="carrito "  > 
+                <div class="top">
+                    <a href="#">Carrito de Compras</a> <a class="cerrar-carrito" href="#"> <i class="fas fa-times"></i> </a>
+                </div>
+
+                <div class="middle">
+                <?php 
+                $total = 0;
+                while($dat = mysqli_fetch_array($datos)) {  
+
+                    
+                ?>
+                    <div class="contenedor kartItem">
+                    
+                                <div class="miniatura">
+                                    <img src= " <?php echo "$dat[artVista]"  ?>" alt="">
+                                </div>
+                                <div class="info">
+                                    <h3 class="title"><?php echo "$dat[artNombre]"  ?></h3>
+                                    <br> <p class="price" ><?php $costo = $dat['artPrecio'] * $dat['artCarroCant']; echo "$costo";  ?></p>
+                                </div>
+                                <form action="" class="cantidad">
+                                    <label for="">Cantidad:</label>
+                                    <p class="quantity">   <?php echo "$dat[artCarroCant]" ?></p>
+                                        <a class= "delete" href="../Controller/borrarCarrito.php?artId=<?php echo "$dat[artId]"?>&sesionId=<?php echo "$sesionId" ?>"><i class="far fa-window-close"></i></a>
+                                </form>
+
+                    </div> 
+                    <?php 
+                    $total = $total + $costo; }
+                    ?>
+                </div>
+
+                <div class="bottom">
+                    <div class="infoTotal"><P class="shopTotal">TOTAL: $ <?php echo "$total" ?></P>
+                            <a class="buy-button" href="../View/checkout.php">Checkout</a>
+                    </div>
+                </div>
+            
             </div>
-            <div class="carrito "  >
-            </div>
-            <!-- <div class="infoTotal"><P class="shopTotal" >$0</P>
-                <a class="buy-button" href="#">Comprar</a>
-            </div> -->
-                
-                <div class="logo">
-                    <a href="#"><img src="../Uploads/logo.png" alt=""></a>
+        </div>
+        <!-- Apertura para la busqueda -->
+        <div class="searchOpacity ocultar "> 
+            <div class="searchEngine "  > 
+                <div class="topSearchEngine">
+                    <a href="#">BUSCAR EN EL SITIO</a> <a class="cerrar-buscador" href="#"> <i class="fas fa-times"></i></a>
+                </div>
+                <div class="middleSearchEngine">
+                    <form action="" method="post">
+                    <input onkeyup="buscar_ahora($('#buscar').val());" type="text" name="buscar" id="buscar" placeholder="Buscar Productos" >
+                    <div id="datos_buscador" class=" kartItem"> </div>
+                    </form>
+                    <script>
+                        function buscar_ahora(buscar){
+                        var parametros = {"buscar":buscar};
+                        $.ajax({
+                        data:parametros,
+                        type: 'POST',
+                        url: '../Controller/buscador.php',
+                        success: function(data){
+
+                            document.getElementById("datos_buscador").innerHTML = data;
+                        }
+                        })
+                        }
+
+                    </script>
+
+                </div>
+                <div class="bottomSearchEngine">
                     
                 </div>
-               
             
-            <div class="menu">
-                <b><a href="#">Inicio</a></b>
-                <b><a href="../WebUmarani/Collares.html">Collares</a></b>
-                <b><a href="../WebUmarani/Pulseras.html">Pulseras</a></b>
-                <b><a href="../WebUmarani/anillos.html">Anillos</a></b>
-                <b><a href="../WebUmarani/anillos.html">Nosotros</a></b>
-                <!-- <a href="#">Ofertas</a> -->
-
             </div>
-        </header>
+        </div>
+        <div class="accountOpacity ocultar">
+            <div class="accountMenu "  > 
+                <div class="topAccountMenu">
+                    <a href="#"></a> <a class="cerrar-menuCuenta" href="#"> <i class="fas fa-times"></i></a>
+                </div>
+                <div class="middleAccountMenu">
+                <?php
+                        if(isset($_SESSION['cMail'])){
+
+                        
+                        
+                ?>
+                    <a href="../View/areaCliente.php"><i class="fas fa-user-circle"></i> Mi perfil </a><br><br>
+                    <a href="../View/clientePedidos.php"><i class="fas fa-dolly"></i> Mis compras </a><br><br>
+                    <a href="../Controller/cerrarSesionCliente.php"><i class="fas fa-door-open"></i> cerrar Sesion </a><br><br>
+                    
+
+                    <?php
+                        }
+                        else{
+
+                            ?>
+                            <a href="iniciarSesion.php"><i class="fas fa-sign-in-alt"></i>  Iniciar Sesion </a><br><br>
+                            <a href="registrarse.php"><i class="fas fa-user-plus"></i> Registrarse </a><br><br>
+                                <a href="../View/ayudaCliente.php"><i class="fas fa-question"></i>  Ayuda </a><br><br>
+                        
+                        <?php
+
+                            }   
+                            ?>
+                        
+                </div>
+                <div class="bottomAccountMenu">
+                    
+                </div>
+            
+            </div>
+        </div>
+            
+            <div class="logo">
+                <a href="#"><img src="../Uploads/logo.png" alt=""></a>
+                
+            </div>
+            
+            
+        <div class="menu">
+            <b><a href="../View/catalogo.php">Inicio</a></b>
+            <b><a href="../View/collares.php?seccion=collares">Collares</a></b>
+            <b><a href="../View/pulseras.php?seccion=pulseras">Pulseras</a></b>
+            <b><a href="../View/anillos.php?seccion=anillos">Anillos</a></b>
+            <b><a href="../View/terminosycondiciones.php">Nosotros</a></b>
+            <!-- <a href="#">Ofertas</a> -->
+
+        </div>
+    </header>
         <section class="section">
         <?php  
          
@@ -52,24 +174,23 @@
         ?>
 
             <div class="form-container">
-                <h1>Reportar una Garantía</h1><br>
-                <p class="info" >Llena el siguiente formulario y en un lapso aproximado de 3 días <br> hábiles nuestro departamento de servicio al cliente  se  estará  <br>comunicando contigo, o si lo prefieres también puedes escribirnos a: <br><br> umarani@umarani.com</p>
-            <form action="../Controller/formGarantia2.php" method="post" class="iniciar-sesion" enctype="multipart/form-data">
-                <label for="">Nombre completo de quien realizó la compra*:</label><br>
-                <input class="control" type="text" required name="pNombre">  <br>
-                <label for="">Email con el cual se realizó la compra*:</label><br>
-                <input class="control" type="text" required name="pMail" >  <br>
-                <label for="">Télefono de contacto*:</label><br>
-                <input class="control" type="text" required name="ptelefono">  <br>
+                <h1>Reportar una Garantía</h1>
+            <form action="" method="post" class="iniciar-sesion" enctype="multipart/form-data">
+                <label for="">Nombre completo de quien realizó la compra * :</label><br>
+                <input required pattern="[a-zA-Z ]{3,100}" class="control" type="text"  name="pNombre">  <br>
+                <label for="">Email con el cual se realizó la compra * :</label><br>
+                <input required class="control" type="text" required name="pMail" >  <br>
+                <label for="">Télefono de contacto * :</label><br>
+                <input required pattern="[0-9]{6,12}" class="control" type="text"  name="ptelefono">  <br>
                 <label for="">Número del pedido*:</label><br>
-                <input class="control" type="text" name="pNumero"><br>
-                <label for="">Imagen del producto donde se evidencie el problema de calidad:</label><br>
-                <input class="control" type="file"   name="pImagen"><br>
-                <label for="">Coméntanos lo sucedido*:</label><br>
-                <textarea class="control" name="pComentario"></textarea><br>
+                <input required pattern="[0-9]{1,}" class="control" type="text" name="pNumero"><br>
+                <label for="">Imagen del producto donde se evidencie el problema de calidad:</label><br><br>
+                <input required class="" type="file"   name="pImagen"><br><br>
+                <label for="">Coméntanos lo sucedido * :</label><br><br>
+                <textarea required rows="8" cols="57" class="" name="pComentario"></textarea><br><br>
                 <input type="hidden" value="<?php echo "$_REQUEST[pqTipo]" ?>" name=tipoId >
                 <input type="hidden" value="<?php echo "$fecha"; ?>" name=pFecha >
-                <input class="boton-iniciarSesion" type="submit" value="Enviar">
+                <input class="boton-iniciarSesion" name="guardar" type="submit" value="Enviar">
             </form>
         </div>
         </section>
@@ -103,6 +224,8 @@
 
     </div>
 
-    <script src="../WebUmarani/JS/carrito.js"></script>
+    <script src="../JS/CartShop.js"></script>
+    <script src="../JS/SearchEngine.js"></script>
+    <script src="../JS/accountMenu.js"></script>
 </body>
 </html>

@@ -178,7 +178,7 @@ $paginas = ceil($paginas);
             </div>
         </section>
         </div>
-        
+         
     </div>
     <footer class="footer">
         <p>copyright 2022 Todos los derechos reservados</p>

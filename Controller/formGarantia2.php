@@ -15,28 +15,12 @@
 
 require_once('../Model/M_PQRS.php');
 
+if(isset($_REQUEST['guardar'])){
+
+
 $pq = new PQRS();
 
 $tipo = $_REQUEST['tipoId'];
-echo "$tipo";
-
-$clienteId = false;
-
-
- $conexion = mysqli_connect("localhost","root","","proyecto") 
- or die ("problemas con la conexion");
-
- $registros = mysqli_query($conexion,"select * from cliente where clienteEmail = '$_REQUEST[pMail]'") 
- or die ("problemas en el select" . mysqli_error($conexion));
-
- if(isset($registros)){
-
-     while($reg = mysqli_fetch_array($registros)){
-
-        $clienteId = $reg['clienteId'];
-
-     }
- }
 
 if(isset($_FILES['pImagen'])){
 
@@ -55,129 +39,242 @@ case 1:
     move_uploaded_file($temporal,$carpeta.'/'.$nombre_imagen);
 
 
-    if ($clienteId == false){
-    
+    if(isset($_REQUEST['pNombre']) && $_REQUEST['pNombre'] != "" && preg_match("/^[A-Za-z ]{3,100}$/",$_REQUEST['pNombre'])){
+        
+        $pNombre = htmlentities($_REQUEST['pNombre']);
+        $pNombre = filter_var($pNombre, FILTER_SANITIZE_STRING);
+        $pNombre = strtoupper($pNombre);
+
+        $VpNombre = true;
+
+    }
+    else{
+
+        $VpNombre = true;
         ?>
         <script>
-        swal("Atención", "El email registrado no corresponde a ningun cliente", "warning");
+        swal("Atención", "Por favor verifique el Nombre", "warning");
         </script>
-        <?php
-    
+    <?php
     }
-    
-    
-    else if($_REQUEST['pNombre'] != "" && $_REQUEST['pMail'] != "" && $_REQUEST['ptelefono'] != "" && $_REQUEST['pComentario'] != ""
-    && $_REQUEST['tipoId'] !="" && $_REQUEST['pFecha'] !="" && $_REQUEST['pNumero'] !="" && $clienteId != false ){
-    
-    
-    $pNombre = $_REQUEST['pNombre'];
-    $pMail = $_REQUEST['pMail'];
-    $ptelefono = $_REQUEST['ptelefono'];
-    $pComentario = $_REQUEST['pComentario'];
-    $tipoId = $_REQUEST['tipoId'];
-    $pFecha = $_REQUEST['pFecha'];
-    $pedidoId = $_REQUEST['pNumero'];
-    
-    
-    $pq->insertarPqrs1($pNombre,$pMail,$ptelefono,$pComentario,$tipoId,$pFecha,$ruta,$clienteId,$pedidoId);
+    if(isset($_REQUEST['pMail']) && $_REQUEST['pMail'] != "" && filter_var($_REQUEST['pMail'], FILTER_VALIDATE_EMAIL )){
+        
+        $pMail = htmlentities($_REQUEST['pMail']);
+        $pMail = filter_var($pMail, FILTER_SANITIZE_EMAIL);
+        $VpMail = true;
+
+        $existe_Mail = $pq->verificarEmail($pMail);
+
+        if($existe_Mail == true){
+
+            $VpMail = true;
+        }
+        else{
+
+            $VpMail = false;
+            ?>
+            <script>
+            swal("Atención", "No existen pedidos realizados con este E-mail", "warning");
+            </script>
+            <?php
+        }
+    }
+    else{
+
+        $VpMail = false;
+        ?>
+        <script>
+        swal("Atención", "Por favor verifique el E-mail", "warning");
+        </script>
+    <?php
+    }if(isset($_REQUEST['ptelefono']) && $_REQUEST['ptelefono'] != "" && preg_match("/^[0-9]{10,}$/",$_REQUEST['ptelefono'])){
+        
+        $ptelefono =  htmlentities($_REQUEST['ptelefono']);
+        $Vptelefono = true;
+
+    }
+    else{
+        $Vptelefono = false;
+        ?>
+        <script>
+        swal("Atención", "Por favor verifique el teléfono", "warning");
+        </script>
+    <?php
+    }if($_REQUEST['pComentario'] != ""){
+        
+        $pComentario =  htmlentities($_REQUEST['pComentario']);
+        $pComentario = filter_var($pComentario, FILTER_SANITIZE_STRING);
+        $VpComentario = true;
+
+    }
+    else{
+        $VpComentario = false;
+        ?>
+        <script>
+        swal("Atención", "Por favor verifique los comentarios", "warning");
+        </script>
+    <?php
+    }
+    if($VpComentario == true && $VpMail == true &&  $VpNombre == true){
+
+        $tipoId = $_REQUEST['tipoId'];
+        $pFecha = $_REQUEST['pFecha'];
+        $pedidoId = $_REQUEST['pNumero'];
+
+        $pq->insertarPqrs1($pNombre,$pMail,$ptelefono,$pComentario,$tipoId,$pFecha,$ruta,$pedidoId);
     ?>
     <script>
         swal("Operación Realizada", "Se ha generado la Petición Satisfactoriamente!", "success");
     </script>
-    
     <?php
-     
     
+        $leerPqrs = mysqli_query($conexionPqrs,"SELECT * FROM pqrs 
+        JOIN pqrstipo
+        ON pqrsOrigenId = pqrsTipoId
+        WHERE pqrsId IN (SELECT max(pqrsId) FROM pqrs)");
+
+        while($lpqrs = mysqli_fetch_array($leerPqrs)){
+
+            $pqrsId = $lpqrs['pqrsId'];
+            $pqrsTipo = $lpqrs['pqrsTipoNombre'];
+        }
+
+        header("refresh:1;url=../view/ayudaClienteFin.php?Id=$pqrsId&Tipo=$pqrsTipo");
+
     }
-    else{
+
+    else if(empty($_REQUEST['pNombre']) || empty($_REQUEST['pMail']) || empty($_REQUEST['pComentario'])){
     
     ?>
     <script>
-    swal("Atención", "Por favor complete todos los campos", "warning");
+    swal("Atención", "Por favor complete todos los campos obligatorios", "warning");
     </script>
     <?php
     
     }
     
-    
-    $leerPqrs = mysqli_query($conexion,"SELECT * FROM pqrs 
-    JOIN pqrstipo
-    ON pqrsOrigenId = pqrsTipoId
-    WHERE pqrsId IN (SELECT max(pqrsId) FROM pqrs)");
-
-    while($lpqrs = mysqli_fetch_array($leerPqrs)){
-
-        $pqrsId = $lpqrs['pqrsId'];
-        $pqrsTipo = $lpqrs['pqrsTipoNombre'];
-    }
-
-    header("refresh:1;url=../view/ayudaClienteFin.php?Id=$pqrsId&Tipo=$pqrsTipo");
-
-
     break;
-
+    
+    
+    
 case 2:
 
 
-    if ($clienteId == false){
-    
-        ?>
-        <script>
-        swal("Atención", "El email registrado no corresponde a ningun cliente", "warning");
-        </script>
-        <?php
-    
-    }
-    
-    
-    else if($_REQUEST['pNombre'] != "" && $_REQUEST['pMail'] != "" && $_REQUEST['ptelefono'] != "" && $_REQUEST['pComentario'] != ""
-    && $_REQUEST['tipoId'] !="" && $_REQUEST['pFecha'] !="" && $_REQUEST['pNumero'] !="" && $clienteId != false ){
-    
-    
-    $pNombre = $_REQUEST['pNombre'];
-    $pMail = $_REQUEST['pMail'];
-    $ptelefono = $_REQUEST['ptelefono'];
-    $pComentario = $_REQUEST['pComentario'];
-    $tipoId = $_REQUEST['tipoId'];
-    $pFecha = $_REQUEST['pFecha'];
-    $pedidoId = $_REQUEST['pNumero'];
-    
-    
-    $pq->insertarPqrs2($pNombre,$pMail,$ptelefono,$pComentario,$tipoId,$pFecha,$clienteId,$pedidoId);
-    ?>
-    <script>
-        swal("Operación Realizada", "Se ha generado la Petición Satisfactoriamente!", "success");
-    </script>
-    
-    <?php
-     
-    
+    if(isset($_REQUEST['pNombre']) && $_REQUEST['pNombre'] != "" && preg_match("/^[A-Za-z ]{3,100}$/",$_REQUEST['pNombre'])){
+        
+        $pNombre = htmlentities($_REQUEST['pNombre']);
+        $pNombre = filter_var($pNombre, FILTER_SANITIZE_STRING);
+        $pNombre = strtoupper($pNombre);
+
+        $VpNombre = true;
+
     }
     else{
+
+        $VpNombre = true;
+        ?>
+        <script>
+        swal("Atención", "Por favor verifique el Nombre", "warning");
+        </script>
+    <?php
+    }
+    if(isset($_REQUEST['pMail']) && $_REQUEST['pMail'] != "" && filter_var($_REQUEST['pMail'], FILTER_VALIDATE_EMAIL )){
+        
+        $pMail = htmlentities($_REQUEST['pMail']);
+        $pMail = filter_var($pMail, FILTER_SANITIZE_EMAIL);
+        $VpMail = true;
+
+        $existe_Mail = $pq->verificarEmail($pMail);
+
+        if($existe_Mail == true){
+
+            $VpMail = true;
+        }
+        else{
+
+            $VpMail = false;
+            ?>
+            <script>
+            swal("Atención", "No existen pedidos realizados con este E-mail", "warning");
+            </script>
+            <?php
+        }
+    }
+    else{
+
+        $VpMail = false;
+        ?>
+        <script>
+        swal("Atención", "Por favor verifique el E-mail", "warning");
+        </script>
+    <?php
+    }if(isset($_REQUEST['ptelefono']) && $_REQUEST['ptelefono'] != "" && preg_match("/^[0-9]{10,}$/",$_REQUEST['ptelefono'])){
+        
+        $ptelefono =  htmlentities($_REQUEST['ptelefono']);
+        $Vptelefono = true;
+
+    }
+    else{
+        $Vptelefono = false;
+        ?>
+        <script>
+        swal("Atención", "Por favor verifique el teléfono", "warning");
+        </script>
+    <?php
+    }if($_REQUEST['pComentario'] != ""){
+        
+        $pComentario =  htmlentities($_REQUEST['pComentario']);
+        $pComentario = filter_var($pComentario, FILTER_SANITIZE_STRING);
+        $VpComentario = true;
+
+    }
+    else{
+        $VpComentario = false;
+        ?>
+        <script>
+        swal("Atención", "Por favor verifique los comentarios", "warning");
+        </script>
+    <?php
+    }
+    if($VpComentario == true && $VpMail == true &&  $VpNombre == true){
+
+        $tipoId = $_REQUEST['tipoId'];
+        $pFecha = $_REQUEST['pFecha'];
+        $pedidoId = $_REQUEST['pNumero'];
+
+        $pq->insertarPqrs2($pNombre,$pMail,$ptelefono,$pComentario,$tipoId,$pFecha,$pedidoId);
+        ?>
+        <script>
+        swal("Operación Realizada", "Se ha generado la Petición Satisfactoriamente!", "success");
+        </script>
+    
+        <?php
+
+        $leerPqrs = mysqli_query($conexionPqrs,"SELECT * FROM pqrs 
+        JOIN pqrstipo
+        ON pqrsOrigenId = pqrsTipoId
+        WHERE pqrsId IN (SELECT max(pqrsId) FROM pqrs)");
+
+        while($lpqrs = mysqli_fetch_array($leerPqrs)){
+
+            $pqrsId = $lpqrs['pqrsId'];
+            $pqrsTipo = $lpqrs['pqrsTipoNombre'];
+        }
+
+        header("refresh:1;url=../view/ayudaClienteFin.php?Id=$pqrsId&Tipo=$pqrsTipo");
+
+    }
+
+    else if(empty($_REQUEST['pNombre']) || empty($_REQUEST['pMail']) || empty($_REQUEST['pComentario'])){
     
     ?>
     <script>
-    swal("Atención", "Por favor complete todos los campos", "warning");
+    swal("Atención", "Por favor complete todos los campos obligatorios", "warning");
     </script>
     <?php
     
     }
     
-    
-    $leerPqrs = mysqli_query($conexion,"SELECT * FROM pqrs 
-    JOIN pqrstipo
-    ON pqrsOrigenId = pqrsTipoId
-    WHERE pqrsId IN (SELECT max(pqrsId) FROM pqrs)");
-
-    while($lpqrs = mysqli_fetch_array($leerPqrs)){
-
-        $pqrsId = $lpqrs['pqrsId'];
-        $pqrsTipo = $lpqrs['pqrsTipoNombre'];
-    }
-
-    header("refresh:1;url=../view/ayudaClienteFin.php?Id=$pqrsId&Tipo=$pqrsTipo");
-
-
 
     break;
 
@@ -186,57 +283,128 @@ case 2:
 case 3:
 
     
-    if($_REQUEST['pNombre'] != "" && $_REQUEST['pMail'] != "" && $_REQUEST['ptelefono'] != "" && $_REQUEST['pComentario'] != ""
-    && $_REQUEST['tipoId'] !="" && $_REQUEST['pFecha'] !="" ){
-    
-    
-    $pNombre = $_REQUEST['pNombre'];
-    $pMail = $_REQUEST['pMail'];
-    $ptelefono = $_REQUEST['ptelefono'];
-    $pComentario = $_REQUEST['pComentario'];
-    $tipoId = $_REQUEST['tipoId'];
-    $pFecha = $_REQUEST['pFecha'];
-    
-    
-    $pq->insertarPqrs3($pNombre,$pMail,$ptelefono,$pComentario,$tipoId,$pFecha);
-    ?>
-    <script>
-        swal("Operación Realizada", "Se ha generado la Petición Satisfactoriamente!", "success");
-    </script>
-    
-    <?php
-     
-    
+    if(isset($_REQUEST['pNombre']) && $_REQUEST['pNombre'] != "" && preg_match("/^[A-Za-z ]{3,100}$/",$_REQUEST['pNombre'])){
+        
+        $pNombre = htmlentities($_REQUEST['pNombre']);
+        $pNombre = filter_var($pNombre, FILTER_SANITIZE_STRING);
+        $pNombre = strtoupper($pNombre);
+
+        $VpNombre = true;
+
     }
     else{
+
+        $VpNombre = true;
+        ?>
+        <script>
+        swal("Atención", "Por favor verifique el Nombre", "warning");
+        </script>
+    <?php
+    }
+    if(isset($_REQUEST['pMail']) && $_REQUEST['pMail'] != "" && filter_var($_REQUEST['pMail'], FILTER_VALIDATE_EMAIL )){
+        
+        $pMail = htmlentities($_REQUEST['pMail']);
+        $pMail = filter_var($pMail, FILTER_SANITIZE_EMAIL);
+        $VpMail = true;
+
+        $existe_Mail = $pq->verificarEmail($pMail);
+
+        if($existe_Mail == true){
+
+            $VpMail = true;
+        }
+        else{
+
+            $VpMail = false;
+            ?>
+            <script>
+            swal("Atención", "No existen pedidos realizados con este E-mail", "warning");
+            </script>
+            <?php
+        }
+    }
+    else{
+
+        $VpMail = false;
+        ?>
+        <script>
+        swal("Atención", "Por favor verifique el E-mail", "warning");
+        </script>
+    <?php
+    }if(isset($_REQUEST['ptelefono']) && $_REQUEST['ptelefono'] != "" && preg_match("/^[0-9]{10,}$/",$_REQUEST['ptelefono'])){
+        
+        $ptelefono =  htmlentities($_REQUEST['ptelefono']);
+        $Vptelefono = true;
+
+    }
+    else{
+        $Vptelefono = false;
+        ?>
+        <script>
+        swal("Atención", "Por favor verifique el teléfono", "warning");
+        </script>
+    <?php
+    }if($_REQUEST['pComentario'] != ""){
+        
+        $pComentario =  htmlentities($_REQUEST['pComentario']);
+        $pComentario = filter_var($pComentario, FILTER_SANITIZE_STRING);
+        $VpComentario = true;
+
+    }
+    else{
+        $VpComentario = false;
+        ?>
+        <script>
+        swal("Atención", "Por favor verifique los comentarios", "warning");
+        </script>
+    <?php
+    }
+    if($VpComentario == true && $VpMail == true &&  $VpNombre == true){
+
+        $tipoId = $_REQUEST['tipoId'];
+        $pFecha = $_REQUEST['pFecha'];
+
+        $pq->insertarPqrs3($pNombre,$pMail,$ptelefono,$pComentario,$tipoId,$pFecha);
+        ?>
+        <script>
+            swal("Operación Realizada", "Se ha generado la Petición Satisfactoriamente!", "success");
+        </script>
+        
+        <?php
+
+        $leerPqrs = mysqli_query($conexionPqrs,"SELECT * FROM pqrs 
+        JOIN pqrstipo
+        ON pqrsOrigenId = pqrsTipoId
+        WHERE pqrsId IN (SELECT max(pqrsId) FROM pqrs)");
+
+        while($lpqrs = mysqli_fetch_array($leerPqrs)){
+
+            $pqrsId = $lpqrs['pqrsId'];
+            $pqrsTipo = $lpqrs['pqrsTipoNombre'];
+        }
+
+        header("refresh:1;url=../view/ayudaClienteFin.php?Id=$pqrsId&Tipo=$pqrsTipo");
+
+    }
+
+    else if(empty($_REQUEST['pNombre']) || empty($_REQUEST['pMail']) || empty($_REQUEST['pComentario'])){
     
     ?>
     <script>
-    swal("Atención", "Por favor complete todos los campos", "warning");
+    swal("Atención", "Por favor complete todos los campos obligatorios", "warning");
     </script>
     <?php
     
     }
-
-    $leerPqrs = mysqli_query($conexion,"SELECT * FROM pqrs 
-    JOIN pqrstipo
-    ON pqrsOrigenId = pqrsTipoId
-    WHERE pqrsId IN (SELECT max(pqrsId) FROM pqrs)");
-
-    while($lpqrs = mysqli_fetch_array($leerPqrs)){
-
-        $pqrsId = $lpqrs['pqrsId'];
-        $pqrsTipo = $lpqrs['pqrsTipoNombre'];
-    }
-
-    header("refresh:1;url=../view/ayudaClienteFin.php?Id=$pqrsId&Tipo=$pqrsTipo");
-    break;
     
+
+    break;
+
 
 }
 
 
-
+}
 
 ?>
 
