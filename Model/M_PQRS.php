@@ -11,7 +11,8 @@
         public function __construct()
         {
 
-            $this->pqrs = new mysqli('localhost','root','','proyecto');
+            require_once('../Model/ConexionBD.php');
+            $this->pqrs = $conexionBD;
             
         }  
 

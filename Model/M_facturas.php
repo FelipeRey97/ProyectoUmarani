@@ -12,8 +12,8 @@
             
         public function __construct()
         {
-
-            $this->fact = new mysqli('localhost','root','','proyecto');
+            require_once('../Model/ConexionBD.php');
+            $this->fact = $conexionBD;
             
         }
         public function inicializar($artxpag){

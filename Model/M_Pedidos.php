@@ -12,7 +12,8 @@
         public function __construct()
         {
 
-            $this->ped = new mysqli('localhost','root','','proyecto');
+            require_once('../Model/ConexionBD.php');
+            $this->ped = $conexionBD;
             
         }
         public function inicializar($artxpag){

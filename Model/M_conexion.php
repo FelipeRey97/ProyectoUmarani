@@ -1,6 +1,6 @@
 <?php 
 
-//primera clase creada, permite lo metodos para insert, select, update set y delete de usuarios con conexion a la BD
+ 
 
     class Conexion {
  
@@ -11,8 +11,8 @@
 
         public function __construct()
         {
- 
-            $this->con = new mysqli('localhost','root','','proyecto');
+            require_once('../Model/ConexionBD.php');
+            $this->con = $conexionBD;
             
         }
         public function inicializar($artxpag){

@@ -10,8 +10,8 @@
 
         public function __construct()
         {
-
-            $this->desp = new mysqli('localhost','root','','proyecto');
+            require_once('../Model/ConexionBD.php');
+            $this->desp = $conexionBD;
             
         }
         public function insertarOrden($despachoId,$empresaId,$pedidoId,$usuarioId,$date){

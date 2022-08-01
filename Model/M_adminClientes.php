@@ -11,8 +11,8 @@
 
         public function __construct()
         {
-
-            $this->cl = new mysqli('localhost','root','','proyecto');
+            require_once('../Model/ConexionBD.php');
+            $this->cl = $conexionBD;
             
         }
         public function inicializar($artxpag){

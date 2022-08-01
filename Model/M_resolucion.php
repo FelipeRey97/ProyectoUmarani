@@ -35,7 +35,7 @@ or die ("problemas con la conexion");
             if($fila = $query->fetch_assoc()){
 
                 return true;
-                
+
             }else{
 
                 return false;
@@ -47,9 +47,6 @@ or die ("problemas con la conexion");
             $this->res->query("UPDATE resolucion SET resolucionMensaje = '$mensaje', resolucionFecha = '$fecha', resolucionUsuarioId = $usuarioId
             WHERE resolucionId = $pqrsId");
         }
-
-
-
 
 
 
