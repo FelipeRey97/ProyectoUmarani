@@ -1,7 +1,7 @@
 <?php 
 session_start(); 
 $sesionId= session_id();
-require_once('../Controller/vercarrito.php');
+require_once('../Controller/carrito.php');
 require_once('../Controller/verCheckout.php');
 include_once('../Controller/datosFactura.php')
 
@@ -53,9 +53,8 @@ include_once('../Controller/datosFactura.php')
     <div class="middle">
     <?php 
     $total = 0;
-    while($dat = mysqli_fetch_array($datos)) {  
-
-        
+    foreach($datos as $dat) {  
+ 
     ?>
         <div class="contenedor kartItem">
         

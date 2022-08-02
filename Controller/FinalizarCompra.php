@@ -14,6 +14,12 @@
 
 require_once('../Model/M_facturas.php');
 require_once('../Model/M_Pedidos.php');
+require_once('../Model/M_Productos4.php');
+require_once('../Model/M_direccionPedido.php');
+require_once('../Model/M_carrito.php');
+require_once('../Model/M_art_ped_factura.php');
+
+//INSERCIÓN DE DATOS EN LA TABLA FACTURAS
 
 $clienteId = $_REQUEST['clienteId'];
 $todaydate = $_REQUEST['date'];
@@ -26,56 +32,58 @@ $dpto = $_REQUEST['dpto'];
 $ciudad = $_REQUEST['ciudad'];
 $direccion = $_REQUEST['direccion'];
 $impuestoId = 1;
+
 $fact1 = new Factura ();
 $fact1->insertarFactura($clienteId,$todaydate,$total,$clienteDoc,$tipoPago,$dirC,$impuestoId);
 
+//OBTIENE EL ID DE LA FACTURA RECIÉN GENERADA PARA SINCRONIZARLA LA TABLA PEDIDOS
 
-$facturaId = mysqli_query($conexionFactura,"SELECT facturaId FROM factura
-WHERE facturaId IN (SELECT max(facturaId) FROM factura)") 
-or die ("problemas en el select" .mysqli_error($conexionFactura));
+$facturaId = $fact1->ObtenerIdFactura();
 
 while ($factId = mysqli_fetch_array($facturaId)){
 
     $id = $factId['facturaId'];
 
 }
-
+ 
 $idFactura=  $id;
 $direccionId = $id;
 
-mysqli_query($conexionFactura,"INSERT INTO direccionpedido (direccionId,direccionDep,direccionCiudad,direccionDomicilio)
-VALUES ($direccionId,'$dpto','$ciudad','$direccion')");
+// SE GUARDAN LOS DATOS DE LA DIRECCION Y PEDIDO SINCRONIZADOS CON LA FACTURA
+$direccionPed = new Direccion();
+$direccionPed->guardarDireccion($direccionId,$dpto,$ciudad,$direccion);
 
 $gPedido = new Pedido ();
 $gPedido->insertarPedido($idFactura,$todaydate,$clienteId,$id,$total,$direccionId);
 
-$articulos = mysqli_query($conexionFactura,"SELECT * FROM carrito 
-JOIN articulo
-ON articuloId = artId
-WHERE sesionId = '$sesionId'") or die ("problemas en el select");
+// SE GUARDAN EN EL PEDIDO Y ARTICULO_POR_PEDIDO Y ARTICULO_POR_FACTURA LA SELECCION DE ARTICULOS EN EL CARRITO
+$car2 = new Carrito ();
+$articulos = $car2->mostrarCarrito($sesionId); 
 
-while ($art = mysqli_fetch_array($articulos)){
+// SE INSTANCIAN OBJETOS ANTES DE INICIAR EL CICLO FOREACH
+
+$apf_object = new articuloPorFactura ();
+$app_object = new articuloPorPedido ();
+
+$prodCompra = new Producto();
+foreach ($articulos as $art){
 
     $articuloId = $art['artId'];
     $cantidad = $art['artCarroCant'];
     $precio = $art['artPrecio'];
     $cantActual = $art['artCantidad'];
 
-    mysqli_query($conexionFactura, "INSERT INTO productoporpedido (prodPed_artId,prodPed_pedidoId,prodPedCant,prodPedValorArt)
-    VALUES ($articuloId,$id,$cantidad,$precio)") or die ("problemas en el insert");
+    //SE ALMACENAN LOS ARTICULOS CORRESPONDIENTES AL PEDIDO Y FACTURA.
 
-    mysqli_query($conexionFactura, "INSERT INTO productoporfactura (prodFact_ArtId,prodFact_FactId,prodFactCantidad,prodFactPrecio)
-    VALUES ($articuloId,$idFactura,$cantidad,$precio)") or die ("problemas en el insert");
+    $app_object->guardarDatos($articuloId,$id,$cantidad,$precio);
 
-    mysqli_query($conexionFactura,"UPDATE articulo SET artCantidad = $cantActual - $cantidad 
-    WHERE artId = $articuloId");
+    $apf_object->guardarDatos($articuloId,$idFactura,$cantidad,$precio);
 
+    //SE RESTAN LOS ARTICULOS COMPRADOS DE LA CANTIDAD DISPONIBLE EN EL INVENTARIO
+
+    $prodCompra->DescontarInventario($cantActual,$cantidad,$articuloId);
+    
 }
-
-
-
-
-mysqli_close($conexionFactura);
 
 ?>
 

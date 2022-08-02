@@ -1,6 +1,7 @@
 <?php
  
 require_once("../Model/M_Pedidos.php");
+require_once("../Model/M_Departamentos.php");
 
 $ped2 = new Pedido(); 
 
@@ -230,18 +231,15 @@ $ped2->ordenar($orderby);
 $registros = $ped2->verPedido();
 
 
-$resultado = mysqli_query($conexionPedido,"SELECT COUNT(*) AS cantidad FROM pedido
-JOIN direccionPedido
-ON pedidoDireccionId = direccionId
-$where")
-or die("problemas en el select" . mysqli_error($conexionPedido));
+$resultado = $ped2->contarRegistros($where);
 
 $res = mysqli_fetch_array($resultado);
 
 $cantidad = $res['cantidad'];
 
-$fila = mysqli_query($conexionPedido, "SELECT * from dpto");
+$dpto1 = new DPTO();
+$fila = $dpto1->mostrarDpto();
 
 $registrosxpagina = $ped2->artporpag;
  
-?>  
+?>   

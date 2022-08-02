@@ -11,27 +11,30 @@
 
 <?php
 
+ require_once '../Model/M_Clientes.php';
+
+ $client2 = new Clientes();
+
+
 if(isset($_SESSION['cMail'])){
 
-$conexion = mysqli_connect('localhost','root','','proyecto') or 
-        die ("problemas en la conexion" . mysqli_error($conexion));
+     $registroCliente = $client2->DetalleCliente();
 
-        $registroCliente = mysqli_query($conexion,"select * from cliente where clienteEmail ='$_SESSION[cMail]'") 
-        or die ("problemas en el select" . mysqli_error($conexion));
-
-while ($reg = mysqli_fetch_array($registroCliente)){
-
-        
-$nombre = $reg['clienteNombre'];
-$apellido = $reg['clienteApellido'];
-$mail = $reg['clienteEmail'];
-$clave = $reg['clienteContraseña'];
-$tel = $reg['clienteTelefono'];
-$clienteId = $reg['clienteId'];
-
-}
-
-mysqli_close($conexion);
+     if(isset($registroCliente)){
+ 
+         while ($reg = mysqli_fetch_array($registroCliente)){
+ 
+         
+          $nombre = $reg['clienteNombre'];
+          $apellido = $reg['clienteApellido'];
+          $mail = $reg['clienteEmail'];
+          $clave = $reg['clienteContraseña'];
+          $tel = $reg['clienteTelefono'];
+          $clienteId = $reg['clienteId'];
+         
+             }
+ 
+     }
 
 }else{
 

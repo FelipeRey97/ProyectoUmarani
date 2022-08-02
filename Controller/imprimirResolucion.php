@@ -11,7 +11,7 @@ ON pqrsId = resolucionpqrsId
 WHERE resolucionId = $id")
 or die ("problemas en el select" . mysqli_error($conexion));
 
-
+ 
 
 $obtenerMes = mysqli_query($conexion,"SELECT MONTH(resolucionFecha), YEAR(resolucionFecha), DAY(resolucionFecha) FROM resolucion
 WHERE resolucionId = $id") 

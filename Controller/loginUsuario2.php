@@ -21,7 +21,7 @@ if(isset($_REQUEST['iniciar-sesion'])){
 
     $conexion = mysqli_connect("localhost","root","","proyecto")
     or die ("problemas con la conexion");
-
+ 
     $consulta = "SELECT*FROM usuariotienda join rol
     on rolId = usuarioRolId
     where usuarioDoc = '$usuario' and usuarioContraseña = '$contraseña'";

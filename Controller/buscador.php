@@ -12,28 +12,22 @@
 
 <body> 
 
-<?php
+<?php 
 
-$conexion1 = mysqli_connect('localhost','root','','proyecto') or 
-    die ("problemas en la conexion" . mysqli_error($conexion1));
+include_once('../Model/M_buscador.php');
 
 
    if(isset($_REQUEST['buscar'])) {
-
+    $prodB = new Buscador();
     $busqueda = $_REQUEST['buscar'];
+    
+    $resultados = $prodB->buscarProductos($busqueda);
 
-    $resultados = mysqli_query($conexion1,"SELECT * FROM articulo 
-    JOIN categoria
-    ON artCategoriaId = categoriaId
-    WHERE artNombre LIKE '%$busqueda%' OR categoriaNombre LIKE '%$busqueda%'") 
-    or die ("problemas en el select " . mysqli_error($conexion1));
 
-}
     if(isset($resultados)){
 
 
-
-    while($res = mysqli_fetch_array($resultados)){
+    foreach($resultados as $res){
     ?>
         <div id="datos_buscador" class="Buscar_contenedor kartItem">  
         <div class="miniatura">
@@ -51,6 +45,8 @@ $conexion1 = mysqli_connect('localhost','root','','proyecto') or
     }
 
     }
+
+}
 
     ?>
 

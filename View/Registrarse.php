@@ -2,7 +2,7 @@
 
 $sesionId= session_id();
 require_once("../controller/verCheckout.php");
-require('../Controller/vercarrito.php');
+require('../Controller/carrito.php');
 require_once("../Controller/buscador.php");
 include_once("../Controller/registrarse2.php");
 ?>
@@ -44,9 +44,8 @@ include_once("../Controller/registrarse2.php");
             <div class="middle">
             <?php 
             $total = 0;
-            while($dat = mysqli_fetch_array($datos)) {  
+            while($datos as $dat) {  
 
-                
             ?>
                 <div class="contenedor kartItem">
                 

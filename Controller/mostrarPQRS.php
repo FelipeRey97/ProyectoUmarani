@@ -149,4 +149,4 @@ $cantidad = $reg['cantidad'];
 
 $registrosxpagina = $pq1->artporpag;
 
-?> 
+?>  

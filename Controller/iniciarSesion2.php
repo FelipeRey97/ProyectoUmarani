@@ -24,7 +24,7 @@
     $resultado = mysqli_query($conexion,$consulta);
 
     $filas = mysqli_fetch_array($resultado);
-
+ 
     if($filas){
         
         $_SESSION['nombre'] = $filas['clienteNombre'];

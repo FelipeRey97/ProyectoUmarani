@@ -13,7 +13,7 @@ if(isset($_REQUEST['rect'])){
     $id=  $_REQUEST['ped'];
 }
 
-
+ 
 $datosPedido = mysqli_query($conexionPedido,"SELECT * FROM factura
 JOIN cliente 
 ON clienteId = facturaClienteId

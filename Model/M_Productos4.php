@@ -10,11 +10,12 @@
             private $sentencia;
             private $seccion;
             private $ordenCatalogo;
+            private $busqueda;
 
         public function __construct()
         { 
 
-            require_once('../Model/ConexionBD.php');
+            require('../Model/ConexionBD.php');
             $this->prod = $conexionBD;
             
         }
@@ -22,7 +23,6 @@
 
             $this->artporpag = $artxpag;
           
-
         }
         public function seccionCatalogo($seccion){
 
@@ -96,7 +96,7 @@
             }
             return $retorno;
             
-        }
+        } 
        
           public function actualizarProducto($artId,$ruta,$aNombre,$aPrecio,$aCantidad,$aestado,$aCategoria){
 
@@ -106,6 +106,11 @@
            WHERE artId = '$artId' ") or die ("problemas en el select " . mysqli_error($prod));
 
            
+          }public function DescontarInventario($cantActual,$cantidad,$articuloId){
+
+            $this->prod->query("UPDATE articulo SET artCantidad = $cantActual - $cantidad 
+            WHERE artId = $articuloId");
+
           }
  
        
@@ -117,6 +122,23 @@
 
          header("Location: ../View/productos.php");
         }
+        public function DetalleArticulo($arId){
+
+            $detalleProducto = $this->prod->query("SELECT * FROM articulo WHERE artId = '$arId' ") 
+            or die ("problemas en el select");
+
+            return $detalleProducto;
+        }
+        public function ContarRegistros($where){
+
+            $resultado = $this->prod->query("SELECT COUNT(*) AS cantidad FROM articulo 
+            JOIN categoria
+            ON categoriaId = artCategoriaId
+            $where")
+            or die("problemas en el select");
+
+            return $resultado;
+        }
 
         public function cerrarConexion(){
 
@@ -125,11 +147,6 @@
 
 
     }
-
-
-
-    $conexion1 = mysqli_connect('localhost','root','','proyecto') or 
-    die ("problemas en la conexion" . mysqli_error($conexion1));
 
 
 ?>

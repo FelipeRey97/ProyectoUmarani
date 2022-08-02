@@ -38,6 +38,14 @@
 
             
         }
+        public function ObtenerIdFactura(){
+
+          $id_Factura = $this->fact->query("SELECT facturaId FROM factura
+            WHERE facturaId IN (SELECT max(facturaId) FROM factura)") 
+            or die ("problemas en el select");
+
+            return $id_Factura;
+        }
         public function verFacturas(){
 
             $sentencia = $this->sentencia;
@@ -73,6 +81,18 @@
         public function cerrarConexion(){
 
             $this->fact->close();
+        }
+
+        public function contarRegistros($where){
+
+            $resultado =  $this->fact->query("SELECT COUNT(*) AS cantidad FROM factura
+            JOIN tipoPago
+            ON tipoPagoId = factura_tipoPagoId
+            $where")
+            or die("problemas en el select");
+
+            return $resultado;
+
         }
 
 

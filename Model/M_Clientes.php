@@ -1,6 +1,6 @@
 
 <?php
-session_start();
+// session_start();
 if(isset($_SESSION['cMail'])){
 
 }else{
@@ -34,7 +34,7 @@ if(isset($_REQUEST['compra'])){
         public function __construct()
         {
 
-            require_once('../Model/ConexionBD.php');
+            require('../Model/ConexionBD.php');
             $this->cl = $conexionBD;
             
         }
@@ -89,8 +89,6 @@ if(isset($_REQUEST['compra'])){
           
           }
 
-        
-       
         public function borrarUsuario(){
 
 
@@ -105,16 +103,18 @@ if(isset($_REQUEST['compra'])){
             $this->cl->close();
         }
 
+        public function DetalleCliente(){
 
-    }
-
-    $conexion = mysqli_connect('localhost','root','','proyecto') or 
-        die ("problemas en la conexion" . mysqli_error($conexion));
-
-        if(isset($_SESSION['cMail'])){
-            $registroCliente = mysqli_query($conexion,"select * from cliente where clienteEmail ='$_SESSION[cMail]'") 
-            or die ("problemas en el select" . mysqli_error($conexion));
+            $registroCliente = $this->cl->query("SELECT * FROM cliente WHERE clienteEmail ='$_SESSION[cMail]'") 
+            or die ("problemas en el select" );
+    
+            return $registroCliente;
+    
         }
+
+    } 
+
+        
 
         
 

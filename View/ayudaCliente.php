@@ -2,13 +2,6 @@
 session_start();
 ?>
 
-
-<?php 
-    $conexion = mysqli_connect("localhost","root","","proyecto") 
-    or die ("problemas con la conexion");
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

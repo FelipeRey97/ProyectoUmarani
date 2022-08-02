@@ -9,6 +9,7 @@ or die ("problemas con la conexion");
         private $res;
         private $pqrsId;
         private $mensaje;
+        
 
 
         public function __construct(){
@@ -47,7 +48,30 @@ or die ("problemas con la conexion");
             $this->res->query("UPDATE resolucion SET resolucionMensaje = '$mensaje', resolucionFecha = '$fecha', resolucionUsuarioId = $usuarioId
             WHERE resolucionId = $pqrsId");
         }
+        public function DetalleResolucion($id){
 
+            $resoluciondatos = $this->res->query("SELECT * FROM resolucion
+            JOIN pqrs
+            ON pqrsId = resolucionpqrsId
+            JOIN pqrstipo
+            ON pqrsTipoId = pqrsOrigenId
+            WHERE resolucionId = $id")
+            or die("problemas en el select");
+
+            return $resoluciondatos;
+
+        }
+        public function DetalleUsuario($id){
+
+            $resolucionUsuario = $this->res->query("SELECT * FROM resolucion
+            JOIN usuariotienda
+            ON usuarioId = resolucionUsuarioId
+            WHERE resolucionId = $id");
+
+            return $resolucionUsuario;
+
+        }
+ 
 
 
     }

@@ -84,7 +84,7 @@
     $res = mysqli_fetch_array($resultado);
     $cantidad = $res['cantidad'];
 
-    $registrosxpagina = $con1->artporpag;
+    $registrosxpagina = $con1->artporpag; 
 
 // se almacenan los datos de la funcion verUsuario() que contiene select en la variable $usuarios
  

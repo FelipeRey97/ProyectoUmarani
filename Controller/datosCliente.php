@@ -2,6 +2,10 @@
 
     require_once('../Model/M_Clientes.php');
 
+    $client = new clientes ();
+
+    $registroCliente = $client->DetalleCliente();
+
     if(isset($registroCliente)){
 
         while ($reg = mysqli_fetch_array($registroCliente)){
@@ -22,5 +26,5 @@
     }
    
 
-
+ 
 ?>

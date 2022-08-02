@@ -8,6 +8,8 @@
             public $artporpag;
             private $sentencia;
             private $mail;
+            private $id;
+
         public function __construct()
         {
 
@@ -104,6 +106,19 @@
 
             $this->pqrs->query("UPDATE pqrs SET pqrsEstado = 'Atendida' 
             WHERE pqrsId = $id");
+
+        }
+        public function verDetallePQRS($id){
+
+            $this->id = $id;
+            $id = $this->id;
+            $detallepqrs =  $this->pqrs->query("SELECT * FROM pqrs
+            JOIN pqrstipo
+            ON pqrsTipoId = pqrsOrigenId
+            WHERE pqrsId = $id")
+            or die("problemas en el select");
+
+            return $detallepqrs;
 
         }
 

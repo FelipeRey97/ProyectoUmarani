@@ -2,7 +2,7 @@
 session_start();
 $sesionId= session_id();
 // require "../Controller/FinalizarCompra.php";
-require('../Controller/vercarrito.php');
+require('../Controller/carrito.php');
 
 
 ?>

@@ -1,7 +1,18 @@
 <?php
+session_start();
 $sesionId= session_id();
+
+if(isset($_SESSION['cMail'])){
+
+}else{
+
+
+   header("location: ../View/iniciarSesion.php");
+    
+
+}
 require_once('../Controller/datosCliente.php');
-require_once('../Controller/vercarrito.php');
+require_once('../Controller/carrito.php');
 require_once("../Controller/buscador.php");
 include_once("../Controller/actualizarDatosCliente.php");
 ?>
@@ -43,7 +54,7 @@ include_once("../Controller/actualizarDatosCliente.php");
         <div class="middle">
         <?php 
         $total = 0;
-        while($dat = mysqli_fetch_array($datos)) {  
+        while($datos as $dat) {  
 
             
         ?>

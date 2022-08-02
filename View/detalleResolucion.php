@@ -9,7 +9,7 @@ session_start();
 // se valida la sesion del usuario, en caso de no tener sesion sera redirigido al login
     if($_SESSION['doc'] == false){
 
-        header("Location: http://localhost/UmaraniWeb/View/loginUsuario.php");
+        header("Location: ../View/loginUsuario.php");
     }
 
 ?>
@@ -83,7 +83,6 @@ session_start();
                         <p><b>Usuario:</b> <?php if(isset($usuario)) { echo"$usuario"; } else{ echo ""; }?> </p><br>
                         <p><b>Respuesta Adjunta:  <?php if(isset($usuario)) { ?> <a class="cancel" href="../Controller/imprimirResolucion.php?rId=<?php echo "$pId" ?>"><i class="fas fa-file-pdf"></i></a> </b></p> <?php } else{ echo ""; }?> 
 
-                    
                 </table>
                 <nav class="paginacion">
 

@@ -120,15 +120,11 @@ else{
 
 $regFacturas = $fact1->verFacturas();
 
-$resultado = mysqli_query($conexionFactura,"SELECT COUNT(*) AS cantidad FROM factura
-JOIN tipoPago
-ON tipoPagoId = factura_tipoPagoId
-$where")
-or die("problemas en el select" . mysqli_error($conexionFactura));
+$resultado = $fact1->contarRegistros($where);
 
 $res = mysqli_fetch_array($resultado);
 $cantidad = $res['cantidad'];
 
-$registrosxpagina = $fact1->artporpag;
+$registrosxpagina = $fact1->artporpag; 
  
 ?> 

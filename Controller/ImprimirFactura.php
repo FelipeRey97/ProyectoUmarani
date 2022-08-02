@@ -21,7 +21,7 @@ $content = mysqli_query($conexionFactura,"SELECT * FROM factura
 JOIN impuesto
 ON impuestoId = facturaImpuestoId
 WHERE facturaId = $_REQUEST[factId]");
-
+ 
 
 class PDF extends FPDF
 {

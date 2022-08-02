@@ -130,7 +130,7 @@ if(isset($_GET['pagina'])){
                         <label for=""> Departamento: </label>
                         <select name="dpto" id="">Estado
                             <option value="">Seleccione</option>
-                           <?php while($dep = mysqli_fetch_array($fila)){
+                           <?php foreach($fila as $dep){
                             ?>
                             <option value="<?php echo "$dep[dptoNombre]" ?>"><?php echo "$dep[dptoNombre]" ?> </option>
                        <?php } ?>

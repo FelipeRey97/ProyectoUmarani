@@ -66,6 +66,6 @@ $where")
     $res = mysqli_fetch_array($resultado);
     $cantidad = $res['cantidad'];
 
-$registrosxpagina = $listarCliente->artporpag;
+$registrosxpagina = $listarCliente->artporpag; 
 
 ?> 

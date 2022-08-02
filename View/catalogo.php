@@ -2,7 +2,7 @@
 session_start();
 $sesionId= session_id();
 require "../Controller/mostrarCatalogo.php";
-require('../Controller/vercarrito.php');
+require('../Controller/carrito.php');
 require_once("../Controller/buscador.php");
 ?>
 
@@ -43,8 +43,7 @@ require_once("../Controller/buscador.php");
                     <div class="middle">
                     <?php 
                     $total = 0;
-                    while($dat = mysqli_fetch_array($datos)) {  
-
+                    foreach($datos as $dat) {  
                         
                     ?>
                         <div class="contenedor kartItem">

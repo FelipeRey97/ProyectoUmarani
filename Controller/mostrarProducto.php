@@ -65,15 +65,11 @@ else {
 
     $productos = $prod1->verInventario();
  
-    $resultado = mysqli_query($conexion1,"SELECT COUNT(*) AS cantidad FROM articulo 
-    JOIN categoria
-    ON categoriaId = artCategoriaId
-    $where")
-    or die("problemas en el select" . mysqli_error($conexion1));
+    $resultado = $prod1->ContarRegistros($where);
 
     $res = mysqli_fetch_array($resultado);
     $cantidad = $res['cantidad'];
     
     
-
+ 
 ?> 

@@ -9,7 +9,7 @@
         public function __construct(){
 
 
-            require_once('../Model/ConexionBD.php');
+            require('../Model/ConexionBD.php');
             $this->car = $conexionBD;
 
 
@@ -48,6 +48,23 @@
                 VALUES ('$sesionId',$artId,$Cant)") or die ("problemas en el insert" . mysqli_error($conexion1));
             
             }
+
+        }
+        public function mostrarCarrito($sesionId){
+
+            $query = $this->car->query("SELECT * FROM carrito 
+            JOIN articulo 
+            ON articuloId = artId
+            WHERE sesionId = '$sesionId'") or die("problemas en el select");
+
+            $datos = [];
+            $i = 0;
+            while($fila = $query->fetch_assoc()) {
+
+                $datos[$i] = $fila;
+                $i++;
+            }
+            return $datos;
 
         }
 

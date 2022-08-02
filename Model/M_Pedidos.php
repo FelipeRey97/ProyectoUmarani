@@ -12,7 +12,7 @@
         public function __construct()
         {
 
-            require_once('../Model/ConexionBD.php');
+            require('../Model/ConexionBD.php');
             $this->ped = $conexionBD;
             
         }
@@ -77,14 +77,24 @@
  
             
            }
+           public function contarRegistros($where){
 
+            $resultado =  $this->ped->query("SELECT COUNT(*) AS cantidad FROM pedido
+            JOIN direccionPedido
+            ON pedidoDireccionId = direccionId
+            $where")
+            or die("problemas en el select");
+
+            return $resultado;
+
+        }
 
         public function cerrarConexion(){
 
             $this->ped->close();
         }
 
-
+ 
     }
 
     $conexionPedido = mysqli_connect("localhost","root","","proyecto") 

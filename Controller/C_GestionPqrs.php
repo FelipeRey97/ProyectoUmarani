@@ -2,16 +2,17 @@
 
 
 require_once('../Model/M_PQRS.php');
+require_once('../Model/M_resolucion.php');
+
+$dPqrs = new PQRS ();
+$resol = new Resolucion();
 
 if(isset($_REQUEST['pqEdit'])){
 
 $id = $_REQUEST['pqEdit'];
 
-$detallepqrs = mysqli_query($conexionPqrs,"SELECT * FROM pqrs
-JOIN pqrstipo
-ON pqrsTipoId = pqrsOrigenId
-WHERE pqrsId = $id")
-or die("problemas en el select" . mysqli_error($conexionPqrs));
+$detallepqrs =$dPqrs->verDetallePQRS($id);
+
 
 while($det = mysqli_fetch_array($detallepqrs)){
 
@@ -27,13 +28,7 @@ while($det = mysqli_fetch_array($detallepqrs)){
     $descripcion = $det['pqrsDescripcion']; 
 }
 
-$resoluciondatos = mysqli_query($conexionPqrs,"SELECT * FROM resolucion
-JOIN pqrs
-ON pqrsId = resolucionpqrsId
-JOIN pqrstipo
-ON pqrsTipoId = pqrsOrigenId
-WHERE resolucionId = $id")
-or die("problemas en el select" . mysqli_error($conexionPqrs));
+  $resoluciondatos = $resol->DetalleResolucion($id);
 
     if(isset($resoluciondatos)){
         
@@ -43,46 +38,26 @@ or die("problemas en el select" . mysqli_error($conexionPqrs));
         
         }
 
-$resolucionusuario = mysqli_query($conexionPqrs,"SELECT * FROM resolucion
-JOIN usuariotienda
-ON usuarioId = resolucionUsuarioId
-WHERE resolucionId = $id");
-}
+$resolucionusuario = $resol->DetalleUsuario($id); 
 
 if(isset($resolucionusuario)){
 
     while($datosU = mysqli_fetch_array($resolucionusuario)) {
-    {
+    
         $usuarioId = $datosU['usuarioId'];
         $usuario = $datosU['usuarioNombre'] . " " . $datosU['usuarioApellido'];
-
-    }
         
-       
         }
-
-
 }
 
-
+}
 
 
 if(isset($_REQUEST['pqVis'])){
 
     $id = $_REQUEST['pqVis'];
     
-    $detallepqrs = mysqli_query($conexionPqrs,"SELECT * FROM pqrs
-    JOIN pqrstipo
-    ON pqrsTipoId = pqrsOrigenId
-    WHERE pqrsId = $id")
-    or die("problemas en el select" . mysqli_error($conexionPqrs));
-
-    $detalleResolucion = mysqli_query($conexionPqrs,"SELECT * FROM resolucion
-    JOIN usuarioTienda
-    ON usuarioId = resolucionUsuarioId
-    JOIN pqrs
-    ON pqrsId = resolucionpqrsId
-    WHERE resolucionpqrsId = $id") or die ("problemas en el select" . mysqli_error($conexionPqrs));
+    $detallepqrs =$dPqrs->verDetallePQRS($id);
     
     while($det = mysqli_fetch_array($detallepqrs)){
     
@@ -97,8 +72,9 @@ if(isset($_REQUEST['pqVis'])){
         $imagen = $det['pqrsImagen'];
         $descripcion = $det['pqrsDescripcion'];
 
-
     }
+
+    $detalleResolucion = $resol->DetalleUsuario($id); 
 
     while($dat = mysqli_fetch_array($detalleResolucion)){
 
