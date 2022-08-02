@@ -1,28 +1,20 @@
 <?php
 require('../fpdf/fpdf.php');
 require('../Model/M_facturas.php');
+require('../Model/M_art_ped_factura.php');
 
-$registros = mysqli_query($conexionFactura,"SELECT * FROM factura 
-JOIN cliente
-ON facturaClienteId = clienteId
-WHERE facturaId = $_REQUEST[factId]");
+$id = $_REQUEST['factId'];
 
+$fac1 = new Factura();
+$art_p_fact = new articuloPorFactura();
 
-$contenido = mysqli_query($conexionFactura,"SELECT * FROM productoporfactura 
-JOIN articulo
-ON prodFact_ArtId = artId
-JOIN factura
-ON facturaId = prodFact_FactId
-JOIN impuesto
-ON impuestoId = facturaImpuestoId
-WHERE prodFact_FactId = $_REQUEST[factId]");
-
-$content = mysqli_query($conexionFactura,"SELECT * FROM factura 
-JOIN impuesto
-ON impuestoId = facturaImpuestoId
-WHERE facturaId = $_REQUEST[factId]");
+//DATOS PARA LA CABECERA DE LA FACTURA
+$registros = $fac1->cabeceraFactura($id);
+// DATOS PARA EL CUERPO DE LA FACTURA
+$contenido = $art_p_fact->cuerpoFactura($id);
+// DATOS PARA EL DESGLOSE DE PRECIOS EN LA FACTURA
+$content = $fac1->preciosFactura($id);
  
-
 class PDF extends FPDF
 {
 // Cabecera de página
@@ -30,7 +22,7 @@ function Header()
 {
     // Logo
     
-    
+     
 }
 
 

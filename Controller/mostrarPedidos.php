@@ -238,7 +238,7 @@ $res = mysqli_fetch_array($resultado);
 $cantidad = $res['cantidad'];
 
 $dpto1 = new DPTO();
-$fila = $dpto1->mostrarDpto();
+$fila = $dpto1->mostrarDpto(); 
 
 $registrosxpagina = $ped2->artporpag;
  

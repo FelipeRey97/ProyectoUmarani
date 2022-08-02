@@ -41,7 +41,7 @@ require('../Controller/carrito.php');
                     <div class="middle">
                     <?php 
                     $total = 0;
-                    while($dat = mysqli_fetch_array($datos)) {  
+                    foreach($datos as $dat) {  
 
                         
                     ?>

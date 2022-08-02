@@ -124,7 +124,7 @@ $resultado = $fact1->contarRegistros($where);
 
 $res = mysqli_fetch_array($resultado);
 $cantidad = $res['cantidad'];
-
+ 
 $registrosxpagina = $fact1->artporpag; 
  
 ?> 

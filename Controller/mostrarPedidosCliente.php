@@ -11,11 +11,6 @@ $conexion = mysqli_connect('localhost','root','','proyecto') or
         ON clienteId = pedidoClienteId
         WHERE clienteEmail ='$_SESSION[cMail]'") 
         or die ("problemas en el select" . mysqli_error($conexion));
-
-        
-    
  
-
-
 
 ?>

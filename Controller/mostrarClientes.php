@@ -68,4 +68,4 @@ $where")
 
 $registrosxpagina = $listarCliente->artporpag; 
 
-?> 
+?>  

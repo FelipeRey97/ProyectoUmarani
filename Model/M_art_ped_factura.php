@@ -21,6 +21,19 @@
 
 
         }
+        public function cuerpoFactura($id){
+
+            $resultado = $this->artxfact->query("SELECT * FROM productoporfactura 
+            JOIN articulo
+            ON prodFact_ArtId = artId
+            JOIN factura
+            ON facturaId = prodFact_FactId
+            JOIN impuesto
+            ON impuestoId = facturaImpuestoId
+            WHERE prodFact_FactId = $id");
+
+            return $resultado;
+        }
 
     }
 

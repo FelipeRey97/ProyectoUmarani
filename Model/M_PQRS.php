@@ -13,7 +13,7 @@
         public function __construct()
         {
 
-            require_once('../Model/ConexionBD.php');
+            require('../Model/ConexionBD.php');
             $this->pqrs = $conexionBD;
             
         }  
@@ -57,6 +57,23 @@
              or die ("problemas en el insert" .mysqli_error($pqrs));
 
             
+        }
+        public function obtenerIdPqrs(){
+
+        $resultado = $this->pqrs->query("SELECT * FROM pqrs 
+        JOIN pqrstipo
+        ON pqrsOrigenId = pqrsTipoId
+        WHERE pqrsId IN (SELECT max(pqrsId) FROM pqrs)");
+
+        $retorno = [];
+        $i = 0;
+        while($fila = $resultado->fetch_assoc()) {
+
+            $retorno[$i] = $fila;
+            $i++;
+        }
+        return $retorno;
+
         }
 
         public function verPqrs(){

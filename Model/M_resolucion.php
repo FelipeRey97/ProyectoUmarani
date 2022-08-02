@@ -71,9 +71,16 @@ or die ("problemas con la conexion");
             return $resolucionUsuario;
 
         }
+        public function obtenerFecha($id){
+
+            $fecha = $this->res->query("SELECT MONTH(resolucionFecha), YEAR(resolucionFecha), DAY(resolucionFecha) FROM resolucion
+            WHERE resolucionId = $id") 
+            or die("problemas en el select");
+
+            return $fecha;
+
+        }
  
-
-
     }
 
 

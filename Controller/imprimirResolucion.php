@@ -3,19 +3,13 @@
 require('../fpdf/fpdf.php');
 require('../Model/M_resolucion.php');
 
+$resol1 = new resolucion();
+
 $id = $_REQUEST['rId'];
-
-$datos = mysqli_query($conexion,"SELECT * FROM resolucion
-JOIN pqrs 
-ON pqrsId = resolucionpqrsId
-WHERE resolucionId = $id")
-or die ("problemas en el select" . mysqli_error($conexion));
-
- 
-
-$obtenerMes = mysqli_query($conexion,"SELECT MONTH(resolucionFecha), YEAR(resolucionFecha), DAY(resolucionFecha) FROM resolucion
-WHERE resolucionId = $id") 
-or die("problemas en el select" . mysqli_error($conexion));
+// SE EXTRAEN LOS DATOS DE LA RESPUESTA A LA PQRS.
+$datos = $resol1->DetalleResolucion($id);
+// SE EXTRAE LA FECHA PARA LA CABECERA DE LA CARTA.
+$obtenerMes = $resol1->obtenerFecha($id);
 
 while($date = mysqli_fetch_array($obtenerMes)){
 

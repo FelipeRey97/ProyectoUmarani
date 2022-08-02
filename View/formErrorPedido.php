@@ -44,7 +44,7 @@ include_once('../Controller/formGarantia2.php');
                 <div class="middle">
                 <?php 
                 $total = 0;
-                foreach($datos = $dat) {  
+                foreach($datos as $dat) {  
 
                     
                 ?>

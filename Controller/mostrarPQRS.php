@@ -147,6 +147,6 @@ $reg = mysqli_fetch_array($resultado);
 
 $cantidad = $reg['cantidad'];
 
-$registrosxpagina = $pq1->artporpag;
+$registrosxpagina = $pq1->artporpag; 
 
 ?>  

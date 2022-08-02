@@ -10,6 +10,6 @@ $sesionId= session_id();
     JOIN articulo 
     ON articuloId = artId
     WHERE sesionId = '$sesionId'") or die("problemas en el select" . mysqli_error($conexion4));
-
+ 
  
 ?>

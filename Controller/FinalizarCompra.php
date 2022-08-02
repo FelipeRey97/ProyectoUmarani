@@ -79,14 +79,16 @@ foreach ($articulos as $art){
 
     $apf_object->guardarDatos($articuloId,$idFactura,$cantidad,$precio);
 
-    //SE RESTAN LOS ARTICULOS COMPRADOS DE LA CANTIDAD DISPONIBLE EN EL INVENTARIO
+    //SE RESTAN LOS ARTICULOS COMPRADOS DE LA CANTIDAD DISPONIBLE EN EL INVENTARIO.
 
     $prodCompra->DescontarInventario($cantActual,$cantidad,$articuloId);
+
+    //AL FINALIZAR LA COMPRA, SE LIBERA EL CARRITO DE COMPRAS.
     
+    $car2->borrarCarrito($articuloId,$sesionId);
 }
 
 ?>
-
 
 <script>
          swal("Operación Realizada", "Se ha realizado la Compra!", "success");

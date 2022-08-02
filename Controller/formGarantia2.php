@@ -127,13 +127,12 @@ case 1:
         swal("Operación Realizada", "Se ha generado la Petición Satisfactoriamente!", "success");
     </script>
     <?php
-    
-        $leerPqrs = mysqli_query($conexionPqrs,"SELECT * FROM pqrs 
-        JOIN pqrstipo
-        ON pqrsOrigenId = pqrsTipoId
-        WHERE pqrsId IN (SELECT max(pqrsId) FROM pqrs)");
 
-        while($lpqrs = mysqli_fetch_array($leerPqrs)){
+    //SE OBTIENE EL ID DE LA PQRS GENERADA
+    
+        $leerPqrs = $pq->obtenerIdPqrs();
+
+        foreach($leerPqrs as $lpqrs){
 
             $pqrsId = $lpqrs['pqrsId'];
             $pqrsTipo = $lpqrs['pqrsTipoNombre'];
@@ -159,7 +158,7 @@ case 1:
     
 case 2:
 
-
+ 
     if(isset($_REQUEST['pNombre']) && $_REQUEST['pNombre'] != "" && preg_match("/^[A-Za-z ]{3,100}$/",$_REQUEST['pNombre'])){
         
         $pNombre = htmlentities($_REQUEST['pNombre']);
@@ -250,12 +249,9 @@ case 2:
     
         <?php
 
-        $leerPqrs = mysqli_query($conexionPqrs,"SELECT * FROM pqrs 
-        JOIN pqrstipo
-        ON pqrsOrigenId = pqrsTipoId
-        WHERE pqrsId IN (SELECT max(pqrsId) FROM pqrs)");
+        $leerPqrs = $pq->obtenerIdPqrs();
 
-        while($lpqrs = mysqli_fetch_array($leerPqrs)){
+        foreach($leerPqrs as $lpqrs){
 
             $pqrsId = $lpqrs['pqrsId'];
             $pqrsTipo = $lpqrs['pqrsTipoNombre'];
@@ -372,12 +368,11 @@ case 3:
         
         <?php
 
-        $leerPqrs = mysqli_query($conexionPqrs,"SELECT * FROM pqrs 
-        JOIN pqrstipo
-        ON pqrsOrigenId = pqrsTipoId
-        WHERE pqrsId IN (SELECT max(pqrsId) FROM pqrs)");
+        //SE OBTIENE EL ID DE LA PQRS GENERADA
+    
+        $leerPqrs = $pq->obtenerIdPqrs();
 
-        while($lpqrs = mysqli_fetch_array($leerPqrs)){
+        foreach($leerPqrs as $lpqrs){
 
             $pqrsId = $lpqrs['pqrsId'];
             $pqrsTipo = $lpqrs['pqrsTipoNombre'];

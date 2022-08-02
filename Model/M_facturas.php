@@ -82,6 +82,26 @@
 
             $this->fact->close();
         }
+        public function cabeceraFactura($id){
+
+            $resultado = $this->fact->query("SELECT * FROM factura 
+            JOIN cliente
+            ON facturaClienteId = clienteId
+            WHERE facturaId = $id");
+
+            return $resultado;
+
+        }
+        public function preciosFactura($id){
+
+            $resultado = $this->fact->query("SELECT * FROM factura 
+            JOIN impuesto
+            ON impuestoId = facturaImpuestoId
+            WHERE facturaId = $id");
+
+            return $resultado;
+
+        }
 
         public function contarRegistros($where){
 
