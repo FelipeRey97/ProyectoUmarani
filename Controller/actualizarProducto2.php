@@ -11,9 +11,18 @@
 <body>
                 <?php 
 
+
+require('../Model/M_Productos4.php');
+
+$prod2 = new Producto();
+
+$arId = $_REQUEST['aId'];
+
+$registros = $prod2->DetalleArticulo($arId);
+
         if(isset($_REQUEST['registrar'])){
                 
-                require('../Model/M_Productos4.php');
+                
 
                 // Se obtiene el nombre de la imagen y el nombre de la imagen temporal
                  // se crea la ruta de la carpeta donde se guarda la imagen
@@ -31,7 +40,6 @@
                     $ruta= $_REQUEST['rutaActual'];
                 }
 
-                $prod2 = new Producto();
                 // Se valida que los formularios del nuevo producto no se envien vacios
                 $artId = htmlentities($_REQUEST['aId']);
 

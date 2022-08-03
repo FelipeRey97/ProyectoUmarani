@@ -69,12 +69,9 @@ session_start();
                 </div>
                 <table>
                      <?php
-                        
+                         
                         //obtencion de datos para precargar los datos en el formulario de edicion.
-                        $conexion = mysqli_connect("localhost","root","","proyecto");
-
-                        $registros = mysqli_query($conexion,"select * from usuariotienda join rol
-                        on rolId = usuarioRolId where usuarioId = '$_REQUEST[tabla]' ");
+                        
                         
                     if($registros){
 

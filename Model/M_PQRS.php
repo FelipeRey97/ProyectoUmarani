@@ -160,7 +160,5 @@
 
     }
 
-    $conexionPqrs = mysqli_connect("localhost","root","","proyecto");
-
 
 ?>

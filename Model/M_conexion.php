@@ -95,6 +95,15 @@
 
 
           }
+          public function obtenerDatosUsuario($id){
+
+           $datos = $this->con->query("SELECT * FROM usuariotienda 
+            JOIN rol
+            on rolId = usuarioRolId where usuarioId = $id");
+
+            return $datos;
+
+          }
 
         public function borrarUsuario(){
 
@@ -123,9 +132,6 @@
 
 
     }
-
-    $conexionUsuario = mysqli_connect("localhost","root","","proyecto") 
-    or die("problemas con la conexion");
 
 
 ?>

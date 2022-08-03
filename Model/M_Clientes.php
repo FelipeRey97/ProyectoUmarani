@@ -1,11 +1,4 @@
 
-<?php
-// session_start();
-
-  
-?>
-
-
 <?php 
 
     class Clientes {

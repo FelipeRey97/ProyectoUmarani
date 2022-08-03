@@ -15,6 +15,10 @@ require('../Model/M_conexion.php');
 
 $con2 = new Conexion(); 
 
+$id = $_REQUEST['tabla'];
+
+ $registros = $con2->obtenerDatosUsuario($id);
+
     //control para actualizacion de usuario, se añaden condiciones para controlar los formularios
 
 if(isset($_REQUEST['registrar'])){

@@ -124,8 +124,11 @@
         }
         public function DetalleArticulo($arId){
 
-            $detalleProducto = $this->prod->query("SELECT * FROM articulo WHERE artId = '$arId' ") 
+            $detalleProducto = $this->prod->query("SELECT * FROM articulo
+            JOIN categoria
+            ON artCategoriaId = categoriaId WHERE artId = '$arId' ") 
             or die ("problemas en el select");
+
 
             return $detalleProducto;
         }

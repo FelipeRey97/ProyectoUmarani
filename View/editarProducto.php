@@ -56,14 +56,9 @@ session_start();
         <section class="section">
             <div class="container">
             <?php
- 
-                $conexion = mysqli_connect("localhost","root","","proyecto");
-
-                $registros = mysqli_query($conexion,"select * from articulo join categoria
-                on artCategoriaId = categoriaId where artId = '$_REQUEST[aId]' ");
 
                 if($registros){
-
+ 
 
                 while($reg = mysqli_fetch_array($registros)){
 
