@@ -44,7 +44,7 @@ require_once("../Controller/buscador.php");
     <?php 
     $total = 0;
     foreach($datos as $dat) {  
- 
+  
     ?>
         <div class="contenedor kartItem">
         
@@ -58,7 +58,7 @@ require_once("../Controller/buscador.php");
                     <form action="" class="cantidad">
                         <label for="">Cantidad:</label>
                         <p class="quantity">   <?php echo "$dat[artCarroCant]" ?></p>
-                            <a class= "delete" href="../Controller/borrarCarrito.php?artId=<?php echo "$dat[artId]"?>&sesionId=<?php echo "$sesionId" ?>"><i class="far fa-window-close"></i></a>
+                            <a class= "delete" href=".../Controller/carrito.php?delete=1&artId=<?php echo "$dat[artId]"?>&sesionId=<?php echo "$sesionId" ?>"><i class="far fa-window-close"></i></a>
                     </form>
 
         </div> 
@@ -176,7 +176,7 @@ require_once("../Controller/buscador.php");
 
            <?php  
                 $totalpagar = 0;
-                 while($check = mysqli_fetch_array($checkout)) { 
+                 foreach($checkout as $check) { 
            
            ?>
                <div class="articleContainer">

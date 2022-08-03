@@ -1,6 +1,25 @@
 <?php
-
+session_start();
 $sesionId= session_id();
+if(isset($_SESSION['cMail'])){
+
+}else{
+
+if(isset($_REQUEST['compra'])){
+    if($_REQUEST['compra'] == 1){
+        $valor= 1;
+        header("refresh:20;url=../View/iniciarSesion.php?valor=$valor");
+        }
+        else{
+
+            header("refresh:20;url=..View/iniciarSesion.php?valor=0");
+        }
+
+    }else{
+         //header("location: ../View/iniciarSesion.php");
+    }
+
+}
 require_once("../controller/verCheckout.php");
 require('../Controller/carrito.php');
 require_once("../Controller/buscador.php");
@@ -18,7 +37,7 @@ include_once("../Controller/registrarse2.php");
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 
-<body>
+<body> 
 
 <link rel="stylesheet" href="../CSS/registrarse.css">
 <script src="https://kit.fontawesome.com/f243ce0afc.js" crossorigin="anonymous"></script>

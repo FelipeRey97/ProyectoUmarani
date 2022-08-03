@@ -109,6 +109,17 @@
 
             $this->con->close();
         }
+        public function contrarRegistros($where){
+
+
+            $datos = $this->con->query("SELECT COUNT(*) AS cantidad FROM usuariotienda
+            JOIN rol
+            ON usuarioRolId = rolId
+            $where")
+            or die("problemas en el select" . mysqli_error($conexionUsuario));
+
+            return $datos;
+        }
 
 
     }

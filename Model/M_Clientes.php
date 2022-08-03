@@ -1,25 +1,7 @@
 
 <?php
 // session_start();
-if(isset($_SESSION['cMail'])){
 
-}else{
-
-if(isset($_REQUEST['compra'])){
-    if($_REQUEST['compra'] == 1){
-        $valor= 1;
-        header("refresh:20;url=../View/iniciarSesion.php?valor=$valor");
-        }
-        else{
-
-            header("refresh:20;url=..View/iniciarSesion.php?valor=0");
-        }
-
-    }else{
-         //header("location: ../View/iniciarSesion.php");
-    }
-
-}
   
 ?>
 
@@ -97,7 +79,7 @@ if(isset($_REQUEST['compra'])){
          where clienteEmail = '$usuario' and clienteContraseña = '$contraseña'");
 
          return $datos;
-
+ 
         }
 
         public function cerrarConexion(){

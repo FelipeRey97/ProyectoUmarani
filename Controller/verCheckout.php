@@ -1,15 +1,10 @@
 <?php
-$sesionId= session_id();
 
+    require_once('../Model/M_carrito.php');
 
+    $checkCar = new Carrito ();
 
-    $conexion4 = mysqli_connect("localhost","root","","proyecto")
-    or die ("problemas con la conexion");
-
-    $checkout = mysqli_query($conexion4,"SELECT * FROM carrito 
-    JOIN articulo 
-    ON articuloId = artId
-    WHERE sesionId = '$sesionId'") or die("problemas en el select" . mysqli_error($conexion4));
- 
+    $checkout = $checkCar->mostrarCarrito($sesionId);
   
+   
 ?>

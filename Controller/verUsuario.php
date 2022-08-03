@@ -71,15 +71,11 @@
 
         $where="";
         $con1->filtrar($where);
-    }
+    } 
 
     $usuarios = $con1->verUsuario();
 
-    $resultado = mysqli_query($conexionUsuario,"SELECT COUNT(*) AS cantidad FROM usuariotienda
-    JOIN rol
-    ON usuarioRolId = rolId
-    $where")
-    or die("problemas en el select" . mysqli_error($conexionUsuario));
+    $resultado = $con1->contrarRegistros($where);
 
     $res = mysqli_fetch_array($resultado);
     $cantidad = $res['cantidad'];

@@ -59,7 +59,7 @@ require('../Controller/carrito.php');
                         <form action="" class="cantidad">
                             <label for="">Cantidad:</label>
                             <p class="quantity">   <?php echo "$dat[artCarroCant]" ?></p>
-                                <a class= "delete" href="../Controller/borrarCarrito.php?artId=<?php echo "$dat[artId]"?>&sesionId=<?php echo "$sesionId" ?>"><i class="far fa-window-close"></i></a>
+                                <a class= "delete" href="../Controller/carrito.php?delete=1&artId=<?php echo "$dat[artId]"?>&sesionId=<?php echo "$sesionId" ?>"><i class="far fa-window-close"></i></a>
                         </form>
 
             </div> 

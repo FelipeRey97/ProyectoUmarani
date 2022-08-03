@@ -80,7 +80,7 @@
                 <script>
                 swal("Atención", "Por favor verifique el E-mail", "warning");
                 </script>
-                <?php
+                <?php 
             }
             if(isset($_REQUEST['cClave'])){
                 
