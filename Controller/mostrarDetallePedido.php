@@ -1,6 +1,9 @@
 <?php
 
-require('../Model/M_Pedidos.php');
+require_once('../Model/M_Pedidos.php');
+require_once('../Model/M_facturas.php');
+require_once('../Model/M_art_ped_factura.php');
+require_once('../Model/M_despacho.php');
 
 if(isset($_REQUEST['ped']) || isset($_REQUEST['rect'])){
 
@@ -12,38 +15,33 @@ if(isset($_REQUEST['rect'])){
 
     $id=  $_REQUEST['ped'];
 }
- 
- 
-$datosPedido = mysqli_query($conexionPedido,"SELECT * FROM factura
-JOIN cliente 
-ON clienteId = facturaClienteId
-WHERE facturaId = $id") 
-or die("Problemas en el select" . mysqli_error($conexionPedido));
+
+$fact2 = new Factura();
+
+//DATOS DEL CLIENTE EN EL PEDIDO
+
+$datosPedido = $fact2->cabeceraFactura($id);
 
 while($datped = mysqli_fetch_array($datosPedido)){
 
     $nombre = $datped['clienteNombre'];
     $apellido = $datped['clienteApellido'];
-    $documento = $datped['facturaClienteDoc'];
+    $documento = $datped['facturaClienteDoc']; 
     $direccion = $datped['facturaClienteDireccion'];
     $telefono = $datped['clienteTelefono'];
     $mail = $datped['clienteEmail'];
     
 }
 
-$detallePedido = mysqli_query($conexionPedido,"SELECT * FROM productoporpedido
-JOIN pedido
-ON pedidoId = prodPed_pedidoId
-JOIN articulo
-ON artId = prodPed_artId
-WHERE pedidoId= $id") 
-or die("Problemas en el select" . mysqli_error($conexionPedido));
+$artxped1 = new articuloPorPedido();
 
-$empresaenvio = mysqli_query($conexionPedido,"SELECT * FROM empresaenvio");
+$detallePedido = $artxped1->detallePedido($id);
 
-
+$desp1 = new Despacho();
+$empresaenvio = $desp1->verEmpresaEnvio();
 
 }
+
 
 if(isset($_REQUEST['vis']) || isset($_REQUEST['rect']) ){
 
@@ -57,11 +55,11 @@ if(isset($_REQUEST['vis']) || isset($_REQUEST['rect']) ){
         
     }
 
-$datosPedido = mysqli_query($conexionPedido,"SELECT * FROM factura
-JOIN cliente 
-ON clienteId = facturaClienteId
-WHERE facturaId = $id") 
-or die("Problemas en el select" . mysqli_error($conexionPedido));
+    $fact2 = new Factura();
+
+    //DATOS DEL CLIENTE EN EL PEDIDO
+    
+    $datosPedido = $fact2->cabeceraFactura($id);
 
 while($datped = mysqli_fetch_array($datosPedido)){
 
@@ -74,25 +72,14 @@ while($datped = mysqli_fetch_array($datosPedido)){
     
 }
 
-$detallePedido = mysqli_query($conexionPedido,"SELECT * FROM productoporpedido
-JOIN pedido
-ON pedidoId = prodPed_pedidoId
-JOIN articulo
-ON artId = prodPed_artId
-WHERE pedidoId= $id") 
-or die("Problemas en el select" . mysqli_error($conexionPedido));
+$artxped1 = new articuloPorPedido();
 
-$empresaenvio = mysqli_query($conexionPedido,"SELECT * FROM empresaenvio");
+$detallePedido = $artxped1->detallePedido($id);
 
-$datosDespacho = mysqli_query($conexionPedido,"SELECT * FROM  pedido
-JOIN despacho
-ON  pedidoId = despachoPedidoId 
-JOIN usuariotienda 
-ON usuarioId = despachoUsuarioId
-JOIN empresaenvio
-ON despachoEmpresaId = empresaId
-WHERE despachoPedidoId = $id") 
-or die("Problemas en el select" . mysqli_error($conexionPedido));
+$desp1 = new Despacho();
+$empresaenvio = $desp1->verEmpresaEnvio();
+
+$datosDespacho = $desp1->mostrarDatosDespacho($id);
 
 while($desp = mysqli_fetch_array($datosDespacho)){
 
@@ -106,17 +93,7 @@ while($desp = mysqli_fetch_array($datosDespacho)){
 }
 
 
-
-
-
-
 }
-
-
-
-
-
-
 
 
 ?>

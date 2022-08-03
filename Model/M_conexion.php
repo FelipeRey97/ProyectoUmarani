@@ -80,13 +80,22 @@
 
            $this->con->query("UPDATE usuariotienda SET  usuarioNombre = '$unombre' ,usuarioApellido = '$uapellido',
            usuarioContraseña = '$ucontraseña',usuarioEstado = '$uestado',usuarioRolId = $urol
-           WHERE usuarioId = $usuarioId ") or die ("problemas en el select " . mysqli_error($con));
+           WHERE usuarioId = $usuarioId ") or die ("problemas en el select");
 
            
           }
+          public function validarUsuario($usuario,$contraseña){
 
-        
-       
+
+            $datos = $this->con->query("SELECT*FROM usuariotienda join rol
+            on rolId = usuarioRolId
+            where usuarioDoc = '$usuario' and usuarioContraseña = '$contraseña'");
+
+            return $datos;
+
+
+          }
+
         public function borrarUsuario(){
 
 

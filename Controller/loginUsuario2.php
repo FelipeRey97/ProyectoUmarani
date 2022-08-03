@@ -10,34 +10,32 @@
 <body>
     
 <?php 
+
+
+
 if(isset($_REQUEST['iniciar-sesion'])){
 
+    require_once('../Model/M_conexion.php');
+
+    $user = new Conexion();
 
     $usuario= $_POST['usuario'];
     $contraseña= $_POST['contraseña'];
-
-    session_start();
-    $_SESSION['usuario'] = $usuario;
-
-    $conexion = mysqli_connect("localhost","root","","proyecto")
-    or die ("problemas con la conexion");
   
-    $consulta = "SELECT*FROM usuariotienda join rol
-    on rolId = usuarioRolId
-    where usuarioDoc = '$usuario' and usuarioContraseña = '$contraseña'";
-    $resultado = mysqli_query($conexion,$consulta);
+    $consulta = $user->validarUsuario($usuario,$contraseña);
 
-    $filas = mysqli_fetch_array($resultado);
-
+    $filas = mysqli_fetch_array($consulta);
+  
     if($filas){
-
-        header("Location: ../view/pedidos.php?pagina=1");
         session_start();
+        $_SESSION['usuario'] = $usuario;
         $_SESSION['nombre'] = $filas['usuarioNombre'];
         $_SESSION['doc'] = $filas['usuarioDoc'];
         $_SESSION['apellido'] = $filas['usuarioApellido'];
         $_SESSION['rol'] = $filas['rolNombre'];
         $_SESSION['usuarioId'] = $filas['usuarioId'];
+
+        header("Location: ../view/pedidos.php?pagina=1");
     }
     else{
         ?>
@@ -54,7 +52,7 @@ if(isset($_REQUEST['iniciar-sesion'])){
 ?>
 
 
-<script src="../JS/alertas.js"></script>
+
 
 </body>
 </html>

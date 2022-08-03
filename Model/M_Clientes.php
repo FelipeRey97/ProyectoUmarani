@@ -89,13 +89,15 @@ if(isset($_REQUEST['compra'])){
           
           }
 
-        public function borrarUsuario(){
+
+        public function verificarCliente($usuario,$contraseña){
 
 
-         $this->cl->query("DELETE FROM  usuarioTienda WHERE usuarioId = '$_REQUEST[tabla]'") 
-         or die ("problemas en el select " . mysqli_error($cl));
+         $datos = $this->cl->query("SELECT * FROM cliente 
+         where clienteEmail = '$usuario' and clienteContraseña = '$contraseña'");
 
-         header("Location: ../View/Usuarios.php");
+         return $datos;
+
         }
 
         public function cerrarConexion(){
@@ -111,6 +113,7 @@ if(isset($_REQUEST['compra'])){
             return $registroCliente;
     
         }
+        
 
     } 
 

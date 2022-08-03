@@ -1,16 +1,16 @@
 <?php
-session_start();
+
+require_once('../Model/M_Pedidos.php');
+require_once('../Model/M_art_ped_factura.php');
+
+$mail = $_SESSION['cMail'];
+
+        $pedidoCliente = new Pedido();
+
+        $registroPedido = $pedidoCliente->mostrarPedidosCliente($mail);
+
+        $artpedCliente = new articuloPorPedido();
+        
 
 
-
-$conexion = mysqli_connect('localhost','root','','proyecto') or 
-        die ("problemas en la conexion" . mysqli_error($conexion));
-
-        $registroPedido = mysqli_query($conexion,"SELECT * FROM pedido
-        JOIN cliente
-        ON clienteId = pedidoClienteId
-        WHERE clienteEmail ='$_SESSION[cMail]'") 
-        or die ("problemas en el select" . mysqli_error($conexion));
- 
-
-?>
+?> 

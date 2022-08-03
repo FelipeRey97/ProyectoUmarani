@@ -86,6 +86,15 @@
 
             $this->cl->close();
         }
+        public function contarRegistros($where){
+
+
+            $registros = $this->cl->query("SELECT COUNT(*) AS cantidad FROM cliente
+             $where") or die("problemas en el select");
+ 
+             return $registros;
+ 
+         }
 
 
     }

@@ -56,16 +56,14 @@ else{
 
 }
 
-
+// SE EXTRAEN DATOS PARA LA PAGINACION DE LOS REGISTROS
 $registros= $listarCliente->verCliente();
 
-$resultado = mysqli_query($conexionClientes,"SELECT COUNT(*) AS cantidad FROM cliente
-$where")
-    or die("problemas en el select" . mysqli_error($conexionClientes));
+$resultado = $listarCliente->contarRegistros($where);
 
     $res = mysqli_fetch_array($resultado);
     $cantidad = $res['cantidad'];
 
-$registrosxpagina = $listarCliente->artporpag; 
+$registrosxpagina = $listarCliente->artporpag;  
 
 ?>  

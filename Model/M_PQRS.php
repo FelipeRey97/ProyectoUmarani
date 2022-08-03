@@ -144,6 +144,19 @@
             $this->pqrs->close();
         }
 
+        public function contarRegistros($where){
+
+
+          $datos = $this->pqrs->query("SELECT COUNT(*) AS cantidad FROM pqrs
+            JOIN pqrsTipo
+            ON pqrsTipoId = pqrsOrigenId
+            $where")
+            or die ("problemas en el select ");
+
+            return $datos;
+
+        }
+
 
     }
 

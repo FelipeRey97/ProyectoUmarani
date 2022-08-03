@@ -88,6 +88,17 @@
             return $resultado;
 
         }
+        public function mostrarPedidosCliente($mail){
+        
+        $datos = $this->ped->query("SELECT * FROM pedido
+        JOIN cliente
+        ON clienteId = pedidoClienteId
+        WHERE clienteEmail ='$mail'") 
+        or die ("problemas en el select");
+
+        return $datos;
+
+        }
 
         public function cerrarConexion(){
 

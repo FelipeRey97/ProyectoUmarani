@@ -137,16 +137,12 @@ else {
 
 $registros = $pq1->verPqrs();
 
-$resultado = mysqli_query($conexionPqrs,"SELECT COUNT(*) AS cantidad FROM pqrs
-JOIN pqrsTipo
-ON pqrsTipoId = pqrsOrigenId
-$where")
-or die ("problemas en el select " . mysqli_error($conexionPqrs));
+$resultado = $pq1->contarRegistros($where);
 
 $reg = mysqli_fetch_array($resultado);
 
 $cantidad = $reg['cantidad'];
 
-$registrosxpagina = $pq1->artporpag; 
+$registrosxpagina = $pq1->artporpag;  
 
 ?>  

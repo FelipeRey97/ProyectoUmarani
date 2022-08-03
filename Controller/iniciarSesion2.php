@@ -4,29 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <title>Document</title>
 </head>
 <body>
     
     <?php 
     
+  if(isset($_REQUEST['iniciar_sesion'])){
+
+    require_once('../Model/M_Clientes.php');
+    
+    $cliente_Sesion = new Clientes();
+
     $usuario= $_POST['cMail'];
     $contraseña= $_POST['cPassword'];
-
-    session_start();
-    $_SESSION['cMail'] = $usuario;
-
-    $conexion = mysqli_connect("localhost","root","","proyecto")
-    or die ("problemas con la conexion");
-
-    $consulta = "SELECT*FROM cliente 
-    where clienteEmail = '$usuario' and clienteContraseña = '$contraseña'";
-    $resultado = mysqli_query($conexion,$consulta);
+    //SE REALIZA LA CONSULTA PARA COMPROBAR SI EL USUARIO Y CONTRASEÑA CORRESPONDEN
+    $resultado = $cliente_Sesion->verificarCliente($usuario,$contraseña);
 
     $filas = mysqli_fetch_array($resultado);
   
     if($filas){
-        
+
+        session_start();
+        $_SESSION['cMail'] = $usuario;
         $_SESSION['nombre'] = $filas['clienteNombre'];
         $_SESSION['apellido'] = $filas['clienteApellido'];
 
@@ -41,14 +42,14 @@
     }
     else{
         ?>
-        <?php 
-        include("../View/iniciarSesion.php");
-        ?>
-        <h1>ERROR EN LA AUTENTICACION</h1>
+            <script>
+                swal('Error','Usuario o contraseña Erroneos','warning');
+            
+            </script>
         <?php 
     }
 
-
+}
 ?>
 
 </body>

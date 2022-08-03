@@ -86,6 +86,6 @@
 
     $registrosxpagina = $con1->artporpag;  
 
-// se almacenan los datos de la funcion verUsuario() que contiene select en la variable $usuarios
+// se almacenan los datos de la funcion verUsuario() que contiene select en la variable $usuarios 
  
 ?>

@@ -141,7 +141,7 @@ if(isset($_GET['pagina'])){
                         <input class="excel" type="button" value="Exportar"
                          onclick="this.form.action='../Controller/exportarXslx.php?v=pedido';this.form.submit();" />
                     </form>
-                    
+                     
                 </div>
                 <table>
                     <tr>

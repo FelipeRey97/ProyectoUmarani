@@ -9,8 +9,6 @@
             require('../Model/ConexionBD.php');
 
             $this->artxfact = $conexionBD;
-
-
         }
 
         public function guardarDatos($articuloId,$idFactura,$cantidad,$precio){
@@ -58,6 +56,19 @@
            $this->artxped->query("INSERT INTO productoporpedido (prodPed_artId,prodPed_pedidoId,prodPedCant,prodPedValorArt)
            VALUES ($articuloId,$id,$cantidad,$precio)") or die ("problemas en el insert");
 
+
+        }
+        public function detallePedido($id){
+
+          $datos = $this->artxped->query("SELECT * FROM productoporpedido
+            JOIN pedido
+            ON pedidoId = prodPed_pedidoId
+            JOIN articulo
+            ON artId = prodPed_artId
+            WHERE pedidoId= $id") 
+            or die("Problemas en el select" );
+
+            return $datos;
 
         }
 

@@ -10,7 +10,7 @@
 
         public function __construct()
         {
-            require_once('../Model/ConexionBD.php');
+            require('../Model/ConexionBD.php');
             $this->desp = $conexionBD;
             
         }
@@ -43,8 +43,29 @@
             $this->desp->query("DELETE FROM despacho WHERE despachoId = '$old_DespachoId'");
 
        }
-           
+       public function verEmpresaEnvio(){
 
+
+            $datos = $this->desp->query("SELECT * FROM empresaenvio");
+
+            return $datos;
+
+       }
+       public function mostrarDatosDespacho($id){
+
+
+        $datos = $this->desp->query("SELECT * FROM pedido
+        JOIN despacho
+        ON  pedidoId = despachoPedidoId 
+        JOIN usuariotienda 
+        ON usuarioId = despachoUsuarioId
+        JOIN empresaenvio
+        ON despachoEmpresaId = empresaId
+        WHERE despachoPedidoId = $id")  or die("Problemas en el select");
+
+        return $datos;
+
+       }
 
         public function cerrarConexion(){
 

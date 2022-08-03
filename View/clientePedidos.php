@@ -1,4 +1,17 @@
 <?php
+session_start();
+$sesionId= session_id();
+
+if(isset($_SESSION['cMail'])){
+
+}else{
+
+
+   header("location: ../View/iniciarSesion.php");
+    
+
+}
+
 require('../Controller/mostrarPedidosCliente.php');
 require('../Controller/carrito.php');
 require_once("../Controller/buscador.php");
@@ -202,13 +215,11 @@ require_once("../Controller/buscador.php");
                
                 <div class="orderContainer">
 
-                    <?php   $artPedido = mysqli_query($conexion,"SELECT * FROM pedido
-                            JOIN productoporpedido
-                            ON pedidoId = prodPed_pedidoId
-                            JOIN articulo
-                            ON prodPed_artId = artId where pedidoId ='$order[pedidoId]'") 
-                            or die ("problemas en el select" . mysqli_error($conexion));
-                            ?>
+                    <?php   
+                    
+                    $id = $order['pedidoId'];
+                    
+                    $artPedido = $artpedCliente->detallePedido($id); ?>
                 
                     <div class="articleOrder"> <?php
                             while($ap = mysqli_fetch_array($artPedido)) {

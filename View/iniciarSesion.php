@@ -4,6 +4,7 @@ $sesionId= session_id();
 require_once("../controller/verCheckout.php");
 require('../Controller/carrito.php');
 require_once("../Controller/buscador.php");
+include_once('../Controller/iniciarSesion2.php');
 ?>
 
 <!DOCTYPE html>
@@ -172,7 +173,7 @@ require_once("../Controller/buscador.php");
         <section class="section">
             <div class="form-container">
                 <h1>Acceso a tu cuenta</h1>
-                <form action="../Controller/iniciarSesion2.php" method="post" class="iniciar-sesion">
+                <form action="" method="post" class="iniciar-sesion">
                     <label for="">Correo electrónico:</label><br>
                     <input class="control" type="text" name="cMail" required>  <br>
                     <label for="">Contraseña:</label><br>
@@ -189,7 +190,7 @@ require_once("../Controller/buscador.php");
                     <a href="../WebUmarani/recuperarContraseña.html"><b>¿Olvidaste tu contraseña?</b></a><br><br>
                     
                     <input type="hidden" name="compra" value="<?php echo "$valor" ?>">
-                    <input class="boton-iniciarSesion" type="submit" value="Iniciar Sesión">
+                    <input class="boton-iniciarSesion" name="iniciar_sesion" type="submit" value="Iniciar Sesión">
                 </form>
         </div>
         </section>
