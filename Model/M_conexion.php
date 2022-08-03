@@ -104,6 +104,13 @@
             return $datos;
 
           }
+          public function asignarClave($nuevaClave,$usuario){
+
+            $this->con->query("UPDATE usuarioTienda SET usuarioContraseña = '$nuevaClave', usuarioEstado = 'Activo'
+            WHERE usuarioDoc = '$usuario'")
+            or die ("problemas en el update");
+
+          }
 
         public function borrarUsuario(){
 

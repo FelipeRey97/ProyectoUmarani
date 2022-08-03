@@ -56,7 +56,7 @@ include_once('../Controller/iniciarSesion2.php');
                                 <div class="info">
                                     <h3 class="title"><?php echo "$dat[artNombre]"  ?></h3>
                                     <br> <p class="price" ><?php $costo = $dat['artPrecio'] * $dat['artCarroCant']; echo "$costo";  ?></p>
-                                </div>
+                                 </div>
                                 <form action="" class="cantidad">
                                     <label for="">Cantidad:</label>
                                     <p class="quantity">   <?php echo "$dat[artCarroCant]" ?></p>

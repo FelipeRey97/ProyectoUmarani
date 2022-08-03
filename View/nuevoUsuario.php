@@ -63,7 +63,7 @@
                         <input class="control" name="ucontraseña" value="Umarani2022" type="hidden" >
                         <label for="uestado"> Estado: </label>
                         <select name="uestado" pattern="[A-Za-z]{5,12}" id="">Estado
-                            <option value="Activo">Activo</option>
+                            <option value="Preactivo">Pre-activo</option>
                             <option value="Inactivo">Inactivo</option>
                             <option value="Bloqueado">Bloqueado</option>
                         </select> <br><br>

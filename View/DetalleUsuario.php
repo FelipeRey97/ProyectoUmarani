@@ -107,20 +107,20 @@ session_start();
                         <label for="uestado"> ESTADO: </label>
                         <select name="uestado"  id="">Estado
                         <?php
-                        if($reg['usuarioEstado'] == "Activo"){
-                            echo "<option value=\"$reg[usuarioEstado]\" selected>$reg[usuarioEstado]</option>";
+                        if($reg['usuarioEstado'] == "Preactivo" || $reg['usuarioEstado'] == "Activo" ){
+                            echo "<option value=\"Preactivo\" selected>Preactivo</option>";
                             echo "<option value=\"Inactivo\" >Inactivo</option>";
                             echo "<option value=\"Bloqueado\" >Bloqueado</option>";
                         }   
                         else if($reg['usuarioEstado'] == "Inactivo"){
                             echo "<option value=\"$reg[usuarioEstado]\" selected>$reg[usuarioEstado]</option>";
-                            echo "<option value=\"Activo\" >Activo</option>";
+                            echo "<option value=\"Preactivo\" >Preactivo</option>";
                             echo "<option value=\"Bloqueado\" >Bloqueado</option>";
                         }  
                         else if($reg['usuarioEstado'] == "Bloqueado"){
                             echo "<option value=\"$reg[usuarioEstado]\" selected>$reg[usuarioEstado]</option>";
                             echo "<option value=\"Inactivo\" >Inactivo</option>";
-                            echo "<option value=\"Activo\" >Activo</option>";
+                            echo "<option value=\"Preactivo\" >Preactivo</option>";
                         }  
                             ?>
                         </select> <br><br>
