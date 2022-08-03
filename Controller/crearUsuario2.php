@@ -18,6 +18,20 @@ require('../Model/M_conexion.php');
 
 $con = new Conexion();
 
+function generatePassword($length)
+{
+    $key = "";
+    $pattern = "1234567890abcdefghijklmnopqrstuvwxyz";
+    $max = strlen($pattern)-1;
+    for($i = 0; $i < $length; $i++){
+        $key .= substr($pattern, mt_rand(0,$max), 1);
+    }
+    return $key;
+}
+
+$length = 10;
+$key = generatePassword($length);
+
 
 if(isset($_REQUEST['registrar'])){
 

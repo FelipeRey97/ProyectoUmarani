@@ -11,7 +11,7 @@
 
         public function __construct()
         {
-            require_once('../Model/ConexionBD.php');
+            require('../Model/ConexionBD.php');
             $this->con = $conexionBD;
             
         }

@@ -119,6 +119,7 @@
                             <option value="Activo">Activo</option>
                             <option value="Inactivo">Inactivo</option>
                             <option value="Bloqueado">Bloqueado</option>
+                            <option value="Preactivo">Pre-Activo</option>
                         </select>
                         <label for=""> Rol: </label>
                         <select name="rol" id="">Estado

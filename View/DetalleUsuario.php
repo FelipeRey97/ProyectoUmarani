@@ -90,7 +90,7 @@ session_start();
                         <label for="upellido">Apellidos:  </label><br>
                         <input class="control" type="text" required pattern="[a-zA-Z ]{3,50}" name="uapellido"value="<?php echo "$reg[usuarioApellido]" ?>" ><br><br>
                         <label for="ucontraseña">Contraseña:  </label><br>
-                        <input class="control" name="ucontraseña" type="text" required pattern="[a-zA-Z0-9]{6,20}" value="<?php echo "$reg[usuarioContraseña]" ?>" class=""> <br><br>
+                        <input class="control" name="ucontraseña" type="text" required pattern="[a-zA-Z0-9]{6,20}" value="<?php echo "$key" ?>" class=""> <br><br>
                         <label for=""> ROL: </label>
                         <select name="urol">
                         <?php if($reg['rolNombre'] == "ADMINISTRADOR"){

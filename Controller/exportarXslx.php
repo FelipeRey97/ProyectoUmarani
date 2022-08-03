@@ -98,7 +98,7 @@ case "usuarios" :
 
   //ENCABEZADOS
 
-  fputcsv($salida, array('ID','Nombre','Apellido','Documento','Rol','Estado'));
+  fputcsv($salida, array('ID','Nombre','Apellido','Documento','Rol','Estado','Clave Temporal'));
 
   //QUERY REALIZAR CONSULTA
 
@@ -113,8 +113,15 @@ case "usuarios" :
   $reporte = $rUsuario->verUsuario();
 
   foreach($reporte as $rep){
-      fputcsv($salida, array($rep['usuarioId'],$rep['usuarioNombre'],$rep['usuarioApellido'],$rep['usuarioDoc'],$rep['rolNombre'],$rep['usuarioEstado']));
 
+    if($rep['usuarioEstado'] == "Preactivo"){
+
+      fputcsv($salida, array($rep['usuarioId'],$rep['usuarioNombre'],$rep['usuarioApellido'],$rep['usuarioDoc'],$rep['rolNombre'],$rep['usuarioEstado'],$rep['usuarioContraseña']));
+    }else{
+
+      fputcsv($salida, array($rep['usuarioId'],$rep['usuarioNombre'],$rep['usuarioApellido'],$rep['usuarioDoc'],$rep['rolNombre'],$rep['usuarioEstado']));
+    }
+      
     }
 
     

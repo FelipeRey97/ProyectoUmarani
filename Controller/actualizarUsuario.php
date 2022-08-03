@@ -17,6 +17,20 @@ $con2 = new Conexion();
 
 $id = $_REQUEST['tabla'];
 
+function generatePassword($length)
+{
+    $key = "";
+    $pattern = "1234567890abcdefghijklmnopqrstuvwxyz";
+    $max = strlen($pattern)-1;
+    for($i = 0; $i < $length; $i++){
+        $key .= substr($pattern, mt_rand(0,$max), 1);
+    }
+    return $key;
+}
+
+$length = 10;
+$key = generatePassword($length);
+
  $registros = $con2->obtenerDatosUsuario($id);
 
     //control para actualizacion de usuario, se añaden condiciones para controlar los formularios
