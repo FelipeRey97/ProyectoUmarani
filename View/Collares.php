@@ -43,7 +43,7 @@ require_once("../Controller/buscador.php");
                     <div class="middle">
                     <?php 
                     $total = 0;
-                    while($datos as $dat) {  
+                    foreach($datos as $dat) {  
 
                         
                     ?>

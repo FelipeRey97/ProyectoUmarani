@@ -54,8 +54,7 @@ include_once("../Controller/actualizarDatosCliente.php");
         <div class="middle">
         <?php 
         $total = 0;
-        while($datos as $dat) {  
-
+        foreach($datos as $dat) {  
             
         ?>
             <div class="contenedor kartItem">
