@@ -12,7 +12,7 @@
 <?php 
 
 
-
+// VALIDAR INICIO DE SESIÓN DEL USUARIO
 if(isset($_REQUEST['iniciar-sesion'])){
 
     require_once('../Model/M_conexion.php');
@@ -79,6 +79,8 @@ if(isset($_REQUEST['iniciar-sesion'])){
     }
 
 }
+
+ // ASIGNAR CONTRASEÑA EN EL PRIMER INICIO DE SESION
 if(isset($_REQUEST['Guardar'])){
 
    
@@ -87,7 +89,7 @@ if(isset($_REQUEST['Guardar'])){
 
     if($_REQUEST['contraseña1'] == $_REQUEST['contraseña2']){
         session_start();
-        $usuario = $_SESSION['usuario'];
+       $usuario = $_SESSION['usuario'];
        $nuevaClave = $_REQUEST['contraseña1'];
 
        function validar_clave($cPassword){
@@ -171,6 +173,10 @@ if(isset($_REQUEST['Guardar'])){
 
     }    
     }
+
+    // ACTUALIZAR O MODIFICAR CONTRASEÑA
+
+    
 
 
 

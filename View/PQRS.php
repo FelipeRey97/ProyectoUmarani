@@ -51,6 +51,7 @@ $paginas = ceil($paginas);
                 <a href="../View/Usuarios.php?pagina=1">Usuarios</a>
                 <a href="../View/adminClientes.php?pagina=1">Clientes</a> <?php } ?>
                 <a class="select" href="../View/PQRS.php?pagina=1">PQRS</a><br><br><br>
+                <a href="../View/cambiarClave.php">Cambiar Clave</a>
                 <a href="../Controller/cerrarSesion.php">Cerrar Sesión</a>
             </nav>
         </div>

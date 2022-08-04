@@ -41,6 +41,7 @@
                 <a href="../View/Usuarios.php?pagina=1">Usuarios</a>
                 <a href="../View/adminClientes.php?pagina=1">Clientes</a> <?php } ?>
                 <a href="../View/PQRS.php?pagina=1">PQRS</a><br><br><br>
+                <a href="../View/cambiarClave.php">Cambiar Clave</a>
                 <a href="../Controller/cerrarSesion.php">Cerrar Sesión</a>
             </nav>
         </div>
@@ -61,7 +62,7 @@
                         <input placeholder="Ingrese el Número Documento" pattern="[0-9]{5,12}" value="<?php if(isset($_REQUEST['udocumento'])){echo "$_REQUEST[unombre]";}  ?>" required class="control" name="udocumento" type="text" > <br><br>
                         <label for="ucontraseña">Contraseña:  </label><br>
                         <input disabled class="control" name="ucontraseña" pattern="[A-Za-z0-9]{6,20}" required value="<?php echo"$key"; ?>" type="text" > <br><br>
-                        <input class="control" name="ucontraseña" value="Umarani2022" type="hidden" >
+                        <input class="control" name="ucontraseña" value="<?php echo"$key"; ?>" type="hidden" >
                         <label for="uestado"> Estado: </label>
                         <select name="uestado" pattern="[A-Za-z]{5,12}" id="">Estado
                             <option value="Preactivo">Pre-activo</option>

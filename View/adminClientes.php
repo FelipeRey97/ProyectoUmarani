@@ -46,8 +46,8 @@ $paginas = ceil($paginas);
                 <h1>Tienda Web Umarani</h1>
             </div>
             <div class="usuario">
-                <h4><?php echo $_SESSION['nombre'] ." ".  $_SESSION['apellido']; ?></h4>
-                <h5><?php echo $_SESSION['rol']; ?></h5>
+            <h4><?php echo "$_SESSION[rol] "; ?></h4>
+                <h5><?php echo "$_SESSION[nombre] $_SESSION[apellido] "; ?></h5>
             </div>
             <nav class="secciones">
                 <a href="">Inicio</a>
@@ -58,6 +58,7 @@ $paginas = ceil($paginas);
                 <a href="../View/Usuarios.php?pagina=1">Usuarios</a>
                 <a class="select" href="../View/adminClientes.php?pagina=1">Clientes</a> <?php } ?>
                 <a href="../View/PQRS.php?pagina=1">PQRS</a><br><br><br>
+                <a href="../View/cambiarClave.php">Cambiar Clave</a>
                 <a href="../Controller/cerrarSesion.php">Cerrar Sesión</a>
             </nav>
         </div>

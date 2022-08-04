@@ -56,6 +56,7 @@ if(isset($_GET['pagina'])){
                 <a href="../View/Usuarios.php?pagina=1">Usuarios</a>
                 <a href="../View/adminClientes.php?pagina=1">Clientes</a> <?php } ?>
                 <a href="../View/PQRS.php?pagina=1">PQRS</a> <br><br><br>
+                <a href="../View/cambiarClave.php">Cambiar Clave</a>
                 <a href="../Controller/cerrarSesion.php">Cerrar Sesión</a>
             </nav>
         </div>

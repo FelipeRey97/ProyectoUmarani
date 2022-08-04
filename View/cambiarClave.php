@@ -1,20 +1,9 @@
 <?php
 session_start();
-   
-    require('../Controller/C_GestionPqrs.php');
-    $date = date("Y/m/d");
-?>
+require_once('../Controller/CambiarClave.php');
 
-<?php 
-// se valida la sesion del usuario, en caso de no tener sesion sera redirigido al login
-    if($_SESSION['doc'] == false){
-
-        header("Location: ../View/loginUsuario.php");
-    }
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,14 +13,12 @@ session_start();
     <title>Document</title>
 </head>
 <body>
-<link rel="stylesheet" href="../CSS/detallePqrs.css">
+<link rel="stylesheet" href="../CSS/tiendaEstilos.css">
 <script src="https://kit.fontawesome.com/f243ce0afc.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bitter&family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bitter&family=Lobster&family=Shadows+Into+Light&display=swap" rel="stylesheet">
-
-
 
     <div class="padre">
 
@@ -40,8 +27,7 @@ session_start();
                 <h1>Tienda Web Umarani</h1>
             </div>
             <div class="usuario">
-                <!-- muestra el rol y nombre de usuario tienda en sesion -->
-                <h4><?php echo "$_SESSION[rol] "; ?></h4>
+            <h4><?php echo "$_SESSION[rol] "; ?></h4>
                 <h5><?php echo "$_SESSION[nombre] $_SESSION[apellido] "; ?></h5>
             </div>
             <nav class="secciones">
@@ -59,35 +45,25 @@ session_start();
         </div>
         <div class="content">
         <header class="header">
-            <h1>Solicitud No. <?php echo "$pId" ?></h1>
+            <h1>Cambio de Contraseña</h1>
         </header>
         <section class="section">
-
             <div class="container">
-                
                 <div class="filtros" >
-                        <h1>Datos Remitente</h1><br><br>
-                        <p><b>Nombre: </b>  <?php echo "$nombre" ?></p><br>
-                        <p><b>Telefono: </b>   <?php echo "$telefono" ?>   </p><br>
-                        <p><b>Id Cliente: </b>  <?php if(isset($clienteId)) { echo "$clienteId"; }else{ echo""; }?> </p><br>
-                        <p><b>Mail: </b> <?php echo "$Mail" ?> </p><br>
-                        <p> <b> Fecha de solicitud: </b> <?php echo"$fecha" ?> </p> <br>
-                        <p> <b> Estado: </b> <?php echo"$estado" ?> </p> <br>
-                        <p> <b> Tipo: </b> <?php echo"$tipo" ?> </p> <br>
-                        <?php if($imagen != null){ ?>
-                        <p> <b> Imagen: </b><br> </p><br>
-                        <img src="<?php echo"$imagen"; ?>" alt=""> <br>  <br> 
-                        <?php } else{ echo" "; }?>
-                        <p><b> Descripcion: </b></p><br>  
-                        <p><?php echo"$descripcion" ?></p><br> <br>
-                        <h1>Respuesta</h1><br>
-                        <p><b>Usuario:</b> <?php if(isset($usuario)) { echo"$usuario"; } else{ echo ""; }?> </p><br>
-                        <p><b>Respuesta Adjunta:  <?php if(isset($usuario)) { ?> <a class="cancel" href="../Controller/imprimirResolucion.php?rId=<?php echo "$pId" ?>"><i class="fas fa-file-pdf"></i></a> </b></p> <?php } else{ echo ""; }?> 
-
-                </table>
-                <nav class="paginacion">
-
-                </nav>
+                    <?php  ?>
+                    <form action="" method="post">
+                        <label for="unombre" >Clave anterior: </label><br>
+                        <input placeholder="Ingrese la Clave actual" required class="control" type="password" name="claveActual"><br><br>
+                        <label for="upellido">Nueva Clave:  </label><br>
+                        <input placeholder="Ingrese la nueva Clave"  required class="control" type="password" name="nuevaClave1"><br><br>
+                        <label for="udocumento">Confirmar Clave:  </label><br>
+                        <input placeholder="Confirme la nueva Clave" required class="control" name="nuevaClave2" type="password" > <br><br>
+                        <input class="registrar" type="submit" name="actualizar" value="Cambiar Contraseña">
+                        <a class="searchButton" href="../View/pedidos.php">Volver</a>
+                    </form>
+ 
+                </div>
+ 
             </div>
         </section>
         </div>

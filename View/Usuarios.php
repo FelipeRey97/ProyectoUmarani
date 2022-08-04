@@ -58,7 +58,8 @@
                 <a class="select" href="../view/usuarios.php?pagina=1">Usuarios</a>
                 <a href="../view/adminClientes.php?pagina=1">Clientes</a>
                 <a href="../View/PQRS.php?pagina=1">PQRS</a> <br><br><br>
-                <a href="../Controller/cerrarSesion.php">Cerrar Sesión</a>
+                <a href="../View/PQRS.php?pagina=1">Cambiar Clave</a>
+                <a href="../View/cambiarClave.php">Cerrar Sesión</a>
             </nav>
         </div>
         <div class="content">
