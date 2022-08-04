@@ -15,7 +15,7 @@ include_once('../Controller/datosFactura.php')
 
  $todaydate = date('Y/m/d');
 ?>
- 
+  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -213,6 +213,7 @@ include_once('../Controller/datosFactura.php')
                      <input type="hidden" name="dpto" value="<?php echo "$_SESSION[dpto]" ?>">
                      <input type="hidden" name="ciudad" value="<?php echo "$_SESSION[ciudad]" ?>">
                      <input type="hidden" name="direccion" value="<?php echo "$_SESSION[direccion]" ?>">
+                     <input type="hidden" name="telefono" value="<?php echo "$_SESSION[telefono]" ?>">
                     <input class="ctrl" type="submit" value="Realizar Pedido">
                 </form>
             </div>

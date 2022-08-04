@@ -83,7 +83,7 @@ $pdf->SetFont('Arial','B',10);
 $pdf->Cell(0,0,utf8_decode('Teléfono: '),0,1,'');
 $pdf->Cell(18);
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(0,0,$reg['clienteTelefono'],0,1,'L');
+$pdf->Cell(0,0,$reg['facturaClTelefono'],0,1,'L');
 $pdf->SetFont('Arial','B',10);
 $pdf->Ln(5);
 $pdf->Cell(0,0,utf8_decode('Dirección: '),0,1,'');

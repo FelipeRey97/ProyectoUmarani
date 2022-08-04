@@ -32,11 +32,11 @@
 
         }
 
-        public function insertarPedido($idFactura,$todaydate,$clienteId,$id,$total,$direccionId){
+        public function insertarPedido($idFactura,$todaydate,$clienteId,$id,$total,$direccionId,$telefono){
 
 
-            $this->ped->query("INSERT INTO pedido(pedidoId,pedidoFechaInicio,pedidoClienteId,pedidoFacturaId,pedidoCostoTotal,pedidoDireccionId)
-            VALUES ('$id','$todaydate','$clienteId','$idFactura','$total',$direccionId)
+            $this->ped->query("INSERT INTO pedido(pedidoId,pedidoFechaInicio,pedidoClienteId,pedidoFacturaId,pedidoCostoTotal,pedidoDireccionId,pedidoClTelefono)
+            VALUES ('$id','$todaydate','$clienteId','$idFactura','$total',$direccionId,'$telefono')
             ") or die ("problemas en el select " . mysqli_error($ped));
  
              

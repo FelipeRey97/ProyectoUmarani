@@ -21,7 +21,7 @@ if(isset($_REQUEST['actualizar'])){
    $usuario = $_SESSION['usuario'];
    $claveActual = $_REQUEST['claveActual'];
 
-   $consulta = $user1->validarUsuario($usuario,$claveActual);
+   $consulta = $user1->validarUsuario($usuario);
 
    $filas = mysqli_fetch_array($consulta);
 
@@ -82,8 +82,9 @@ if(isset($_REQUEST['actualizar'])){
 
            if($vcPassword == true){
 
+              $v_existeClave = password_verify($nuevaClave, $filas['usuarioContraseña']);
 
-            if($claveActual == $nuevaClave) {
+            if($v_existeClave == true) {
 
                 ?>
                <script>
@@ -92,7 +93,8 @@ if(isset($_REQUEST['actualizar'])){
                <?php 
                 }
                 else{
-   
+                    
+                    $nuevaClave = password_hash($nuevaClave, PASSWORD_DEFAULT);
                $user1->asignarClave($nuevaClave,$usuario);
                ?>
                <script>
@@ -102,7 +104,7 @@ if(isset($_REQUEST['actualizar'])){
                header('refresh:1;url=../view/pedidos.php');
             }
            }
-      
+       
    }
        else{
    

@@ -31,10 +31,11 @@ $dirC = $_REQUEST['direccionC'];
 $dpto = $_REQUEST['dpto'];
 $ciudad = $_REQUEST['ciudad'];
 $direccion = $_REQUEST['direccion'];
+$telefono = $_REQUEST['telefono'];
 $impuestoId = 1;
 
 $fact1 = new Factura ();
-$fact1->insertarFactura($clienteId,$todaydate,$total,$clienteDoc,$tipoPago,$dirC,$impuestoId);
+$fact1->insertarFactura($clienteId,$todaydate,$total,$clienteDoc,$tipoPago,$dirC,$impuestoId,$telefono);
 
 //OBTIENE EL ID DE LA FACTURA RECIÉN GENERADA PARA SINCRONIZARLA LA TABLA PEDIDOS
 
@@ -54,7 +55,7 @@ $direccionPed = new Direccion();
 $direccionPed->guardarDireccion($direccionId,$dpto,$ciudad,$direccion);
 
 $gPedido = new Pedido ();
-$gPedido->insertarPedido($idFactura,$todaydate,$clienteId,$id,$total,$direccionId);
+$gPedido->insertarPedido($idFactura,$todaydate,$clienteId,$id,$total,$direccionId,$telefono);
 
 // SE GUARDAN EN EL PEDIDO Y ARTICULO_POR_PEDIDO Y ARTICULO_POR_FACTURA LA SELECCION DE ARTICULOS EN EL CARRITO
 $car2 = new Carrito ();
@@ -93,7 +94,7 @@ foreach ($articulos as $art){
 <script>
          swal("Operación Realizada", "Se ha realizado la Compra!", "success");
          
-      </script>
+      </script> 
 <?php
 
 header("refresh:1;url=../view/comprafinalizada.php?pedidoId=$id");

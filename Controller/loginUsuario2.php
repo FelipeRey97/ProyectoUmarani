@@ -22,7 +22,7 @@ if(isset($_REQUEST['iniciar-sesion'])){
     $usuario= $_POST['usuario'];
     $contraseña= $_POST['contraseña'];
   
-    $consulta = $user->validarUsuario($usuario,$contraseña);
+    $consulta = $user->validarUsuario($usuario);
 
     $filas = mysqli_fetch_array($consulta);
   
@@ -56,6 +56,9 @@ if(isset($_REQUEST['iniciar-sesion'])){
         }
         if($vEstado == true){
 
+            $v_password = password_verify($contraseña,$filas['usuarioContraseña']);
+            if($v_password == true){
+
             session_start();
             $_SESSION['usuario'] = $usuario;
             $_SESSION['nombre'] = $filas['usuarioNombre'];
@@ -66,17 +69,21 @@ if(isset($_REQUEST['iniciar-sesion'])){
 
             header("Location: ../view/pedidos.php?pagina=1");
 
+            }
+            else if($v_password == false){
+                ?>
+                    <script>
+                        swal('Error','Usuario o contraseña Erroneos','warning');
+                    
+                    </script>
+                <?php 
+            }
+            
         }
         
+        
     }
-    else{
-        ?>
-            <script>
-                swal('Error','Usuario o contraseña Erroneos','warning');
-            
-            </script>
-        <?php 
-    }
+    
 
 }
 
@@ -141,6 +148,8 @@ if(isset($_REQUEST['Guardar'])){
      $vcPassword = validar_clave($nuevaClave);
 
         if($vcPassword == true){
+
+            $nuevaClave = password_hash($nuevaClave, PASSWORD_DEFAULT);  //ENCRIPTACION DE CONTRASEÑA CON BLOWFISH
 
             $user->asignarClave($nuevaClave,$usuario);
             ?>

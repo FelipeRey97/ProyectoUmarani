@@ -31,7 +31,7 @@ require_once('../Controller/CambiarClave.php');
                 <h5><?php echo "$_SESSION[nombre] $_SESSION[apellido] "; ?></h5>
             </div>
             <nav class="secciones">
-            <a href="">Inicio</a>
+            <a href="">Inicio</a> 
                 <a href="../View/Productos.php?pagina=1">Productos</a> 
                 <a href="../View/pedidos.php?pagina=1">Pedidos</a>
                 <a href="../view/facturas.php?pagina=1">Facturas</a>

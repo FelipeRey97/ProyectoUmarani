@@ -28,7 +28,7 @@ while($datped = mysqli_fetch_array($datosPedido)){
     $apellido = $datped['clienteApellido'];
     $documento = $datped['facturaClienteDoc']; 
     $direccion = $datped['facturaClienteDireccion'];
-    $telefono = $datped['clienteTelefono'];
+    $telefono = $datped['facturaClTelefono'];
     $mail = $datped['clienteEmail'];
     
 }
@@ -67,7 +67,7 @@ while($datped = mysqli_fetch_array($datosPedido)){
     $apellido = $datped['clienteApellido'];
     $documento = $datped['facturaClienteDoc'];
     $direccion = $datped['facturaClienteDireccion'];
-    $telefono = $datped['clienteTelefono'];
+    $telefono = $datped['facturaClTelefono'];
     $mail = $datped['clienteEmail'];
     
 }

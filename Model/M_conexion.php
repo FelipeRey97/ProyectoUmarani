@@ -84,12 +84,12 @@
 
            
           }
-          public function validarUsuario($usuario,$contraseña){
+          public function validarUsuario($usuario){
 
 
             $datos = $this->con->query("SELECT*FROM usuariotienda join rol
             on rolId = usuarioRolId
-            where usuarioDoc = '$usuario' and usuarioContraseña = '$contraseña'");
+            where usuarioDoc = '$usuario'");
 
             return $datos;
 

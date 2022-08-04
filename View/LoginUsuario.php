@@ -3,7 +3,6 @@
 include_once('../Controller/loginUsuario2.php');
 
 
-
 ?>
 
 <!DOCTYPE html>

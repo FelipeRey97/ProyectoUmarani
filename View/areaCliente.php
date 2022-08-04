@@ -217,7 +217,7 @@ require_once("../Controller/buscador.php");
                <div class="telefono">
                <div class="contents">
                     <h3>Telefono</h3>
-                    <p>3154272647</p>
+                    <p><?php echo "$tel"; ?></p>
                 </div>
                 
                 
