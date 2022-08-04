@@ -303,21 +303,6 @@ case 3:
         $pMail = filter_var($pMail, FILTER_SANITIZE_EMAIL);
         $VpMail = true;
 
-        $existe_Mail = $pq->verificarEmail($pMail);
-
-        if($existe_Mail == true){
-
-            $VpMail = true;
-        }
-        else{
-
-            $VpMail = false;
-            ?>
-            <script>
-            swal("Atención", "No existen pedidos realizados con este E-mail", "warning");
-            </script>
-            <?php
-        }
     }
     else{
 

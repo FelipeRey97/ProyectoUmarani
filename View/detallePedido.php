@@ -75,7 +75,7 @@ session_start();
                         <p><b>Telefono: </b>   <?php echo "$telefono" ?>   </p><br>
                         <p><b>Dirección: </b>  <?php echo "$direccion" ?> </p><br>
                         <!-- <p><b>Método Pago: </b>  Contado </p><br> -->
-                        <p><b>Mail: </b>  andresfrey97@gmail.com </p><br>
+                        <p><b>Mail: </b>  <?php echo "$mail" ?> </p><br>
                         <p> <b> Ver Factura Asociada: </b><a class="cancel" href="../Controller/ImprimirFactura.php?factId=<?php echo "$id" ?>"> <i class="fas fa-file-pdf"></i></a><br> </p><br>
                         <!-- Se prepara formulario para ingresar la orden de Envio -->
                         <?php 

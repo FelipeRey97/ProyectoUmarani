@@ -33,7 +33,7 @@ CREATE TABLE `articulo` (
   PRIMARY KEY (`artId`),
   KEY `fk_artCategoriaId` (`artCategoriaId`),
   CONSTRAINT `fk_artCategoriaId` FOREIGN KEY (`artCategoriaId`) REFERENCES `categoria` (`categoriaId`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `articulo` (
 
 LOCK TABLES `articulo` WRITE;
 /*!40000 ALTER TABLE `articulo` DISABLE KEYS */;
-INSERT INTO `articulo` VALUES (1,'New Ring',15000,13,'../Uploads/ImagenPrincipal/21.jpg','Disponible',3),(2,'Silver Collar',25000,48,'../Uploads/ImagenPrincipal/7.jpg','Disponible',1),(3,'Hand Collar',30000,25,'../Uploads/ImagenPrincipal/4.jpg','Disponible',1),(4,'Old Ring',145000,30,'../Uploads/ImagenPrincipal/23.jpg','Disponible',3),(5,'Silver Ring',40000,25,'../Uploads/ImagenPrincipal/26.jpg','Disponible',3),(6,'Golden Ring',60000,10,'../Uploads/ImagenPrincipal/30.jpg','Disponible',3),(7,'White Wrist',25000,30,'../Uploads/ImagenPrincipal/38.jpg','Disponible',2),(8,'Silver Wrist',30000,29,'../Uploads/ImagenPrincipal/39.jpg','Disponible',2),(9,'Black Wrist',25000,22,'../Uploads/ImagenPrincipal/43.jpg','Disponible',2),(10,'Plate Collar',27000,10,'../Uploads/ImagenPrincipal/6.jpg','Disponible',1),(11,'Gray Collar',15000,15,'../Uploads/ImagenPrincipal/18.jpg','Disponible',1),(12,'White Collar',30000,25,'../Uploads/ImagenPrincipal/8.jpg','Disponible',1),(13,'Winter Collar',15000,65,'../Uploads/ImagenPrincipal/14.png','Disponible',1),(14,'Summer Ring',50000,70,'../Uploads/ImagenPrincipal/22.jpg','Disponible',3);
+INSERT INTO `articulo` VALUES (1,'New Ring',15000,12,'../Uploads/ImagenPrincipal/21.jpg','Disponible',3),(2,'Silver Collar',25000,38,'../Uploads/ImagenPrincipal/7.jpg','Disponible',1),(3,'Hand Collar',30000,13,'../Uploads/ImagenPrincipal/4.jpg','Disponible',1),(4,'Old Ring',145000,26,'../Uploads/ImagenPrincipal/23.jpg','Disponible',3),(5,'Silver Ring',40000,25,'../Uploads/ImagenPrincipal/26.jpg','Disponible',3),(6,'Golden Ring',60000,7,'../Uploads/ImagenPrincipal/30.jpg','Disponible',3),(7,'White Wrist',25000,30,'../Uploads/ImagenPrincipal/38.jpg','Disponible',2),(8,'Silver Wrist',30000,28,'../Uploads/ImagenPrincipal/39.jpg','Disponible',2),(9,'Black Wrist',25000,19,'../Uploads/ImagenPrincipal/43.jpg','Disponible',2),(10,'Plate Collar',27000,9,'../Uploads/ImagenPrincipal/6.jpg','Disponible',1),(11,'Gray Collar',15000,14,'../Uploads/ImagenPrincipal/18.jpg','Disponible',1),(12,'White Collar',30000,24,'../Uploads/ImagenPrincipal/8.jpg','Disponible',1),(13,'Winter Collar',15000,65,'../Uploads/ImagenPrincipal/14.png','Disponible',1),(14,'Summer Ring',50000,70,'../Uploads/ImagenPrincipal/22.jpg','Disponible',3);
 /*!40000 ALTER TABLE `articulo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -59,7 +59,7 @@ CREATE TABLE `carrito` (
   `articuloId` int(11) NOT NULL,
   `artCarroCant` int(11) NOT NULL,
   PRIMARY KEY (`carId`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +68,6 @@ CREATE TABLE `carrito` (
 
 LOCK TABLES `carrito` WRITE;
 /*!40000 ALTER TABLE `carrito` DISABLE KEYS */;
-INSERT INTO `carrito` VALUES (35,'u8tf64kgbjff3vf621q2dco7v9',1,2),(40,'qb2im5jugoc2cnhgmh43gpdrk5',12,2),(41,'qb2im5jugoc2cnhgmh43gpdrk5',11,2),(42,'qb2im5jugoc2cnhgmh43gpdrk5',8,2),(45,'ed0c1ai165pbdeb06enqeji2os',3,1),(46,'dmdq1oepl21a3glihc90nh377q',3,2),(47,'frd7dagjg8lgitlukbdqps9tl5',3,1),(48,'r7anhp94062ju30esbu38i0qjl',2,2),(49,'u82c9g6fp0rvndcer5ua4jp3p0',2,1);
 /*!40000 ALTER TABLE `carrito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,9 +108,9 @@ CREATE TABLE `cliente` (
   `clienteApellido` varchar(50) NOT NULL,
   `clienteTelefono` varchar(10) NOT NULL,
   `clienteEmail` varchar(150) NOT NULL,
-  `clienteContraseña` varchar(10) NOT NULL,
+  `clienteContraseña` varchar(255) NOT NULL,
   PRIMARY KEY (`clienteId`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +119,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (1,'ANDRES FELIPE','REY PINO','3154272647','andresfrey97@gmail.com','123456'),(2,'MARIA','MENDEZ','','mariajosemendezmoros@gmail.com','123456'),(3,'CAMILO','PEREZ','','camiloperes@gmail.com','123456');
+INSERT INTO `cliente` VALUES (35,'ANDRES FELIPE','REY','','andresfrey97@gmail.com','$2y$10$TON140T.L0zKHzufWHEw3.DbdI2ETHYBFmftzy3q2M80qT1G5s.dG'),(36,'MARIA','MENDEZ','','mariamendez@gmail.com','$2y$10$zYg1acWTnNZ/5gtz1OeQOO1YMdNPcLOpTtx2GFqXIA6ruZqSN/wty'),(37,'LEDY','BUSTOS','','ledybustos@gmail.com','$2y$10$05hvHN/V6Cx85XTYmLD8w.ndMiP1sonKUyfl6sdJ4LsnSHWuyKlY2');
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -153,7 +152,7 @@ CREATE TABLE `despacho` (
 
 LOCK TABLES `despacho` WRITE;
 /*!40000 ALTER TABLE `despacho` DISABLE KEYS */;
-INSERT INTO `despacho` VALUES ('ASD65F4865D',4,15,1,'0000-00-00'),('ASDF4954DF8',1,16,1,'2022-07-01'),('ASDF6548651',4,15,1,'2022-06-23'),('SD6F5G41F9G8',4,12,1,'2022-06-23'),('SD6F5G4F8',2,10,2,'2022-06-23'),('SDF548F135',3,11,2,'2022-06-23'),('SDF65486Q5',3,13,1,'2022-06-23');
+INSERT INTO `despacho` VALUES ('213D5F1G5FG1',3,32,42,'2022-08-05'),('AS6D5F1D5135DF',2,31,42,'2022-08-05');
 /*!40000 ALTER TABLE `despacho` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -179,7 +178,7 @@ CREATE TABLE `direccionpedido` (
 
 LOCK TABLES `direccionpedido` WRITE;
 /*!40000 ALTER TABLE `direccionpedido` DISABLE KEYS */;
-INSERT INTO `direccionpedido` VALUES (2,'SANTANDER','BUCARAMANGA','Calle 35 # 7-72 Torre Gardenia 202'),(3,'SANTANDER','BUCARAMANGA','Calle 35 # 7-72 Torre Gardenia 202'),(4,'SANTANDER','BUCARAMANGA','Calle 35 # 7-72 Torre Gardenia 202'),(7,'SANTANDER','BUCARAMANGA','Calle 35 # 7-72 Torre Gardenia 202'),(9,'SANTANDER','BUCARAMANGA','Calle 35 # 7-72 Torre Gardenia 202'),(10,'SANTANDER','BUCARAMANGA','Calle 35 # 7-72 Torre Gardenia 202'),(11,'SANTANDER','FLORIDABLANCA','Calle 35 # 7-72'),(12,'SANTANDER','BUCARAMANGA','Calle 35 # 7-72 Torre Gardenia 202'),(13,'SANTANDER','FLORIDABLANCA','Calle 35 # 7-72'),(15,'SANTANDER','FLORIDABLANCA','Calle 48 # 21-84 Cañaveral'),(16,'SANTANDER','BUCARAMANGA','Calle 35 # 7 -72 '),(17,'CUNDINAMARCA','BOGOTA','Calle 10 # 20 - 30 ');
+INSERT INTO `direccionpedido` VALUES (30,'SANTANDER','Bucaramanga','Calle 35 # 7 - 72 Torre 2 202'),(31,'CUNDINAMARCA','Bogota','Calle 30 # 10 - 20 Torre 3 501'),(32,'ANTIOQUIA','Medellin','Calle 10 # 20 - 30 Torre B 502'),(33,'ANTIOQUIA','Medellin','Calle 30 # 10 - 20 Torre B 502');
 /*!40000 ALTER TABLE `direccionpedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -246,6 +245,7 @@ CREATE TABLE `factura` (
   `factura_tipoPagoId` int(11) NOT NULL,
   `facturaClienteId` int(11) NOT NULL,
   `facturaClienteDireccion` varchar(250) NOT NULL,
+  `facturaClTelefono` varchar(10) NOT NULL,
   `facturaImpuestoId` int(11) NOT NULL,
   PRIMARY KEY (`facturaId`),
   KEY `fk_facturaClienteDoc` (`facturaClienteId`),
@@ -253,7 +253,7 @@ CREATE TABLE `factura` (
   KEY `impuestoId` (`facturaImpuestoId`),
   CONSTRAINT `fk_facturaClienteDoc` FOREIGN KEY (`facturaClienteId`) REFERENCES `cliente` (`clienteId`),
   CONSTRAINT `fk_factura_tipoPagoId` FOREIGN KEY (`factura_tipoPagoId`) REFERENCES `tipopago` (`tipoPagoId`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -262,7 +262,7 @@ CREATE TABLE `factura` (
 
 LOCK TABLES `factura` WRITE;
 /*!40000 ALTER TABLE `factura` DISABLE KEYS */;
-INSERT INTO `factura` VALUES (2,'2022-06-17',15000,'1098813441',1,1,'Calle 35 # 7-72 Torre Gardenia 202 ',1),(3,'2022-06-17',15000,'1098813441',1,1,'Calle 35 # 7-72 Torre Gardenia 202 ',1),(4,'2022-06-17',40000,'1098813441',1,1,'Calle 35 # 7-72 Torre Gardenia 202 ',1),(7,'2022-06-18',30000,'1098813441',1,1,'Calle 35 # 7-72 Torre Gardenia 202 ',1),(9,'2022-06-18',175000,'1098813441',1,1,'Calle 35 # 7-72 Torre Gardenia 202 ',1),(10,'2022-06-18',55000,'1098813441',1,1,'Calle 35 # 7-72 Torre Gardenia 202 ',1),(11,'2022-06-19',540000,'1098813441',1,1,'$direccionCompleta',1),(12,'2022-06-19',160000,'1098813441',1,1,'Calle 35 # 7-72 Torre Gardenia 202 BUCARAMANGA - SANTANDER',1),(13,'2022-06-20',72000,'1437336',2,2,'Calle 35 # 7-72  FLORIDABLANCA - SANTANDER',1),(14,'2022-06-22',25000,'1098813441',1,1,'Calle 25 # 14-10 Unilago BOGOTA D.C - CUNDINAMARCA',1),(15,'2022-06-22',75000,'1098813441',1,1,'Calle 48 # 21-84 Cañaveral FLORIDABLANCA - SANTANDER',1),(16,'2022-06-30',60000,'1098813441',1,1,'Calle 35 # 7 -72  BUCARAMANGA - SANTANDER',1),(17,'2022-07-16',25000,'1098813441',1,1,'Calle 10 # 20 - 30  BOGOTA - CUNDINAMARCA',1);
+INSERT INTO `factura` VALUES (30,'2022-08-04',55000,'1098813441',1,35,'Calle 35 # 7 - 72 Torre 2 202 Bucaramanga - SANTANDER','3154272647',1),(31,'2022-08-04',175000,'1437336',1,36,'Calle 30 # 10 - 20 Torre 3 501 Bogota - CUNDINAMARCA','3165736791',1),(32,'2022-08-04',285000,'63299825',1,37,'Calle 10 # 20 - 30 Torre B 502 Medellin - ANTIOQUIA','3155745620',1),(33,'2022-08-04',145000,'63299825',1,37,'Calle 30 # 10 - 20 Torre B 502 Medellin - ANTIOQUIA','3155745620',1);
 /*!40000 ALTER TABLE `factura` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -304,6 +304,7 @@ CREATE TABLE `pedido` (
   `pedidoFechaFin` date DEFAULT NULL,
   `pedidoEstado` varchar(20) NOT NULL DEFAULT 'Pendiente',
   `pedidoClienteId` int(11) NOT NULL,
+  `pedidoClTelefono` varchar(10) NOT NULL,
   `pedidoUsuarioId` int(11) DEFAULT NULL,
   `pedidoFacturaId` int(11) NOT NULL,
   `pedidoCostoTotal` int(11) NOT NULL,
@@ -325,7 +326,7 @@ CREATE TABLE `pedido` (
 
 LOCK TABLES `pedido` WRITE;
 /*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
-INSERT INTO `pedido` VALUES (2,'2022-06-17',NULL,'Pendiente',1,NULL,2,15000,2),(3,'2022-06-17',NULL,'Pendiente',1,NULL,3,15000,3),(4,'2022-06-17',NULL,'Pendiente',1,NULL,4,40000,4),(7,'2022-06-18',NULL,'Pendiente',1,NULL,7,30000,7),(9,'2022-06-18',NULL,'Pendiente',1,NULL,9,175000,9),(10,'2022-06-18',NULL,'Enviado',1,NULL,10,55000,10),(11,'2022-06-19',NULL,'Enviado',1,NULL,11,540000,11),(12,'2022-06-19',NULL,'Enviado',1,NULL,12,160000,12),(13,'2022-06-20',NULL,'Enviado',2,1,13,72000,13),(14,'2022-06-22',NULL,'Pendiente',1,NULL,14,25000,0),(15,'2022-06-22',NULL,'Enviado',1,NULL,15,75000,15),(16,'2022-06-30',NULL,'Enviado',1,NULL,16,60000,16),(17,'2022-07-16',NULL,'Pendiente',1,NULL,17,25000,17);
+INSERT INTO `pedido` VALUES (30,'2022-08-04',NULL,'Cancelado',35,'3154272647',NULL,30,55000,30),(31,'2022-08-04',NULL,'Enviado',36,'3165736791',NULL,31,175000,31),(32,'2022-08-04',NULL,'Enviado',37,'3155745620',NULL,32,285000,32),(33,'2022-08-04',NULL,'Pendiente',37,'3155745620',NULL,33,145000,33);
 /*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -356,7 +357,7 @@ CREATE TABLE `pqrs` (
   CONSTRAINT `fk_pqrsClienteId` FOREIGN KEY (`pqrsClienteId`) REFERENCES `cliente` (`clienteId`),
   CONSTRAINT `fk_pqrsOrigenId` FOREIGN KEY (`pqrsOrigenId`) REFERENCES `pqrstipo` (`pqrsTipoId`),
   CONSTRAINT `fk_pqrsUsuarioId` FOREIGN KEY (`pqrsUsuarioId`) REFERENCES `usuariotienda` (`usuarioId`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -365,7 +366,7 @@ CREATE TABLE `pqrs` (
 
 LOCK TABLES `pqrs` WRITE;
 /*!40000 ALTER TABLE `pqrs` DISABLE KEYS */;
-INSERT INTO `pqrs` VALUES (1,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','quiero realizar una consulta','3154272647','Atendida','2022-06-24',NULL,NULL,3,NULL,''),(2,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','mi pedido esta demorado.','3154272647','Atendida','2022-06-24',1,NULL,2,15,''),(3,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','mi anillo llego malo','3154272647','Atendida','2022-06-24',1,NULL,1,15,'../Uploads/ReclamoImagen/26.jpg'),(4,'ANDRES FELIPE REY PINO','ledypino@outlook.com','quiero realizar una consulta','3154272647','Atendida','2022-06-25',NULL,NULL,3,NULL,''),(5,'ANDRES FELIPE REY PINO','ledypino@outlook.com','quiero realizar una consulta','3154272647','Pendiente','2022-06-25',NULL,NULL,3,NULL,''),(6,'ANDRES FELIPE REY PINO','ledypino@outlook.com','quiero realizar una consulta','3154272647','Pendiente','2022-06-25',NULL,NULL,3,NULL,''),(7,'ANDRES FELIPE REY PINO','ledypino@outlook.com','quiero realizar una consulta','3154272647','Pendiente','2022-06-25',NULL,NULL,3,NULL,''),(8,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','el anillo ha llegado con defectos','3154272647','Pendiente','2022-06-25',1,NULL,1,15,'../Uploads/ReclamoImagen/27.jpg'),(9,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','El anillo me ha llegado con defectos','3154272647','Pendiente','2022-06-25',1,NULL,1,15,'../Uploads/ReclamoImagen/28.jpg'),(10,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','El pedido está demorado de hace una semana. ','3154272647','Atendida','2022-06-25',1,NULL,2,15,''),(11,'MAURICIO FERNANDEZ','marullas@gmail.com','Donde puedo ubicarlos','3163458908','Atendida','2022-06-29',NULL,NULL,3,NULL,'');
+INSERT INTO `pqrs` VALUES (20,'LEDY BUSTOS','ledybustos@gmail.com','Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno est&aacute;ndar de las industrias desde el a&ntilde;o 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido us&oacute; una galer&iacute;a de textos y los mezcl&oacute; de tal manera que logr&oacute; hacer un libro de textos especimen. No s&oacute;lo sobrevivi&oacute; 500 a&ntilde;os','3165736791','Atendida','2022-08-05',NULL,NULL,1,32,'../Uploads/ReclamoImagen/índice.jpg'),(21,'ANDRES FELIPE REY PINO','andresfrey97@gmail.com','Buenas tardes, me comunico para saber por qu&eacute; raz&oacute;n mi pedido ha sido cancelado. Gracias.','3154272647','Pendiente','2022-08-05',NULL,NULL,2,30,''),(22,'CARLOS PEREZ','perezc@gmail.com','El trozo de texto est&aacute;ndar de Lorem Ipsum usado desde el a&ntilde;o 1500 es reproducido debajo para aquellos interesados. Las secciones 1.10.32 y 1.10.33 de &quot;de Finibus Bonorum et Malorum&quot; por Cicero son tambi&eacute;n reproducidas en su forma original exacta, acompa&ntilde;adas por versiones en Ingl&eacute;s de la traducci&oacute;n realizada en 1914 por H. Rackham.','3001242568','Pendiente','2022-08-05',NULL,NULL,3,NULL,'');
 /*!40000 ALTER TABLE `pqrs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -418,7 +419,7 @@ CREATE TABLE `productoporfactura` (
 
 LOCK TABLES `productoporfactura` WRITE;
 /*!40000 ALTER TABLE `productoporfactura` DISABLE KEYS */;
-INSERT INTO `productoporfactura` VALUES (1,3,1,15000),(1,4,1,15000),(2,4,1,25000),(3,7,1,30000),(3,9,1,30000),(4,9,1,145000),(3,10,1,30000),(2,10,1,25000),(2,11,2,25000),(3,11,1,30000),(4,11,3,145000),(7,11,1,25000),(2,12,2,25000),(1,12,3,15000),(5,12,1,40000),(9,12,1,25000),(10,13,1,27000),(3,13,1,30000),(11,13,1,15000),(2,14,1,25000),(9,15,3,25000),(1,16,2,15000),(8,16,1,30000),(2,17,1,25000);
+INSERT INTO `productoporfactura` VALUES (2,30,1,25000),(3,30,1,30000),(3,31,1,30000),(4,31,1,145000),(6,32,1,60000),(3,32,1,30000),(4,32,1,145000),(2,32,2,25000),(6,33,2,60000),(9,33,1,25000);
 /*!40000 ALTER TABLE `productoporfactura` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -447,7 +448,7 @@ CREATE TABLE `productoporpedido` (
 
 LOCK TABLES `productoporpedido` WRITE;
 /*!40000 ALTER TABLE `productoporpedido` DISABLE KEYS */;
-INSERT INTO `productoporpedido` VALUES (1,3,1,15000),(1,4,1,15000),(2,4,1,25000),(3,7,1,30000),(3,9,1,30000),(4,9,1,145000),(3,10,1,30000),(2,10,1,25000),(2,11,2,25000),(3,11,1,30000),(4,11,3,145000),(7,11,1,25000),(2,12,2,25000),(1,12,3,15000),(5,12,1,40000),(9,12,1,25000),(10,13,1,27000),(3,13,1,30000),(11,13,1,15000),(2,14,1,25000),(9,15,3,25000),(1,16,2,15000),(8,16,1,30000),(2,17,1,25000);
+INSERT INTO `productoporpedido` VALUES (2,30,1,25000),(3,30,1,30000),(3,31,1,30000),(4,31,1,145000),(6,32,1,60000),(3,32,1,30000),(4,32,1,145000),(2,32,2,25000),(6,33,2,60000),(9,33,1,25000);
 /*!40000 ALTER TABLE `productoporpedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -462,7 +463,7 @@ CREATE TABLE `resolucion` (
   `resolucionId` int(11) NOT NULL,
   `resolucionUsuarioId` int(11) NOT NULL,
   `resolucionpqrsId` int(11) NOT NULL,
-  `resolucionMensaje` varchar(500) NOT NULL,
+  `resolucionMensaje` varchar(1000) NOT NULL,
   `resolucionFecha` date NOT NULL,
   PRIMARY KEY (`resolucionId`),
   KEY `resolucionUsuarioId` (`resolucionUsuarioId`),
@@ -478,7 +479,7 @@ CREATE TABLE `resolucion` (
 
 LOCK TABLES `resolucion` WRITE;
 /*!40000 ALTER TABLE `resolucion` DISABLE KEYS */;
-INSERT INTO `resolucion` VALUES (1,2,1,'la acabas de realizar, buen dia. ','2022-06-28'),(2,2,2,'y lo solicito en verde? ','2022-06-28'),(3,1,3,'is simply dummy text of the printing and typesetting industry.','2022-06-29'),(4,2,4,'is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing so','2022-06-29'),(10,1,10,'Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño. El punto de usar Lorem Ipsum es que tiene una distribución más o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aquí, contenido aquí\". Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqueda ','2022-07-01'),(11,2,11,'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various vers','2022-06-29');
+INSERT INTO `resolucion` VALUES (20,42,20,'Es un hecho establecido hace demasiado tiempo que un lector se distraer&aacute; con el contenido del texto de un sitio mientras que mira su dise&ntilde;o. El punto de usar Lorem Ipsum es que tiene una distribuci&oacute;n m&aacute;s o menos normal de las letras, al contrario de usar textos como por ejemplo &quot;Contenido aqu&iacute;, contenido aqu&iacute;&quot;. Estos textos hacen parecerlo un espa&ntilde;ol que se puede leer. Muchos paquetes de autoedici&oacute;n y editores de p&aacute;ginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una b&uacute;squeda de &quot;Lorem Ipsum&quot; va a dar por resultado muchos sitios web que usan este texto si se encuentran en estado de desarrollo.','2022-08-05');
 /*!40000 ALTER TABLE `resolucion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -543,13 +544,13 @@ CREATE TABLE `usuariotienda` (
   `usuarioApellido` varchar(50) NOT NULL,
   `usuarioDoc` varchar(12) NOT NULL,
   `usuarioRolId` int(11) NOT NULL,
-  `usuarioContraseña` varchar(10) NOT NULL,
+  `usuarioContraseña` varchar(255) NOT NULL,
   `usuarioEstado` varchar(12) NOT NULL,
   PRIMARY KEY (`usuarioId`),
   UNIQUE KEY `UQ_usuarioDoc` (`usuarioDoc`),
   KEY `fk_usuarioRolId` (`usuarioRolId`),
   CONSTRAINT `fk_usuarioRolId` FOREIGN KEY (`usuarioRolId`) REFERENCES `rol` (`rolId`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -558,7 +559,7 @@ CREATE TABLE `usuariotienda` (
 
 LOCK TABLES `usuariotienda` WRITE;
 /*!40000 ALTER TABLE `usuariotienda` DISABLE KEYS */;
-INSERT INTO `usuariotienda` VALUES (1,'ANDRES','FELIPE','1098813441',1,'123456','Activo'),(2,'MARIA','MENDEZ','1437336',2,'123456','Activo'),(3,'LEDY','PINO BUSTOS','63299825',2,'Umarani202','Activo');
+INSERT INTO `usuariotienda` VALUES (42,'MARIA','MENDEZ','1437336',2,'$2y$10$rrjc05.2HkmTqS1kQ6wxwu4noPva5oGDarnloA6JnDGcXOKj55Gk.','Activo'),(43,'ANDRES','REY','1098813441',1,'$2y$10$vBJF5HBBBYb2JGehBGdZmuqdv894VJp7iaObP4/NlgfsnIj9KQLIe','Activo');
 /*!40000 ALTER TABLE `usuariotienda` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -571,4 +572,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-16  9:06:22
+-- Dump completed on 2022-08-04 17:16:25

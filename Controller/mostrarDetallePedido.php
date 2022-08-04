@@ -30,7 +30,7 @@ while($datped = mysqli_fetch_array($datosPedido)){
     $direccion = $datped['facturaClienteDireccion'];
     $telefono = $datped['facturaClTelefono'];
     $mail = $datped['clienteEmail'];
-    
+     
 }
 
 $artxped1 = new articuloPorPedido();
