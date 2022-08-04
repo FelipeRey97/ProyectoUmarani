@@ -3,8 +3,8 @@
     require_once('../Model/M_Clientes.php');
 
     $client = new clientes ();
-
-    $registroCliente = $client->DetalleCliente();
+    $mail = $_SESSION['cMail'];
+    $registroCliente = $client->DetalleCliente($mail);
 
     if(isset($registroCliente)){
 

@@ -63,7 +63,7 @@ include_once('../Controller/iniciarSesion2.php');
                                         <a class= "delete" href="../Controller/carrito.php?delete=1&artId=<?php echo "$dat[artId]"?>&sesionId=<?php echo "$sesionId" ?>"><i class="far fa-window-close"></i></a>
                                 </form>
 
-                    </div> 
+                    </div>  
                     <?php 
                     $total = $total + $costo; }
                     ?>
@@ -187,7 +187,7 @@ include_once('../Controller/iniciarSesion2.php');
                     ?>
                     <p>¿Nuevo en Umarani?  <a method="post" href="../View/Registrarse.php?valor=<?php echo "$valor"?>" > <b>Regístrate aquí</b> </a></p><br><br>
                     
-                    <a href="../WebUmarani/recuperarContraseña.html"><b>¿Olvidaste tu contraseña?</b></a><br><br>
+                    <a href="../View/recuperarContraseña.php"><b>¿Olvidaste tu contraseña?</b></a><br><br>
                     
                     <input type="hidden" name="compra" value="<?php echo "$valor" ?>">
                     <input class="boton-iniciarSesion" name="iniciar_sesion" type="submit" value="Iniciar Sesión">

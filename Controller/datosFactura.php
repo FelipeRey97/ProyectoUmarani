@@ -17,8 +17,8 @@
 
 
 if(isset($_SESSION['cMail'])){
-
-     $registroCliente = $client2->DetalleCliente();
+     $mail = $_SESSION['cMail'];
+     $registroCliente = $client2->DetalleCliente($mail);
 
      if(isset($registroCliente)){
  

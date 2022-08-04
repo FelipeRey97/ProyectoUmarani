@@ -80,13 +80,20 @@
             $this->cl->close();
         }
 
-        public function DetalleCliente(){
+        public function DetalleCliente($mail){
 
-            $registroCliente = $this->cl->query("SELECT * FROM cliente WHERE clienteEmail ='$_SESSION[cMail]'") 
+            $registroCliente = $this->cl->query("SELECT * FROM cliente WHERE clienteEmail ='$mail'") 
             or die ("problemas en el select" );
     
             return $registroCliente;
     
+        }
+        public function recuperarClave($Rclave,$Rmail){
+
+            $this->cl->query("UPDATE cliente SET clienteContraseña = '$Rclave'
+            WHERE clienteEmail = '$Rmail'") or die ("problemas en el update");
+
+
         }
         
 

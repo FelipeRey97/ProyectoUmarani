@@ -220,7 +220,7 @@ include_once('../Controller/datosFactura.php')
 
 <?php  
      $totalpagar = 0;
-      while($check = mysqli_fetch_array($checkout)) { 
+     foreach($checkout as $check) { 
 
 ?>
     <div class="articleContainer">

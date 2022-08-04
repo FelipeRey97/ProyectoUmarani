@@ -185,7 +185,7 @@ require_once("../Controller/buscador.php");
                        <img src="<?php echo "$check[artVista]" ?>" alt="">
                    </div>
                    <div class="articleInfo">
-                       <p>ID: <?php echo "$check[artId]" ?> </p>
+                    <p>ID: <?php echo "$check[artId]" ?> </p>
                        <h2> <?php echo "$check[artNombre]" ?></h2>
                    </div>
                    <div class="articlePrice">

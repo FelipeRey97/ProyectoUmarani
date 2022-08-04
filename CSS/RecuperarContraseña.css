@@ -5,6 +5,12 @@
     box-sizing: border-box;
 }
 
+.ocultar {
+
+    visibility: hidden;
+}
+
+
 .header{
 
     background: rgb(255, 249, 249); 
@@ -19,6 +25,8 @@
         font-family: 'Open Sans', sans-serif;
         font-size: 13px;
         text-align: end;
+        position: fixed;
+        width: 100%;
     }
         .contacto a{
 
@@ -29,17 +37,241 @@
             
         }
 
+        .kartOpacity{
 
+            position: absolute;
+            background: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            height: 100%;
+            transition: all 5s ease ease-in-out;
+        }
         .carrito{
 
-           
             position: absolute;
             width: 22vw;
-            margin-left: 76.8%;
-            background: #fff;
-              
+            margin-left: 77.6%;
+            background: rgb(146, 146, 146);
+            height: max-content;
+            transition: all 5s ease ease-in-out;
             
         }
+
+            .top{
+
+                background: rgb(39, 39, 39);
+                padding: 30px;
+                margin: 10px;
+                text-align: end;
+            }
+                .top a{
+
+                    text-decoration: none;
+                    color: #fff;
+                    font-family: open;
+                    font-family: 'Open Sans', sans-serif;
+                    
+                }
+                    .cerrar-carrito{
+
+                        margin-left: 100px;
+                        font-size: 30px;
+                        color: #cacaca;
+                    }
+                   
+
+            .middle{
+
+                background: rgb(240, 240, 240);
+                padding: 30px;
+                margin: 10px;
+                height: max-content;
+            }
+
+            .bottom{
+
+                background: rgb(39, 39, 39);
+                padding: 30px;
+                margin: 10px;
+                font-family: 'Open Sans', sans-serif;
+                font-size: 20px;
+                color: #fff;
+            }
+
+                .buy-button{
+                    display: block;
+                    margin-top: 15px;
+                    padding: 10px;
+                    background: #2e2e2e;
+                    text-align: center;
+                    color: #fff;
+                    text-decoration: none;
+                    font-family: 'Open Sans', sans-serif;
+                    transition: 0.3s ease-in-out;
+                    transition: all 5s ease ease-in-out;
+                }
+                .buy-button:hover{
+                    transition: 0.3s ease-in-out;
+                    background: #e6e6e6;
+                    color: rgb(51, 51, 51);
+
+                } 
+
+                .searchOpacity{
+
+                    position: absolute;
+                    background: rgba(0, 0, 0, 0.5);
+                    width: 100%;
+                    height: 100%;
+                    transition: all 5s ease ease-in-out;
+
+                }
+                .searchEngine{
+        
+                    position: absolute;
+                    width: 22vw;
+                    margin-left: 77.6%;
+                    background: rgb(146, 146, 146);
+                    height: max-content;
+                    transition: all 5s ease ease-in-out;
+                    
+                }
+        
+                    .topSearchEngine{
+        
+                        background: rgb(39, 39, 39);
+                        padding: 30px;
+                        margin: 10px;
+                        text-align: end;
+                    }
+                        .topSearchEngine a{
+        
+                            text-decoration: none;
+                            color: #fff;
+                            font-family: 'Open Sans', sans-serif;
+                            
+                        }
+
+                            .cerrar-buscador{
+        
+                                margin-left: 80px;
+                                font-size: 30px;
+                                color: #cacaca;
+                            }
+                            
+        
+                    .middleSearchEngine{
+        
+                        background: rgb(240, 240, 240);
+                        padding: 30px;
+                        margin: 10px 10px 0px 10px;
+                        height: max-content;
+                        border-bottom: 1px solid #8a8a8aad;
+
+                    }
+                        .middleSearchEngine input{
+
+                            padding: 12px;
+                            width: 100%;
+                            font-family: 'Open Sans', sans-serif;
+                            border: 1px solid rgba(77, 77, 77, 0.575);
+                            outline: 0px;
+                            font-size: 16px;
+                        }
+        
+                    .bottomSearchEngine{
+        
+                        background: rgb(255, 255, 255);
+                        padding: 30px;
+                        margin: 0px 10px 10px 10px;
+                        font-family: 'Open Sans', sans-serif;
+                        font-size: 20px;
+                        color: #fff;
+                        
+                    }
+                
+            .accountOpacity{
+
+                position: absolute;
+                background: rgba(0, 0, 0, 0.5);
+                width: 100%;
+                height: 100%;
+                transition: all 5s ease ease-in-out;
+
+            }
+            .accountMenu{
+    
+                position: absolute;
+                width: 22vw;
+                margin-left: 77.6%;
+                background: rgb(146, 146, 146);
+                height: max-content;
+                transition: all 5s ease ease-in-out;
+                
+            }
+    
+                .topAccountMenu{
+    
+                    background: rgb(39, 39, 39);
+                    padding: 30px;
+                    margin: 10px;
+                    text-align: end;
+                }
+                    .topAccountMenu a{
+    
+                        text-decoration: none;
+                        color: #fff;
+                        font-family: 'Open Sans', sans-serif;
+                        
+                    }
+
+                        .cerrar-AccountMenu{
+    
+                            margin-left: 80px;
+                            font-size: 30px;
+                            color: #cacaca;
+                        }
+                        
+    
+                .middleAccountMenu{
+    
+                    background: rgb(240, 240, 240);
+                    padding: 30px;
+                    margin: 10px 10px 0px 10px;
+                    height: max-content;
+                    border-bottom: 1px solid #8a8a8aad;
+                }
+                    .middleAccountMenu a{
+
+                        text-decoration: none;
+                        color: rgb(75, 75, 75);
+                        font-family: 'Open Sans', sans-serif;
+                    }
+    
+                .bottomAccountMenu{
+    
+                    background: rgb(255, 255, 255);
+                    padding: 30px;
+                    margin: 0px 10px 10px 10px;
+                    font-family: 'Open Sans', sans-serif;
+                    font-size: 20px;
+                    color: #fff;
+                    
+                }
+                
+            .Buscar_contenedor{
+
+                display: flex;  
+                padding: 15px;
+                flex-wrap: wrap;
+                margin: 10px;
+                    
+             }
+             .Buscar_contenedor a{
+
+                text-decoration: none;
+                color: #2e2e2e;
+             }
+
 
             .contenedor{
 
@@ -64,48 +296,41 @@
 
             .info{
 
-                border-right: 1px solid #3120155b;
                 padding-right: 10px;
             }
             .contenedor h3{
 
-                
-                font-family: 'Bitter', serif;
+                font-family: 'Open Sans', sans-serif;
             }
 
             .contenedor p{
 
-                font-family: 'Bitter', serif;
-                font-size: 18px;
+                font-family: 'Open Sans', sans-serif;
+                font-size: 15px;
             }
             .contenedor label{
 
-                margin-left: 10px;
-                font-family: 'Bitter', serif;
+                font-family: 'Open Sans', sans-serif;
                 font-size: 15px;
                 
             }
             .contenedor input{
 
                 width: 30px;
-                font-family: 'Bitter', serif;
+                font-family: 'Open Sans', sans-serif;
                 text-align: center;
                 border: 1px solid #312015;
+                margin-left: 40%;
                 
             }
             .contenedor a{
-
-                margin-left: 10px;
-                color: rgb(226, 141, 141);
+                
+                display: block;
+                margin-top: 20px;
+                margin-left: 60%;
+                color: rgb(255, 49, 49);
                 font-size: 20px;
-            }
-
-            .infoTotal{
-
-            position: absolute;
-            width: 22vw;
-            margin-left: 76.8%;
-            background: #fff;
+                width: 20px;
                 
             }
 
@@ -189,17 +414,18 @@
     margin-right: auto;
     padding: 0px;
     background: #f0f0f0;
-    border: 1px solid #8a8a8a8e;
+    border: none;
     
 }
     .form-container h1{
 
         text-align: center;
-        margin-top: 20px;
+        margin-top: 40px;
         margin-bottom: 10px;
         font-family: 'Open Sans', sans-serif;
         font-size: 20px;
         color: rgb(58, 58, 58);
+        
     }
     .recuperacion{
 
@@ -257,11 +483,11 @@
     .control{
 
         padding: 12px;
-        width: 400px;
-        border: 1px solid #8888888c;
-        cursor: pointer;
-        background: #4e4e4e8c;
-        color: #fff;
+        width: 380px;
+        border: none;
+        border-bottom: 1px solid #8888888c;
+        background: #4e4e4e00;
+        color: rgb(49, 49, 49);
         font-family: 'Open Sans', sans-serif;
         font-size: 15px;
         transition: 0.3s ease-in-out;
@@ -270,7 +496,7 @@
     .enviar{
 
         padding: 12px;
-        width: 420px;
+        width: 380px;
         border: 1px solid #8888888c;
         cursor: pointer;
         background: #4e4e4e8c;
