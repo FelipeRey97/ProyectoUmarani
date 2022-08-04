@@ -63,13 +63,13 @@
 
           
           }
+ 
 
-
-        public function verificarCliente($usuario,$contraseña){
+        public function verificarCliente($usuario){
 
 
          $datos = $this->cl->query("SELECT * FROM cliente 
-         where clienteEmail = '$usuario' and clienteContraseña = '$contraseña'");
+         where clienteEmail = '$usuario'");
 
          return $datos;
  
@@ -88,9 +88,9 @@
             return $registroCliente;
     
         }
-        public function recuperarClave($Rclave,$Rmail){
+        public function recuperarClave($Encript_clave,$Rmail){
 
-            $this->cl->query("UPDATE cliente SET clienteContraseña = '$Rclave'
+            $this->cl->query("UPDATE cliente SET clienteContraseña = '$Encript_clave'
             WHERE clienteEmail = '$Rmail'") or die ("problemas en el update");
 
 

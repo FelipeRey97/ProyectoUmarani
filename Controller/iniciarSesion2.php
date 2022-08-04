@@ -10,7 +10,7 @@
 <body>
     
     <?php 
-    
+     
   if(isset($_REQUEST['iniciar_sesion'])){
 
     require_once('../Model/M_Clientes.php');
@@ -20,12 +20,17 @@
     $usuario= $_POST['cMail'];
     $contraseña= $_POST['cPassword'];
     //SE REALIZA LA CONSULTA PARA COMPROBAR SI EL USUARIO Y CONTRASEÑA CORRESPONDEN
-    $resultado = $cliente_Sesion->verificarCliente($usuario,$contraseña);
+    $resultado = $cliente_Sesion->verificarCliente($usuario);
 
     $filas = mysqli_fetch_array($resultado);
   
     if($filas){
 
+        $v_contraseña = password_verify($contraseña, $filas['clienteContraseña']);
+
+        if($v_contraseña == true){
+
+        
         session_start();
         $_SESSION['cMail'] = $usuario;
         $_SESSION['nombre'] = $filas['clienteNombre'];
@@ -38,8 +43,7 @@
      }else{
         header("Location: ../View/areaCliente.php");
      }
-         
-    }
+    }  
     else{
         ?>
             <script>
@@ -48,6 +52,8 @@
             </script>
         <?php 
     }
+    }
+    
 
 }
 ?>

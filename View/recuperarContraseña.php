@@ -1,4 +1,5 @@
 <?php
+session_abort();
 session_start();
 $sesionId= session_id();
 require "../Controller/mostrarCatalogo.php";

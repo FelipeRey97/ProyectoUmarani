@@ -154,6 +154,7 @@
 
             if($terminos == true && $vcPassword == true && $vcNombre == true && $vcApellido == true && $vsanitized_Mail == true && $vcPassword == true){
                 $_SESSION['cMail'] =  $sanitized_Mail;
+                $cPassword = password_hash($cPassword, PASSWORD_DEFAULT);
             $cliente1->insertarCliente($cNombre,$cApellido,$cMail,$cPassword);
             $cliente1->cerrarConexion();
             ?>

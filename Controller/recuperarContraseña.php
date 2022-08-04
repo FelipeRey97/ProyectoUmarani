@@ -140,9 +140,9 @@ if(isset($_REQUEST['recuperar'])){
 
             $filas = mysqli_fetch_array($datos);
 
-            $claveActual = $filas['clienteContraseña'];
+            $claveActual = password_verify($Rclave, $filas['clienteContraseña']);
 
-            if($claveActual == $Rclave) {
+            if($claveActual == true) {
 
                 ?>
                <script>
@@ -151,14 +151,16 @@ if(isset($_REQUEST['recuperar'])){
                <?php 
                 }
                 else{
-   
-               $recuperarCliente->recuperarClave($Rclave,$Rmail);
+                    
+               $Encript_clave = password_hash($Rclave, PASSWORD_DEFAULT);
+               $recuperarCliente->recuperarClave($Encript_clave,$Rmail);
+               session_abort();
                ?>
                <script>
                swal('Operación Realizada','Se ha Recuperado la contraseña','success');
                </script>
                <?php 
-               header('refresh:1;url=../View/iniciarSesion.php');
+               header('refresh:10;url=../View/iniciarSesion.php');
             }
 
            }
