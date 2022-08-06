@@ -4,3 +4,4 @@
 header("Location: view/catalogo.php" );
 
 ?>
+

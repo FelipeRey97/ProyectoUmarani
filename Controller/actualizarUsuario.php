@@ -107,6 +107,8 @@ if(isset($_REQUEST['registrar'])){
         
     if($vRol == true && $vEstado == true && $vContraseña == true && $vApellido == true && $vNombre == true){
     
+        $ucontraseña = password_hash($ucontraseña, PASSWORD_DEFAULT);
+
         $con2->actualizarUsuario($unombre,$uapellido,$ucontraseña,$uestado,$urol,$usuarioId);
       ?>
       <script>

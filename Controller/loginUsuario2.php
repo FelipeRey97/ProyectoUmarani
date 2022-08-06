@@ -28,20 +28,7 @@ if(isset($_REQUEST['iniciar-sesion'])){
   
     if($filas){
 
-        if($filas['usuarioEstado'] == "Bloqueado" || $filas['usuarioEstado'] == "Inactivo"){
-
-            $vEstado = false;
-            ?>
-            <script>
-                swal('Atención','El usuario se encuentra Inactivo o Bloqueado','info');
-            </script>
-        <?php 
-        }
-        else{
-
-            $vEstado = true;
-
-        }
+        
         if($filas['usuarioEstado'] == "Preactivo"){
             session_start();
             $usuario = $_POST['usuario'];
@@ -59,16 +46,28 @@ if(isset($_REQUEST['iniciar-sesion'])){
             $v_password = password_verify($contraseña,$filas['usuarioContraseña']);
             if($v_password == true){
 
-            session_start();
-            $_SESSION['usuario'] = $usuario;
-            $_SESSION['nombre'] = $filas['usuarioNombre'];
-            $_SESSION['doc'] = $filas['usuarioDoc'];
-            $_SESSION['apellido'] = $filas['usuarioApellido'];
-            $_SESSION['rol'] = $filas['rolNombre'];
-            $_SESSION['usuarioId'] = $filas['usuarioId'];
+                if($filas['usuarioEstado'] == "Bloqueado" || $filas['usuarioEstado'] == "Inactivo"){
 
-            header("Location: ../view/pedidos.php?pagina=1");
+                    $vEstado = false;
+                    ?>
+                    <script>
+                        swal('Atención','El usuario se encuentra Inactivo o Bloqueado','info');
+                    </script>
+                <?php 
+                }
 
+                if ($filas['usuarioEstado'] == "Activo"){
+
+                    session_start();
+                    $_SESSION['usuario'] = $usuario;
+                    $_SESSION['nombre'] = $filas['usuarioNombre'];
+                    $_SESSION['doc'] = $filas['usuarioDoc'];
+                    $_SESSION['apellido'] = $filas['usuarioApellido'];
+                    $_SESSION['rol'] = $filas['rolNombre'];
+                    $_SESSION['usuarioId'] = $filas['usuarioId'];
+
+                    header("Location: ../view/pedidos.php?pagina=1");
+                }
             }
             else if($v_password == false){
                 ?>
