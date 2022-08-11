@@ -86,6 +86,7 @@ session_start();
                         <textarea class="control" name="respuesta" id="" cols="160" rows="10"><?php if(isset($respuesta)){ echo "$respuesta"; } else{echo"";} ?></textarea>
                         <input type="hidden" value="<?php echo "$id" ?>" name="pqrsId">
                         <input type="hidden" value="<?php echo "$_SESSION[usuarioId]" ?>" name="usuarioId">
+                        <input type="hidden" value="<?php echo "$_SESSION[nombre] $_SESSION[apellido] "; ?>" name="usuarioNombre">
                         <input type="hidden" value="<?php echo "$date" ?>" name="date"><br><br>
                         <input class="searchButton" type="submit" name="guardar" value="Guardar">
                         </form><br><br> 

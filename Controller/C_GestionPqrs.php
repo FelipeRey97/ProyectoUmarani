@@ -35,20 +35,14 @@ while($det = mysqli_fetch_array($detallepqrs)){
         while($datosr = mysqli_fetch_array($resoluciondatos))
         
         $respuesta = $datosr['resolucionMensaje'];
+        if(isset($datosr['Res_Unombre'])){
+
+            $usuario = $datosr['Res_Unombre'];
+            $usuarioId = $datosr['resolucionUsuarioId'];
+
+        }
         
         }
-
-$resolucionusuario = $resol->DetalleUsuario($id); 
-
-if(isset($resolucionusuario)){
-
-    while($datosU = mysqli_fetch_array($resolucionusuario)) {
-    
-        $usuarioId = $datosU['usuarioId'];
-        $usuario = $datosU['usuarioNombre'] . " " . $datosU['usuarioApellido'];
-        
-        }
-}
 
 }
 
@@ -74,11 +68,11 @@ if(isset($_REQUEST['pqVis'])){
 
     }
 
-    $detalleResolucion = $resol->DetalleUsuario($id); 
+    $detalleResolucion = $resol->DetalleResolucion($id); 
 
     while($dat = mysqli_fetch_array($detalleResolucion)){
 
-        $usuario = $dat['usuarioNombre'] ." ". $dat['usuarioApellido'];
+        $usuario = $dat['Res_Unombre'];
 
     }
     

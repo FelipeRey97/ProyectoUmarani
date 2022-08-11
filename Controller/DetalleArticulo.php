@@ -18,6 +18,7 @@ while ($det = mysqli_fetch_array($detalleProducto)){
     $artCantidad = $det['artCantidad'];
     $artEstado = $det['artEstado'];
     $artId = $det['artId'];
+    $artCat = $det['categoriaNombre'];
 
 }
 

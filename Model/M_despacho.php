@@ -14,11 +14,11 @@
             $this->desp = $conexionBD;
             
         }
-        public function insertarOrden($despachoId,$empresaId,$pedidoId,$usuarioId,$date){
+        public function insertarOrden($despachoId,$empresaId,$pedidoId,$usuarioId,$nombreUsuario,$date){
 
 
-            $this->desp->query("INSERT INTO despacho (despachoId,despachoempresaId,despachoPedidoId,despachoUsuarioId,despachoFecha)
-            VALUES ('$despachoId','$empresaId','$pedidoId','$usuarioId','$date')") 
+            $this->desp->query("INSERT INTO despacho (despachoId,despachoempresaId,despachoPedidoId,despachoUsuarioId,desp_Unombre,despachoFecha)
+            VALUES ('$despachoId','$empresaId','$pedidoId','$usuarioId','$nombreUsuario','$date')") 
             or die ("problemas en el select " . mysqli_error($desp));
 
              
@@ -57,8 +57,6 @@
         $datos = $this->desp->query("SELECT * FROM pedido
         JOIN despacho
         ON  pedidoId = despachoPedidoId 
-        JOIN usuariotienda 
-        ON usuarioId = despachoUsuarioId
         JOIN empresaenvio
         ON despachoEmpresaId = empresaId
         WHERE despachoPedidoId = $id")  or die("Problemas en el select");

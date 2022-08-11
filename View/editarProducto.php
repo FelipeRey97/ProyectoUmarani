@@ -114,7 +114,7 @@ session_start();
                         <img class="vista" src="<?php echo "$reg[artVista]"?>" alt=""><br><br>
                         <label for="">Si desea cambiar la imagen del producto selecciónela aquí:</label><br><br>
                         <input type="file" name="foto1" id="foto1" value="" ><br><br>
-                        <input class="registrar" name="registrar" type="submit" value="Registrar">
+                        <input class="registrar" name="registrar" type="submit" value="Guardar Cambios">
                         <input type="hidden" name="aId" value="<?php echo "$_REQUEST[aId]" ?>">
                         <input type="hidden" name="rutaActual" value="<?php echo "$reg[artVista]"?>" >
                         <a class="searchButton" href="../View/Productos.php">Volver</a>

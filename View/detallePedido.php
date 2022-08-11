@@ -91,17 +91,17 @@ session_start();
                         </select>
                         <input type="hidden" value="<?php echo "$id"; ?>" name="pedidoId">
                         <input type="hidden" value="<?php echo "$_SESSION[usuarioId]"; ?>" name="usuarioId">
+                        <input type="hidden" value="<?php echo "$_SESSION[nombre] $_SESSION[apellido]"?>" name="nombreUsuario" >
                         <input type="hidden" value="<?php echo "$date"; ?>" name="date">
                         <input class="searchButton" name="Guardar" type="submit" value="Guardar">
                         </form><br><br>  <?php }
                                else if(isset($_REQUEST['vis']) && isset($cGuia) ){
-
                                 
                             ?>
                             <h1>Datos Envío</h1><br><br>
                             <p><b>Id Despacho: </b> <?php echo "$cGuia"; ?> </p><br>
                             <p><b>Empresa: </b> <?php echo "$eLogistica"; ?> </p><br>
-                            <p><b>Usuario: </b> <?php echo "$uNombre ". " ". "$uApellido"; ?> </p><br>
+                            <p><b>Usuario: </b> <?php echo "$uNombre"; ?> </p><br>
                             <p><b>Usuario Id: </b> <?php echo "$uCodigo"; ?> </p><br>
                             <p><b>Estado: </b> <?php echo "$pedEstado"; ?> </p><br> 
                             <p><b>Fecha de Envio: </b> <?php echo "$estadoFecha"; ?> </p><br>
@@ -129,7 +129,7 @@ session_start();
                         <h1>Datos Envío</h1><br><br>
                             <p><b>Id Despacho: </b> <?php echo "$cGuia"; ?> </p><br>
                             <p><b>Empresa: </b> <?php echo "$eLogistica"; ?> </p><br>
-                            <p><b>Usuario: </b> <?php echo "$uNombre ". " ". "$uApellido"; ?> </p><br>
+                            <p><b>Usuario: </b> <?php echo "$uNombre"; ?> </p><br>
                             <p><b>Usuario Id: </b> <?php echo "$uCodigo"; ?> </p><br>
                             <p><b>Estado: </b> <?php echo "$pedEstado"; ?> </p><br> 
                             <p><b>Fecha de Envio: </b> <?php echo "$estadoFecha"; ?> </p><br>

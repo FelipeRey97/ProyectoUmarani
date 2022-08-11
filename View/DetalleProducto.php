@@ -174,8 +174,8 @@ require_once("../Controller/buscador.php");
             <div class="detalles">
                 <div class="titulo">
                     <h1><?php echo "$artNombre" ?></h1> <br><br>
-                    <p><b>Categoría:</b> Lorem, ipsum dolor.</p>
-                    <p><b>Material:</b> Lorem, ipsum dolor.</p>
+                    <p><b>Categoría:</b><?php echo " $artCat" ?></p>
+                    <!-- <p><b>Material:</b> Lorem, ipsum dolor.</p> -->
                     
                     <div class="descripcion">
                         <h2>Descripción</h2>

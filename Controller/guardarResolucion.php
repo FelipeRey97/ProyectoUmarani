@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<?php
+<?php 
 
 require_once('../Model/M_resolucion.php');
 require_once('../Model/M_PQRS.php');
@@ -43,10 +43,10 @@ if($Vmensaje == true){
   $res1 = new Resolucion();
   $pq1 = new PQRS();
 
-  $id = $_REQUEST['pqrsId'];
-  $usuarioId = $_REQUEST['usuarioId'];
-
-  $fecha = $_REQUEST['date'];
+  $id =  htmlentities($_REQUEST['pqrsId']);
+  $usuarioId = htmlentities($_REQUEST['usuarioId']);
+  $usuarioNombre = ($_REQUEST['usuarioNombre']);
+  $fecha = htmlentities($_REQUEST['date']);
   $pqrsId = $id;
 
   $validar_pqrs = $res1->validarResolucion($pqrsId);
@@ -68,7 +68,8 @@ if($Vmensaje == true){
 
   }if($validar_pqrs == false){
 
-    $res1->insertarResolucion($id,$usuarioId,$pqrsId,$mensaje,$fecha);
+
+    $res1->insertarResolucion($id,$usuarioId,$usuarioNombre,$pqrsId,$mensaje,$fecha);
     $pq1->actualizarEstado($id);
 
     ?>

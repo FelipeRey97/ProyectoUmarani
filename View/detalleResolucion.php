@@ -56,7 +56,7 @@ session_start();
                 <a href="../View/cambiarClave.php">Cambiar Clave</a>
                 <a href="../Controller/cerrarSesion.php">Cerrar Sesión</a>
             </nav>
-        </div>
+        </div> 
         <div class="content">
         <header class="header">
             <h1>Solicitud No. <?php echo "$pId" ?></h1>

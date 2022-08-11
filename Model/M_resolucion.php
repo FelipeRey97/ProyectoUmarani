@@ -16,10 +16,10 @@
 
 
         }
-        public function insertarResolucion($id,$usuarioId,$pqrsId,$mensaje,$fecha){
+        public function insertarResolucion($id,$usuarioId,$usuarioNombre,$pqrsId,$mensaje,$fecha){
 
-            $this->res->query("INSERT INTO resolucion (resolucionId,resolucionUsuarioId,resolucionpqrsId,resolucionMensaje,resolucionFecha)
-            VALUES($id,$usuarioId,$pqrsId,'$mensaje','$fecha')");
+            $this->res->query("INSERT INTO resolucion (resolucionId,resolucionUsuarioId,Res_Unombre,resolucionpqrsId,resolucionMensaje,resolucionFecha)
+            VALUES($id,$usuarioId,'$usuarioNombre',$pqrsId,'$mensaje','$fecha')");
 
 
         }
@@ -56,16 +56,6 @@
             or die("problemas en el select");
 
             return $resoluciondatos;
-
-        }
-        public function DetalleUsuario($id){
-
-            $resolucionUsuario = $this->res->query("SELECT * FROM resolucion
-            JOIN usuariotienda
-            ON usuarioId = resolucionUsuarioId
-            WHERE resolucionId = $id");
-
-            return $resolucionUsuario;
 
         }
         public function obtenerFecha($id){

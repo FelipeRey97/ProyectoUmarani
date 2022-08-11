@@ -83,9 +83,8 @@ $datosDespacho = $desp1->mostrarDatosDespacho($id);
 
 while($desp = mysqli_fetch_array($datosDespacho)){
 
-    $uNombre = $desp['usuarioNombre'];
-    $uApellido = $desp['usuarioApellido'];
-    $uCodigo = $desp['usuarioId'];
+    $uNombre = $desp['desp_Unombre'];
+    $uCodigo = $desp['despachoUsuarioId'];
     $eLogistica = $desp['empresaNombre'];
     $cGuia = $desp['despachoId'];
     $pedEstado = $desp['pedidoEstado'];

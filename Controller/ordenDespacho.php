@@ -53,13 +53,14 @@ else{
 
 }
 if($vempresaId == true && $VdespachoId == true){
-
-    $pedidoId = $_REQUEST['pedidoId'];
-    $usuarioId = $_REQUEST['usuarioId'];
+ 
+    $pedidoId = htmlentities($_REQUEST['pedidoId']);
+    $usuarioId = htmlentities($_REQUEST['usuarioId']);
+    $nombreUsuario = htmlentities($_REQUEST['nombreUsuario']);
     $date = $_REQUEST['date'];
         $envio = new Despacho();
         $envio_ = new Pedido();
-        $envio->insertarOrden($despachoId,$empresaId,$pedidoId,$usuarioId,$date);
+        $envio->insertarOrden($despachoId,$empresaId,$pedidoId,$usuarioId,$nombreUsuario,$date);
         $Estado ="Enviado";
         $envio_->actualizarPedido($pedidoId,$Estado);
 
