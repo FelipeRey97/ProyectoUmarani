@@ -42,7 +42,7 @@
 
             $this->con->query("INSERT INTO usuariotienda(usuarioNombre,usuarioApellido,usuarioDoc,usuarioContraseña,usuarioEstado,usuarioRolId)
             VALUES ('$unombre','$uapellido','$udocumento','$ucontraseña','$uestado',$urol)
-            ") or die ("problemas en el select " . mysqli_error($con));
+            ") or die ($this->con->error);
 
             
         }
@@ -80,7 +80,7 @@
 
            $this->con->query("UPDATE usuariotienda SET  usuarioNombre = '$unombre' ,usuarioApellido = '$uapellido',
            usuarioContraseña = '$ucontraseña',usuarioEstado = '$uestado',usuarioRolId = $urol
-           WHERE usuarioId = $usuarioId ") or die ("problemas en el select");
+           WHERE usuarioId = $usuarioId ") or die ($this->con->error);
 
            
           }
@@ -106,19 +106,19 @@
           }
           public function asignarClave($nuevaClave,$usuario){
 
-            $this->con->query("UPDATE usuarioTienda SET usuarioContraseña = '$nuevaClave', usuarioEstado = 'Activo'
+            $this->con->query("UPDATE usuariotienda SET usuarioContraseña = '$nuevaClave', usuarioEstado = 'Activo'
             WHERE usuarioDoc = '$usuario'")
-            or die ("problemas en el update");
+            or die ($this->con->error);
 
           }
 
         public function borrarUsuario(){
 
 
-         $this->con->query("DELETE FROM  usuarioTienda WHERE usuarioId = '$_REQUEST[tabla]'") 
-         or die ("problemas en el select " . mysqli_error($con));
+         $this->con->query("DELETE FROM  usuariotienda WHERE usuarioId = '$_REQUEST[tabla]'") 
+         or die ($this->con->error);
 
-         header("Location: ../View/Usuarios.php");
+         
         }
 
         public function cerrarConexion(){

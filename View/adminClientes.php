@@ -53,7 +53,7 @@ $paginas = ceil($paginas);
                 <a href="">Inicio</a>
                 <a href="../View/Productos.php?pagina=1">Productos</a> 
                 <a href="../View/pedidos.php?pagina=1">Pedidos</a>
-                <a href="../view/facturas.php?pagina=1">Facturas</a>
+                <a href="../View/facturas.php?pagina=1">Facturas</a>
                 <?php if($_SESSION['rol'] == 'ADMINISTRADOR')  { ?>
                 <a href="../View/Usuarios.php?pagina=1">Usuarios</a>
                 <a class="select" href="../View/adminClientes.php?pagina=1">Clientes</a> <?php } ?>
@@ -160,14 +160,14 @@ $paginas = ceil($paginas);
                     
                 </table>
                 <nav class="paginacion">
-                <a class="prev-next" <?php if($_GET['pagina']<=1){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../view/adminClientes.php?pagina=<?php echo "$_GET[pagina]"-1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo "5";}?>&criterio=<?php if(isset($_GET['criterio'])){ echo "$_GET[criterio]"; } else { echo ""; }?>&textbox=<?php if(isset($_GET['textbox'])){ echo "$_GET[textbox]";}else{ echo "";} ?>">Anterior </a>
+                <a class="prev-next" <?php if($_GET['pagina']<=1){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../View/adminClientes.php?pagina=<?php echo "$_GET[pagina]"-1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo "5";}?>&criterio=<?php if(isset($_GET['criterio'])){ echo "$_GET[criterio]"; } else { echo ""; }?>&textbox=<?php if(isset($_GET['textbox'])){ echo "$_GET[textbox]";}else{ echo "";} ?>">Anterior </a>
                 <?php for($i=0; $i < $paginas; $i++){
 
-                  ?> <a <?php if($_GET['pagina'] == $i+1){ ?> class= "active" <?php }  ?> href="../view/adminClientes.php?pagina=<?php echo"$i"+1 ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo "5";}?>&criterio=<?php if(isset($_GET['criterio'])){ echo "$_GET[criterio]"; } else { echo ""; }?>&textbox=<?php if(isset($_GET['textbox'])){ echo "$_GET[textbox]";}else{ echo "";} ?>"><?php echo "$i"+1;?> </a>   
+                  ?> <a <?php if($_GET['pagina'] == $i+1){ ?> class= "active" <?php }  ?> href="../View/adminClientes.php?pagina=<?php echo"$i"+1 ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo "5";}?>&criterio=<?php if(isset($_GET['criterio'])){ echo "$_GET[criterio]"; } else { echo ""; }?>&textbox=<?php if(isset($_GET['textbox'])){ echo "$_GET[textbox]";}else{ echo "";} ?>"><?php echo "$i"+1;?> </a>   
                
                 <?php  } ?>
                
-                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../view/adminClientes.php?pagina=<?php echo "$_GET[pagina]"+1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo "5";}?>&criterio=<?php if(isset($_GET['criterio'])){ echo "$_GET[criterio]"; } else { echo ""; }?>&textbox=<?php if(isset($_GET['textbox'])){ echo "$_GET[textbox]";}else{ echo "";} ?>"> Siguiente</a>
+                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../View/adminClientes.php?pagina=<?php echo "$_GET[pagina]"+1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo "5";}?>&criterio=<?php if(isset($_GET['criterio'])){ echo "$_GET[criterio]"; } else { echo ""; }?>&textbox=<?php if(isset($_GET['textbox'])){ echo "$_GET[textbox]";}else{ echo "";} ?>"> Siguiente</a>
                 </nav>
             </div>
         </section>

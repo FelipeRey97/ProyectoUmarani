@@ -55,13 +55,13 @@
             ON artCategoriaId = categoriaId
             $seccion
             $orden
-            ");
+            ") or die ($this->prod->error);
 
 
 
             $retorno = [];
             $i = 0;
-            while($fila = $query->fetch_assoc()) {
+            while($fila = $query->fetch_array()) {
 
                 $retorno[$i] = $fila;
                 $i++;
@@ -120,7 +120,7 @@
          $this->prod->query("DELETE FROM articulo WHERE artId = '$artId'") 
          or die ("problemas en el select " . mysqli_error($prod));
 
-         header("Location: ../View/productos.php");
+         
         }
         public function DetalleArticulo($arId){
 

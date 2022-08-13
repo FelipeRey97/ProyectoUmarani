@@ -1,4 +1,16 @@
+<?php
+require_once('../Model/M_conexion.php');
 
+$con3 = new Conexion();
+
+    $con3->borrarUsuario();
+
+    $con3->cerrarConexion();
+    
+    header("Location: ../View/Usuarios.php");
+    
+      
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,18 +21,6 @@
     <title>Document</title>
 </head>
 <body>
-    
-<?php
-require_once('../Model/M_conexion.php');
-
-$con3 = new Conexion();
-
-    $con3->borrarUsuario();
-
-    $con3->cerrarConexion();
-    
-      
-?>
 </body>
 </html>
 

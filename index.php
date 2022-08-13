@@ -1,7 +1,5 @@
-
 <?php
 
-header("Location: view/catalogo.php" );
+header("Location: View/catalogo.php" );
 
 ?>
-

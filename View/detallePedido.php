@@ -13,9 +13,7 @@ session_start();
         header("Location: ../View/loginUsuario.php");
     }
 
-?> 
- 
-
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -123,6 +121,7 @@ session_start();
                         <input type="hidden" value="<?php echo "$date"; ?>" name="date">
                         <input class="searchButton" name="corregir" type="submit" value="Rectificar">
                         <input type="hidden" value="<?php echo "$cGuia"?>" name="old_DespachoId"><br>
+                        <input type="hidden" value="<?php echo "$_SESSION[nombre] $_SESSION[apellido]"?>" name="nombreUsuario" >
                         <button onclick="this.form.submit();" class="cancel-order" name="cancelar" > Cancelar Pedido </button> <br><br> 
                         </form>  
 

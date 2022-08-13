@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <title>Document</title>
-</head>
-<body>
-    
-    <?php 
+<?php 
      
   if(isset($_REQUEST['iniciar_sesion'])){
 
@@ -29,9 +18,7 @@
         $v_contraseña = password_verify($contraseña, $filas['clienteContraseña']);
 
         if($v_contraseña == true){
-
-        
-        session_start();
+       
         $_SESSION['cMail'] = $usuario;
         $_SESSION['nombre'] = $filas['clienteNombre'];
         $_SESSION['apellido'] = $filas['clienteApellido'];
@@ -57,6 +44,15 @@
 
 }
 ?>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
 </body>
 </html>

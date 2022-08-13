@@ -1,11 +1,7 @@
-
 <?php
-//  include("../Controller/verUsuario.php");
-?>
-
-<?php
-include_once('../Controller/actualizarUsuario.php');
 session_start();
+include_once('../Controller/actualizarUsuario.php');
+
 
 ?>
 <?php 
@@ -15,8 +11,6 @@ session_start();
     }
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

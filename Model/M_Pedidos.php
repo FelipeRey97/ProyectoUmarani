@@ -1,6 +1,5 @@
 <?php 
 
-//primera clase creada, permite lo metodos para insert, select, update set y delete de usuarios con conexion a la BD
  
     class Pedido { 
 
@@ -37,7 +36,7 @@
 
             $this->ped->query("INSERT INTO pedido(pedidoId,pedidoFechaInicio,pedidoClienteId,pedidoFacturaId,pedidoCostoTotal,pedidoDireccionId,pedidoClTelefono)
             VALUES ('$id','$todaydate','$clienteId','$idFactura','$total',$direccionId,'$telefono')
-            ") or die ("problemas en el select " . mysqli_error($ped));
+            ") or die ($this->ped->error);
  
              
         }
@@ -73,17 +72,17 @@
 
 
             $this->ped->query("UPDATE pedido SET  pedidoEstado = '$Estado' 
-            WHERE pedidoId = $pedidoId ") or die ("problemas en el select " . mysqli_error($ped));
+            WHERE pedidoId = $pedidoId ") or die ($this->ped->error);
  
             
            }
            public function contarRegistros($where){
 
             $resultado =  $this->ped->query("SELECT COUNT(*) AS cantidad FROM pedido
-            JOIN direccionPedido
+            JOIN direccionpedido
             ON pedidoDireccionId = direccionId
             $where")
-            or die("problemas en el select");
+            or die($this->ped->error);
 
             return $resultado;
 
@@ -94,7 +93,7 @@
         JOIN cliente
         ON clienteId = pedidoClienteId
         WHERE clienteEmail ='$mail'") 
-        or die ("problemas en el select");
+        or die ($this->ped->error);
 
         return $datos;
 
@@ -109,6 +108,3 @@
     }
 
 ?>
-
-
-

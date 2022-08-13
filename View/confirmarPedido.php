@@ -2,6 +2,9 @@
 session_start(); 
 $sesionId= session_id();
 require_once('../Controller/carrito.php');
+if($datos == false){
+    header('Location: /View/catalogo.php');
+}
 require_once('../Controller/verCheckout.php');
 include_once('../Controller/datosFactura.php')
 

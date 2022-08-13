@@ -1,13 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <title>Document</title>
-</head>
-<body>
 <?php  
 
 require('../Model/M_conexion.php');
@@ -48,11 +38,7 @@ if(isset($_REQUEST['registrar'])){
     else{
     
         $vNombre= false;
-        ?>
-        <script>
-        swal("Atención", "Verifique el Nombre", "warning");
-        </script>
-        <?php
+        
     
     }
     if(isset($_REQUEST['uapellido'] ) && $_REQUEST['uapellido'] != "" && preg_match("/^[A-Za-z ]{3,50}$/", $_REQUEST['uapellido'])){
@@ -63,11 +49,7 @@ if(isset($_REQUEST['registrar'])){
     }else{
     
         $vApellido= false;
-        ?>
-        <script>
-        swal("Atención", "Verifique el Apellido", "warning");
-        </script>
-        <?php
+        
     
     }if(isset($_REQUEST['ucontraseña'] ) && $_REQUEST['ucontraseña'] != "" && preg_match("/^[A-Za-z0-9]{5,12}$/", $_REQUEST['uestado']) ){
     
@@ -77,11 +59,7 @@ if(isset($_REQUEST['registrar'])){
     }else{
     
         $vContraseña= false;
-        ?>
-            <script>
-            swal("Atención", "verifique la contraseña", "warning");
-            </script>
-            <?php
+        
     
     }if(isset($_REQUEST['uestado']) && $_REQUEST['uestado'] != "" && preg_match("/^[A-Za-z]{5,12}$/", $_REQUEST['uestado'])){
     
@@ -110,13 +88,7 @@ if(isset($_REQUEST['registrar'])){
         $ucontraseña = password_hash($ucontraseña, PASSWORD_DEFAULT);
 
         $con2->actualizarUsuario($unombre,$uapellido,$ucontraseña,$uestado,$urol,$usuarioId);
-      ?>
-      <script>
-         swal("Operación Realizada", "Se ha guardado el Usuario Satisfactoriamente!", "success");
-         
-      </script>
-
-      <?php
+      
 
       header("refresh:1;url=../View/Usuarios.php?pagina=1");
             
@@ -124,11 +96,7 @@ if(isset($_REQUEST['registrar'])){
         
     if(empty($_REQUEST['unombre']) || empty($_REQUEST['uapellido']) || empty($_REQUEST['ucontraseña']) || empty($_REQUEST['uestado']) || empty($_REQUEST['urol']) ){
         
-        ?>
-            <script>
-            swal("Atención", "Complete todos los campos", "warning");
-            </script>
-            <?php
+        
         
     }
     }
@@ -138,9 +106,13 @@ if(isset($_REQUEST['registrar'])){
 ?>
 </body>
 </html>
-
-
-
-
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Document</title>
+</head>
+<body>

@@ -242,4 +242,4 @@ $fila = $dpto1->mostrarDpto();
 
 $registrosxpagina = $ped2->artporpag;
  
-?>   
+?>

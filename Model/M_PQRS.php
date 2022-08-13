@@ -54,7 +54,7 @@
 
             $this->pqrs->query("INSERT INTO pqrs (pqrsNombre,pqrsMail,pqrsTelefono,pqrsDescripcion,pqrsOrigenId,pqrsFecha)
              values('$pNombre','$pMail','$ptelefono','$pComentario','$tipoId','$pFecha')")
-             or die ("problemas en el insert" .mysqli_error($pqrs));
+             or die ($this->pqrs->error);
 
             
         }
@@ -80,7 +80,8 @@
  
             $sentencia = $this->sentencia;
 
-            $cantidad = $this->pqrs->query("SELECT COUNT(*) as cantidad FROM pqrs");
+            $cantidad = $this->pqrs->query("SELECT COUNT(*) as cantidad FROM pqrs")
+            or die($this->pqrs->error);
 
             $cant = mysqli_fetch_array($cantidad);
             $registrosxpagina = $this->artporpag;
@@ -89,11 +90,11 @@
 
 
             $query = $this->pqrs->query("SELECT * FROM pqrs 
-            JOIN pqrsTipo
+            JOIN pqrstipo
             ON pqrsOrigenId = pqrsTipoId
             $sentencia
             ORDER BY pqrsId DESC
-            LIMIT $inicio,$registrosxpagina");
+            LIMIT $inicio,$registrosxpagina") or die($this->pqrs->error);
             
             $retorno = [];
             $i = 0;
@@ -148,7 +149,7 @@
 
 
           $datos = $this->pqrs->query("SELECT COUNT(*) AS cantidad FROM pqrs
-            JOIN pqrsTipo
+            JOIN pqrstipo
             ON pqrsTipoId = pqrsOrigenId
             $where")
             or die ("problemas en el select ");

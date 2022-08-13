@@ -1,4 +1,3 @@
-
 <?php 
 
     class Clientes {
@@ -33,7 +32,7 @@
 
             $this->cl->query("INSERT INTO cliente(clienteNombre,clienteApellido,clienteEmail,clienteContraseña)
             VALUES ('$cNombre','$cApellido','$cMail','$cPassword')
-            ") or die ("problemas en el select " . mysqli_error($cl));
+            ") or die ($this->cl->error);
 
             
         }
@@ -98,9 +97,4 @@
         
 
     } 
-
-        
-
-        
-
 ?>

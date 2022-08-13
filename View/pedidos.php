@@ -50,8 +50,8 @@ if(isset($_GET['pagina'])){
             <nav class="secciones">
                 <a href="#">Inicio</a>
                 <a href="../View/Productos.php?pagina=1">Productos</a>
-                <a class="select" href="../View/Pedidos.php?pagina=1">Pedidos</a> 
-                <a href="../view/facturas.php?pagina=1">Facturas</a>
+                <a class="select" href="../View/pedidos.php?pagina=1">Pedidos</a> 
+                <a href="../View/facturas.php?pagina=1">Facturas</a>
                 <?php if($_SESSION['rol'] == 'ADMINISTRADOR')  { ?>
                 <a href="../View/Usuarios.php?pagina=1">Usuarios</a>
                 <a href="../View/adminClientes.php?pagina=1">Clientes</a> <?php } ?>
@@ -173,19 +173,19 @@ if(isset($_GET['pagina'])){
                             <?php if($pedido['pedidoEstado'] == 'Pendiente'){
                                     
                                 ?>
-                                   <a class="edit" href="../view/detallePedido.php?ped=<?php echo "$pedido[pedidoId]" ?>"><i class="far fa-edit"></i></i></a>
+                                   <a class="edit" href="../View/detallePedido.php?ped=<?php echo "$pedido[pedidoId]" ?>"><i class="far fa-edit"></i></i></a>
                                    <?php if($_SESSION['rol'] == 'ADMINISTRADOR'){ ?>
-                                    <a class="detail" href="../view/detallePedido.php?vis=<?php echo "$pedido[pedidoId]" ?>"><i class="far fa-eye"></i></a>
+                                    <a class="detail" href="../View/detallePedido.php?vis=<?php echo "$pedido[pedidoId]" ?>"><i class="far fa-eye"></i></a>
                                     <?php  }    ?>
                              <?php  }else if($pedido['pedidoEstado'] == 'Cancelado' ){ ?>
 
-                                <a class="detail" href="../view/detallePedido.php?vis=<?php echo "$pedido[pedidoId]" ?>"><i class="far fa-eye"></i></a>
+                                <a class="detail" href="../View/detallePedido.php?vis=<?php echo "$pedido[pedidoId]" ?>"><i class="far fa-eye"></i></a>
                                 <?php   }  
                              else { ?>
                                 <?php if($_SESSION['rol'] == 'ADMINISTRADOR'){ ?>
-                                    <a class="correction" href="../view/detallePedido.php?rect=<?php echo "$pedido[pedidoId]" ?>"><i class="fas fa-exclamation-triangle"></i></i></i></a>
+                                    <a class="correction" href="../View/detallePedido.php?rect=<?php echo "$pedido[pedidoId]" ?>"><i class="fas fa-exclamation-triangle"></i></i></i></a>
                                     <?php  }    ?>
-                                 <a class="detail" href="../view/detallePedido.php?vis=<?php echo "$pedido[pedidoId]" ?>"><i class="far fa-eye"></i></a>
+                                 <a class="detail" href="../View/detallePedido.php?vis=<?php echo "$pedido[pedidoId]" ?>"><i class="far fa-eye"></i></a>
                                  
                                  <?php }?>
                             
@@ -198,13 +198,13 @@ if(isset($_GET['pagina'])){
                     
                 </table>
                 <nav class="paginacion">
-                 <a class="prev-next" <?php if($_GET['pagina']<=1 ){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../view/pedidos.php?pagina=<?php echo"$_GET[pagina]"-1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&fechainicio=<?php if(isset($_REQUEST['fechainicio'])){ echo "$_REQUEST[fechainicio]"; } ?>&fechafin=<?php if(isset($_REQUEST['fechafin'])){ echo "$_REQUEST[fechafin]"; } ?>&id=<?php if(isset($_REQUEST['id'])){ echo "$_REQUEST[id]"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&ordenar=<?php if(isset($_REQUEST['ordenar'])){ echo "$_REQUEST[ordenar]"; } ?>&dpto=<?php if(isset($_REQUEST['dpto'])){ echo "$_REQUEST[dpto]"; } ?>">Anterior </a>
+                 <a class="prev-next" <?php if($_GET['pagina']<=1 ){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../View/pedidos.php?pagina=<?php echo"$_GET[pagina]"-1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&fechainicio=<?php if(isset($_REQUEST['fechainicio'])){ echo "$_REQUEST[fechainicio]"; } ?>&fechafin=<?php if(isset($_REQUEST['fechafin'])){ echo "$_REQUEST[fechafin]"; } ?>&id=<?php if(isset($_REQUEST['id'])){ echo "$_REQUEST[id]"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&ordenar=<?php if(isset($_REQUEST['ordenar'])){ echo "$_REQUEST[ordenar]"; } ?>&dpto=<?php if(isset($_REQUEST['dpto'])){ echo "$_REQUEST[dpto]"; } ?>">Anterior </a>
 
                  <?php for($i =0; $i < $paginas; $i++){ ?>
-                <a <?php if($_GET['pagina'] == $i+1){ ?> class="active" <?php }?> href="../view/pedidos.php?pagina=<?php echo "$i"+1 ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&fechainicio=<?php if(isset($_REQUEST['fechainicio'])){ echo "$_REQUEST[fechainicio]"; } ?>&fechafin=<?php if(isset($_REQUEST['fechafin'])){ echo "$_REQUEST[fechafin]"; } ?>&id=<?php if(isset($_REQUEST['id'])){ echo "$_REQUEST[id]"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&ordenar=<?php if(isset($_REQUEST['ordenar'])){ echo "$_REQUEST[ordenar]"; } ?>&dpto=<?php if(isset($_REQUEST['dpto'])){ echo "$_REQUEST[dpto]"; } ?>"><?php echo "$i"+1 ?></a>
+                <a <?php if($_GET['pagina'] == $i+1){ ?> class="active" <?php }?> href="../View/pedidos.php?pagina=<?php echo "$i"+1 ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&fechainicio=<?php if(isset($_REQUEST['fechainicio'])){ echo "$_REQUEST[fechainicio]"; } ?>&fechafin=<?php if(isset($_REQUEST['fechafin'])){ echo "$_REQUEST[fechafin]"; } ?>&id=<?php if(isset($_REQUEST['id'])){ echo "$_REQUEST[id]"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&ordenar=<?php if(isset($_REQUEST['ordenar'])){ echo "$_REQUEST[ordenar]"; } ?>&dpto=<?php if(isset($_REQUEST['dpto'])){ echo "$_REQUEST[dpto]"; } ?>"><?php echo "$i"+1 ?></a>
                 <?php }  ?>
 
-                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../view/pedidos.php?pagina=<?php echo"$_GET[pagina]"+1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&fechainicio=<?php if(isset($_REQUEST['fechainicio'])){ echo "$_REQUEST[fechainicio]"; } ?>&fechafin=<?php if(isset($_REQUEST['fechafin'])){ echo "$_REQUEST[fechafin]"; } ?>&id=<?php if(isset($_REQUEST['id'])){ echo "$_REQUEST[id]"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&ordenar=<?php if(isset($_REQUEST['ordenar'])){ echo "$_REQUEST[ordenar]"; } ?>&dpto=<?php if(isset($_REQUEST['dpto'])){ echo "$_REQUEST[dpto]"; } ?>"> Siguiente</a> 
+                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../View/pedidos.php?pagina=<?php echo"$_GET[pagina]"+1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&fechainicio=<?php if(isset($_REQUEST['fechainicio'])){ echo "$_REQUEST[fechainicio]"; } ?>&fechafin=<?php if(isset($_REQUEST['fechafin'])){ echo "$_REQUEST[fechafin]"; } ?>&id=<?php if(isset($_REQUEST['id'])){ echo "$_REQUEST[id]"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&ordenar=<?php if(isset($_REQUEST['ordenar'])){ echo "$_REQUEST[ordenar]"; } ?>&dpto=<?php if(isset($_REQUEST['dpto'])){ echo "$_REQUEST[dpto]"; } ?>"> Siguiente</a> 
                 </nav>
             </div>
         </section>

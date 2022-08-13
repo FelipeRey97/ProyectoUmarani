@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-</head>
-<body>
-
 <?php
 
  require_once '../Model/M_Clientes.php';
@@ -54,11 +43,6 @@ if(isset($_REQUEST['Confirmar'])){
    else{
 
         $vmail = false;
-        ?>
-        <script>
-        swal("Atención", "Verifique el E-mail", "warning");
-        </script>
-        <?php
         
    }
    if(isset($_REQUEST['cnombre']) && $_REQUEST['cnombre'] != "" && preg_match("/^[a-zA-Z ]{3,50}$/",$_REQUEST['cnombre'])){
@@ -73,11 +57,6 @@ if(isset($_REQUEST['Confirmar'])){
    else{
 
         $vnombre = false;
-        ?>
-        <script>
-        swal("Atención", "Verifique el Nombre", "warning");
-        </script>
-        <?php
 
    }if(isset($_REQUEST['capellido']) && $_REQUEST['capellido'] != "" && preg_match("/^[a-zA-Z ]{3,50}$/",$_REQUEST['capellido'])){
 
@@ -91,11 +70,6 @@ if(isset($_REQUEST['Confirmar'])){
    else{
 
         $vapellido = false;
-        ?>
-        <script>
-        swal("Atención", "Verifique el Apellido", "warning");
-        </script>
-        <?php
 
    }if(isset($_REQUEST['cdoc']) && $_REQUEST['cdoc'] != "" && preg_match("/^[0-9]{6,12}$/",$_REQUEST['cdoc'])){
 
@@ -106,11 +80,6 @@ if(isset($_REQUEST['Confirmar'])){
    else{
 
         $vdoc = false;
-        ?>
-        <script>
-        swal("Atención", "Verifique el documento", "warning");
-        </script>
-        <?php
 
    }if(isset($_REQUEST['ctelefono']) && $_REQUEST['ctelefono'] != "" && preg_match("/^[0-9]{5,12}$/",$_REQUEST['ctelefono'])){
 
@@ -121,11 +90,6 @@ if(isset($_REQUEST['Confirmar'])){
    else{
 
         $vtelefono = false;
-        ?>
-        <script>
-        swal("Atención", "Verifique el telefono", "warning");
-        </script>
-        <?php
 
    }if(isset($_REQUEST['dpto']) && $_REQUEST['dpto'] != "" && preg_match("/^[a-zA-Z ]{4,50}$/",$_REQUEST['dpto'])){
 
@@ -137,11 +101,6 @@ if(isset($_REQUEST['Confirmar'])){
    else{
 
         $vdpto = false;
-        ?>
-        <script>
-        swal("Atención", "Verifique el departamento", "warning");
-        </script>
-        <?php
 
    }
    if(isset($_REQUEST['ciudad']) && $_REQUEST['ciudad'] != "" && preg_match("/^[a-zA-Z ]{4,50}$/",$_REQUEST['ciudad'])){
@@ -155,11 +114,6 @@ if(isset($_REQUEST['Confirmar'])){
    else{
 
         $vciudad = false;
-        ?>
-        <script>
-        swal("Atención", "Verifique la ciudad, no se permiten caracteres especiales", "warning");
-        </script>
-        <?php
 
    }if(isset($_REQUEST['direccion']) && $_REQUEST['direccion'] != ""){
 
@@ -172,12 +126,6 @@ if(isset($_REQUEST['Confirmar'])){
    else{
 
         $vdireccion = false;
-        ?>
-        <script>
-        swal("Atención", "Verifique la dirección", "warning");
-        </script>
-        <?php
-
 
    }
    if(isset($_REQUEST['detdireccion']) && $_REQUEST['detdireccion'] != ""){
@@ -185,11 +133,7 @@ if(isset($_REQUEST['Confirmar'])){
         $detdireccion = htmlentities($_REQUEST['detdireccion']);
         $detdireccion = filter_var($detdireccion, FILTER_SANITIZE_STRING);
         $vdetdireccion = true;
-        ?>
-        <script>
-        swal("Atención", "solo se permiten caracteres especiales # y - para el detalle de dirección", "warning");
-        </script>
-        <?php
+
    }
    else{
 
@@ -204,11 +148,6 @@ if(isset($_REQUEST['Confirmar'])){
    else{
 
         $vtipoPago = false;
-        ?>
-        <script>
-        swal("Atención", "Error en el tipo de pago", "warning");
-        </script>
-        <?php
 
    }
 
@@ -256,8 +195,15 @@ if(isset($_REQUEST['Confirmar'])){
 
 
 ?>
-
-        
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
 </body>
 </html>
-

@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <title>Document</title>
-</head>
-<body>
-    
-
 <?php
 
 
@@ -51,11 +39,7 @@ case 1:
     else{
 
         $VpNombre = true;
-        ?>
-        <script>
-        swal("Atención", "Por favor verifique el Nombre", "warning");
-        </script>
-    <?php
+       
     }
     if(isset($_REQUEST['pMail']) && $_REQUEST['pMail'] != "" && filter_var($_REQUEST['pMail'], FILTER_VALIDATE_EMAIL )){
         
@@ -72,21 +56,13 @@ case 1:
         else{
 
             $VpMail = false;
-            ?>
-            <script>
-            swal("Atención", "No existen pedidos realizados con este E-mail", "warning");
-            </script>
-            <?php
+           
         }
     }
     else{
 
         $VpMail = false;
-        ?>
-        <script>
-        swal("Atención", "Por favor verifique el E-mail", "warning");
-        </script>
-    <?php
+        
     }if(isset($_REQUEST['ptelefono']) && $_REQUEST['ptelefono'] != "" && preg_match("/^[0-9]{10,}$/",$_REQUEST['ptelefono'])){
         
         $ptelefono =  htmlentities($_REQUEST['ptelefono']);
@@ -95,11 +71,7 @@ case 1:
     }
     else{
         $Vptelefono = false;
-        ?>
-        <script>
-        swal("Atención", "Por favor verifique el teléfono", "warning");
-        </script>
-    <?php
+        
     }if($_REQUEST['pComentario'] != ""){
         
         $pComentario =  htmlentities($_REQUEST['pComentario']);
@@ -109,11 +81,7 @@ case 1:
     }
     else{
         $VpComentario = false;
-        ?>
-        <script>
-        swal("Atención", "Por favor verifique los comentarios", "warning");
-        </script>
-    <?php
+        
     }
     if($VpComentario == true && $VpMail == true &&  $VpNombre == true){
 
@@ -122,11 +90,7 @@ case 1:
         $pedidoId = $_REQUEST['pNumero'];
 
         $pq->insertarPqrs1($pNombre,$pMail,$ptelefono,$pComentario,$tipoId,$pFecha,$ruta,$pedidoId);
-    ?>
-    <script>
-        swal("Operación Realizada", "Se ha generado la Petición Satisfactoriamente!", "success");
-    </script>
-    <?php
+    
 
     //SE OBTIENE EL ID DE LA PQRS GENERADA
     
@@ -138,17 +102,12 @@ case 1:
             $pqrsTipo = $lpqrs['pqrsTipoNombre'];
         }
 
-        header("refresh:1;url=../view/ayudaClienteFin.php?Id=$pqrsId&Tipo=$pqrsTipo");
+        header("refresh:1;url=../View/ayudaClienteFin.php?Id=$pqrsId&Tipo=$pqrsTipo");
 
     }
 
     else if(empty($_REQUEST['pNombre']) || empty($_REQUEST['pMail']) || empty($_REQUEST['pComentario'])){
     
-    ?>
-    <script>
-    swal("Atención", "Por favor complete todos los campos obligatorios", "warning");
-    </script>
-    <?php
     
     }
     
@@ -171,11 +130,7 @@ case 2:
     else{
 
         $VpNombre = true;
-        ?>
-        <script>
-        swal("Atención", "Por favor verifique el Nombre", "warning");
-        </script>
-    <?php
+        
     }
     if(isset($_REQUEST['pMail']) && $_REQUEST['pMail'] != "" && filter_var($_REQUEST['pMail'], FILTER_VALIDATE_EMAIL )){
         
@@ -192,21 +147,13 @@ case 2:
         else{
 
             $VpMail = false;
-            ?>
-            <script>
-            swal("Atención", "No existen pedidos realizados con este E-mail", "warning");
-            </script>
-            <?php
+            
         }
     }
     else{
 
         $VpMail = false;
-        ?>
-        <script>
-        swal("Atención", "Por favor verifique el E-mail", "warning");
-        </script>
-    <?php
+        
     }if(isset($_REQUEST['ptelefono']) && $_REQUEST['ptelefono'] != "" && preg_match("/^[0-9]{10,}$/",$_REQUEST['ptelefono'])){
         
         $ptelefono =  htmlentities($_REQUEST['ptelefono']);
@@ -215,11 +162,7 @@ case 2:
     }
     else{
         $Vptelefono = false;
-        ?>
-        <script>
-        swal("Atención", "Por favor verifique el teléfono", "warning");
-        </script>
-    <?php
+        
     }if($_REQUEST['pComentario'] != ""){
         
         $pComentario =  htmlentities($_REQUEST['pComentario']);
@@ -229,11 +172,7 @@ case 2:
     }
     else{
         $VpComentario = false;
-        ?>
-        <script>
-        swal("Atención", "Por favor verifique los comentarios", "warning");
-        </script>
-    <?php
+        
     }
     if($VpComentario == true && $VpMail == true &&  $VpNombre == true){
 
@@ -242,12 +181,7 @@ case 2:
         $pedidoId = $_REQUEST['pNumero'];
 
         $pq->insertarPqrs2($pNombre,$pMail,$ptelefono,$pComentario,$tipoId,$pFecha,$pedidoId);
-        ?>
-        <script>
-        swal("Operación Realizada", "Se ha generado la Petición Satisfactoriamente!", "success");
-        </script>
-    
-        <?php
+        
 
         $leerPqrs = $pq->obtenerIdPqrs();
 
@@ -257,17 +191,13 @@ case 2:
             $pqrsTipo = $lpqrs['pqrsTipoNombre'];
         }
 
-        header("refresh:1;url=../view/ayudaClienteFin.php?Id=$pqrsId&Tipo=$pqrsTipo");
+        header("refresh:1;url=../View/ayudaClienteFin.php?Id=$pqrsId&Tipo=$pqrsTipo");
 
     }
 
     else if(empty($_REQUEST['pNombre']) || empty($_REQUEST['pMail']) || empty($_REQUEST['pComentario'])){
     
-    ?>
-    <script>
-    swal("Atención", "Por favor complete todos los campos obligatorios", "warning");
-    </script>
-    <?php
+    
     
     }
     
@@ -291,11 +221,7 @@ case 3:
     else{
 
         $VpNombre = true;
-        ?>
-        <script>
-        swal("Atención", "Por favor verifique el Nombre", "warning");
-        </script>
-    <?php
+      
     }
     if(isset($_REQUEST['pMail']) && $_REQUEST['pMail'] != "" && filter_var($_REQUEST['pMail'], FILTER_VALIDATE_EMAIL )){
         
@@ -307,11 +233,7 @@ case 3:
     else{
 
         $VpMail = false;
-        ?>
-        <script>
-        swal("Atención", "Por favor verifique el E-mail", "warning");
-        </script>
-    <?php
+        
     }if(isset($_REQUEST['ptelefono']) && $_REQUEST['ptelefono'] != "" && preg_match("/^[0-9]{10,}$/",$_REQUEST['ptelefono'])){
         
         $ptelefono =  htmlentities($_REQUEST['ptelefono']);
@@ -320,11 +242,7 @@ case 3:
     }
     else{
         $Vptelefono = false;
-        ?>
-        <script>
-        swal("Atención", "Por favor verifique el teléfono", "warning");
-        </script>
-    <?php
+       
     }if($_REQUEST['pComentario'] != ""){
         
         $pComentario =  htmlentities($_REQUEST['pComentario']);
@@ -334,11 +252,7 @@ case 3:
     }
     else{
         $VpComentario = false;
-        ?>
-        <script>
-        swal("Atención", "Por favor verifique los comentarios", "warning");
-        </script>
-    <?php
+      
     }
     if($VpComentario == true && $VpMail == true &&  $VpNombre == true){
 
@@ -346,12 +260,7 @@ case 3:
         $pFecha = $_REQUEST['pFecha'];
 
         $pq->insertarPqrs3($pNombre,$pMail,$ptelefono,$pComentario,$tipoId,$pFecha);
-        ?>
-        <script>
-            swal("Operación Realizada", "Se ha generado la Petición Satisfactoriamente!", "success");
-        </script>
         
-        <?php
 
         //SE OBTIENE EL ID DE LA PQRS GENERADA
     
@@ -363,17 +272,13 @@ case 3:
             $pqrsTipo = $lpqrs['pqrsTipoNombre'];
         }
 
-        header("refresh:1;url=../view/ayudaClienteFin.php?Id=$pqrsId&Tipo=$pqrsTipo");
+        header("refresh:1;url=../View/ayudaClienteFin.php?Id=$pqrsId&Tipo=$pqrsTipo");
 
     }
 
     else if(empty($_REQUEST['pNombre']) || empty($_REQUEST['pMail']) || empty($_REQUEST['pComentario'])){
     
-    ?>
-    <script>
-    swal("Atención", "Por favor complete todos los campos obligatorios", "warning");
-    </script>
-    <?php
+
     
     }
     
@@ -387,6 +292,16 @@ case 3:
 }
 
 ?>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    
 </body>
 </html>

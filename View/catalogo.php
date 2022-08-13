@@ -5,7 +5,6 @@ require "../Controller/mostrarCatalogo.php";
 require('../Controller/carrito.php');
 require_once("../Controller/buscador.php");
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -159,8 +158,8 @@ require_once("../Controller/buscador.php");
                 
             <div class="menu">
                 <b><a href="#">Inicio</a></b>
-                <b><a href="../View/collares.php?seccion=collares">Collares</a></b>
-                <b><a href="../View/pulseras.php?seccion=pulseras">Pulseras</a></b>
+                <b><a href="../View/Collares.php?seccion=collares">Collares</a></b>
+                <b><a href="../View/Pulseras.php?seccion=pulseras">Pulseras</a></b>
                 <b><a href="../View/anillos.php?seccion=anillos">Anillos</a></b>
                 <b><a href="../View/terminosycondiciones.php">Nosotros</a></b>
                 <!-- <a href="#">Ofertas</a> -->
@@ -192,7 +191,7 @@ require_once("../Controller/buscador.php");
                 </div>
                 <div class="verdetalle itemId">
                      <p hidden><?php echo $producto['artId']   ?></p>
-                    <a href="../view/DetalleProducto.php?arId=<?php echo "$producto[artId]"?>">Ver Detalle</a>
+                    <a href="../View/DetalleProducto.php?arId=<?php echo "$producto[artId]"?>">Ver Detalle</a>
                 </div>
                 <div class="comprar addToKart">
                    <a href="../Controller/carrito.php?sesionId=<?php echo "$sesionId"?>&artId=<?php echo "$producto[artId]"?>&Cant=1">Comprar</a>

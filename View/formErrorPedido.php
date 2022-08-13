@@ -1,10 +1,10 @@
 <?php
 session_start();
 $sesionId= session_id();
+include_once('../Controller/formGarantia2.php');
 require "../Controller/mostrarCatalogo.php";
 require('../Controller/carrito.php');
 require_once("../Controller/buscador.php");
-include_once('../Controller/formGarantia2.php');
 ?>
 
 <!DOCTYPE html>

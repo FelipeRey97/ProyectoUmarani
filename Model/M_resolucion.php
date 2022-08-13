@@ -12,7 +12,8 @@
         public function __construct(){
 
 
-            $this->res = new mysqli("localhost","root","","proyecto");
+            require('../Model/ConexionBD.php');
+            $this->res = $conexionBD;
 
 
         }

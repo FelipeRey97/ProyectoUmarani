@@ -1,13 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-</head>
-<body>
 <?php
 
 require_once('../Model/M_despacho.php');
@@ -28,11 +18,6 @@ else{
 
     $VdespachoId = false;
 
-    ?>
-    <script>
-        swal("Atención", "Verifique que ha ingresado la orden de despacho correctamente", "warning");
-    </script>
-    <?php
 
 }
 if(isset($_REQUEST['empresaId'])){
@@ -45,11 +30,7 @@ if(isset($_REQUEST['empresaId'])){
 else{
 
     $vempresaId = true;
-    ?>
-    <script>
-        swal("Atención", "Seleccione una empresa de envío", "info");
-    </script>
-    <?php
+   
 
 }
 if($vempresaId == true && $VdespachoId == true){
@@ -65,11 +46,7 @@ if($vempresaId == true && $VdespachoId == true){
         $envio_->actualizarPedido($pedidoId,$Estado);
 
         $envio->cerrarConexion();
-        ?>
-    <script>
-        swal("Operación Realizada!", "Se ha guardado la Orden Correctamente!", "success");
-    </script>
-    <?php
+       
     
         
     header("refresh:1;url=../View/pedidos.php?pagina=1");
@@ -77,12 +54,7 @@ if($vempresaId == true && $VdespachoId == true){
 }
 else if (empty($_REQUEST['despachoId']) || empty($_REQUEST['empresaId'])){
 
-    ?>
-    <script>
-        swal("Atención", "Complete todos los campos", "warning");
-    </script>
-    <?php
-
+   
 }
 
 
@@ -103,11 +75,6 @@ if(isset($_REQUEST['corregir'])){
     
         $VdespachoId = false;
     
-        ?>
-        <script>
-            swal("Atención", "Verifique que ha ingresado la orden de despacho correctamente", "warning");
-        </script>
-        <?php
     
     }
     if(isset($_REQUEST['empresaId'])){
@@ -120,32 +87,25 @@ if(isset($_REQUEST['corregir'])){
     else{
     
         $vempresaId = true;
-        ?>
-        <script>
-            swal("Atención", "Seleccione una empresa de envío", "info");
-        </script>
-        <?php
+        
     
     }
     if($vempresaId == true && $VdespachoId == true){
     
         $pedidoId = $_REQUEST['pedidoId'];
-        $usuarioId = $_REQUEST['usuarioId'];
+        $usuarioId = htmlentities($_REQUEST['usuarioId']);
+        $nombreUsuario = htmlentities($_REQUEST['nombreUsuario']);
         $date = $_REQUEST['date'];
         $old_DespachoId = $_REQUEST['old_DespachoId'];
             $envio = new Despacho();
             $envio_ = new Pedido();
             $envio->eliminarDespacho($old_DespachoId);
-            $envio->insertarOrden($despachoId,$empresaId,$pedidoId,$usuarioId,$date);
+            $envio->insertarOrden($despachoId,$empresaId,$pedidoId,$usuarioId,$nombreUsuario,$date);
             $Estado ="Enviado";
             $envio_->actualizarPedido($pedidoId,$Estado);
     
             $envio->cerrarConexion();
-            ?>
-        <script>
-            swal("Operación Realizada!", "Se ha Corregido la Orden Correctamente!", "success");
-        </script>
-        <?php
+           
         
             
         header("refresh:1;url=../View/pedidos.php?pagina=1");
@@ -153,11 +113,6 @@ if(isset($_REQUEST['corregir'])){
     }
     else if (empty($_REQUEST['despachoId']) || empty($_REQUEST['empresaId'])){
     
-        ?>
-        <script>
-            swal("Atención", "Complete todos los campos", "warning");
-        </script>
-        <?php
     
     }
 
@@ -181,11 +136,6 @@ if(isset($_REQUEST['cancelar'])){
     
             $envio->cerrarConexion();
 
-            ?>
-        <script>
-            swal("Operación Realizada!", "El pedido se ha cancelado", "success");
-        </script>
-        <?php
             
         header("refresh:1;url=../View/pedidos.php?pagina=1");
 
@@ -194,6 +144,15 @@ if(isset($_REQUEST['cancelar'])){
 
 
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
 </body>
 </html>
-

@@ -2,14 +2,13 @@
 session_start();
 $sesionId= session_id();
 require_once('../Controller/carrito.php');
+if($datos == false){
+    header('Location: /View/catalogo.php');
+}
+require('../Controller/datosFactura.php');
 require_once('../Controller/verCheckout.php');
 require_once("../Controller/buscador.php");
-require('../Controller/datosFactura.php');
-
-
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,14 +71,7 @@ require('../Controller/datosFactura.php');
         </div> 
         <?php 
         $total = $total + $costo; }
-        if($total == 0){
-
-            header("Location: ../view/catalogo.php");
-
-        }else{
-        
-            
-        } ?>
+         ?>
     </div>
 
     <div class="bottom">

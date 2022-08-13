@@ -66,4 +66,4 @@ $resultado = $listarCliente->contarRegistros($where);
 
 $registrosxpagina = $listarCliente->artporpag;  
 
-?>  
+?>

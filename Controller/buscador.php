@@ -54,7 +54,4 @@ include_once('../Model/M_buscador.php');
 
     
 </body>
-</html>
-<?php   
-
-                           
+</html>  

@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-</head>
-<body>
-    
 <?php 
 
-
-// VALIDAR INICIO DE SESIÓN DEL USUARIO
 if(isset($_REQUEST['iniciar-sesion'])){
 
     require_once('../Model/M_conexion.php');
@@ -49,11 +36,7 @@ if(isset($_REQUEST['iniciar-sesion'])){
                 if($filas['usuarioEstado'] == "Bloqueado" || $filas['usuarioEstado'] == "Inactivo"){
 
                     $vEstado = false;
-                    ?>
-                    <script>
-                        swal('Atención','El usuario se encuentra Inactivo o Bloqueado','info');
-                    </script>
-                <?php 
+                   
                 }
 
                 if ($filas['usuarioEstado'] == "Activo"){
@@ -66,16 +49,11 @@ if(isset($_REQUEST['iniciar-sesion'])){
                     $_SESSION['rol'] = $filas['rolNombre'];
                     $_SESSION['usuarioId'] = $filas['usuarioId'];
 
-                    header("Location: ../view/pedidos.php?pagina=1");
+                    header("Location: ../View/pedidos.php?pagina=1");
                 }
             }
             else if($v_password == false){
-                ?>
-                    <script>
-                        swal('Error','Usuario o contraseña Erroneos','warning');
-                    
-                    </script>
-                <?php 
+               
             }
             
         }
@@ -102,43 +80,23 @@ if(isset($_REQUEST['Guardar'])){
 
         if(strlen($cPassword) < 6){
             // echo strlen($cPassword);
-            ?>
-            <script>
-            swal("Atención", "La clave debe ser mayor a 6 caracteres", "info");
-            </script>
-            <?php
+            
            return false;
         }
         if(strlen($cPassword) > 10){
-            ?>
-            <script>
-            swal("Atención", "La clave no puede tener más de 10 caracteres", "info");
-            </script>
-            <?php
+
            return false;
         }
         if (!preg_match('`[a-z]`',$cPassword)){
-            ?>
-            <script>
-            swal("Atención", "La clave debe tener al menos una letra minúscula", "info");
-            </script>
-            <?php
+           
            return false;
         }
         if (!preg_match('`[A-Z]`',$cPassword)){
-           ?>
-            <script>
-            swal("Atención", "La clave debe tener al menos una letra mayúscula", "info");
-            </script>
-            <?php
+           
            return false;
         }
         if (!preg_match('`[0-9]`',$cPassword)){
-            ?>
-            <script>
-            swal("Atención", "La clave debe tener al menos un caracter numérico", "info");
-            </script>
-            <?php
+            
            return false;
         }
         return true;
@@ -151,33 +109,19 @@ if(isset($_REQUEST['Guardar'])){
             $nuevaClave = password_hash($nuevaClave, PASSWORD_DEFAULT);  //ENCRIPTACION DE CONTRASEÑA CON BLOWFISH
 
             $user->asignarClave($nuevaClave,$usuario);
-            ?>
-            <script>
-            swal('Operación Realizada','Se ha Asignado la contraseña','success');
-            </script>
-            <?php 
-            header('refresh:1;url=../view/loginUsuario.php');
+           
+            header('refresh:1;url=../View/loginUsuario.php');
         }
        
     }
     else{
 
-        ?>
-        <script>
-            swal('Error','Las contraseñas no coinciden','warning');
         
-        </script>
-        <?php 
         }
 
     if(empty($_REQUEST['contraseña1']) || empty($_REQUEST['contraseña2'])){
 
-        ?>
-        <script>
-            swal('Atención','Por favor complete todos los campos','warning');
-        
-        </script>
-        <?php 
+      
 
     }    
     }
@@ -186,11 +130,18 @@ if(isset($_REQUEST['Guardar'])){
 
     
 
-
-
 ?>
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+ 
 
 
 </body>

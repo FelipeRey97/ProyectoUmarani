@@ -19,7 +19,6 @@
 
     
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,11 +54,11 @@
                 <a href="../View/Productos.php?pagina=1">Productos</a>
                 <a href="../View/pedidos.php?pagina=1">Pedidos</a>
                 <a href="../View/facturas.php?pagina=1">Facturas</a>
-                <a class="select" href="../view/usuarios.php?pagina=1">Usuarios</a>
-                <a href="../view/adminClientes.php?pagina=1">Clientes</a>
+                <a class="select" href="../View/Usuarios.php?pagina=1">Usuarios</a>
+                <a href="../View/adminClientes.php?pagina=1">Clientes</a>
                 <a href="../View/PQRS.php?pagina=1">PQRS</a> <br><br><br>
-                <a href="../View/PQRS.php?pagina=1">Cambiar Clave</a>
-                <a href="../View/cambiarClave.php">Cerrar Sesión</a>
+                <a href="../View/cambiarClave.php">Cambiar Clave</a>
+                <a href="../Controller/cerrarSesion.php">Cerrar Sesión</a>
             </nav>
         </div>
         <div class="content">
@@ -190,14 +189,14 @@
                     
                 </table>
                 <nav class="paginacion">
-                <a class="prev-next" <?php if($_GET['pagina']<=1){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../view/usuarios.php?pagina=<?php echo "$_GET[pagina]"-1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&criterio=<?php if(isset($_REQUEST['criterio'])){ echo "$_REQUEST[criterio]"; } ?>&textbox=<?php if(isset($_REQUEST['textbox'])){ echo "$_REQUEST[textbox]"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&rol=<?php if(isset($_REQUEST['rol'])){ echo "$_REQUEST[rol]"; } ?>">Anterior </a>
+                <a class="prev-next" <?php if($_GET['pagina']<=1){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../View/Usuarios.php?pagina=<?php echo "$_GET[pagina]"-1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&criterio=<?php if(isset($_REQUEST['criterio'])){ echo "$_REQUEST[criterio]"; } ?>&textbox=<?php if(isset($_REQUEST['textbox'])){ echo "$_REQUEST[textbox]"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&rol=<?php if(isset($_REQUEST['rol'])){ echo "$_REQUEST[rol]"; } ?>">Anterior </a>
                 <?php for($i=0; $i < $paginas; $i++){
 
-                  ?> <a <?php if($_GET['pagina'] == $i+1){  ?> class="active" <?php } ?> href="../view/usuarios.php?pagina=<?php echo"$i"+1 ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&criterio=<?php if(isset($_REQUEST['criterio'])){ echo "$_REQUEST[criterio]"; } ?>&textbox=<?php if(isset($_REQUEST['textbox'])){ echo "$_REQUEST[textbox]"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&rol=<?php if(isset($_REQUEST['rol'])){ echo "$_REQUEST[rol]"; } ?>"><?php echo "$i"+1;  ?> </a>   
+                  ?> <a <?php if($_GET['pagina'] == $i+1){  ?> class="active" <?php } ?> href="../View/Usuarios.php?pagina=<?php echo"$i"+1 ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&criterio=<?php if(isset($_REQUEST['criterio'])){ echo "$_REQUEST[criterio]"; } ?>&textbox=<?php if(isset($_REQUEST['textbox'])){ echo "$_REQUEST[textbox]"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&rol=<?php if(isset($_REQUEST['rol'])){ echo "$_REQUEST[rol]"; } ?>"><?php echo "$i"+1;  ?> </a>   
                
                 <?php  } ?>
                
-                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../view/usuarios.php?pagina=<?php echo "$_GET[pagina]"+1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&criterio=<?php if(isset($_REQUEST['criterio'])){ echo "$_REQUEST[criterio]"; } ?>&textbox=<?php if(isset($_REQUEST['textbox'])){ echo "$_REQUEST[textbox]"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&rol=<?php if(isset($_REQUEST['rol'])){ echo "$_REQUEST[rol]"; } ?>"> Siguiente</a>
+                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../View/Usuarios.php?pagina=<?php echo "$_GET[pagina]"+1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&criterio=<?php if(isset($_REQUEST['criterio'])){ echo "$_REQUEST[criterio]"; } ?>&textbox=<?php if(isset($_REQUEST['textbox'])){ echo "$_REQUEST[textbox]"; } ?>&estado=<?php if(isset($_REQUEST['estado'])){ echo "$_REQUEST[estado]"; } ?>&rol=<?php if(isset($_REQUEST['rol'])){ echo "$_REQUEST[rol]"; } ?>"> Siguiente</a>
                 </nav>
             </div>
         </section>

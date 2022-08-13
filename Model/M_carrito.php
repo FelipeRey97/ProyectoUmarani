@@ -42,7 +42,7 @@
                 $this->car->query("UPDATE carrito SET artCarroCant = $Cant   
                 WHERE articuloId = $idArt AND sesionId = '$sesionId' AND carId = $carId ");
                 
-            }else if($idArt == ""){
+            }else if(!isset($idArt)){
             
                 $this->car->query("INSERT INTO carrito (sesionId,articuloId,artCarroCant) 
                 VALUES ('$sesionId',$artId,$Cant)") or die ("problemas en el insert" . mysqli_error($conexion1));

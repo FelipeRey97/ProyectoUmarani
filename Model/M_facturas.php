@@ -1,6 +1,5 @@
 <?php 
 
-
 //primera clase creada, permite lo metodos para insert, select, update set y delete de usuarios con conexion a la BD
 
     class Factura { 
@@ -34,7 +33,7 @@
 
             $this->fact->query("INSERT INTO factura (facturaFecha,facturaCostoTotal,facturaClienteDoc,facturaClienteId,factura_tipoPagoId,facturaClienteDireccion,facturaImpuestoId,facturaClTelefono)
             VALUES ('$todaydate','$total','$clienteDoc','$clienteId','$tipoPago','$dirC','$impuestoId','$telefono')
-            ") or die ("problemas en el select " . mysqli_error($fact));
+            ") or die ($this->fact->error);
 
             
         }
@@ -42,7 +41,7 @@
 
           $id_Factura = $this->fact->query("SELECT facturaId FROM factura
             WHERE facturaId IN (SELECT max(facturaId) FROM factura)") 
-            or die ("problemas en el select");
+            or die ($this->fact->error);
 
             return $id_Factura;
         }
@@ -106,10 +105,10 @@
         public function contarRegistros($where){
 
             $resultado =  $this->fact->query("SELECT COUNT(*) AS cantidad FROM factura
-            JOIN tipoPago
+            JOIN tipopago
             ON tipoPagoId = factura_tipoPagoId
             $where")
-            or die("problemas en el select");
+            or die($this->fact->error);
 
             return $resultado;
 

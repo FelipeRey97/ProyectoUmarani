@@ -1,12 +1,12 @@
 <?php
 session_start();
 $sesionId= session_id();
-require_once("../controller/verCheckout.php");
+include_once('../Controller/iniciarSesion2.php');
+require_once("../Controller/verCheckout.php");
 require('../Controller/carrito.php');
 require_once("../Controller/buscador.php");
-include_once('../Controller/iniciarSesion2.php');
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

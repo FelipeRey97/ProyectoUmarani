@@ -50,7 +50,7 @@
                 <a href="#">Inicio</a>
                 <a href="../View/Productos.php?pagina=1">Productos</a>
                 <a href="../View/pedidos.php?pagina=1">Pedidos</a>
-                <a class="select" href="../view/facturas.php?pagina=1">Facturas</a>
+                <a class="select" href="../View/facturas.php?pagina=1">Facturas</a>
                 <?php if($_SESSION['rol'] == 'ADMINISTRADOR')  { ?>
                 <a href="../View/Usuarios.php?pagina=1">Usuarios</a>
                 <a href="../View/adminClientes.php?pagina=1">Clientes</a> <?php } ?>
@@ -159,14 +159,14 @@
                     
                 </table>
                 <nav class="paginacion">
-                <a class="prev-next" <?php if($_GET['pagina']<=1){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../view/facturas.php?pagina=<?php echo "$_GET[pagina]"-1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&pago=<?php if(isset($_REQUEST['pago'])){ echo "$_REQUEST[pago]"; } ?>&ordenar=<?php if(isset($_REQUEST['ordenar'])){ echo "$_REQUEST[ordenar]"; } ?>&fechainicio=<?php if(isset($_REQUEST['fechainicio'])){ echo "$_REQUEST[fechainicio]"; } ?>&fechafin=<?php if(isset($_REQUEST['fechafin'])){ echo "$_REQUEST[fechafin]"; } ?>&id=<?php if(isset($_REQUEST['id'])) { echo "$_REQUEST[id]"; }else{ echo""; } ?>">Anterior </a>
+                <a class="prev-next" <?php if($_GET['pagina']<=1){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../View/facturas.php?pagina=<?php echo "$_GET[pagina]"-1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&pago=<?php if(isset($_REQUEST['pago'])){ echo "$_REQUEST[pago]"; } ?>&ordenar=<?php if(isset($_REQUEST['ordenar'])){ echo "$_REQUEST[ordenar]"; } ?>&fechainicio=<?php if(isset($_REQUEST['fechainicio'])){ echo "$_REQUEST[fechainicio]"; } ?>&fechafin=<?php if(isset($_REQUEST['fechafin'])){ echo "$_REQUEST[fechafin]"; } ?>&id=<?php if(isset($_REQUEST['id'])) { echo "$_REQUEST[id]"; }else{ echo""; } ?>">Anterior </a>
                 <?php for($i=0; $i < $paginas; $i++){
 
-                  ?> <a <?php if($_GET['pagina'] == $i+1 ){ ?> class="active" <?php } ?> href="../view/facturas.php?pagina=<?php echo"$i"+1 ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&pago=<?php if(isset($_REQUEST['pago'])){ echo "$_REQUEST[pago]"; } ?>&ordenar=<?php if(isset($_REQUEST['ordenar'])){ echo "$_REQUEST[ordenar]"; } ?>&fechainicio=<?php if(isset($_REQUEST['fechainicio'])){ echo "$_REQUEST[fechainicio]"; } ?>&fechafin=<?php if(isset($_REQUEST['fechafin'])){ echo "$_REQUEST[fechafin]"; }?>&id=<?php if(isset($_REQUEST['id'])) { echo "$_REQUEST[id]"; }else{ echo""; } ?>"><?php echo "$i"+1;  ?> </a>   
+                  ?> <a <?php if($_GET['pagina'] == $i+1 ){ ?> class="active" <?php } ?> href="../View/facturas.php?pagina=<?php echo"$i"+1 ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&pago=<?php if(isset($_REQUEST['pago'])){ echo "$_REQUEST[pago]"; } ?>&ordenar=<?php if(isset($_REQUEST['ordenar'])){ echo "$_REQUEST[ordenar]"; } ?>&fechainicio=<?php if(isset($_REQUEST['fechainicio'])){ echo "$_REQUEST[fechainicio]"; } ?>&fechafin=<?php if(isset($_REQUEST['fechafin'])){ echo "$_REQUEST[fechafin]"; }?>&id=<?php if(isset($_REQUEST['id'])) { echo "$_REQUEST[id]"; }else{ echo""; } ?>"><?php echo "$i"+1;  ?> </a>   
                
                 <?php  } ?>
                
-                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../view/facturas.php?pagina=<?php echo "$_GET[pagina]"+1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&pago=<?php if(isset($_REQUEST['pago'])){ echo "$_REQUEST[pago]"; } ?>&ordenar=<?php if(isset($_REQUEST['ordenar'])){ echo "$_REQUEST[ordenar]"; } ?>&fechainicio=<?php if(isset($_REQUEST['fechainicio'])){ echo "$_REQUEST[fechainicio]"; } ?>&fechafin=<?php if(isset($_REQUEST['fechafin'])){ echo "$_REQUEST[fechafin]"; }?>&id=<?php if(isset($_REQUEST['id'])) { echo "$_REQUEST[id]"; }else{ echo""; } ?>"> Siguiente</a>
+                <a class="prev-next" <?php if($_GET['pagina']>=$paginas ){ ?> style="visibility:hidden;" <?php }else{ echo ""; } ?> href="../View/facturas.php?pagina=<?php echo "$_GET[pagina]"+1; ?>&artxpag=<?php if(isset($_GET['artxpag'])){ echo "$_GET[artxpag]"; }else{ echo"5"; } ?>&pago=<?php if(isset($_REQUEST['pago'])){ echo "$_REQUEST[pago]"; } ?>&ordenar=<?php if(isset($_REQUEST['ordenar'])){ echo "$_REQUEST[ordenar]"; } ?>&fechainicio=<?php if(isset($_REQUEST['fechainicio'])){ echo "$_REQUEST[fechainicio]"; } ?>&fechafin=<?php if(isset($_REQUEST['fechafin'])){ echo "$_REQUEST[fechafin]"; }?>&id=<?php if(isset($_REQUEST['id'])) { echo "$_REQUEST[id]"; }else{ echo""; } ?>"> Siguiente</a>
                 </nav>
             </div>
         </section>

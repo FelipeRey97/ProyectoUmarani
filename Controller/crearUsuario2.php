@@ -1,16 +1,3 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-   <title>Document</title>
-</head>
-<body>
-
-
 <?php 
 
 require('../Model/M_conexion.php');
@@ -46,11 +33,7 @@ if(isset($_REQUEST['unombre'] ) && $_REQUEST['unombre'] != "" && preg_match("/^[
 else{
 
    $vNombre= false;
-   ?>
-   <script>
-   swal("Atención", "Verifique el Nombre", "warning");
-   </script>
-   <?php
+   
 
 }
 if(isset($_REQUEST['uapellido'] ) && $_REQUEST['uapellido'] != "" && preg_match("/^[A-Za-z ]{3,50}$/", $_REQUEST['uapellido'])){
@@ -61,11 +44,7 @@ if(isset($_REQUEST['uapellido'] ) && $_REQUEST['uapellido'] != "" && preg_match(
 }else{
 
    $vApellido= false;
-   ?>
-   <script>
-   swal("Atención", "Verifique el Apellido", "warning");
-   </script>
-   <?php
+   
 
 }if(isset($_REQUEST['udocumento'] ) && $_REQUEST['udocumento'] != "" && preg_match("/^[0-9]{5,12}$/", $_REQUEST['udocumento'])){
 
@@ -77,11 +56,7 @@ if(isset($_REQUEST['uapellido'] ) && $_REQUEST['uapellido'] != "" && preg_match(
    if($val_Doc == true){
 
       $vDoc= false;
-      ?>
-      <script>
-      swal("Atención", "El documento ya existe", "warning");
-      </script>
-      <?php
+     
    }
    else{
 
@@ -92,11 +67,7 @@ if(isset($_REQUEST['uapellido'] ) && $_REQUEST['uapellido'] != "" && preg_match(
 }else{
 
    $vDoc= false;
-   ?>
-   <script>
-   swal("Atención", "Verifique el documento", "warning");
-   </script>
-   <?php
+   
 
 }if(isset($_REQUEST['ucontraseña'] ) && $_REQUEST['ucontraseña'] != "" && preg_match("/^[A-Za-z0-9]{5,12}$/", $_REQUEST['uestado']) ){
 
@@ -106,11 +77,7 @@ if(isset($_REQUEST['uapellido'] ) && $_REQUEST['uapellido'] != "" && preg_match(
 }else{
 
    $vContraseña= false;
-   ?>
-      <script>
-      swal("Atención", "verifique la contraseña", "warning");
-      </script>
-      <?php
+   
 
 }if(isset($_REQUEST['uestado']) && $_REQUEST['uestado'] != "" && preg_match("/^[A-Za-z]{5,12}$/", $_REQUEST['uestado'])){
 
@@ -137,13 +104,7 @@ if(isset($_REQUEST['uapellido'] ) && $_REQUEST['uapellido'] != "" && preg_match(
 if($vRol == true && $vEstado == true && $vContraseña == true && $vDoc == true && $vApellido == true && $vNombre == true){
 
    $con->insertarUsuario($unombre,$uapellido,$udocumento,$ucontraseña,$uestado,$urol);
-      ?>
-      <script>
-         swal("Operación Realizada", "Se ha guardado el Usuario Satisfactoriamente!", "success");
-         
-      </script>
-
-      <?php 
+      
 
       header("refresh:1;url=../View/Usuarios.php");
       
@@ -151,11 +112,7 @@ if($vRol == true && $vEstado == true && $vContraseña == true && $vDoc == true &
    
 if(empty($_REQUEST['unombre']) || empty($_REQUEST['uapellido']) || empty($_REQUEST['udocumento']) || empty($_REQUEST['ucontraseña']) || empty($_REQUEST['uestado']) || empty($_REQUEST['urol']) ){
    
-   ?>
-      <script>
-      swal("Atención", "Complete todos los campos", "warning");
-      </script>
-      <?php
+
    
 }
 }
@@ -164,9 +121,16 @@ $con->cerrarConexion();
 
 
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   <title>Document</title>
+</head>
+<body>
    
 </body>
 </html>
-
-
-
