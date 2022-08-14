@@ -29,6 +29,7 @@
     }
     else{
 
+        $error = "nombre";
         $vaNombre = false;
         
     }if(isset($_REQUEST['aPrecio']) && $_REQUEST['aPrecio'] != ""  && preg_match("/^[0-9]{3,11}$/", $_REQUEST['aPrecio'])){
@@ -37,7 +38,7 @@
         $vaPrecio = true;
     }
     else{
-
+        $error = "precio";
         $vaPrecio = false;
       
     }
@@ -47,7 +48,7 @@
         $vaCantidad = true;
     }
     else{
-
+        $error = "cantidad";
         $vaCantidad = false;
        
         
@@ -59,7 +60,7 @@
         $vaEstado = true;
     }
     else{
-
+        $error = "estado";
         $vaEstado = false;
         
     }if(isset($_REQUEST['aCategoria']) && $_REQUEST['aCategoria'] != ""  && preg_match("/^[0-9]{1}$/", $_REQUEST['aCategoria'])){
@@ -69,7 +70,7 @@
         $vaCategoria = true;
     }
     else{
-
+        $error = "categoria";
         $vaCategoria = false;
         
     }
@@ -77,32 +78,109 @@
     if($vaNombre == true && $vaPrecio == true && $vaCantidad == true && $vaEstado == true && $vaCategoria == true){
 
         $prod->insertarProducto($ruta,$aNombre,$aPrecio,$aCantidad,$aestado,$aCategoria);
-        
+        $error = "aceptable";
          header("refresh:1;url=../View/Productos.php?pagina=1");
     }
     else if(empty($_REQUEST['aNombre']) || empty($_REQUEST['aPrecio']) || empty($_REQUEST['aCantidad']) || empty($_REQUEST['aestado']) || empty($_REQUEST['aCategoria'])){
         
-       
+        $error = "vacio";
         
         }            
     
    
-        } 
-               ?>
+        
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Document</title>
 </head>
 <body>
-            </div>
-        </section>
-        </div>
-        
-    </div>
+<?php 
+    
+    switch($error){
+
+        case "nombre":
+           ?>
+           <script>
+           Swal.fire(
+           'Atención',
+           'Por favor verifique el Nombre',
+           'warning'
+           )
+           </script>
+        <?php   break;
+        case "precio":
+           ?>
+           <script>
+           Swal.fire(
+           'Atención',
+           'Por favor verifique el Apellido',
+           'warning'
+           )
+           </script>
+        <?php   break;
+        case "cantidad":
+           ?>
+           <script>
+           Swal.fire(
+           'Atención',
+           'Por favor verifique el Documento',
+           'warning'
+           )
+           </script>
+     <?php   break;
+     case "estado":
+        ?>
+        <script>
+        Swal.fire(
+        'Atención',
+        'Verifique la clave',
+        'warning'
+        )
+        </script>
+     <?php   break;
+     case "categoria":
+        ?>
+        <script>
+        Swal.fire(
+        'Atención',
+        'Verifique el estado',
+        'warning'
+        )
+        </script>
+     <?php   break;
+     case "aceptable":
+        ?>
+        <script>
+        Swal.fire(
+        'Completado',
+        'Se ha registrado el usuario satisfactoriamente',
+        'success'
+        )
+        </script>
+     <?php   break;
+     case "vacio":
+        ?>
+        <script>
+        Swal.fire(
+        'Atención',
+        'No se permiten campos vacíos',
+        'error'
+        )
+        </script>
+     <?php   break;
+     }
+
+
+    }
+    
+    $prod->cerrarConexion();
+
+?>     
 </body>
 </html>

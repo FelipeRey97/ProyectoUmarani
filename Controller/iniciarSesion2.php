@@ -32,17 +32,12 @@
      }
     }  
     else{
-        ?>
-            <script>
-                swal('Error','Usuario o contraseña Erroneos','warning');
-            
-            </script>
-        <?php 
+        
+        $error = "erroneos";
+
     }
     }
     
-
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,9 +45,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Document</title>
 </head>
 <body>
+<?php    
+    switch($error){
+
+    case "erroneos":
+    ?>
+    <script>
+    Swal.fire(
+    'Atención',
+    'Usuario o Contraseña Erróneos',
+    'error'
+    )
+    </script>
+    <?php   break;
+    case "vacio":
+    ?>
+    <script>
+    Swal.fire(
+    'Atención',
+    'No se permiten campos vacíos',
+    'error'
+    )
+    </script>
+    <?php   break;
+    }
+
+  }
+    ?>
+
 </body>
 </html>

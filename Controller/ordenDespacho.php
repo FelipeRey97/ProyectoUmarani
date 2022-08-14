@@ -17,7 +17,7 @@ if(isset($_REQUEST['despachoId']) && $_REQUEST['despachoId'] != "" && preg_match
 else{
 
     $VdespachoId = false;
-
+    $error = "despacho";
 
 }
 if(isset($_REQUEST['empresaId'])){
@@ -30,7 +30,7 @@ if(isset($_REQUEST['empresaId'])){
 else{
 
     $vempresaId = true;
-   
+    $error = "empresa";
 
 }
 if($vempresaId == true && $VdespachoId == true){
@@ -50,13 +50,75 @@ if($vempresaId == true && $VdespachoId == true){
     
         
     header("refresh:1;url=../View/pedidos.php?pagina=1");
-
+    $error = "aceptable";
 }
 else if (empty($_REQUEST['despachoId']) || empty($_REQUEST['empresaId'])){
 
-   
+   $error = "vacio";
 }
 
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+<?php 
+    
+    switch($error){
+
+        case "empresa":
+           ?>
+           <script>
+           Swal.fire(
+           'Atención',
+           'Por favor ingrese una empresa válida',
+           'warning'
+           )
+           </script>
+        <?php   break;
+        case "despacho":
+           ?>
+           <script>
+           Swal.fire(
+           'Atención',
+           'Por favor verifique que la orden es válida',
+           'warning'
+           )
+           </script>
+        <?php   break;
+        case "aceptable":
+           ?>
+           <script>
+           Swal.fire(
+           'Atención',
+           'Se ha Generado la orden correctamente',
+           'success'
+           )
+           </script>
+     <?php   break;
+     case "vacio":
+        ?>
+        <script>
+        Swal.fire(
+        'Atención',
+        'No se permiten campos vacíos',
+        'error'
+        )
+        </script>
+     <?php   break;
+     
+     }
+
+?>  
+</body>
+</html>
+<?php 
 
 }
 
@@ -74,7 +136,7 @@ if(isset($_REQUEST['corregir'])){
     else{
     
         $VdespachoId = false;
-    
+        $error = "despacho";
     
     }
     if(isset($_REQUEST['empresaId'])){
@@ -87,7 +149,7 @@ if(isset($_REQUEST['corregir'])){
     else{
     
         $vempresaId = true;
-        
+        $error = "empresa";
     
     }
     if($vempresaId == true && $VdespachoId == true){
@@ -109,14 +171,75 @@ if(isset($_REQUEST['corregir'])){
         
             
         header("refresh:1;url=../View/pedidos.php?pagina=1");
-    
+        $error = "aceptable";
     }
     else if (empty($_REQUEST['despachoId']) || empty($_REQUEST['empresaId'])){
     
-    
+        $error = "vacio";
     }
 
+    ?>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </head>
+    <body>
+    <?php 
+    
+    switch($error){
 
+        case "empresa":
+           ?>
+           <script>
+           Swal.fire(
+           'Atención',
+           'Por favor ingrese una empresa válida',
+           'warning'
+           )
+           </script>
+        <?php   break;
+        case "despacho":
+           ?>
+           <script>
+           Swal.fire(
+           'Atención',
+           'Por favor verifique que la orden es válida',
+           'warning'
+           )
+           </script>
+        <?php   break;
+        case "aceptable":
+           ?>
+           <script>
+           Swal.fire(
+           'Atención',
+           'Se ha Corregido la orden correctamente',
+           'success'
+           )
+           </script>
+     <?php   break;
+     case "vacio":
+        ?>
+        <script>
+        Swal.fire(
+        'Atención',
+        'No se permiten campos vacíos',
+        'error'
+        )
+        </script>
+     <?php   break;
+     
+     }
+
+?>  
+    </body>
+    </html>
+    <?php 
 
 }
 
@@ -138,21 +261,40 @@ if(isset($_REQUEST['cancelar'])){
 
             
         header("refresh:1;url=../View/pedidos.php?pagina=1");
+        $error = "aceptable";
+        ?>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        </head>
+        <body>
+        <?php 
+    
+    switch($error){
 
+        case "aceptable":
+           ?>
+           <script>
+           Swal.fire(
+           'Realizado',
+           'Se ha cancelado el pedido correctamente',
+           'success'
+           )
+           </script>
+        <?php   break;
+        
+     }
+
+?>  
+        </body>
+        </html>
+        <?php 
 
 }
-
-
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-</head>
-<body>
-</body>
-</html>
+

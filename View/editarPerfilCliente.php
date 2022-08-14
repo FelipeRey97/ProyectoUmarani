@@ -11,10 +11,10 @@ if(isset($_SESSION['cMail'])){
     
 
 }
+include_once("../Controller/actualizarDatosCliente.php");
 require_once('../Controller/datosCliente.php');
 require_once('../Controller/carrito.php');
 require_once("../Controller/buscador.php");
-include_once("../Controller/actualizarDatosCliente.php");
 ?>
 
 <!DOCTYPE html>

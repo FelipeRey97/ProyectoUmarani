@@ -1,25 +1,7 @@
 <?php
 session_start();
 $sesionId= session_id();
-if(isset($_SESSION['cMail'])){
 
-}else{
-
-if(isset($_REQUEST['compra'])){
-    if($_REQUEST['compra'] == 1){
-        $valor= 1;
-        header("refresh:20;url=../View/iniciarSesion.php?valor=$valor");
-        }
-        else{
-
-            header("refresh:20;url=..View/iniciarSesion.php?valor=0");
-        }
-
-    }else{
-         //header("location: ../View/iniciarSesion.php");
-    }
-
-}
 include_once("../Controller/registrarse2.php");
 require_once("../Controller/verCheckout.php");
 require('../Controller/carrito.php');

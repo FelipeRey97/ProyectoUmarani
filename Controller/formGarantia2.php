@@ -37,7 +37,7 @@ case 1:
 
     }
     else{
-
+        $error = "nombre";
         $VpNombre = true;
        
     }
@@ -56,12 +56,13 @@ case 1:
         else{
 
             $VpMail = false;
-           
+            $error = "pedmail";
         }
     }
     else{
 
         $VpMail = false;
+        $error = "mail";
         
     }if(isset($_REQUEST['ptelefono']) && $_REQUEST['ptelefono'] != "" && preg_match("/^[0-9]{10,}$/",$_REQUEST['ptelefono'])){
         
@@ -71,6 +72,7 @@ case 1:
     }
     else{
         $Vptelefono = false;
+        $error = "telefono";
         
     }if($_REQUEST['pComentario'] != ""){
         
@@ -81,7 +83,7 @@ case 1:
     }
     else{
         $VpComentario = false;
-        
+        $error = "comentario";
     }
     if($VpComentario == true && $VpMail == true &&  $VpNombre == true){
 
@@ -103,11 +105,12 @@ case 1:
         }
 
         header("refresh:1;url=../View/ayudaClienteFin.php?Id=$pqrsId&Tipo=$pqrsTipo");
-
+        $error = "aceptable";
     }
 
     else if(empty($_REQUEST['pNombre']) || empty($_REQUEST['pMail']) || empty($_REQUEST['pComentario'])){
-    
+        
+        $error = "vacio";
     
     }
     
@@ -128,7 +131,7 @@ case 2:
 
     }
     else{
-
+        $error = "nombre";
         $VpNombre = true;
         
     }
@@ -147,12 +150,13 @@ case 2:
         else{
 
             $VpMail = false;
-            
+            $error = "pedmail";
         }
     }
     else{
 
         $VpMail = false;
+        $error = "mail";
         
     }if(isset($_REQUEST['ptelefono']) && $_REQUEST['ptelefono'] != "" && preg_match("/^[0-9]{10,}$/",$_REQUEST['ptelefono'])){
         
@@ -162,6 +166,7 @@ case 2:
     }
     else{
         $Vptelefono = false;
+        $error = "telefono";
         
     }if($_REQUEST['pComentario'] != ""){
         
@@ -172,7 +177,7 @@ case 2:
     }
     else{
         $VpComentario = false;
-        
+        $error = "comentario";
     }
     if($VpComentario == true && $VpMail == true &&  $VpNombre == true){
 
@@ -192,12 +197,12 @@ case 2:
         }
 
         header("refresh:1;url=../View/ayudaClienteFin.php?Id=$pqrsId&Tipo=$pqrsTipo");
-
+        $error = "aceptable";
     }
 
     else if(empty($_REQUEST['pNombre']) || empty($_REQUEST['pMail']) || empty($_REQUEST['pComentario'])){
     
-    
+        $error = "vacio";
     
     }
     
@@ -216,12 +221,12 @@ case 3:
         $pNombre = strtoupper($pNombre);
 
         $VpNombre = true;
-
+    
     }
     else{
 
         $VpNombre = true;
-      
+        $error = "nombre";
     }
     if(isset($_REQUEST['pMail']) && $_REQUEST['pMail'] != "" && filter_var($_REQUEST['pMail'], FILTER_VALIDATE_EMAIL )){
         
@@ -233,6 +238,7 @@ case 3:
     else{
 
         $VpMail = false;
+        $error = "mail";
         
     }if(isset($_REQUEST['ptelefono']) && $_REQUEST['ptelefono'] != "" && preg_match("/^[0-9]{10,}$/",$_REQUEST['ptelefono'])){
         
@@ -242,7 +248,8 @@ case 3:
     }
     else{
         $Vptelefono = false;
-       
+        $error = "telefono";
+
     }if($_REQUEST['pComentario'] != ""){
         
         $pComentario =  htmlentities($_REQUEST['pComentario']);
@@ -252,7 +259,7 @@ case 3:
     }
     else{
         $VpComentario = false;
-      
+      $error = "comentario";
     }
     if($VpComentario == true && $VpMail == true &&  $VpNombre == true){
 
@@ -273,35 +280,112 @@ case 3:
         }
 
         header("refresh:1;url=../View/ayudaClienteFin.php?Id=$pqrsId&Tipo=$pqrsTipo");
-
+        $error = "aceptable";
     }
 
     else if(empty($_REQUEST['pNombre']) || empty($_REQUEST['pMail']) || empty($_REQUEST['pComentario'])){
     
-
+        $error = "vacio";
     
     }
     
 
     break;
 
-
+    
+    
 }
 
+?>     
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <title>Document</title>
+    </head>
+    <body>
+     <?php    
+    switch($error){
 
+    case "nombre":
+    ?>
+    <script>
+    Swal.fire(
+    'Atención',
+    'Por favor verifique el Nombre',
+    'warning'
+    )
+    </script>
+    <?php   break;
+    case "mail":
+    ?>
+    <script>
+    Swal.fire(
+    'Atención',
+    'Por favor verifique el formato del E-mail',
+    'warning'
+    )
+    </script>
+    <?php   break;
+    case "pedmail":
+        ?>
+        <script>
+        Swal.fire(
+        'Atención',
+        'No existen pedidos realizados con este E-mail',
+        'warning'
+        )
+        </script>
+        <?php   break;
+    case "telefono":
+    ?>
+    <script>
+    Swal.fire(
+    'Atención',
+    'Por favor verifique el telefono',
+    'warning'
+    )
+    </script>
+    <?php   break;
+    case "comentario":
+    ?>
+    <script>
+    Swal.fire(
+    'Atención',
+    'Por favor debe ingresar los comentarios',
+    'warning'
+    )
+    </script>
+    <?php   break;
+    case "aceptable":
+    ?>
+    <script>
+    Swal.fire(
+    'Completado',
+    'Se ha enviado la Petición satisfactoriamente',
+    'success'
+    )
+    </script>
+    <?php   break;
+    case "vacio":
+    ?>
+    <script>
+    Swal.fire(
+    'Atención',
+    'No se permiten campos vacíos',
+    'error'
+    )
+    </script>
+    <?php   break;
+    }
+    ?>
+    </body>
+    </html>
+    <?php
 }
+
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>

@@ -41,7 +41,7 @@ if(isset($_REQUEST['Confirmar'])){
 
    }
    else{
-
+        $error = "mail";
         $vmail = false;
         
    }
@@ -55,7 +55,7 @@ if(isset($_REQUEST['Confirmar'])){
 
    }
    else{
-
+        $error = "nombre";
         $vnombre = false;
 
    }if(isset($_REQUEST['capellido']) && $_REQUEST['capellido'] != "" && preg_match("/^[a-zA-Z ]{3,50}$/",$_REQUEST['capellido'])){
@@ -68,7 +68,7 @@ if(isset($_REQUEST['Confirmar'])){
 
    }
    else{
-
+        $error = "apellido";
         $vapellido = false;
 
    }if(isset($_REQUEST['cdoc']) && $_REQUEST['cdoc'] != "" && preg_match("/^[0-9]{6,12}$/",$_REQUEST['cdoc'])){
@@ -88,7 +88,7 @@ if(isset($_REQUEST['Confirmar'])){
 
    }
    else{
-
+        $error = "telefono";
         $vtelefono = false;
 
    }if(isset($_REQUEST['dpto']) && $_REQUEST['dpto'] != "" && preg_match("/^[a-zA-Z ]{4,50}$/",$_REQUEST['dpto'])){
@@ -99,7 +99,7 @@ if(isset($_REQUEST['Confirmar'])){
 
    }
    else{
-
+     $error = "dpto";
         $vdpto = false;
 
    }
@@ -112,7 +112,7 @@ if(isset($_REQUEST['Confirmar'])){
 
    }
    else{
-
+     $error = "ciudad";
         $vciudad = false;
 
    }if(isset($_REQUEST['direccion']) && $_REQUEST['direccion'] != ""){
@@ -124,7 +124,7 @@ if(isset($_REQUEST['Confirmar'])){
 
    }
    else{
-
+     $error = "direccion";
         $vdireccion = false;
 
    }
@@ -136,7 +136,7 @@ if(isset($_REQUEST['Confirmar'])){
 
    }
    else{
-
+     $error = "detalledir";
         $vdetdireccion = false;
 
    }if(isset($_REQUEST['tipoPago']) && $_REQUEST['tipoPago'] != "" && preg_match("/^[0-9]{1,1}$/",$_REQUEST['tipoPago'])){
@@ -146,7 +146,7 @@ if(isset($_REQUEST['Confirmar'])){
 
    }
    else{
-
+     $error = "tipopago";
         $vtipoPago = false;
 
    }
@@ -154,7 +154,7 @@ if(isset($_REQUEST['Confirmar'])){
 
    if($vtipoPago == true && $vdireccion == true && $vciudad == true && $vdpto == true && $vtelefono == true && $vdoc = true && $vapellido == true && $vnombre == true){
 
-        
+     
         header("Location: ../View/confirmarPedido.php");
 
         $_SESSION['mail'] = $cmail;
@@ -172,27 +172,9 @@ if(isset($_REQUEST['Confirmar'])){
    }
    else if (empty($_REQUEST['cmail']) || empty($_REQUEST['cnombre']) || empty($_REQUEST['capellido']) || empty($_REQUEST['cdoc']) || empty($_REQUEST['ctelefono']) || empty($_REQUEST['dpto']) || empty($_REQUEST['ciudad']) || empty($_REQUEST['direccion'])){
 
-        ?>
-        <script>
-        swal("Atención", "Por favor complete los campos requeridos", "warning");
-        </script>
-        <?php
+     $error = "vacio";
 
    }
-
-
-
-
-
-
-
-
-
-
-
-
-}
-
 
 ?>
 <!DOCTYPE html>
@@ -202,8 +184,120 @@ if(isset($_REQUEST['Confirmar'])){
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+<?php 
+    
+    switch($error){
+
+        case "nombre":
+           ?>
+           <script>
+           Swal.fire(
+           'Atención',
+           'Por favor verifique el Nombre',
+           'warning'
+           )
+           </script>
+        <?php   break;
+        case "apellido":
+           ?>
+           <script>
+           Swal.fire(
+           'Atención',
+           'Por favor verifique el Apellido',
+           'warning'
+           )
+           </script>
+        <?php   break;
+        case "telefono":
+           ?>
+           <script>
+           Swal.fire(
+           'Atención',
+           'Por favor verifique el telefono',
+           'warning'
+           )
+           </script>
+     <?php   break;
+     case "dpto":
+        ?>
+        <script>
+        Swal.fire(
+        'Atención',
+        'Por favor Verifique el Departamento',
+        'warning'
+        )
+        </script>
+  <?php   break;
+  case "ciudad":
+    ?>
+    <script>
+    Swal.fire(
+    'Atención',
+    'Por favor verifique la ciudad',
+    'warning'
+    )
+    </script>
+<?php   break;
+case "direccion":
+    ?>
+    <script>
+    Swal.fire(
+    'Atención',
+    'Por favor verifique la dirección',
+    'warning'
+    )
+    </script>
+<?php   break;
+case "detalledir":
+    ?>
+    <script>
+    Swal.fire(
+    'Atención',
+    'Solo permiten los caracteres especiales #, -, ° en la direccion ',
+    'warning'
+    )
+    </script>
+<?php   break;
+case "tipopago":
+    ?>
+    <script>
+    Swal.fire(
+    'Atención',
+    'por favor seleccione un método de pago válido',
+    'warning'
+    )
+    </script>
+<?php   break;
+     case "aceptable":
+        ?>
+        <script>
+        Swal.fire(
+        'Completado',
+        'Se han guardado los cambios satisfactoriamente',
+        'success'
+        )
+        </script>
+     <?php   break;
+     case "vacio":
+        ?>
+        <script>
+        Swal.fire(
+        'Atención',
+        'No se permiten campos vacíos',
+        'error'
+        )
+        </script>
+     <?php   break;
+     }
+
+
+    }
+    
+?>     
+
+
 </body>
 </html>
