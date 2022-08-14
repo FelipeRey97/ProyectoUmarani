@@ -31,8 +31,8 @@ if(isset($_REQUEST['unombre'] ) && $_REQUEST['unombre'] != "" && preg_match("/^[
    $vNombre= true;
 }
 else{
-
    $vNombre= false;
+   $error = "nombre";
    
 
 }
@@ -44,6 +44,7 @@ if(isset($_REQUEST['uapellido'] ) && $_REQUEST['uapellido'] != "" && preg_match(
 }else{
 
    $vApellido= false;
+   $error = "apellido";
    
 
 }if(isset($_REQUEST['udocumento'] ) && $_REQUEST['udocumento'] != "" && preg_match("/^[0-9]{5,12}$/", $_REQUEST['udocumento'])){
@@ -56,7 +57,7 @@ if(isset($_REQUEST['uapellido'] ) && $_REQUEST['uapellido'] != "" && preg_match(
    if($val_Doc == true){
 
       $vDoc= false;
-     
+      $error = "docExiste";
    }
    else{
 
@@ -65,7 +66,7 @@ if(isset($_REQUEST['uapellido'] ) && $_REQUEST['uapellido'] != "" && preg_match(
    }
 
 }else{
-
+   $error = "documento";
    $vDoc= false;
    
 
@@ -75,7 +76,7 @@ if(isset($_REQUEST['uapellido'] ) && $_REQUEST['uapellido'] != "" && preg_match(
    $vContraseña= true;
    
 }else{
-
+   $error = "clave";
    $vContraseña= false;
    
 
@@ -86,7 +87,7 @@ if(isset($_REQUEST['uapellido'] ) && $_REQUEST['uapellido'] != "" && preg_match(
    $vEstado= true;
    
 }else{
-
+   $error = "estado";
    $vEstado= false;
    
 
@@ -96,7 +97,7 @@ if(isset($_REQUEST['uapellido'] ) && $_REQUEST['uapellido'] != "" && preg_match(
    $vRol= true;
    
 }else{
-
+   $error = "rol";
    $vRol= false;
 
 }
@@ -104,7 +105,7 @@ if(isset($_REQUEST['uapellido'] ) && $_REQUEST['uapellido'] != "" && preg_match(
 if($vRol == true && $vEstado == true && $vContraseña == true && $vDoc == true && $vApellido == true && $vNombre == true){
 
    $con->insertarUsuario($unombre,$uapellido,$udocumento,$ucontraseña,$uestado,$urol);
-      
+   $error = "aceptable";
 
       header("refresh:1;url=../View/Usuarios.php");
       
@@ -113,9 +114,9 @@ if($vRol == true && $vEstado == true && $vContraseña == true && $vDoc == true &
 if(empty($_REQUEST['unombre']) || empty($_REQUEST['uapellido']) || empty($_REQUEST['udocumento']) || empty($_REQUEST['ucontraseña']) || empty($_REQUEST['uestado']) || empty($_REQUEST['urol']) ){
    
 
-   
+   $error = "vacio";
 }
-}
+
 
 $con->cerrarConexion();
 
@@ -127,10 +128,119 @@ $con->cerrarConexion();
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <title>Document</title>
 </head>
 <body>
-   
+
+<?php //SALIDAS INFORMATIVAS
+
+   switch($error){
+
+      case "nombre":
+         ?>
+         <script>
+         Swal.fire(
+         'Atención',
+         'Por favor verifique el Nombre',
+         'warning'
+         )
+         </script>
+      <?php   break;
+      case "apellido":
+         ?>
+         <script>
+         Swal.fire(
+         'Atención',
+         'Por favor verifique el Apellido',
+         'warning'
+         )
+         </script>
+      <?php   break;
+      case "documento":
+         ?>
+         <script>
+         Swal.fire(
+         'Atención',
+         'Por favor verifique el Documento',
+         'warning'
+         )
+         </script>
+      <?php   break;
+      case "docExiste":
+      ?>
+      <script>
+      Swal.fire(
+      'Atención',
+      'El documento ya existe',
+      'error'
+      )
+      </script>
+   <?php   break;
+   case "clave":
+      ?>
+      <script>
+      Swal.fire(
+      'Atención',
+      'Verifique la clave',
+      'warning'
+      )
+      </script>
+   <?php   break;
+   case "estado":
+      ?>
+      <script>
+      Swal.fire(
+      'Atención',
+      'Verifique el estado',
+      'warning'
+      )
+      </script>
+   <?php   break;
+   case "rol":
+      ?>
+      <script>
+      Swal.fire(
+      'Atención',
+      'Verifique el Rol',
+      'warning'
+      )
+      </script>
+   <?php   break;
+   case "rol":
+      ?>
+      <script>
+      Swal.fire(
+      'Atención',
+      'Verifique el Rol',
+      'warning'
+      )
+      </script>
+   <?php   break;
+   case "aceptable":
+      ?>
+      <script>
+      Swal.fire(
+      'Completado',
+      'Se ha registrado el usuario satisfactoriamente',
+      'success'
+      )
+      </script>
+   <?php   break;
+   case "vacio":
+      ?>
+      <script>
+      Swal.fire(
+      'Atención',
+      'No se permiten campos vacíos',
+      'error'
+      )
+      </script>
+   <?php   break;
+   }
+
+}
+
+?>
 </body>
 </html>

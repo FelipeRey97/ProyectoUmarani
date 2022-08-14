@@ -36,7 +36,7 @@ if(isset($_REQUEST['registrar'])){
         $vNombre= true;
     }
     else{
-    
+        $error = "nombre";
         $vNombre= false;
         
     
@@ -47,7 +47,7 @@ if(isset($_REQUEST['registrar'])){
         $uapellido = strtoupper($uapellido);
         $vApellido= true;
     }else{
-    
+        $error = "apellido";
         $vApellido= false;
         
     
@@ -57,7 +57,7 @@ if(isset($_REQUEST['registrar'])){
         $vContraseña= true;
         
     }else{
-    
+        $error = "clave";
         $vContraseña= false;
         
     
@@ -68,7 +68,7 @@ if(isset($_REQUEST['registrar'])){
         $vEstado= true;
         
     }else{
-    
+        $error = "estado";
         $vEstado= false;
         
     
@@ -78,7 +78,7 @@ if(isset($_REQUEST['registrar'])){
         $vRol= true;
         
     }else{
-    
+        $error = "rol";
         $vRol= false;
     
     }
@@ -89,16 +89,137 @@ if(isset($_REQUEST['registrar'])){
 
         $con2->actualizarUsuario($unombre,$uapellido,$ucontraseña,$uestado,$urol,$usuarioId);
       
-
+        $error = "aceptable";
       header("refresh:1;url=../View/Usuarios.php?pagina=1");
             
     }
         
     if(empty($_REQUEST['unombre']) || empty($_REQUEST['uapellido']) || empty($_REQUEST['ucontraseña']) || empty($_REQUEST['uestado']) || empty($_REQUEST['urol']) ){
         
-        
+        $error = "vacio";
         
     }
+
+
+    ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Document</title>
+</head>
+<body>
+<?php 
+    
+    switch($error){
+
+        case "nombre":
+           ?>
+           <script>
+           Swal.fire(
+           'Atención',
+           'Por favor verifique el Nombre',
+           'warning'
+           )
+           </script>
+        <?php   break;
+        case "apellido":
+           ?>
+           <script>
+           Swal.fire(
+           'Atención',
+           'Por favor verifique el Apellido',
+           'warning'
+           )
+           </script>
+        <?php   break;
+        case "documento":
+           ?>
+           <script>
+           Swal.fire(
+           'Atención',
+           'Por favor verifique el Documento',
+           'warning'
+           )
+           </script>
+        <?php   break;
+        case "docExiste":
+        ?>
+        <script>
+        Swal.fire(
+        'Atención',
+        'El documento ya existe',
+        'error'
+        )
+        </script>
+     <?php   break;
+     case "clave":
+        ?>
+        <script>
+        Swal.fire(
+        'Atención',
+        'Verifique la clave',
+        'warning'
+        )
+        </script>
+     <?php   break;
+     case "estado":
+        ?>
+        <script>
+        Swal.fire(
+        'Atención',
+        'Verifique el estado',
+        'warning'
+        )
+        </script>
+     <?php   break;
+     case "rol":
+        ?>
+        <script>
+        Swal.fire(
+        'Atención',
+        'Verifique el Rol',
+        'warning'
+        )
+        </script>
+     <?php   break;
+     case "rol":
+        ?>
+        <script>
+        Swal.fire(
+        'Atención',
+        'Verifique el Rol',
+        'warning'
+        )
+        </script>
+     <?php   break;
+     case "aceptable":
+        ?>
+        <script>
+        Swal.fire(
+        'Completado',
+        'Se ha registrado el usuario satisfactoriamente',
+        'success'
+        )
+        </script>
+     <?php   break;
+     case "vacio":
+        ?>
+        <script>
+        Swal.fire(
+        'Atención',
+        'No se permiten campos vacíos',
+        'error'
+        )
+        </script>
+     <?php   break;
+     }
+
+
     }
     
     $con2->cerrarConexion();
@@ -106,13 +227,3 @@ if(isset($_REQUEST['registrar'])){
 ?>
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <title>Document</title>
-</head>
-<body>
