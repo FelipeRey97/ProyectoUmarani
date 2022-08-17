@@ -133,8 +133,8 @@ require_once("../Controller/buscador.php");
                             else{
 
                                 ?>
-                                <a href="iniciarSesion.php"><i class="fas fa-sign-in-alt"></i>  Iniciar Sesion </a><br><br>
-                                <a href="registrarse.php"><i class="fas fa-user-plus"></i> Registrarse </a><br><br>
+                                <a href="../View/iniciarSesion.php"><i class="fas fa-sign-in-alt"></i>  Iniciar Sesion </a><br><br>
+                                <a href="../View/Registrarse.php"><i class="fas fa-user-plus"></i> Registrarse </a><br><br>
                                  <a href="../View/ayudaCliente.php"><i class="fas fa-question"></i>  Ayuda </a><br><br>
                             
                             <?php

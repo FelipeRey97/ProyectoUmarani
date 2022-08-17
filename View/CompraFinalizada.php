@@ -135,8 +135,8 @@ require('../Controller/carrito.php');
                 else{
 
                     ?>
-                    <a href="iniciarSesion.php"><i class="fas fa-sign-in-alt"></i>  Iniciar Sesion </a><br><br>
-                    <a href="registrarse.php"><i class="fas fa-user-plus"></i> Registrarse </a><br><br>
+                    <a href="../View/iniciarSesion.php"><i class="fas fa-sign-in-alt"></i>  Iniciar Sesion </a><br><br>
+                    <a href="../View/Registrarse.php"><i class="fas fa-user-plus"></i> Registrarse </a><br><br>
                         <a href="../View/ayudaCliente.php"><i class="fas fa-question"></i>  Ayuda </a><br><br>
                 
                 <?php
@@ -160,8 +160,8 @@ require('../Controller/carrito.php');
     
 <div class="menu">
     <b><a href="../View/catalogo.php">Inicio</a></b>
-    <b><a href="../View/collares.php?seccion=collares">Collares</a></b>
-    <b><a href="../View/pulseras.php?seccion=pulseras">Pulseras</a></b>
+    <b><a href="../View/Collares.php?seccion=collares">Collares</a></b>
+    <b><a href="../View/Pulseras.php?seccion=pulseras">Pulseras</a></b>
     <b><a href="../View/anillos.php?seccion=anillos">Anillos</a></b>
     <b><a href="../View/terminosycondiciones.php">Nosotros</a></b>
     <!-- <a href="#">Ofertas</a> -->

@@ -71,17 +71,6 @@
           
           }
 
-        
-       
-        public function borrarUsuario(){
-
-
-         $this->cl->query("DELETE FROM  usuarioTienda WHERE usuarioId = '$_REQUEST[tabla]'") 
-         or die ("problemas en el select " . mysqli_error($cl));
-
-         header("Location: http://localhost/UmaraniWeb/View/Usuarios.php");
-        }
-
         public function cerrarConexion(){
 
             $this->cl->close();
